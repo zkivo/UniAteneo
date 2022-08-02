@@ -1,0 +1,9 @@
+{
+  "name": "uni-ateneo",
+  "version": "0.0.0",
+  "description": "UniAteneo",
+  "main": "server.js",
+  "author": {
+    "name": ""
+  }
+}
