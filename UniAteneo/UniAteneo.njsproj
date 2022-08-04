@@ -33,6 +33,9 @@
     <Content Include="package.json" />
     <Content Include="README.md" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="public\" />
+  </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
   <ProjectExtensions>
     <VisualStudio>
