@@ -4,6 +4,9 @@
   "description": "UniAteneo",
   "main": "server.js",
   "author": {
-    "name": ""
+    "name": "Marco Schivo - Roberto Zancana"
+  },
+  "dependencies": {
+    "sql.js": "^1.7.0"
   }
 }
