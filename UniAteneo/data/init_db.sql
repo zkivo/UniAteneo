@@ -1,0 +1,1 @@
+CREATE TABLE test (id INTEGER, age INTEGER, name TEXT)
