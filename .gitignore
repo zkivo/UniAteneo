@@ -364,3 +364,4 @@ FodyWeavers.xsd
 
 # database
 db.sqlite
+example_sqlite3_chaining.js
