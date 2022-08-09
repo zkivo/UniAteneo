@@ -1,24 +1,42 @@
 const express = require('express');
-const sql_js = require('sql.js');
+const sqlite3 = require('sqlite3');
 const fs = require('fs');
 
 const path_db = "./data/db.sqlite";
 const path_init_db = "./data/init_db.sql";
 const web_port = process.env.PORT || 1337;
 
+const db = new sqlite3.Database(path_db, initiate_db);
 const server = express();
 
-// create the database if it doesn't exist
-if (!fs.existsSync(path_db)) {
+function initiate_db() {
+    // initiate db if empty
     const sql_string = fs.readFileSync(path_init_db, { encoding: 'utf8', flag: 'r' });
-    sql_js().then(function (SQL) {
-        const db = new SQL.Database();
-        db.exec(sql_string);
-        fs.writeFileSync(path_db, Buffer.from(db.export()));
-        console.log("The SQLite database has been initiated and stored in '" +
-                    path_db + 
-                    "'.")
-        db.close();
+    db.exec(sql_string, (err, row) => {
+        if (err) {
+            if (err.errno != 19) {
+                console.log(err);
+                return;
+            }
+        }
+        console.log("The SQLite database has been initiated in '" +
+            path_db +
+            "'.");
+        show_rows();
+    });
+}
+
+function show_rows() {
+    db.all("SELECT * FROM employees;", (err, rows) => {
+        if (err)
+            console.log(err);
+        else {
+            //console.log(row.name + ": " + row.hired_on);
+            //console.log("row: " + row);
+            rows.forEach(function (row) {
+                console.log(row);
+            });
+        }
     });
 }
 
@@ -30,9 +48,12 @@ server.listen(web_port, () => {
     console.log(`web server is listeing to port: ${web_port}.`)
 })
 
-//process.on('SIGTERM', () => {
-//    // closing the web server
-//    server.close(() => {
-//        console.log('web server terminated.');
-//    });
-//});
+process.on('SIGTERM', () => {
+    // closing the web server
+    server.close(() => {
+        console.log('web server terminated.');
+    });
+    db.close(() => {
+        console.log('database terminated.');
+    });
+});
