@@ -7,7 +7,9 @@ const path_init_db = "./data/init_db2.sql";
 const web_port = process.env.PORT || 1337;
 
 const db = new sqlite3.Database(path_db, initiate_db);
-const server = express();
+const app = express();
+
+app.set('view engine', 'ejs');
 
 function initiate_db() {
     // initiate db if empty
@@ -27,7 +29,7 @@ function initiate_db() {
 }
 
 function show_rows() {
-    db.all("SELECT * FROM CDS;", (err, rows) => {
+    db.all("SELECT CDS.id AS 'Codice CDS', Insegnamenti.nome FROM CDS, Programmi, Insegnamenti where CDS.id = Programmi.id_corso AND Programmi.id_insegnamento = Insegnamenti.id", (err, rows) => {
         if (err)
             console.log(err);
         else {
@@ -40,18 +42,27 @@ function show_rows() {
     });
 }
 
-server.get('/', (req, res) => {
-    res.send('Hello World!')
+app.get('/', (req, res) => {
+    db.serialize(() => {
+        db.all("SELECT * FROM CDS", (err, rows) => {
+            if (err)
+                console.log(err);
+            else {
+                console.log(rows[0]);
+                res.render('index', {rows: rows});
+            }
+        });
+    });
 })
 
-server.listen(web_port, () => {
-    console.log(`web server is listeing to port: ${web_port}.`)
+app.listen(web_port, () => {
+    console.log(`web app is listeing to port: ${web_port}.`)
 })
 
 process.on('SIGTERM', () => {
-    // closing the web server
-    server.close(() => {
-        console.log('web server terminated.');
+    // closing the web app
+    app.close(() => {
+        console.log('web app terminated.');
     });
     db.close(() => {
         console.log('database terminated.');

@@ -4,11 +4,11 @@ CREATE TABLE IF NOT EXISTS CDS (
 	tipo CHAR(3) -- LT, LM, OR LMC
 );
 
-CREATE TABLE IF NOT EXISTS Docente (
+CREATE TABLE IF NOT EXISTS Docenti (
 	id       INTEGER PRIMARY KEY AUTOINCREMENT,
 	nome     tinytext,
 	cognome  tinytext,
-	ssd tinytext
+	ssd      tinytext
 );
 
 CREATE TABLE IF NOT EXISTS Insegnamenti (
@@ -16,14 +16,14 @@ CREATE TABLE IF NOT EXISTS Insegnamenti (
 	nome tinytext,
 	cfu  tinyINTEGER,
 	path_scheda_trasparenza text,
-	ssd tinytext, --FOREIGN KEY REFERENCES SSD(code),
-	id_docente INTEGER,      --FOREIGN KEY REFERENCES Docente(id)
-	FOREIGN KEY (id_docente) REFERENCES Docente(id)
+	ssd  tinytext,          
+	id_docente INTEGER,      
+	FOREIGN KEY (id_docente) REFERENCES Docenti(id)
 );
 
 CREATE TABLE IF NOT EXISTS Programmi (
-	id_corso        INTEGER, --FOREIGN KEY REFERENCES CDS(id),
-	id_insegnamento INTEGER, --FOREIGN KEY REFERENCES Insegnamenti(id),
+	id_corso        INTEGER,
+	id_insegnamento INTEGER,
 	scelta bool,
 	anno   tinyINTEGER,  -- 1,2,3,4 OR 5
 	PRIMARY KEY (id_corso, id_insegnamento),
@@ -31,7 +31,8 @@ CREATE TABLE IF NOT EXISTS Programmi (
 	FOREIGN KEY (id_insegnamento) REFERENCES Insegnamenti(id)
 );
 
-INSERT INTO CDS (nome, tipo) VALUES (
+INSERT INTO CDS (id, nome, tipo) VALUES (
+	2178,
 	'Ingegneria Informatica',
 	'LT'
 	--https://www.unipa.it/dipartimenti/ingegneria/cds/ingegneriainformatica2178/?pagina=insegnamenti
@@ -39,7 +40,7 @@ INSERT INTO CDS (nome, tipo) VALUES (
 
 -- ************
 
-INSERT INTO Docente (nome, cognome, ssd) VALUES (
+INSERT INTO Docenti (nome, cognome, ssd) VALUES (
 	'Adelmo',
 	'Balbo-Filogamo',
 	'MAT/02'
@@ -53,14 +54,14 @@ INSERT INTO Insegnamenti (nome, cfu, ssd, id_docente) VALUES (
 );
 
 INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (
-	1,
+	2178,
 	1,
 	false,
 	1
 );
 -- ************
 
-INSERT INTO Docente (nome, cognome, ssd) VALUES (
+INSERT INTO Docenti (nome, cognome, ssd) VALUES (
 	'Antonina',
 	'Faugno',
 	'ING-INF/05'
@@ -70,19 +71,19 @@ INSERT INTO Insegnamenti (nome, cfu, ssd, id_docente) VALUES (
 	'ARCHITETTURE DEI CALCOLATORI',
 	'9',
 	'ING-INF/05',
-	1
+	2
 );
 
 INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (
-	1,
+	2178,
 	2,
 	false,
-	2
+	1
 );
 
 -- ************
 
-INSERT INTO Docente (nome, cognome, ssd) VALUES (
+INSERT INTO Docenti (nome, cognome, ssd) VALUES (
 	'Elisa',
 	'Tasca-Travaglio',
 	'MAT/05'
@@ -92,14 +93,14 @@ INSERT INTO Insegnamenti (nome, cfu, ssd, id_docente) VALUES (
 	'ANALISI MATEMATICA C.I.',
 	'12',
 	'MAT/05',
-	1
+	3
 );
 
 INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (
-	1,
+	2178,
 	3,
 	false,
-	3
+	1
 );
 
 /*
