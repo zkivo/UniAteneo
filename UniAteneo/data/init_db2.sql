@@ -1,58 +1,135 @@
-CREATE TABLE IF NOT EXISTS SSD (
-	code tinytext PRIMARY KEY,
-	nome tinytext
-);
-
 CREATE TABLE IF NOT EXISTS CDS (
-	code tinytext PRIMARY KEY,
+	id   INTEGER PRIMARY KEY AUTOINCREMENT,
 	nome tinytext,
-	tipo char(3), -- LT, LM, OR LMC
-	code_ssd tinytext FOREIGN KEY REFERENCES SSD(code)
+	tipo CHAR(3) -- LT, LM, OR LMC
 );
 
 CREATE TABLE IF NOT EXISTS Docente (
-	id int IDENTITY(1,1) PRIMARY KEY,
-	nome    tinytext,
-	cognome tinytext,
-	code_ssd tinytext FOREIGN KEY REFERENCES SSD(code)
+	id       INTEGER PRIMARY KEY AUTOINCREMENT,
+	nome     tinytext,
+	cognome  tinytext,
+	ssd tinytext
 );
 
 CREATE TABLE IF NOT EXISTS Insegnamenti (
-	id int IDENTITY(300,15) PRIMARY KEY,
+	id   INTEGER PRIMARY KEY AUTOINCREMENT,
 	nome tinytext,
-	cfu  tinyint,
+	cfu  tinyINTEGER,
 	path_scheda_trasparenza text,
-	code_ssd   tinytext FOREIGN KEY REFERENCES SSD(code),
-	id_docente int      FOREIGN KEY REFERENCES Docente(id)
+	ssd tinytext, --FOREIGN KEY REFERENCES SSD(code),
+	id_docente INTEGER,      --FOREIGN KEY REFERENCES Docente(id)
+	FOREIGN KEY (id_docente) REFERENCES Docente(id)
 );
 
 CREATE TABLE IF NOT EXISTS Programmi (
-	code_corso tinytext FOREIGN KEY REFERENCES CDS(code),
-	id_insegnamento int FOREIGN KEY REFERENCES Insegnamenti(id),
+	id_corso        INTEGER, --FOREIGN KEY REFERENCES CDS(id),
+	id_insegnamento INTEGER, --FOREIGN KEY REFERENCES Insegnamenti(id),
 	scelta bool,
-	anno   tinyint,  -- 1,2,3,4 OR 5
-	PRIMARY KEY (code_corso, id_insegnamento)
+	anno   tinyINTEGER,  -- 1,2,3,4 OR 5
+	PRIMARY KEY (id_corso, id_insegnamento),
+	FOREIGN KEY (id_corso)		  REFERENCES CDS(id),
+	FOREIGN KEY (id_insegnamento) REFERENCES Insegnamenti(id)
 );
 
+INSERT INTO CDS (nome, tipo) VALUES (
+	'Ingegneria Informatica',
+	'LT'
+	--https://www.unipa.it/dipartimenti/ingegneria/cds/ingegneriainformatica2178/?pagina=insegnamenti
+);
+
+-- ************
+
+INSERT INTO Docente (nome, cognome, ssd) VALUES (
+	'Adelmo',
+	'Balbo-Filogamo',
+	'MAT/02'
+);
+
+INSERT INTO Insegnamenti (nome, cfu, ssd, id_docente) VALUES (
+	'ALGEBRA',
+	'6',
+	'MAT/02',
+	1
+);
+
+INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (
+	1,
+	1,
+	false,
+	1
+);
+-- ************
+
+INSERT INTO Docente (nome, cognome, ssd) VALUES (
+	'Antonina',
+	'Faugno',
+	'ING-INF/05'
+);
+
+INSERT INTO Insegnamenti (nome, cfu, ssd, id_docente) VALUES (
+	'ARCHITETTURE DEI CALCOLATORI',
+	'9',
+	'ING-INF/05',
+	1
+);
+
+INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (
+	1,
+	2,
+	false,
+	2
+);
+
+-- ************
+
+INSERT INTO Docente (nome, cognome, ssd) VALUES (
+	'Elisa',
+	'Tasca-Travaglio',
+	'MAT/05'
+);
+
+INSERT INTO Insegnamenti (nome, cfu, ssd, id_docente) VALUES (
+	'ANALISI MATEMATICA C.I.',
+	'12',
+	'MAT/05',
+	1
+);
+
+INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (
+	1,
+	3,
+	false,
+	3
+);
+
+/*
 CREATE TABLE IF NOT EXISTS Studente (
-	matricola int IDENTITY(6000,15) PRIMARY KEY,
-	nome    tinytext,
-	cognome tinytext,
-	reddito int,
-	anno    tinyint,  -- 1,2,3,4 OR 5
-	rate_pagate tinyint,	 -- 0,1 OR 2
-	code_corso  tinytext FOREIGN KEY REFERENCES CDS(code)
+	matricola   INTEGER IDENTITY(6000,15) PRIMARY KEY,
+	nome        tinytext,
+	cognome     tinytext,
+	reddito     INTEGER,
+	anno        tinyINTEGER,     -- 1,2,3,4 OR 5
+	rate_pagate tinyINTEGER,	 -- 0,1 OR 2
+	id_corso    INTEGER FOREIGN KEY REFERENCES CDS(id)
 );
 
 CREATE TABLE IF NOT EXISTS PianoDiStudi (
-	matricola int FOREIGN KEY REFERENCES Studente(matricola),
-	id_insegnamento int FOREIGN KEY REFERENCES Insegnamenti(id),
-	voto tinytext DEFAULT '0',
+	matricola       INTEGER FOREIGN KEY REFERENCES Studente(matricola),
+	id_insegnamento INTEGER FOREIGN KEY REFERENCES Insegnamenti(id),
+	voto            tinytext  DEFAULT '0',
 	PRIMARY KEY (matricola, id_insegnamento)
 );
 
 CREATE TABLE IF NOT EXISTS Esame (
-	id int IDENTITY(100,15) PRIMARY KEY,
-	id_insegnamento int FOREIGN KEY REFERENCES Insegnamenti(id),
-	code_corso tinytext FOREIGN KEY REFERENCES CDS(code),
+	id              INTEGER IDENTITY(100,15) PRIMARY KEY,
+	id_insegnamento INTEGER FOREIGN KEY REFERENCES Insegnamenti(id),
+	id_corso        INTEGER FOREIGN KEY REFERENCES CDS(id),
+	data            datetime
+);
+
+CREATE TABLE IF NOT EXISTS InscrizioniEsami (
+	matricola       INTEGER FOREIGN KEY REFERENCES Studente(matricola),
+	id_esame        INTEGER FOREIGN KEY REFERENCES Esame(id),
+	data_iscrizione datetime,
+	PRIMARY KEY (matricola, id_esame)
 );

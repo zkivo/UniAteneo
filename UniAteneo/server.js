@@ -3,7 +3,7 @@ const sqlite3 = require('sqlite3');
 const fs = require('fs');
 
 const path_db = "./data/db.sqlite";
-const path_init_db = "./data/init_db.sql";
+const path_init_db = "./data/init_db2.sql";
 const web_port = process.env.PORT || 1337;
 
 const db = new sqlite3.Database(path_db, initiate_db);
@@ -27,7 +27,7 @@ function initiate_db() {
 }
 
 function show_rows() {
-    db.all("SELECT * FROM employees;", (err, rows) => {
+    db.all("SELECT * FROM CDS;", (err, rows) => {
         if (err)
             console.log(err);
         else {
