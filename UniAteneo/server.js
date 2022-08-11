@@ -7,9 +7,9 @@ const path_init_db = "./data/init_db2.sql";
 const web_port = process.env.PORT || 1337;
 
 const db = new sqlite3.Database(path_db, initiate_db);
-const app = express();
+const server = express();
 
-app.set('view engine', 'ejs');
+server.set('view engine', 'ejs');
 
 function initiate_db() {
     // initiate db if empty
@@ -42,7 +42,7 @@ function show_rows() {
     });
 }
 
-app.get('/', (req, res) => {
+server.get('/', (req, res) => {
     db.serialize(() => {
         db.all("SELECT * FROM CDS", (err, rows) => {
             if (err)
@@ -55,14 +55,14 @@ app.get('/', (req, res) => {
     });
 })
 
-app.listen(web_port, () => {
-    console.log(`web app is listeing to port: ${web_port}.`)
+server.listen(web_port, () => {
+    console.log(`web server is listeing to port: ${web_port}.`)
 })
 
 process.on('SIGTERM', () => {
-    // closing the web app
-    app.close(() => {
-        console.log('web app terminated.');
+    // closing the web server
+    server.close(() => {
+        console.log('web server terminated.');
     });
     db.close(() => {
         console.log('database terminated.');
