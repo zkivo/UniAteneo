@@ -29,15 +29,17 @@ function initiate_db() {
 }
 
 function show_rows() {
-    db.all("SELECT CDS.id AS 'Codice CDS', Insegnamenti.nome FROM CDS, Programmi, Insegnamenti where CDS.id = Programmi.id_corso AND Programmi.id_insegnamento = Insegnamenti.id", (err, rows) => {
+    db.all("SELECT CDS.id AS 'Codice CDS', Insegnamenti.* FROM CDS, Programmi, Insegnamenti where CDS.id = Programmi.id_corso AND Programmi.id_insegnamento = Insegnamenti.id", (err, rows) => {
         if (err)
             console.log(err);
         else {
             //console.log(row.name + ": " + row.hired_on);
-            //console.log("row: " + row);
+            console.log(rows);
+            var sum = 0;
             rows.forEach(function (row) {
-                console.log(row);
+                sum += row.cfu;
             });
+            console.log("sum is " + sum);
         }
     });
 }
