@@ -3,7 +3,10 @@ const sqlite3 = require('sqlite3');
 const fs = require('fs');
 
 const path_db = "./data/db.sqlite";
-const path_init_db = "./data/init_db2.sql";
+const path_create_tables = "./data/create_tables.sql";
+const path_insert_cds = "./data/insert_cds.sql";
+const path_insert_design = "./data/Design E Comunicazione.sql";
+
 const web_port = process.env.PORT || 1337;
 
 const db = new sqlite3.Database(path_db, initiate_db);
@@ -13,23 +16,48 @@ server.set('view engine', 'ejs');
 
 function initiate_db() {
     // initiate db if empty
-    const sql_string = fs.readFileSync(path_init_db, { encoding: 'utf8', flag: 'r' });
-    db.exec(sql_string, (err, row) => {
+    var sql = fs.readFileSync(path_create_tables, { encoding: 'utf8', flag: 'r' });
+    db.exec(sql, (err, row) => {
         if (err) {
             if (err.errno != 19) {
                 console.log(err);
                 return;
             }
         }
-        console.log("The SQLite database has been initiated in '" +
-            path_db +
-            "'.");
+        console.log("The SQLite database created the tables.");
+        insert_cds();
+    });
+}
+
+function insert_cds() {
+    var sql = fs.readFileSync(path_insert_cds, { encoding: 'utf8', flag: 'r' });
+    db.exec(sql, (err, row) => {
+        if (err) {
+            if (err.errno != 19) {
+                console.log(err);
+                return;
+            }
+        }
+        insert_design();
+    });
+}
+
+function insert_design() {
+    var sql = fs.readFileSync(path_insert_design, { encoding: 'utf8', flag: 'r' });
+    db.exec(sql, (err, row) => {
+        if (err) {
+            if (err.errno != 19) {
+                console.log(err);
+                return;
+            }
+        }
         show_rows();
     });
 }
 
 function show_rows() {
-    db.all("SELECT CDS.id AS 'Codice CDS', Insegnamenti.* FROM CDS, Programmi, Insegnamenti where CDS.id = Programmi.id_corso AND Programmi.id_insegnamento = Insegnamenti.id", (err, rows) => {
+    //"SELECT CDS.id AS 'Codice CDS', Insegnamenti.* FROM CDS, Programmi, Insegnamenti where CDS.id = Programmi.id_corso AND Programmi.id_insegnamento = Insegnamenti.id
+    db.all("select * from Insegnamenti", (err, rows) => {
         if (err)
             console.log(err);
         else {

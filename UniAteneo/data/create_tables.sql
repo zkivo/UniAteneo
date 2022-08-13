@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS Docenti (
 );
 
 CREATE TABLE IF NOT EXISTS Insegnamenti (
-	id   INTEGER PRIMARY KEY AUTOINCREMENT,
+	id   INTEGER PRIMARY KEY, --AUTOINCREMENT,
 	nome tinytext,
 	cfu  tinyINTEGER,
 	path_scheda_trasparenza text,
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS Programmi (
 	FOREIGN KEY (id_insegnamento) REFERENCES Insegnamenti(id)
 );
 
-INSERT INTO CDS (id, nome, tipo) VALUES (
+/*INSERT INTO CDS (id, nome, tipo) VALUES (
 	2178,
 	'Ingegneria Informatica',
 	'LT'
