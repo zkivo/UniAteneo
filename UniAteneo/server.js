@@ -6,7 +6,7 @@ const path_db = "./data/db.sqlite";
 const path_create_tables = "./data/sql/create_tables.sql";
 const path_insert_cds = "./data/sql/insert_cds.sql";
 const path_insert_ssd = "./data/sql/ssd.sql";
-const path_insert_design = "./data/sql/Design E Comunicazione.sql";
+const path_insegnamenti = "./data/sql/insert_insegnamenti.sql";
 
 const web_port = process.env.PORT || 1337;
 
@@ -55,12 +55,12 @@ function insert_cds() {
             }
         }
         console.log("CDSs inserted.");
-        insert_design();
+        insert_insegnamenti();
     });
 }
 
-function insert_design() {
-    var sql = fs.readFileSync(path_insert_design, { encoding: 'utf8', flag: 'r' });
+function insert_insegnamenti() {
+    var sql = fs.readFileSync(path_insegnamenti, { encoding: 'utf8', flag: 'r' });
     db.exec(sql, (err, row) => {
         if (err) {
             if (err.errno != 19) {
@@ -68,7 +68,7 @@ function insert_design() {
                 return;
             }
         }
-        console.log("design inserted.");
+        console.log("Insegnamenti inserted.");
         show_rows();
     });
 }
@@ -96,7 +96,7 @@ server.get('/', (req, res) => {
             if (err)
                 console.log(err);
             else {
-                console.log(rows[0]);
+                console.log(rows);
                 res.render('index', {rows: rows});
             }
         });
