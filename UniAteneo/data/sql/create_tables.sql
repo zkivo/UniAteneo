@@ -1,3 +1,8 @@
+CREATE TABLE IF NOT EXISTS SSD (
+	code tinytext PRIMARY KEY,
+	name tinytext
+);
+
 CREATE TABLE IF NOT EXISTS CDS (
 	id   INTEGER PRIMARY KEY AUTOINCREMENT,
 	nome tinytext,
