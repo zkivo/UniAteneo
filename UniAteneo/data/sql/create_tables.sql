@@ -13,7 +13,8 @@ CREATE TABLE IF NOT EXISTS Docenti (
 	id       INTEGER PRIMARY KEY AUTOINCREMENT,
 	nome     tinytext,
 	cognome  tinytext,
-	ssd      tinytext
+	ssd      tinytext,
+	password text
 );
 
 CREATE TABLE IF NOT EXISTS Insegnamenti (

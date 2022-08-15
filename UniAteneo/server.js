@@ -5,8 +5,8 @@ const fs = require('fs');
 const path_db = "./data/db.sqlite";
 const path_create_tables = "./data/sql/create_tables.sql";
 const path_insert_cds = "./data/sql/insert_cds.sql";
-const path_insert_ssd = "./data/sql/ssd.sql";
-const path_insegnamenti = "./data/sql/insert_insegnamenti.sql";
+const path_insert_ssd = "./data/sql/insert_ssd.sql";
+const path_insert_all = "./data/sql/insert_all.sql";
 
 const web_port = process.env.PORT || 1337;
 
@@ -47,30 +47,38 @@ function insert_ssd() {
 
 function insert_cds() {
     var sql = fs.readFileSync(path_insert_cds, { encoding: 'utf8', flag: 'r' });
-    db.exec(sql, (err, row) => {
-        if (err) {
-            if (err.errno != 19) {
-                console.log(err);
-                return;
+    sql = sql.split(';');
+    sql.forEach(element => {
+        if (!element.includes('INSERT')) return;
+        db.run(element, (err, row) => {
+            if (err) {
+                if (err.errno != 19) {
+                    console.log(err);
+                    return;
+                }
             }
-        }
-        console.log("CDSs inserted.");
-        insert_insegnamenti();
-    });
+        });
+    })
+    console.log("CDSs inserted.");
+    insert_all();
 }
 
-function insert_insegnamenti() {
-    var sql = fs.readFileSync(path_insegnamenti, { encoding: 'utf8', flag: 'r' });
-    db.exec(sql, (err, row) => {
-        if (err) {
-            if (err.errno != 19) {
-                console.log(err);
-                return;
+function insert_all() {
+    var sql = fs.readFileSync(path_insert_all, { encoding: 'utf8', flag: 'r' });
+    sql = sql.split(';');
+    sql.forEach(element => {
+        if (!element.includes('INSERT')) return;
+        db.run(element, (err, row) => {
+            if (err) {
+                if (err.errno != 19) {
+                    console.log(err);
+                    return;
+                }
             }
-        }
-        console.log("Insegnamenti inserted.");
-        show_rows();
-    });
+        });
+    })
+    console.log("Insegnamenti/Programmi/Docenti inserted.");
+    show_rows();
 }
 
 function show_rows() {
@@ -80,11 +88,7 @@ function show_rows() {
             console.log(err);
         else {
             //console.log(row.name + ": " + row.hired_on);
-            console.log(rows);
-            var sum = 0;
-            rows.forEach(function (row) {
-                sum += row.cfu;
-            });
+            console.log(rows, rows.length);
             //console.log("sum is " + sum);
         }
     });
