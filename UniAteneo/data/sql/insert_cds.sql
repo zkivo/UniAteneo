@@ -11,6 +11,12 @@ INSERT INTO CDS (id, nome, tipo) VALUES (
 );
 
 INSERT INTO CDS (id, nome, tipo) VALUES (
+	7800,
+	'Ingegneria Edile',
+	'LT'
+);
+
+INSERT INTO CDS (id, nome, tipo) VALUES (
 	4800,
 	'Ingegneria Biomedica',
 	'LM'
