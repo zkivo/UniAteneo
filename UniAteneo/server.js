@@ -100,11 +100,15 @@ server.get('/', (req, res) => {
             if (err)
                 console.log(err);
             else {
-                console.log(rows);
                 res.render('index', {rows: rows});
             }
         });
     });
+})
+
+server.get('/manifesto/:id_cds', (req, res) => {
+    res.redirect('/')
+    console.log(req.params.id_cds);
 })
 
 server.listen(web_port, () => {

@@ -35,7 +35,7 @@
           </ul>
             <button class="btn" style="background-color: #e4c073;" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
         </div>
-      </div>Username
+      </div>
     </nav>
   </header>
 
@@ -49,9 +49,6 @@
 				  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
-					<% if (messages.error) { %>
-						<%= messages.error %>
-					<% } %>
 					<form action="/" method="POST">
 						<div class="mb-3">
 						  <label for="username" class="form-label">Username</label>
@@ -103,11 +100,10 @@
 									<div class="card-body">
 										<ul class="list-group list-group-flush">
 											<li class="list-group-item">
-											<% for(var i = 0; i < rows.length; i++) { %>
-												<button type="button" class="list-group-item list-group-item-action">
-													<%= rows[i].nome %>
-												</button>
-											<% } %>
+											<%  rows.forEach(e => {
+													if (e.tipo !== 'LT') return; %>
+												<button type="button" class="list-group-item list-group-item-action"><a href="/manifesto/<%= e.id %>"> CLICCA QUI </a> <%= e.nome %></button>
+											<% }) %>
 											</li>
 										</ul>
 									</div>
@@ -124,7 +120,14 @@
 								</div>
 								<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
 									<div class="card-body">
-									Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+										<ul class="list-group list-group-flush">
+											<li class="list-group-item">
+												<%  rows.forEach(e => {
+														if (e.tipo !== 'LM') return; %>
+													<button type="button" class="list-group-item list-group-item-action"> <a href="/manifesto/<%= e.id %>"> CLICCA QUI </a> <%= e.nome %></button>
+												<% }) %>
+											</li>
+										</ul>									
 									</div>
 								</div>
 							</div>
