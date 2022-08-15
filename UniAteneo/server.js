@@ -1,6 +1,24 @@
+if (process.env.NODE_END !== 'production') {
+    require('dotenv').config()
+}
+ 
 const express = require('express');
 const sqlite3 = require('sqlite3');
 const fs = require('fs');
+const bcrypt = require('bcrypt')
+const passport = require('passport')
+const flash = require('express-flash')
+const session = require('express-session')
+
+const users = [ {id: 1, username: 'Rob@w', password: 'ok'}]
+
+const initializePassport = require('./passport-config')
+initializePassport(
+    passport, 
+    username => users.find(user => user.username === username),
+    id => users.find(user => user.id === id)
+)
+
 
 const path_db = "./data/db.sqlite";
 const path_init_db = "./data/init_db2.sql";
@@ -9,7 +27,17 @@ const web_port = process.env.PORT || 1337;
 const db = new sqlite3.Database(path_db, initiate_db);
 const server = express();
 
+
 server.set('view engine', 'ejs');
+server.use(express.static('public'))
+server.use(express.urlencoded({ extended: false}))
+server.use(flash())
+server.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false
+}))
+server.use(passport.session())
 
 function initiate_db() {
     // initiate db if empty
@@ -51,11 +79,22 @@ server.get('/', (req, res) => {
                 console.log(err);
             else {
                 console.log(rows[0]);
-                res.render('index', {rows: rows});
+                res.render('index.ejs', {rows: rows});
             }
         });
     });
 })
+
+//server.get('/login', (req, res) => {
+//    res.render('login.ejs')
+//})
+
+server.post('/', passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/',
+    failureFlash: true
+}))
+
 
 server.listen(web_port, () => {
     console.log(`web server is listeing to port: ${web_port}.`)
