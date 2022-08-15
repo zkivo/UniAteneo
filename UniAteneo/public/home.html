@@ -1,0 +1,195 @@
+<html>
+	<head><title>UniAteneo</title></head>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="w3.css">
+	<link rel="stylesheet" href="platph.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+
+	<body id="home">
+
+		<!-- Barra di Navigazione !-->
+		<div class="w3-top">
+	  		<div class="w3-bar navbar" id="myNavbar">
+	    			<a href="#home" class="w3-bar-item w3-button w3-mobile">HOME</a>
+	    			<a href="#aboutus" class="w3-bar-item w3-button w3-mobile">SCOPRI</a>
+	    			<a href="#informazioni" class="w3-bar-item w3-button w3-mobile">INFORMAZIONI</a>
+	    			<a href="#contatta" class="w3-bar-item w3-button w3-mobile">CONTATTA</a>
+                    <button class="w3-bar-item w3-button w3-mobile w3-right" onclick="document.getElementById('id01').style.display='block'" >LOGIN</button>
+	    			 <!-- <?php if(isset($_SESSION["password"])): ?> 
+	    				<button class="w3-bar-item w3-button w3-mobile w3-right" onclick="document.getElementById('id02').style.display='block'">LOGOUT</button>
+	    				<a href='profilo?nick=<?PHP echo $_SESSION["nickname"];?>' class="w3-bar-item w3-button w3-mobile w3-right">PROFILO</a>
+	    				<a href="progetti" class="w3-bar-item w3-button w3-mobile w3-right">PROGETTI</a>
+	    			<?php else: ?>
+	    				<button class="w3-bar-item w3-button w3-mobile w3-right" onclick="document.getElementById('id01').style.display='block'" >LOGIN</button>
+	    			<?php endif; ?> -->
+	  		</div>
+  		</div>
+
+		<div class="">
+			<!-- Header con Logo !-->
+			<div id="header" style="margin-top:24px"></div>
+
+			<!-- Login Modal !-->
+			<div id="id01" class="w3-modal">
+    			<div class="w3-modal-content w3-animate-top w3-card-4" style="width: 600px; margin: auto;">
+      				<header class="w3-container w3-white w3-center w3-topbar w3-border-black"> 
+        				<span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright w3-topbar w3-border-black">&times;</span>
+        				<h2 class="w3-border-bottom" style="padding-bottom: 12px;">LOGIN</h2>
+      				</header>
+      				<div class="w3-container w3-content w3-center">
+      					<form action="login.php" method="POST" style="margin-top: 12px;">
+	        				<input class="w3-hover-light-gray" type="text" id="nicklog" required name="nicklog" placeholder="Nickname"> <br>
+	  						<input class="w3-hover-light-gray" type="password" id="passlog" required name="passlog" placeholder="Password"> <br>
+	  						<input class="w3-xlarge" style="margin-top: 24px" type="submit" value="Entra"> 
+	  					</form>
+      				</div>
+      				<footer class="w3-container w3-black">
+        				
+      				</footer>
+    			</div>
+  			</div>
+
+
+  			<!-- Logout Modal !-->
+  			<div id="id02" class="w3-modal">
+    			<div class="w3-modal-content w3-animate-top w3-card-4" style="width: 600px; margin: auto;">
+      				<header class="w3-container w3-white w3-center w3-topbar w3-border-black"> 
+        				<span onclick="document.getElementById('id02').style.display='none'" class="w3-button w3-display-topright w3-topbar w3-border-black">&times;</span>
+        				<h2 class="w3-border-bottom" style="padding-bottom: 12px;">LOGOUT</h2>
+      				</header>
+      				<div class="w3-container w3-content w3-center">
+      					<h3>Vuoi davvero uscire?</h3>
+      					<form action="logout.php" method="POST" style="margin-top: 12px;">
+	  						<input class="w3-xlarge" style="margin-top: 24px" type="submit" value="Esci"> 
+	  					</form>	  					
+      				</div>
+      				<footer class="w3-container w3-black">
+        				
+      				</footer>
+    			</div>
+  			</div>
+
+			<?php else: ?>
+				<!-- Form di Registrazione !-->
+				<div class="w3-row w3-content">
+				<div class="w3-container w3-margin-top w3-topbar w3-border-black w3-panel w3-card-4 w3-center w3-animate-opacity w3-rest" style="width: 80%; margin: auto;" id="bgcolor">
+					<div class="w3-border-bottom">
+						<h1>Benvenuto!</h1>
+					</div>
+					<form action="registrazione.php" method="POST">
+	  					<input class="w3-hover-light-gray" type="text" id="nome" required name="nome" placeholder="Nome"> <br>
+	  					<input class="w3-hover-light-gray" type="text" id="cognome" required name="cognome" placeholder="Cognome"> <br>
+	  					<input class="w3-hover-light-gray" type="text" id="nickname" required name="nickname" placeholder="Nickname"> <br>
+	  					<input class="w3-hover-light-gray" type="password" id="password" required name="password" placeholder="Password" maxlength="72"> <br>
+	  					<input class="w3-hover-light-gray" type="text" id="email" required name="email" placeholder="Email"> <br>
+	  					<select class="w3-hover-light-gray" id="sesso" required name="sesso" > <br>
+	   						<option value="" disabled selected>Sesso</option>
+	    					<option value="Maschio">Maschio</option>
+						    <option value="Femmina">Femmina</option>
+						    <option value="Altro">Altro</option>
+						</select> <br>
+	  					<select class="w3-hover-light-gray" id="categoria" required name="categoria" >
+	   						<option value="" disabled selected>Sono un..</option>
+	    					<option value="Fotografo">Fotografo</option>
+						    <option value="Soggetto">Soggetto</option>
+						    <option value="Fotografo/Soggetto">Fotografo/Soggetto</option>
+						</select> <br>
+	   					
+
+				  		<input class="w3-xlarge" style="margin-top: 24px" type="submit" value="Registrati"> 
+					</form>
+				</div>
+				</div>	
+			<?php endif; ?>
+
+			<!-- Sezione About !-->
+			<div class="" style="margin-top: 250px;height: 2300px; background-image: url('immagini/collage2.jpg');padding-top: 36px;padding-bottom: 200px;" id="aboutus">
+				<div class="w3-card-4 w3-content w3-padding-64 navbar w3-round-large" style="height: 550px; border: 2px solid black; background-color: #fff;margin-top: 50px;">
+					<h1 class="w3-center">Benvenuto su UniAteneo!</h1>
+					<div class="w3-bar w3-border w3-content w3-border-black" style="max-width: 300;">
+	  					<button class="w3-col s4 tablink w3-button w3-left" onclick="openTab('Registrati')">Registrati</button>
+	  					<button class="w3-col s4 tablink w3-button" onclick="openTab('Scopri')">Corsi di Studi</button>
+					</div> <br>
+					<div id="Registrati" class="w3-container tab w3-animate-opacity">
+						<div class="w3-third w3-card-4 w3-round-large" style="-webkit-transform: rotate(-12deg);margin-top: 24px;">
+		  					<img src="immagini/cartellino.png" style="width:100%;min-height:200px;">
+						</div>
+
+						<div class="w3-twothird w3-container w3-animate-opacity">
+							<strong><p class="w3-center"><u><i>UniAteneo é l'universitá che blablablablablablablablablablablablablabla</i></u></p><p>blablablablablablablablablabla
+                                blablablabla </p></strong>
+						</div>
+					</div>
+
+					<div id="Scopri" class="w3-container tab w3-animate-opacity" style="display: none;">
+						<div class="w3-third w3-card-4 w3-round-large" style="-webkit-transform: rotate(10deg);margin-top: 24px;">
+		  					<img src="immagini/profilo.png" style="width:100%;min-height:200px;">
+		  				</div>
+
+						<div class="w3-twothird w3-container">
+							<strong><p class="w3-center"><u><i>Una volta completata la registrazione, scopri il tuo profilo e personalizzalo!</i></u></p><p>Crea il tuo profilo, personalizzabile con <i>immagine di sfondo</i> e <i>immagine del profilo</i>. <br> Non avere paura, puoi cambiare le informazioni del tuo profilo in qualsiasi momento grazie al menu <i>Personalizza</i>. <br> <br> Hai anche la possibilitá di caricare delle immagini nel tuo Portfolio personale, magari relative a progetti fotografici a cui hai partecipato!</p></strong>
+						</div>
+					</div>
+
+					<div id="Pubblica" class="w3-container tab w3-animate-opacity" style="display: none;">
+						<div class="w3-third w3-card-4 w3-round-large" style="-webkit-transform: rotate(-10deg);margin-top: 24px;">
+		  					<img src="immagini/progetti.png" style="width:100%;min-height:200px;">
+		  				</div>
+
+						<div class="w3-twothird w3-container">
+							<strong><p class="w3-center"><u><i>Ora sei pronto per andare a caccia di foto!</i></u></p><p>Scopri l'elenco dei progetti o dei soggetti nella tua zona, consulta i loro profili e mettiti in contatto con loro per iniziare a lavorare insieme. <br> Non avere paura, trovare le persone che cerchi non sará difficile grazie a <u>filtri di ricerca</u> che soddisferanno le tue esigenze. </p></strong>
+						</div>
+					</div>
+				
+			
+
+					<!-- Sezione Informazioni !-->
+					<div class="" style="margin-top: 450px;padding-top: 300px;padding-bottom: 100px;" >
+						<div style="padding-top: 50px;" id="informazioni">
+						<div class="w3-container w3-card-4 w3-content navbar" style="padding-bottom: 12px;background-color: #fff;">
+							<div style="margin-top: 4px;">
+								<hr style="border-top: 1px solid #ccc;">
+								<h1 class="w3-center">Informazioni</h1>
+								<hr style="border-top: 1px solid #ccc;">
+							</div>
+
+							<div class="w3-third w3-card-4 w3-animate-opacity" style="">
+				  				<img class="greyph" src="immagini/maldimeriggio.png" style="width:100%;min-height:200px;">
+							</div>
+
+							<div class="w3-twothird w3-container w3-animate-opacity">
+								<h6 class="w3-justify"><b>Platphorm</b> nasce, durante il corso del quinto e ultimo anno di frequentazione all'<i>ITI Vittorio Emanuele III</i> di Palermo, da un'idea di <u>Roberto Zancana</u>, fotografo amatoriale particolarmente interessato al genere ritrattistico con un problema reale e comune a tutti i fotografi: trovare i soggetti adatti per i propri progetti fotografici disposti a farsi fotografare, sia per passione che per professione. Da qui la decisione di provare a ideare una piattaforma che risolva questo problema, in modo tale da poter dimostrare le conoscenze acquisite nel corso degli studi e in seguito apportare i miglioramenti necessari alla piattaforma per poterla rendere aperta al pubblico di Internet. <br> <br> <i class="w3-right">26/06/2017 - Palermo</i></h6>
+					
+							</div>
+						</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Sezione Contatta !-->
+			<div class="" style="margin-top: 0px;padding-top: 36px;padding-bottom: 100px; background-color: #1d1f25; background-image: url('immagini/foto2.jpg'), url('immagini/foto3.jpg'); background-position: left bottom, right bottom;background-repeat: no-repeat, no-repeat;" id="contatta">
+				<div class="w3-container w3-card-4 w3-content navbar" style="padding-bottom: 12px;background-color: #0d0e11;">
+					<div style="margin-top: 4px;">
+						<hr style="border-top: 1px solid #ccc;">
+						<h1 class="w3-center" style="color: white;">Contatta</h1>
+						<hr style="border-top: 1px solid #ccc;">
+					</div>
+
+					<div class="w3-third w3-card-4 w3-animate-opacity" style="">
+						<img class="greyph" src="immagini/platphormtruewhite.png" style="width:100%;height: auto;">
+					</div>
+
+					<div class="w3-twothird w3-container w3-animate-opacity">
+						<h6 class="w3-justify" style="color: white;">Per informazioni e supporto contattare l'email: <i>robert_zanc@yahoo.it</i></h6>					
+					</div>
+				</div>
+			</div>
+
+
+	</body>
+
+</html>

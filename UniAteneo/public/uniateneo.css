@@ -1,0 +1,82 @@
+body,h1 {font-family: "Raleway", sans-serif}
+body, html {height: 100%; background-color: #fff;}
+div p {font-family: "Lato", sans-serif; color: #262626; text-align: justify;}
+
+.greyph {
+    filter:grayscale(100%);
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+}
+
+.greyph:hover {filter:grayscale(0%);}
+
+a {text-decoration: none;}
+
+
+input[type="checkbox"], label {
+    line-height: 1.6em;
+    height: 1.6em;
+    margin: 0px 2px;
+    padding: 0px;
+}
+
+
+
+select:required:invalid {
+  color: gray;
+}
+option[value=""][disabled] {
+  display: none;
+}
+option {
+  color: black;
+}
+
+input[type=button], input[type=submit], input[type=reset] {
+    background-color: #FFFFFD;
+    border: 2px solid #ccc;
+    color: black;
+    padding: 8px 16px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+}
+
+input[type="button"]:hover, input[type=submit]:hover, input[type=reset]:hover {
+    border: 2px solid #000;
+    background-color: #000;
+    color: white;
+}
+
+
+.buttonalike {
+    background-color: #FFFFFD;
+    border: 2px solid #ccc;
+    color: black;
+    padding: 8px 16px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+}
+
+.buttonalike:hover {
+    border: 2px solid #000;
+    background-color: #000;
+    color: white;
+}
+
+
+.gallery img {
+    width: 20%;
+    height: auto;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .3s;
+}
