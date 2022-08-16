@@ -1,3 +1,4 @@
+const session = require('express-session');
 const bodyParser = require('body-parser')
 const express = require('express');
 const sqlite3 = require('sqlite3');
@@ -20,6 +21,12 @@ server.set('view engine', 'ejs');
 
 server.use(bodyParser.json())
 server.use(bodyParser.urlencoded({ extended: true }))
+
+server.use(session({
+    resave: false,            
+    saveUninitialized: false,
+    secret: 'keyboard cat'
+}));
 
 function initiate_db() {
     // initiate db if empty
@@ -106,13 +113,17 @@ server.get('/', (req, res) => {
             if (err)
                 console.log(err);
             else {
-                res.render('index', {rows: rows});
+                if (req.session.persona && req.session.code) {
+                    rows.persona = req.session.persona
+                    rows.id = req.session.code
+                }
+                res.render('index', { rows: rows });
             }
         });
     });
 })
 
-server.post("/login", async (req, res) => {
+server.post("/login", (req, res) => {
     var username, nome, cognome,password;
     try {
         username = req.body.username.trimStart().trimEnd().split('.');
@@ -130,7 +141,8 @@ server.post("/login", async (req, res) => {
     cognome = temp + cognome.substring(1)
     console.log("input:", nome, cognome, password)
     db.serialize(() => {
-        db.get(`SELECT * FROM Docenti WHERE nome = \"${nome}\" AND cognome = \"${cognome}\"` , (err, row) => {
+        db.get(`SELECT * FROM Docenti WHERE nome = \"${nome}\" AND ` +
+                `cognome = \"${cognome}\"`, (err, row) => {
             if (err)
                 console.log(err);
             else {
@@ -138,6 +150,8 @@ server.post("/login", async (req, res) => {
                         row.cognome === cognome &&
                         bcrypt.compareSync(password, row.password)) {
                     console.log("Accesso verificato")
+                    req.session.persona = 'docente'
+                    req.session.code = row.id
                 } else {
                     console.log("Accesso Negato");
                 }
