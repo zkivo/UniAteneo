@@ -2,6 +2,15 @@ body,h1 {font-family: "Raleway", sans-serif}
 body, html {height: 100%; background-color: #fff;}
 div p {font-family: "Lato", sans-serif; color: #262626; text-align: justify;}
 
+.btn:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.btn{
+	box-shadow: none !important
+}
+
 .greyph {
     filter:grayscale(100%);
     -webkit-transition: 0.5s;
