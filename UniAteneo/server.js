@@ -113,11 +113,15 @@ server.get('/', (req, res) => {
             if (err)
                 console.log(err);
             else {
-                if (req.session.persona && req.session.code) {
-                    rows.persona = req.session.persona
-                    rows.id = req.session.code
+                var utente = {}
+                if (req.session.tipo_utente && req.session.code) {
+                    utente.tipo = req.session.tipo_utente
+                    utente.id = req.session.code
                 }
-                res.render('index', { rows: rows });
+                res.render('index', {
+                    rows: rows,
+                    utente : utente
+                });
             }
         });
     });
@@ -150,7 +154,7 @@ server.post("/login", (req, res) => {
                         row.cognome === cognome &&
                         bcrypt.compareSync(password, row.password)) {
                     console.log("Accesso verificato")
-                    req.session.persona = 'docente'
+                    req.session.tipo_utente = 'docente'
                     req.session.code = row.id
                 } else {
                     console.log("Accesso Negato");
