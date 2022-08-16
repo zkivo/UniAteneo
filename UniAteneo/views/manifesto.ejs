@@ -148,42 +148,44 @@
             </tfoot>
         </table>
 
-        <h2>Insegnamenti terzo anno</h2>
-				<table class="table table-hover">
-            <thead>
-              <tr>
-                <th scope="col">ID Materia</th>
-                <th scope="col">SSD</th>
-                <th scope="col">Denominazione</th>
-                <th scope="col">CFU</th>
-                <th scope="col">Docente</th>
-                <th scope="col">A scelta</th>
-                <th scope="col">Scheda di Trasparenza</th>                        
-              </tr>
-            </thead>
-            <tbody>
-              <% rows.forEach((row) => { %>
-                <% if (row.anno != 3) return; %>
+        <% if(rows[0].tipo_cds === 'LT') { %>
+          <h2>Insegnamenti terzo anno</h2>
+          <table class="table table-hover">
+              <thead>
                 <tr>
-                  <td> <%= row.id_insegnamento %> </td>
-                  <td> <%= row.ssd %> </td>
-                  <td> <%= row.nome_insegnamento %> </td>
-                  <td> <%= row.cfu %> </td>
-                  <td> <%= row.nome_docente + " " + row.cognome_docente %> </td>
-                  <% if(row.scelta == 1) { %>
-                      <td><%= 'Si' %></td>
-                  <% } else { %>
-                    <td><%= 'No' %></td>
-                  <% } %> 
-                  <td> <button class="btn">Scheda di Trasparenza</button> </td>
+                  <th scope="col">ID Materia</th>
+                  <th scope="col">SSD</th>
+                  <th scope="col">Denominazione</th>
+                  <th scope="col">CFU</th>
+                  <th scope="col">Docente</th>
+                  <th scope="col">A scelta</th>
+                  <th scope="col">Scheda di Trasparenza</th>                        
                 </tr>
-                
-              <% }) %>
-            </tbody>
-            <tfoot>
-              <tr class="table-dark"></tr>
-            </tfoot>
-        </table>
+              </thead>
+              <tbody>
+                <% rows.forEach((row) => { %>
+                  <% if (row.anno != 3) return; %>
+                  <tr>
+                    <td> <%= row.id_insegnamento %> </td>
+                    <td> <%= row.ssd %> </td>
+                    <td> <%= row.nome_insegnamento %> </td>
+                    <td> <%= row.cfu %> </td>
+                    <td> <%= row.nome_docente + " " + row.cognome_docente %> </td>
+                    <% if(row.scelta == 1) { %>
+                        <td><%= 'Si' %></td>
+                    <% } else { %>
+                      <td><%= 'No' %></td>
+                    <% } %> 
+                    <td> <button class="btn">Scheda di Trasparenza</button> </td>
+                  </tr>
+                  
+                <% }) %>
+              </tbody>
+              <tfoot>
+                <tr class="table-dark"></tr>
+              </tfoot>
+          </table>
+        <% } %>
 
 
 			</div>
