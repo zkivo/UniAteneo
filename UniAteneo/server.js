@@ -1,6 +1,7 @@
 const bodyParser = require('body-parser')
 const express = require('express');
 const sqlite3 = require('sqlite3');
+const bcrypt = require('bcrypt');
 const fs = require('fs');
 
 const path_db = "./data/db.sqlite";
@@ -111,12 +112,13 @@ server.get('/', (req, res) => {
     });
 })
 
-server.post("/login", (req, res) => {
-    var username, nome, cognome;
+server.post("/login", async (req, res) => {
+    var username, nome, cognome,password;
     try {
         username = req.body.username.trimStart().trimEnd().split('.');
         nome = username[0].toLowerCase()
         cognome = username[1].toLowerCase()
+        password = req.body.password.trimStart().trimEnd()
     } catch {
         console.log("Incorrect username");
         res.redirect('/')
@@ -126,12 +128,19 @@ server.post("/login", (req, res) => {
     nome = temp + nome.substring(1)
     temp = cognome.charAt(0).toUpperCase()
     cognome = temp + cognome.substring(1)
+    console.log("input:", nome, cognome, password)
     db.serialize(() => {
         db.get(`SELECT * FROM Docenti WHERE nome = \"${nome}\" AND cognome = \"${cognome}\"` , (err, row) => {
             if (err)
                 console.log(err);
             else {
-                console.log(row);
+                if (row.nome === nome &&
+                        row.cognome === cognome &&
+                        bcrypt.compareSync(password, row.password)) {
+                    console.log("Accesso verificato")
+                } else {
+                    console.log("Accesso Negato");
+                }
             }
             res.redirect('/')
         });
