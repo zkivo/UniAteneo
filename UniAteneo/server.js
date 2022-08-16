@@ -120,7 +120,7 @@ server.get('/', (req, res) => {
                 }
                 res.render('index', {
                     rows: rows,
-                    utente : utente
+                    utente: utente
                 });
             }
         });
@@ -136,7 +136,7 @@ server.post("/login", (req, res) => {
         password = req.body.password.trimStart().trimEnd()
     } catch {
         console.log("Incorrect username");
-        res.redirect('/')
+        res.redirect("/?error=Username+o+password+non+corretta.")
         return;
     }
     temp = nome.charAt(0).toUpperCase()
@@ -177,12 +177,19 @@ server.get('/manifesto/:id_cds', (req, res) => {
                 `I.id_docente = D.id`, (err, rows) => {
             if (err) {
                 console.log(err)
+                res.redirect("/?error=cds+inesistente")
             } else {
                 console.log(rows)
-                res.render('manifesto', {
-                    rows: rows,
-                    utente: req.session.utente
-                })
+                if (req.session.utente) {
+                    res.render('manifesto', {
+                        rows: rows,
+                        utente: req.session.utente
+                    })
+                } else {
+                    res.render('manifesto', {
+                        rows: rows
+                    })
+                }
             }
         })
     })
