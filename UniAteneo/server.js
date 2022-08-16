@@ -114,9 +114,9 @@ server.get('/', (req, res) => {
                 console.log(err);
             else {
                 var utente = {}
-                if (req.session.tipo_utente && req.session.code) {
-                    utente.tipo = req.session.tipo_utente
-                    utente.id = req.session.code
+                if (req.session.utente) {
+                    utente.tipo = req.session.utente.tipo
+                    utente.id = req.session.utente.id
                 }
                 res.render('index', {
                     rows: rows,
@@ -154,8 +154,10 @@ server.post("/login", (req, res) => {
                         row.cognome === cognome &&
                         bcrypt.compareSync(password, row.password)) {
                     console.log("Accesso verificato")
-                    req.session.tipo_utente = 'docente'
-                    req.session.code = row.id
+                    req.session.utente = {
+                        tipo : 'docente',
+                        id : row.id
+                    }
                 } else {
                     console.log("Accesso Negato");
                 }
@@ -167,8 +169,23 @@ server.post("/login", (req, res) => {
 })
 
 server.get('/manifesto/:id_cds', (req, res) => {
-    res.redirect('/')
-    console.log(req.params.id_cds);
+    var id_corso = req.params.id_cds
+    db.serialize(() => {
+        db.all(`SELECT P.id_insegnamento, P.anno, P.scelta, I.nome AS nome_insegnamento, I.cfu, I.path_scheda_trasparenza, I.ssd, I.id_docente, D.nome AS nome_docente, D.cognome AS cognome_docente FROM Programmi as P, Insegnamenti as I, ` +
+                `Docenti as D WHERE P.id_corso = ${id_corso} AND ` +
+                `P.id_insegnamento = I.id AND ` +
+                `I.id_docente = D.id`, (err, rows) => {
+            if (err) {
+                console.log(err)
+            } else {
+                console.log(rows)
+                res.render('manifesto', {
+                    rows: rows,
+                    utente: req.session.utente
+                })
+            }
+        })
+    })
 })
 
 
