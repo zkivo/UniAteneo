@@ -1,5 +1,5 @@
 
--- Ingegneria Biomedica --
+-- Ingegneria Biomedica -- \(\d+, \"([\w\s]+)\", \"([\w\s]+)\"
 
 INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (3626, "Luisa", "Fracci", "ING-IND/34", "$2b$10$1pIESGioz7ghP/BkWLmKue8EtEEV481Dhn8KnyuKjEYYZNmR6Afc.");
 INSERT INTO Insegnamenti (id, nome, cfu, ssd, id_docente) VALUES (3045, "Bionanotecnologie", 3, "ING-IND/34", 3626);
@@ -7,7 +7,7 @@ INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (4800, 30
 INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (3354, "Adriana", "Argentero", "ING-IND/13", "$2b$10$eObHZMgwQDD32P5H5v71zOmoDtv6UxVNa7mky16kf./aV2hSCVYgG");
 INSERT INTO Insegnamenti (id, nome, cfu, ssd, id_docente) VALUES (3030, "Meccanica applicata ai sistemi biomedici", 3, "ING-IND/13", 3354);
 INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (4800, 3030, FALSE, 1);
-INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (3079, "Piersanti", "Zoppetti-Iacobucci", "ING-IND/34", "$2b$10$Nm.kdVND2eYwJTP1ULORG.euVV4YZ.l00WZfkSt5K0GlM4Sl8Kh5C");
+INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (3079, "Piersanti", "Zoppetti", "ING-IND/34", "$2b$10$Nm.kdVND2eYwJTP1ULORG.euVV4YZ.l00WZfkSt5K0GlM4Sl8Kh5C");
 INSERT INTO Insegnamenti (id, nome, cfu, ssd, id_docente) VALUES (3000, "Biomeccanica dei solidi/Biomeccanica dei fluidi", 9, "ING-IND/34", 3079);
 INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (4800, 3000, FALSE, 1);
 INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (3679, "Geronimo", "Cabrini", "ING-IND/34", "$2b$10$Ao/AxiNj5YDSfKcU8ipOJ.WiO4LvKHtF4yeVDd5bileHNmtlXINFe");
@@ -19,13 +19,13 @@ INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (4800, 30
 INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (3863, "Imelda", "Canali", "ING-IND/34", "$2b$10$Fq.MEdW1hV2tDiHUDGjmWOP9Z8LYE8frDk1/onoYzRFfrUISqAYaq");
 INSERT INTO Insegnamenti (id, nome, cfu, ssd, id_docente) VALUES (3105, "Biomeccanica e biodinamica sperimentale/Biomeccanica del sistema cardiovascolare", 6, "ING-IND/34", 3863);
 INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (4800, 3105, FALSE, 1);
-INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (3697, "Elisa", "Granatelli-Ramazzotti", "ING-INF/06", "$2b$10$ncsYtolhsYPc/gIknBOxsujDLyXrIgOzKtFilyokhwykrRq1D7306");
+INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (3697, "Elisa", "Granatelli", "ING-INF/06", "$2b$10$ncsYtolhsYPc/gIknBOxsujDLyXrIgOzKtFilyokhwykrRq1D7306");
 INSERT INTO Insegnamenti (id, nome, cfu, ssd, id_docente) VALUES (3060, "Elaborazione di segnali biomedici", 12, "ING-INF/06", 3697);
 INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (4800, 3060, FALSE, 1);
 INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (4055, "Silvio", "Cabrini", "ING-IND/34", "$2b$10$hLUHen/pv8G/Y5nGQtsB.emkfqZq8Zw20M1PedHodQQJbWMZp0E5e");
 INSERT INTO Insegnamenti (id, nome, cfu, ssd, id_docente) VALUES (3090, "Progettazione di protesi e organi artificiali", 3, "ING-IND/34", 4055);
 INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (4800, 3090, FALSE, 1);
-INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (3797, "Coriolano", "Perini-Telesio", "ING-IND/34", "$2b$10$5SX0No9fgIikIHeKoYAU9OjYsfNqKuMQQWuf9KLczOMbUTTaTN6fG");
+INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (3797, "Coriolano", "Perini", "ING-IND/34", "$2b$10$5SX0No9fgIikIHeKoYAU9OjYsfNqKuMQQWuf9KLczOMbUTTaTN6fG");
 INSERT INTO Insegnamenti (id, nome, cfu, ssd, id_docente) VALUES (3120, "Biomechanical design", 6, "ING-IND/34", 3797);
 INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (4800, 3120, FALSE, 2);
 INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (3606, "Renata", "Paganini", "ING-IND/34", "$2b$10$YJzDAT8Y2Np.9vU.Tvl4AuRYTrDFEzjGPzWTxbVynMMHyIN/sW5By");
@@ -76,7 +76,7 @@ INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (3800, 20
 INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (2823, "Santino", "Volta", "ING-INF/05", "$2b$10$457hKIxvax6nkUotpQO7G.L79y3R8kHizfTD3szbhRIelPsFWwTzm");
 INSERT INTO Insegnamenti (id, nome, cfu, ssd, id_docente) VALUES (2105, "Algoritmi e strutture dati", 9, "ING-INF/05", 2823);
 INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (3800, 2105, FALSE, 2);
-INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (2942, "Ciro", "Cagnotto-Papafava", "MAT/05", "$2b$10$zrlxQWLvZeIV2XOhRIaHyeMF93siFMGlMFm8v5RswXrmpoBk.klPy");
+INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (2942, "Ciro", "Cagnotto", "MAT/05", "$2b$10$zrlxQWLvZeIV2XOhRIaHyeMF93siFMGlMFm8v5RswXrmpoBk.klPy");
 INSERT INTO Insegnamenti (id, nome, cfu, ssd, id_docente) VALUES (2120, "Analisi matematica II", 6, "MAT/05", 2942);
 INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (3800, 2120, FALSE, 2);
 INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (2951, "Romana", "Marzorati", "ING-IND/31", "$2b$10$Y7t7S.JKTHWsWC3/q6Q3QeZShJVjr7NwaDMpIfuzUccvYw90b2lby");
@@ -100,13 +100,13 @@ INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (3800, 22
 INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (3216, "Victoria", "Favata", "MAT/06", "$2b$10$9juv6nOAri4pBNAEZrcza.uEgOpCdH6vltTimuvz.n81kL5kCQi.O");
 INSERT INTO Insegnamenti (id, nome, cfu, ssd, id_docente) VALUES (2210, "Metodi matematici per l'ingegneria", 9, "MAT/06", 3216);
 INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (3800, 2210, FALSE, 3);
-INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (2982, "Fernanda", "Bevilacqua-Sagredo", "ING-INF/05", "$2b$10$isUMZPXo/jO1P1xWyjTmdOiIYVBW2ogx.oU69794FkJgsar8Qr1hO");
+INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (2982, "Fernanda", "Bevilacqua", "ING-INF/05", "$2b$10$isUMZPXo/jO1P1xWyjTmdOiIYVBW2ogx.oU69794FkJgsar8Qr1hO");
 INSERT INTO Insegnamenti (id, nome, cfu, ssd, id_docente) VALUES (2240, "Sistemi operativi", 12, "ING-INF/05", 2982);
 INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (3800, 2240, FALSE, 3);
 INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (3166, "Rolando", "Berrè", "ING-INF/01", "$2b$10$KqBdplUR1namHG9uIjjb9eN2pJPt7lkO9g0oDg3gQhH69ZcEjBx7q");
 INSERT INTO Insegnamenti (id, nome, cfu, ssd, id_docente) VALUES (2255, "Electronic systems, technologies and measurements", 12, "ING-INF/01", 3166);
 INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (3800, 2255, FALSE, 3);
-INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (2750, "Filippa", "Praga-Vezzali", "ING-INF/05", "$2b$10$/ONgbtWsR8z/5KxEcmU.0.3oot.K.za6JAf1Tf0oCi4qqZUEsdeyO");
+INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (2750, "Filippa", "Praga", "ING-INF/05", "$2b$10$/ONgbtWsR8z/5KxEcmU.0.3oot.K.za6JAf1Tf0oCi4qqZUEsdeyO");
 INSERT INTO Insegnamenti (id, nome, cfu, ssd, id_docente) VALUES (2285, "Computer networks", 3, "ING-INF/05", 2750);
 INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (3800, 2285, FALSE, 3);
 INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (2567, "Rembrandt", "Alfieri", "ING-INF/01", "$2b$10$xC6xGXHXFdgN.GrPxra/b./DiFRzrOlEXWH8X4uNOOlXHzfbGmqOS");
@@ -142,10 +142,10 @@ INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (5800, 40
 INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (4638, "Allegra", "Antonini", "ING-IND/35", "$2b$10$T/100hJd..RPreeL5xAOCunljqMt3CTqcjvbEtDvT300egYvwg0eC");
 INSERT INTO Insegnamenti (id, nome, cfu, ssd, id_docente) VALUES (4105, "Imprenditorialità e innovazione", 6, "ING-IND/35", 4638);
 INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (5800, 4105, FALSE, 2);
-INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (4268, "Sandra", "Giorgetti-Foà", "ING-IND/22", "$2b$10$jBVB/xj3v/gX6CsRC4Nr5ek/NokLTGvTkMzPzWjapudDLKrpUpuVq");
+INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (4268, "Sandra", "Giorgetti", "ING-IND/22", "$2b$10$jBVB/xj3v/gX6CsRC4Nr5ek/NokLTGvTkMzPzWjapudDLKrpUpuVq");
 INSERT INTO Insegnamenti (id, nome, cfu, ssd, id_docente) VALUES (4120, "Scienza e tecnologia dei materiali I", 9, "ING-IND/22", 4268);
 INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (5800, 4120, FALSE, 2);
-INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (4540, "Venancio", "Condoleo-Foletti", "ING-IND/15", "$2b$10$H0D1RkvP1UFevXt4AyxVoeSaYTFo/9A.aUvTiRcfagMUkXMWWtiFq");
+INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (4540, "Venancio", "Condoleo", "ING-IND/15", "$2b$10$H0D1RkvP1UFevXt4AyxVoeSaYTFo/9A.aUvTiRcfagMUkXMWWtiFq");
 INSERT INTO Insegnamenti (id, nome, cfu, ssd, id_docente) VALUES (4150, "Disegno tecnico industriale", 6, "ING-IND/15", 4540);
 INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (5800, 4150, FALSE, 2);
 INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (4741, "Camilla", "Busoni", "FIS/03", "$2b$10$bTtQJrQ0E/K/oiIbJOJDh.2FsxZ8/JQGheraDUHHqP72dyw5ZrA4i");
@@ -181,7 +181,7 @@ INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (5800, 42
 INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (4928, "Pina", "Puccini", "ING-IND/22", "$2b$10$ueOHWKMe6X6Ql1cPk3a14.I0uTJQyY7dy47NSFfuRwd/09zaS6Muq");
 INSERT INTO Insegnamenti (id, nome, cfu, ssd, id_docente) VALUES (4300, "Scienza e tecnologia dei materiali ceramici", 3, "ING-IND/22", 4928);
 INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (5800, 4300, FALSE, 3);
-INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (4460, "Armando", "Alfonsi-Pontecorvo", "ING-IND/22", "$2b$10$orpYQZoc3PIK7sWmk2DIfupQC1SEM8o9JfyxoOCpy2jWIVSUP470u");
+INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (4460, "Armando", "Alfonsi", "ING-IND/22", "$2b$10$orpYQZoc3PIK7sWmk2DIfupQC1SEM8o9JfyxoOCpy2jWIVSUP470u");
 INSERT INTO Insegnamenti (id, nome, cfu, ssd, id_docente) VALUES (4315, "Struttura della materia", 12, "ING-IND/22", 4460);
 INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (5800, 4315, FALSE, 3);
 
@@ -238,10 +238,10 @@ INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (6800, 52
 
 -- Ingegneria Edile --
 
-INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (6669, "Rosalia", "Notarbartolo-Vecellio", "L-LIN/12", "$2b$10$yZkyppsOsvCLVKwY33SX0.5kHc.PlfxOBoQUviCvP2nRDEN0bOeIC");
+INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (6669, "Rosalia", "Notarbartolo", "L-LIN/12", "$2b$10$yZkyppsOsvCLVKwY33SX0.5kHc.PlfxOBoQUviCvP2nRDEN0bOeIC");
 INSERT INTO Insegnamenti (id, nome, cfu, ssd, id_docente) VALUES (6045, "Lingua inglese I livello", 3, "L-LIN/12", 6669);
 INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (7800, 6045, FALSE, 1);
-INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (7011, "Renata", "Grassi-Giannetti", "ING-INF/05", "$2b$10$XYwGgtv9Ej7254QMRQmUPetjeYjPzvNbHSM5ub3SAuXQEvwiz/Fm2");
+INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (7011, "Renata", "Grassi", "ING-INF/05", "$2b$10$XYwGgtv9Ej7254QMRQmUPetjeYjPzvNbHSM5ub3SAuXQEvwiz/Fm2");
 INSERT INTO Insegnamenti (id, nome, cfu, ssd, id_docente) VALUES (6030, "Informatica", 6, "ING-INF/05", 7011);
 INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (7800, 6030, FALSE, 1);
 INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (6515, "Elladio", "Belletini", "MAT/05", "$2b$10$/go5FX.6Mg5N6QZJpCWT5ecc6JH9JkttnTndwWrDuEKx/62ORm3lq");
@@ -262,7 +262,7 @@ INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (7800, 61
 INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (6580, "Clelia", "Borghese", "MAT/08", "$2b$10$PIhpfO3eJj1XZe6BgcmMb.AtTmF78WA1jwuqFee.BYYj3HPRwtjja");
 INSERT INTO Insegnamenti (id, nome, cfu, ssd, id_docente) VALUES (6060, "Algebra lineare e geometria", 3, "MAT/08", 6580);
 INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (7800, 6060, FALSE, 1);
-INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (6737, "Raffaella", "Serlupi-Zarlino", "FIS/01", "$2b$10$2IZWUBr9X1LyYYUxiBKVBOGJ6uA1S4hAih274unwopHi/tyqBiNmK");
+INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (6737, "Raffaella", "Serlupi", "FIS/01", "$2b$10$2IZWUBr9X1LyYYUxiBKVBOGJ6uA1S4hAih274unwopHi/tyqBiNmK");
 INSERT INTO Insegnamenti (id, nome, cfu, ssd, id_docente) VALUES (6120, "Fisica II", 3, "FIS/01", 6737);
 INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (7800, 6120, FALSE, 1);
 INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (7098, "Tina", "Morgagni", "ING-IND/11", "$2b$10$kews6oLbHsE/BfZkZzexrOY17hdFwCuPV0IyRjSAkkhmMB.Iz6Avu");
@@ -307,7 +307,7 @@ INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (7800, 63
 INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (6362, "Lazzaro", "Parini", "ING-INF/05", "$2b$10$u8IByJbwJCE0kq9hnXDzJ.RX/TUcXpOYTjnbBPQkgoYaZAwr8pPLi");
 INSERT INTO Insegnamenti (id, nome, cfu, ssd, id_docente) VALUES (6330, "Benessere digitale (Grandi Sfide - Tecnologie e Umanità)", 3, "ING-INF/05", 6362);
 INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (7800, 6330, FALSE, 3);
-INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (7067, "Temistocle", "Rismondo-Corradi", "ING-IND/34", "$2b$10$OwfXYwK3cPH.I5img66Bg.kFr1Ezp8mR/kai2nu/HvcF57prcAwQi");
+INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (7067, "Temistocle", "Rismondo", "ING-IND/34", "$2b$10$OwfXYwK3cPH.I5img66Bg.kFr1Ezp8mR/kai2nu/HvcF57prcAwQi");
 INSERT INTO Insegnamenti (id, nome, cfu, ssd, id_docente) VALUES (6345, "Bio e nano tecnologie in medicina (Grandi Sfide - Salute)", 12, "ING-IND/34", 7067);
 INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (7800, 6345, FALSE, 3);
 INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (6797, "Lidia", "Carosone", "ICAR/07", "$2b$10$s15qALud9lN/1.EZMjuQ2uEKLYv2vSfvoC6T/hX1NMEW.igsVMF3S");
@@ -319,7 +319,7 @@ INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (7800, 63
 INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (7328, "Adelasia", "Finzi", "ING-INF/05", "$2b$10$FDF6GkZUdt6c8IGRiFbiKObNZnt437bLEOG1IaaUSULR6qQGJexoa");
 INSERT INTO Insegnamenti (id, nome, cfu, ssd, id_docente) VALUES (6390, "Cybersecurity and National Defence (Grandi Sfide - Digitale)", 3, "ING-INF/05", 7328);
 INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (7800, 6390, FALSE, 3);
-INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (6419, "Michela", "Romagnoli-Grassi", "ING-IND/10", "$2b$10$m9VH7IvzdcfD4uPrvAaC4.5NmTImvKNV9RQudtmud5dcbSnYAyDQG");
+INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (6419, "Michela", "Romagnoli", "ING-IND/10", "$2b$10$m9VH7IvzdcfD4uPrvAaC4.5NmTImvKNV9RQudtmud5dcbSnYAyDQG");
 INSERT INTO Insegnamenti (id, nome, cfu, ssd, id_docente) VALUES (6405, "Energy transition and society (Grandi Sfide - Energia)", 3, "ING-IND/10", 6419);
 INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (7800, 6405, FALSE, 3);
 INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (7165, "Giuliana", "Romano", "ICAR/02", "$2b$10$qSqbA0/L28xR0k7XRQstre/7/wUXvSUF4AIbBUJsUKRRDbQv8fi.u");

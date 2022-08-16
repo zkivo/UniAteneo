@@ -1,3 +1,4 @@
+const bodyParser = require('body-parser')
 const express = require('express');
 const sqlite3 = require('sqlite3');
 const fs = require('fs');
@@ -15,6 +16,9 @@ const server = express();
 
 server.use(express.static('public'))
 server.set('view engine', 'ejs');
+
+server.use(bodyParser.json())
+server.use(bodyParser.urlencoded({ extended: true }))
 
 function initiate_db() {
     // initiate db if empty
@@ -77,22 +81,23 @@ function insert_all() {
             }
         });
     })
-    console.log("Insegnamenti/Programmi/Docenti inserted.");
-    show_rows();
+    console.log("Insegnamenti/Programmi/Docenti inserted.\n" +
+                "Database ready.");
+    //show_rows();
 }
 
-function show_rows() {
-    //"SELECT CDS.id AS 'Codice CDS', Insegnamenti.* FROM CDS, Programmi, Insegnamenti where CDS.id = Programmi.id_corso AND Programmi.id_insegnamento = Insegnamenti.id
-    db.all("select * from Insegnamenti, SSD where Insegnamenti.ssd = ssd.code", (err, rows) => {
-        if (err)
-            console.log(err);
-        else {
-            //console.log(row.name + ": " + row.hired_on);
-            console.log(rows, rows.length);
-            //console.log("sum is " + sum);
-        }
-    });
-}
+//function show_rows() {
+//    //"SELECT CDS.id AS 'Codice CDS', Insegnamenti.* FROM CDS, Programmi, Insegnamenti where CDS.id = Programmi.id_corso AND Programmi.id_insegnamento = Insegnamenti.id
+//    db.all("select * from Insegnamenti, SSD where Insegnamenti.ssd = ssd.code", (err, rows) => {
+//        if (err)
+//            console.log(err);
+//        else {
+//            //console.log(row.name + ": " + row.hired_on);
+//            //console.log(rows, rows.length);
+//            //console.log("sum is " + sum);
+//        }
+//    });
+//}
 
 server.get('/', (req, res) => {
     db.serialize(() => {
@@ -106,10 +111,39 @@ server.get('/', (req, res) => {
     });
 })
 
+server.post("/login", (req, res) => {
+    var username, nome, cognome;
+    try {
+        username = req.body.username.trimStart().trimEnd().split('.');
+        nome = username[0].toLowerCase()
+        cognome = username[1].toLowerCase()
+    } catch {
+        console.log("Incorrect username");
+        res.redirect('/')
+        return;
+    }
+    temp = nome.charAt(0).toUpperCase()
+    nome = temp + nome.substring(1)
+    temp = cognome.charAt(0).toUpperCase()
+    cognome = temp + cognome.substring(1)
+    db.serialize(() => {
+        db.get(`SELECT * FROM Docenti WHERE nome = \"${nome}\" AND cognome = \"${cognome}\"` , (err, row) => {
+            if (err)
+                console.log(err);
+            else {
+                console.log(row);
+            }
+            res.redirect('/')
+        });
+    });
+
+})
+
 server.get('/manifesto/:id_cds', (req, res) => {
     res.redirect('/')
     console.log(req.params.id_cds);
 })
+
 
 server.listen(web_port, () => {
     console.log(`web server is listeing to port: ${web_port}.`)
