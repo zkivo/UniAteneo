@@ -102,7 +102,7 @@
 											<li class="list-group-item">
 											<%  rows.forEach(e => {
 													if (e.tipo !== 'LT') return; %>
-												<button type="button" class="list-group-item list-group-item-action"><a href="/manifesto/<%= e.id %>"> CLICCA QUI </a> <%= e.nome %></button>
+												<button onclick="location.href='/manifesto/<%= e.id %>'" type="button" class="list-group-item list-group-item-action"> <%= e.nome %></button>
 											<% }) %>
 											</li>
 										</ul>
@@ -124,7 +124,7 @@
 											<li class="list-group-item">
 												<%  rows.forEach(e => {
 														if (e.tipo !== 'LM') return; %>
-													<button type="button" class="list-group-item list-group-item-action"> <a href="/manifesto/<%= e.id %>"> CLICCA QUI </a> <%= e.nome %></button>
+													<button onclick="location.href='/manifesto/<%= e.id %>'" type="button" class="list-group-item list-group-item-action"> <%= e.nome %></button>
 												<% }) %>
 											</li>
 										</ul>									
