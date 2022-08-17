@@ -107,20 +107,34 @@ server.get('/', (req, res) => {
                 res.render('index', {
                     rows: rows,
                     utente: utente,
-                    path : '/'
+                    path: '/',
+                    depth : 0
                 });
             }
         });
     });
 })
 
+function get_error_parm(error_string) {
+    return '?error=' + error_string.split(' ').join('+')
+}
+
 server.get("/logout", (req, res) => {
-    // <a class="nav-link" href="/logout?callback=<%= path %>">logout</a>
     if (req.session.utente) {
         req.session.utente = null
+        if (req.query.callback) {
+            res.redirect(req.query.callback)
+        } else {
+            res.redirect('/' + get_error_parm("no callback param"))
+        }
+    } else {
+        res.redirect('/' + get_error_parm("Prima fai il login"))
     }
-    if (req.query.callback) {
-        res.redirect(req.query.callback)
+})
+
+server.get('/portale', (req, res) => {
+    if (req.session.utente) {
+
     } else {
         res.redirect('/')
     }
@@ -135,7 +149,7 @@ server.post("/login", (req, res) => {
         password = req.body.password.trimStart().trimEnd()
     } catch {
         console.log("Incorrect username");
-        res.redirect("/?error=Username+o+password+non+corretta.")
+        res.redirect("/" + get_error_parm("Username o password non corretta."))
         return;
     }
     temp = nome.charAt(0).toUpperCase()
@@ -177,19 +191,25 @@ server.get('/manifesto/:id_cds', (req, res) => {
                 `P.id_corso = C.id`, (err, rows) => {
             if (err) {
                 console.log(err)
-                res.redirect("/?error=cds+inesistente")
+                res.redirect('/' + get_error_parm("errore 2345"))
             } else {
+                if (rows.length == 0) {
+                    res.redirect('/' + get_error_parm(`id corso: ${id_corso} inesistente`))
+                    return
+                }
                 console.log(rows)
                 if (req.session.utente) {
                     res.render('manifesto', {
                         rows: rows,
                         utente: req.session.utente,
-                        path: '/manifesto/' + id_corso
+                        path: '/manifesto/' + id_corso,
+                        depth : 2
                     })
                 } else {
                     res.render('manifesto', {
                         rows: rows,
-                        path: '/manifesto/' + id_corso
+                        path: '/manifesto/' + id_corso,
+                        depth: 2
                     })
                 }
             }
