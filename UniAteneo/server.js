@@ -98,12 +98,9 @@ server.get('/', (req, res) => {
             if (err)
                 console.log(err);
             else {
-                var utente = {}
+                var utente = null
                 if (req.session.utente) {
-                    utente.tipo = req.session.utente.tipo
-                    utente.id = req.session.utente.id
-                } else {
-                    utente = null
+                    utente = req.session.utente
                 }
                 res.render('index', {
                     rows: rows,
@@ -197,7 +194,9 @@ server.post("/login", (req, res) => {
                     console.log("Accesso verificato")
                     req.session.utente = {
                         tipo : 'docente',
-                        id : row.id
+                        id : row.id,
+                        nome : nome,
+                        cognome : cognome
                     }
                 } else {
                     console.log("Accesso Negato");
