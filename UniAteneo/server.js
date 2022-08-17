@@ -103,6 +103,8 @@ server.get('/', (req, res) => {
                 if (req.session.utente) {
                     utente.tipo = req.session.utente.tipo
                     utente.id = req.session.utente.id
+                } else {
+                    utente = null
                 }
                 res.render('index', {
                     rows: rows,
@@ -136,7 +138,7 @@ server.get('/portale', (req, res) => {
     if (req.session.utente) {
 
     } else {
-        res.redirect('/')
+        res.redirect('/' + get_error_parm("Effettuare prima il login"))
     }
 })
 
@@ -191,7 +193,7 @@ server.get('/manifesto/:id_cds', (req, res) => {
                 `P.id_corso = C.id`, (err, rows) => {
             if (err) {
                 console.log(err)
-                res.redirect('/' + get_error_parm("errore 2345"))
+                res.redirect('/' + get_error_parm("errore: 2345"))
             } else {
                 if (rows.length == 0) {
                     res.redirect('/' + get_error_parm(`id corso: ${id_corso} inesistente`))
@@ -208,6 +210,7 @@ server.get('/manifesto/:id_cds', (req, res) => {
                 } else {
                     res.render('manifesto', {
                         rows: rows,
+                        utente: null,
                         path: '/manifesto/' + id_corso,
                         depth: 2
                     })
