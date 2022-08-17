@@ -29,7 +29,6 @@ server.use(session({
 }));
 
 function initiate_db() {
-    // initiate db if empty
     var sql = fs.readFileSync(path_create_tables, { encoding: 'utf8', flag: 'r' });
     db.exec(sql, (err, row) => {
         if (err) {
@@ -136,7 +135,34 @@ server.get("/logout", (req, res) => {
 
 server.get('/portale', (req, res) => {
     if (req.session.utente) {
-
+        switch (req.session.utente.tipo) {
+            case 'docente':
+                res.render('docente', {
+                    rows: null,
+                    utente: req.session.utente,
+                    path: '/portale',
+                    depth: 1
+                });
+                break
+            case 'studente':
+                res.render('studente', {
+                    rows: null,
+                    utente: req.session.utente,
+                    path: '/portale',
+                    depth: 1
+                });
+                break
+            case 'admin':
+                res.render('admin', {
+                    rows: null,
+                    utente: req.session.utente,
+                    path: '/portale',
+                    depth: 1
+                });
+                break
+            default:
+                res.redirect('/' + get_error_parm("tipo utente non identificato"))
+        }
     } else {
         res.redirect('/' + get_error_parm("Effettuare prima il login"))
     }
@@ -177,7 +203,11 @@ server.post("/login", (req, res) => {
                     console.log("Accesso Negato");
                 }
             }
-            res.redirect('/')
+            if (req.query.callback) {
+                res.redirect(req.query.callback)
+            } else {
+                res.redirect('/' + get_error_parm("no callback param"))
+            }
         });
     });
 
