@@ -134,12 +134,40 @@ server.get('/portale', (req, res) => {
     if (req.session.utente) {
         switch (req.session.utente.tipo) {
             case 'docente':
-                res.render('docente', {
-                    rows: null,
-                    utente: req.session.utente,
-                    path: '/portale',
-                    depth: 1
-                });
+                var docente = req.session.utente.id
+                    db.serialize(() => {
+                        db.all(`SELECT P.id_insegnamento, P.anno, P.scelta, I.nome AS nome_insegnamento, I.cfu, I.path_scheda_trasparenza, I.ssd, I.id_docente, D.nome AS nome_docente, D.cognome AS cognome_docente, C.tipo AS tipo_cds FROM CDS as C, Programmi as P, Insegnamenti as I, ` +
+                                `Docenti as D WHERE ` +
+                                `P.id_insegnamento = I.id AND ` +
+                                `I.id_docente = D.id AND ` +
+                                `P.id_corso = C.id AND D.id = ${docente}`, (err, rows) => {
+                            if (err) {
+                                console.log(err)
+                                res.redirect('/' + get_error_parm("errore: 2345"))
+                            } else {
+                                if (rows.length == 0) {
+                                    res.redirect('/portale' + get_error_parm(`Non esistono insegnamenti`))
+                                    return
+                                }
+                                console.log(rows)
+                                if (req.session.utente) {
+                                    res.render('docente', {
+                                        rows: rows,
+                                        utente: req.session.utente,
+                                        path: '/portale',
+                                        depth : 1
+                                    })
+                                } else {
+                                    res.render('/', {
+                                        rows: rows,
+                                        utente: null,
+                                        path: '/',
+                                        depth: 0
+                                    })
+                                }
+                            }
+                        })
+                    })
                 break
             case 'studente':
                 res.render('studente', {

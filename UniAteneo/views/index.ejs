@@ -1,79 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>UniAteneo</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="uniateneo.css">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-
-</head>
-
-<body>
-  <header>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #1d2f3b;">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/">UniAteneo</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <ul class="navbar-nav me-auto mb-2 mb-md-0">
-            <li class="nav-item">
-				<a class="nav-link" href="#">
-					<% if (utente.id) {%>
-					<%= utente.id + " " + utente.tipo %>
-					<% } %>
-				</a>
-            </li>
-            <li class="nav-item">
-            	<a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-            	<div id="liveAlertPlaceholder"></div>
-				<button type="button" class="btn btn-primary" id="liveAlertBtn">Show live alert</button>
-            </li>
-          </ul>
-            <button class="btn" style="background-color: #e4c073;" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
-        </div>
-      </div>
-    </nav>
-  </header>
-
+<%- include('navbar.ejs') %>
 	<main>
-
-		<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog modal-dialog-centered">
-			  <div class="modal-content">
-				<div class="modal-header">
-				  <h5 class="modal-title" id="exampleModalLabel">Login</h5>
-				  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-					<form action="/login" method="POST">
-						<div class="mb-3">
-						  <label for="username" class="form-label">Username</label>
-						  <input type="username" class="form-control" id="username" name="username" aria-describedby="usernameHelp" required>
-						</div>
-						<div class="mb-3">
-						  <label for="password" class="form-label">Password</label>
-						  <input type="password" class="form-control" id="password" name="password" required>
-						</div>
-						</div>
-						<div class="modal-footer">
-								<button type="submit" class="btn btn-primary">Invia</button>
-						</div>
-					</form>
-			  </div>
-			</div>
-		</div>
-
-  		<div class="container-fluid p-5 text-white text-center" style="height: 250px;background-color: #1d2f3b;">
-    		<img src="images/logo.png" class="img-fluid p-3">
-    		<h1>UniAteneo</h1> 
-  		</div>
 
 		<div class="container text-center pt-3">
 			<div class="shadow p-3 mb-5 bg-body rounded">
@@ -82,7 +8,7 @@
 						<div class="card shadow-sm" >
 							<div class="card-body">
 								<h5 class="card-title">Scopri i nostri corsi di studio!</h5>
-								<p class="card-text">Visualizza la lista dei corsi di studio e accedi alla loro pagina informativa cliccando sul corso di studio che ti interessa.</p>
+								<p class="card-text text-center">Visualizza la lista dei corsi di studio e accedi alla loro pagina informativa cliccando sul corso di studio che ti interessa.</p>
 								<a href="#" class="btn btn-primary">Go somewhere</a>
 							</div>
 						</div>
@@ -93,7 +19,7 @@
 							<div class="card">
 								<div class="card-header" id="headingOne">
 									<h2 class="mb-0">
-										<button class="btn collapsed" style="width: 100%;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+										<button class="unibtn btn collapsed" style="width: 100%;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
 											Lauree triennali
 										</button>
 									</h2>
@@ -154,20 +80,6 @@
 			</div>
 		</div>
 	</main>
-  
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
-	<script>
-		let paramString = window.location.search.split('?')[1];
-		let queryString = new URLSearchParams(paramString);
 
-		for (let pair of queryString.entries()) {
-			//console.log("Key is: " + pair[0]);
-			//console.log("Value is: " + pair[1]);
-			if (pair[0] === 'error') {
-				alert('Error: ' + pair[1])
-			}
-		}
-	</script>
 </body>
 </html>

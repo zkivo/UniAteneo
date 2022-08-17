@@ -1,0 +1,69 @@
+<%- include('navbar.ejs') %>
+<div class="modal fade" id="ricevimentiModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ricevimenti</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p1>COMINGSOON</p1>
+            </div>
+      </div>
+    </div>
+</div>
+
+<div class="modal fade" id="esamiModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Esami</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p1>COMINGSOON</p1>
+            </div>
+      </div>
+    </div>
+</div>
+
+
+<div class="container text-center pt-3">
+    <div class="shadow p-3 mb-5 bg-body rounded">
+        <div class="card-body">
+            <h2>Insegnamenti attivi per <%=utente.nome + " " + utente.cognome%></h2>
+			<table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">ID Materia</th>
+                    <th scope="col">SSD</th>
+                    <th scope="col">Denominazione</th>
+                    <th scope="col">CFU</th>
+                    <th scope="col">Ricevimenti</th>
+                    <th scope="col">Esami</th>
+                    <th scope="col">Scheda di Trasparenza</th>                        
+                </tr>
+                </thead>
+                <tbody>
+                <% rows.forEach((row) => { %>
+                    <% if (row.id_docente != utente.id) return; %>
+                    <tr>
+                    <td> <%= row.id_insegnamento %> </td>
+                    <td> <%= row.ssd %> </td>
+                    <td> <%= row.nome_insegnamento %> </td>
+                    <td> <%= row.cfu %> </td>
+                    <td> <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ricevimentiModal">Modifica</button> </td>
+                    <td> <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#esamiModal">Modifica</button> </td>
+                    <td> <button class="btn">Scheda di Trasparenza</button> </td>
+                    </tr>
+                    
+                <% }) %>
+                </tbody>
+                <tfoot>
+                <tr class="table-dark"></tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
