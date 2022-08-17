@@ -91,21 +91,7 @@ function insert_all() {
     })
     console.log("Insegnamenti/Programmi/Docenti inserted.\n" +
                 "Database ready.");
-    //show_rows();
 }
-
-//function show_rows() {
-//    //"SELECT CDS.id AS 'Codice CDS', Insegnamenti.* FROM CDS, Programmi, Insegnamenti where CDS.id = Programmi.id_corso AND Programmi.id_insegnamento = Insegnamenti.id
-//    db.all("select * from Insegnamenti, SSD where Insegnamenti.ssd = ssd.code", (err, rows) => {
-//        if (err)
-//            console.log(err);
-//        else {
-//            //console.log(row.name + ": " + row.hired_on);
-//            //console.log(rows, rows.length);
-//            //console.log("sum is " + sum);
-//        }
-//    });
-//}
 
 server.get('/', (req, res) => {
     db.serialize(() => {
@@ -120,11 +106,24 @@ server.get('/', (req, res) => {
                 }
                 res.render('index', {
                     rows: rows,
-                    utente: utente
+                    utente: utente,
+                    path : '/'
                 });
             }
         });
     });
+})
+
+server.get("/logout", (req, res) => {
+    // <a class="nav-link" href="/logout?callback=<%= path %>">logout</a>
+    if (req.session.utente) {
+        req.session.utente = null
+    }
+    if (req.query.callback) {
+        res.redirect(req.query.callback)
+    } else {
+        res.redirect('/')
+    }
 })
 
 server.post("/login", (req, res) => {
@@ -184,11 +183,13 @@ server.get('/manifesto/:id_cds', (req, res) => {
                 if (req.session.utente) {
                     res.render('manifesto', {
                         rows: rows,
-                        utente: req.session.utente
+                        utente: req.session.utente,
+                        path: '/manifesto/' + id_corso
                     })
                 } else {
                     res.render('manifesto', {
-                        rows: rows
+                        rows: rows,
+                        path: '/manifesto/' + id_corso
                     })
                 }
             }
@@ -210,3 +211,13 @@ process.on('SIGTERM', () => {
         console.log('database terminated.');
     });
 });
+
+function print_query(query) {
+    db.all(query, (err, rows) => {
+        if (err)
+            console.log(err);
+        else {
+            console.log(rows);
+        }
+    });
+}
