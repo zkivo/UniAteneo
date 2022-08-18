@@ -4,6 +4,9 @@ const express = require('express');
 const sqlite3 = require('sqlite3');
 const bcrypt = require('bcrypt');
 const fs = require('fs');
+const multer = require('multer');
+const path = require('path');
+const helpers = require('./js/helpers');
 
 const path_db = "./data/db.sqlite";
 const path_create_tables = "./data/sql/create_tables.sql";
@@ -277,6 +280,40 @@ server.get('/manifesto/:id_cds', (req, res) => {
     })
 })
 
+const storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, 'public/uploads/');
+    },
+
+    filename: function(req, file, cb) {
+        cb(null, file.fieldname + '-' + req.body.codice + path.extname(file.originalname));
+    }
+});
+
+server.post('/upload', (req, res) => {
+    let upload = multer({ storage: storage, fileFilter: helpers.pdfFilter }).single('scheda_trasparenza');
+
+    upload(req, res, function(err) {
+        // req.file contains information of uploaded file
+        // req.body contains information of text fields, if there were any
+
+        if (req.fileValidationError) {
+            return res.send(req.fileValidationError);
+        }
+        else if (!req.file) {
+            return res.send('Seleziona un PDF da caricare.');
+        }
+        else if (err instanceof multer.MulterError) {
+            return res.send(err);
+        }
+        else if (err) {
+            return res.send(err);
+        }
+
+        console.log(`PDF CARICATO`);
+        res.redirect('portale');
+    });
+});
 
 server.listen(web_port, () => {
     console.log(`web server is listeing to port: ${web_port}.`)

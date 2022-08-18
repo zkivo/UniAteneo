@@ -7,7 +7,6 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p1>COMINGSOON</p1>
             </div>
       </div>
     </div>
@@ -28,6 +27,7 @@
 </div>
 
 
+
 <div class="container text-center pt-3">
     <div class="shadow p-3 mb-5 bg-body rounded">
         <div class="card-body">
@@ -46,15 +46,16 @@
                 </thead>
                 <tbody>
                 <% rows.forEach((row) => { %>
+                    <% cod = row.id_insegnamento %>
                     <% if (row.id_docente != utente.id) return; %>
                     <tr>
-                    <td> <%= row.id_insegnamento %> </td>
+                    <td name="<%= cod %>"> <%= row.id_insegnamento %> </td>
                     <td> <%= row.ssd %> </td>
                     <td> <%= row.nome_insegnamento %> </td>
                     <td> <%= row.cfu %> </td>
                     <td> <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ricevimentiModal">Modifica</button> </td>
                     <td> <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#esamiModal">Modifica</button> </td>
-                    <td> <button class="btn">Scheda di Trasparenza</button> </td>
+                    <td> <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#schedaModal">Modifica</button> </td>
                     </tr>
                     
                 <% }) %>
@@ -63,6 +64,29 @@
                 <tr class="table-dark"></tr>
                 </tfoot>
             </table>
+
+            <div class="modal fade" id="schedaModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Scheda di trasparenza</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="POST" action="/upload" enctype="multipart/form-data">
+                                <div>
+                                    <label>Seleziona la scheda di trasparenza:</label>
+                                    <input type="hidden" id="codice" name="codice" value="<%= cod %>">
+                                    <input type="file" name="scheda_trasparenza" />
+                                </div>
+                                <div>
+                                    <input type="submit" name="btn_upload" value="Upload" />
+                                </div>
+                            </form>
+                        </div>
+                  </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
