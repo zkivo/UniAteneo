@@ -220,10 +220,10 @@ server.get('/manifesto/:id_cds', (req, res) => {
     var id_corso = req.params.id_cds
     db.serialize(() => {
         db.all(`SELECT P.id_insegnamento, P.anno, P.scelta, I.nome AS nome_insegnamento, I.cfu, I.path_scheda_trasparenza, I.ssd, I.id_docente, D.nome AS nome_docente, D.cognome AS cognome_docente, C.tipo AS tipo_cds FROM CDS as C, Programmi as P, Insegnamenti as I, ` +
-                `Docenti as D WHERE P.id_corso = ${id_corso} AND ` +
+                `Docenti as D WHERE (P.id_corso = ${id_corso} AND ` +
                 `P.id_insegnamento = I.id AND ` +
-                `(I.id_docente = D.id OR I.id_docente = NULL) AND ` +
-                `P.id_corso = C.id`, (err, rows) => {
+                `I.id_docente = D.id AND ` +
+                `P.id_corso = C.id)` , (err, rows) => {
             if (err) {
                 console.log(err)
                 res.redirect('/' + get_error_parm("errore: 2345"))
