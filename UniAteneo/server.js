@@ -16,6 +16,7 @@ const path_insert_all = "./data/sql/insert_all.sql";
 const web_port = process.env.PORT || 1337;
 
 const db = new sqlite3.Database(path_db, initiate_db);
+const lista_materie_ssd = JSON.parse(fs.readFileSync("./data/materie_ssd.json"))
 const server = express();
 
 server.use(express.static('public'))
@@ -29,6 +30,7 @@ server.use(session({
     saveUninitialized: false,
     secret: 'keyboard cat'
 }));
+
 
 function initiate_db() {
     var sql = fs.readFileSync(path_create_tables, { encoding: 'utf8', flag: 'r' });
@@ -90,7 +92,7 @@ server.get('/', (req, res) => {
                     rows: rows,
                     utente: utente,
                     path: '/',
-                    depth : 0
+                    depth: 0
                 });
             }
         });
@@ -162,7 +164,8 @@ server.get('/portale', (req, res) => {
                     rows: null,
                     utente: req.session.utente,
                     path: '/portale',
-                    depth: 1
+                    depth: 1,
+                    lista_materie_ssd: lista_materie_ssd
                 });
                 break
             default:
