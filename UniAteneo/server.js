@@ -104,11 +104,7 @@ function get_error_parm(error_string) {
 server.get("/logout", (req, res) => {
     if (req.session.utente) {
         req.session.utente = null
-        if (req.query.callback) {
-            res.redirect(req.query.callback)
-        } else {
-            res.redirect('/' + get_error_parm("no callback param"))
-        }
+        res.redirect('/');
     } else {
         res.redirect('/' + get_error_parm("Prima fai il login"))
     }
@@ -226,7 +222,7 @@ server.get('/manifesto/:id_cds', (req, res) => {
         db.all(`SELECT P.id_insegnamento, P.anno, P.scelta, I.nome AS nome_insegnamento, I.cfu, I.path_scheda_trasparenza, I.ssd, I.id_docente, D.nome AS nome_docente, D.cognome AS cognome_docente, C.tipo AS tipo_cds FROM CDS as C, Programmi as P, Insegnamenti as I, ` +
                 `Docenti as D WHERE P.id_corso = ${id_corso} AND ` +
                 `P.id_insegnamento = I.id AND ` +
-                `I.id_docente = D.id AND ` +
+                `(I.id_docente = D.id OR I.id_docente = NULL) AND ` +
                 `P.id_corso = C.id`, (err, rows) => {
             if (err) {
                 console.log(err)
