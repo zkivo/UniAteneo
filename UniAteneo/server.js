@@ -176,6 +176,16 @@ server.get('/portale', (req, res) => {
     }
 })
 
+server.get("/crea_modifica_cds", (req, res) => {
+    res.render('crea_modifica_cds', {
+        rows: null,
+        utente: req.session.utente,
+        path: '/crea_modifica_cds',
+        depth: 1,
+        lista_materie_ssd: lista_materie_ssd
+    });
+})
+
 server.post("/login", (req, res) => {
     var username, nome, cognome,password;
     try {

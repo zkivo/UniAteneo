@@ -33,6 +33,8 @@
     <Content Include="server.js" />
     <Content Include="package.json" />
     <Content Include="README.md" />
+    <Content Include="views\crea_modifica_cds.ejs" />
+    <Content Include="views\footer.ejs" />
     <Content Include="views\index.ejs" />
   </ItemGroup>
   <ItemGroup>
