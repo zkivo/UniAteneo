@@ -311,3 +311,13 @@ function print_query(query) {
         }
     });
 }
+
+const readline = require('readline').createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+readline.question('>>', str => {
+    print_query(str)
+    readline.close();
+});
