@@ -10,7 +10,6 @@ const helpers = require('./js/helpers');
 
 const path_db = "./data/db.sqlite";
 const path_create_tables = "./data/sql/create_tables.sql";
-const path_insert_cds = "./data/sql/insert_cds.sql";
 const path_insert_ssd = "./data/sql/insert_ssd.sql";
 const path_insert_all = "./data/sql/insert_all.sql";
 
@@ -55,26 +54,8 @@ function insert_ssd() {
             }
         }
         console.log("SSDs inserted.");
-        insert_cds();
+        insert_all();
     });
-}
-
-function insert_cds() {
-    var sql = fs.readFileSync(path_insert_cds, { encoding: 'utf8', flag: 'r' });
-    sql = sql.split(';');
-    sql.forEach(element => {
-        if (!element.includes('INSERT')) return;
-        db.run(element, (err, row) => {
-            if (err) {
-                if (err.errno != 19) {
-                    console.log(err);
-                    return;
-                }
-            }
-        });
-    })
-    console.log("CDSs inserted.");
-    insert_all();
 }
 
 function insert_all() {
@@ -200,18 +181,14 @@ server.post("/login", (req, res) => {
     var username, nome, cognome,password;
     try {
         username = req.body.username.trimStart().trimEnd().split('.');
-        nome = username[0].toLowerCase()
-        cognome = username[1].toLowerCase()
+        nome = username[0].toUpperCase()
+        cognome = username[1].toUpperCase()
         password = req.body.password.trimStart().trimEnd()
     } catch {
         console.log("Incorrect username");
         res.redirect("/" + get_error_parm("Username o password non corretta."))
         return;
     }
-    temp = nome.charAt(0).toUpperCase()
-    nome = temp + nome.substring(1)
-    temp = cognome.charAt(0).toUpperCase()
-    cognome = temp + cognome.substring(1)
     console.log("input:", nome, cognome, password)
     db.serialize(() => {
         db.get(`SELECT * FROM Docenti WHERE nome = \"${nome}\" AND ` +

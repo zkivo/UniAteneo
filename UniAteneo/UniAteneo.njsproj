@@ -30,7 +30,6 @@
   <ItemGroup>
     <Content Include="data\example_sqlite3_chaining.js" />
     <Content Include="data\sql\create_tables.sql" />
-    <Content Include="data\sql\insert_cds.sql" />
     <Content Include="server.js" />
     <Content Include="package.json" />
     <Content Include="README.md" />
