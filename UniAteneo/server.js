@@ -353,7 +353,7 @@ server.get("/admin/crea_modifica_cds", (req, res) => {
         res.redirect('/' + get_error_parm("Pagina riservata all'amministratore"))
         return
     }
-    res.render('crea_modifica_cds', {
+    res.render('admin/crea_modifica_cds', {
         rows: null,
         utente: req.session.utente,
         path: '/admin/crea_modifica_cds',

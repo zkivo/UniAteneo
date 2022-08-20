@@ -35,7 +35,7 @@
     <Content Include="README.md" />
     <Content Include="views\admin\elimina_cds.ejs" />
     <Content Include="views\admin\admin_page.ejs" />
-    <Content Include="views\crea_modifica_cds.ejs" />
+    <Content Include="views\admin\crea_modifica_cds.ejs" />
     <Content Include="views\footer.ejs" />
     <Content Include="views\index.ejs" />
   </ItemGroup>

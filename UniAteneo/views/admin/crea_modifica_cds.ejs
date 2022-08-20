@@ -1,4 +1,4 @@
-<%- include('navbar.ejs') %>
+<%- include('../navbar.ejs') %>
 <form>
     <div class="container text-center mt-3">
         <div class="row g-3 align-items-center">
@@ -34,7 +34,10 @@
             </datalist>
           </div>
           <div class="col-2">
-            <input type="text" class="form-control" placeholder="S.S.D.">
+            <input type="text" class="form-control" list="datalist_ssd" placeholder="S.S.D.">
+              <datalist id="datalist_ssd">
+              <% lista_materie_ssd.forEach(e => { %> <option value="<%= e.ssd %>"> <% }) %>
+              </datalist>
           </div>
           <div class="col-1">
             <input type="text" class="form-control" value="6">
@@ -47,4 +50,4 @@
         </div>
     </div>
 </form>
-<%- include('footer.ejs') %>
+<%- include('../footer.ejs') %>
