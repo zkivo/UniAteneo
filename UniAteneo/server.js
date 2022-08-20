@@ -75,7 +75,7 @@ function insert_all() {
         });
     })
     console.log("Insegnamenti/Programmi/Docenti inserted.\n" +
-                "Database ready.");
+        "Database ready.");
 }
 
 server.get('/', (req, res) => {
@@ -103,23 +103,6 @@ function get_error_parm(error_string) {
     return '?error=' + error_string.split(' ').join('+')
 }
 
-function get_materie_e_cds() {
-    var ret
-    db.serialize(() => {
-        db.all(`SELECT P.id_insegnamento, P.anno, P.scelta, I.nome AS nome_insegnamento, I.cfu, I.path_scheda_trasparenza, I.ssd, C.tipo AS tipo_cds, C.nome AS nome_cds, C.id AS id_cds FROM CDS as C, Programmi as P, Insegnamenti as I ` +
-                `WHERE P.id_insegnamento = I.id AND ` +
-                `P.id_corso = C.id`, (err, rows) => {
-            if (err) {
-                console.log(err)
-                res.redirect('/' + get_error_parm("errore: 5342"))
-            } else {
-                ret = rows
-            }
-        })
-    })
-    return ret
-}
-
 server.get("/logout", (req, res) => {
     if (req.session.utente) {
         req.session.utente = null
@@ -130,6 +113,10 @@ server.get("/logout", (req, res) => {
 })
 
 server.get('/portale', (req, res) => {
+    if (typeof req.session.utente === 'undefined') {
+        res.redirect('/' + get_error_parm("Effettua prima il login"))
+        return
+    }
     if (req.session.utente) {
         switch (req.session.utente.tipo) {
             case 'docente':
@@ -178,7 +165,7 @@ server.get('/portale', (req, res) => {
 })
 
 server.get("/admin/elimina_cds", (req, res) => {
-    if (typeof req.session.utente.tipo === 'undefined') {
+    if (typeof req.session.utente === 'undefined') {
         res.redirect('/' + get_error_parm("Effettua prima il login"))
         return
     }
@@ -195,7 +182,7 @@ server.get("/admin/elimina_cds", (req, res) => {
 })
 
 server.post("/admin/elimina_cds", (req, res) => {
-    if (typeof req.session.utente.tipo === 'undefined') {
+    if (typeof req.session.utente === 'undefined') {
         res.redirect('/' + get_error_parm("Effettua prima il login"))
         return
     }
@@ -373,13 +360,25 @@ server.get("/admin/crea_modifica_cds", (req, res) => {
         res.redirect('/' + get_error_parm("Pagina riservata all'amministratore"))
         return
     }
-    res.render('admin/crea_modifica_cds', {
-        rows: get_materie_e_cds(),
-        utente: req.session.utente,
-        path: '/admin/crea_modifica_cds',
-        depth: 2,
-        lista_materie_ssd: lista_materie_ssd
+    db.serialize(() => {
+        db.all(`SELECT P.id_insegnamento, P.anno, P.scelta, I.nome AS nome_insegnamento, I.cfu, I.path_scheda_trasparenza, I.ssd, C.tipo AS tipo_cds, C.nome AS nome_cds, C.id AS id_cds FROM CDS as C, Programmi as P, Insegnamenti as I ` +
+                `WHERE P.id_insegnamento = I.id AND ` +
+                `P.id_corso = C.id`, (err, rows) => {
+                if (err) {
+                    console.log(err)
+                    res.redirect('/admin/crea_modifica_cds' + get_error_parm("errore: 5342"))
+                } else {
+                    res.render('admin/crea_modifica_cds', {
+                        rows: rows,
+                        utente: req.session.utente,
+                        path: '/admin/crea_modifica_cds',
+                        depth: 2,
+                        lista_materie_ssd: lista_materie_ssd
+                    })
+                }
+            })
     })
+
 })
 
 server.get("/admin/admin_page", (req, res) => {
