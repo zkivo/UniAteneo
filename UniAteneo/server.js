@@ -361,20 +361,27 @@ server.get("/admin/crea_modifica_cds", (req, res) => {
         return
     }
     db.serialize(() => {
-        db.all(`SELECT P.id_insegnamento, P.anno, P.scelta, I.nome AS nome_insegnamento, I.cfu, I.path_scheda_trasparenza, I.ssd, C.tipo AS tipo_cds, C.nome AS nome_cds, C.id AS id_cds FROM CDS as C, Programmi as P, Insegnamenti as I ` +
-                `WHERE P.id_insegnamento = I.id AND ` +
-                `P.id_corso = C.id`, (err, rows) => {
+        db.all('Select * from CDS', (err, rows) => {
                 if (err) {
                     console.log(err)
                     res.redirect('/admin/crea_modifica_cds' + get_error_parm("errore: 5342"))
                 } else {
-                    res.render('admin/crea_modifica_cds', {
-                        rows: rows,
-                        utente: req.session.utente,
-                        path: '/admin/crea_modifica_cds',
-                        depth: 2,
-                        lista_materie_ssd: lista_materie_ssd
+                    db.all('Select * from CDS', (err, rows2) => {
+                        if (err) {
+                            console.log(err)
+                            res.redirect('/admin/crea_modifica_cds' + get_error_parm("errore: 3345"))
+                        } else {
+                            res.render('admin/crea_modifica_cds', {
+                                lista_cds: rows,
+                                lista_materie: rows2,
+                                utente: req.session.utente,
+                                path: '/admin/crea_modifica_cds',
+                                depth: 2,
+                                lista_materie_ssd: lista_materie_ssd
+                            })
+                        }
                     })
+
                 }
             })
     })
