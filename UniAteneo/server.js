@@ -116,37 +116,27 @@ server.get('/portale', (req, res) => {
     if (req.session.utente) {
         switch (req.session.utente.tipo) {
             case 'docente':
-                var docente = req.session.utente.id
+                var id_docente = req.session.utente.id
                     db.serialize(() => {
                         db.all(`SELECT P.id_insegnamento, P.anno, P.scelta, I.nome AS nome_insegnamento, I.cfu, I.path_scheda_trasparenza, I.ssd, I.id_docente, D.nome AS nome_docente, D.cognome AS cognome_docente, C.tipo AS tipo_cds FROM CDS as C, Programmi as P, Insegnamenti as I, ` +
                                 `Docenti as D WHERE ` +
                                 `P.id_insegnamento = I.id AND ` +
                                 `I.id_docente = D.id AND ` +
-                                `P.id_corso = C.id AND D.id = ${docente}`, (err, rows) => {
+                                `P.id_corso = C.id AND D.id = ${id_docente}`, (err, rows) => {
                             if (err) {
                                 console.log(err)
-                                res.redirect('/' + get_error_parm("errore: 2345"))
+                                res.redirect('/' + get_error_parm("errore: 5432"))
                             } else {
                                 if (rows.length == 0) {
                                     res.redirect('/portale' + get_error_parm(`Non esistono insegnamenti`))
                                     return
                                 }
-                                console.log(rows)
-                                if (req.session.utente) {
-                                    res.render('docente', {
-                                        rows: rows,
-                                        utente: req.session.utente,
-                                        path: '/portale',
-                                        depth : 1
-                                    })
-                                } else {
-                                    res.render('/', {
-                                        rows: rows,
-                                        utente: null,
-                                        path: '/',
-                                        depth: 0
-                                    })
-                                }
+                                res.render('docente', {
+                                    rows: rows,
+                                    utente: req.session.utente,
+                                    path: '/portale',
+                                    depth : 1
+                                })
                             }
                         })
                     })
@@ -176,11 +166,143 @@ server.get('/portale', (req, res) => {
     }
 })
 
-server.get("/crea_modifica_cds", (req, res) => {
+server.post("/admin/crea_modifica_cds", (req, res) => {
+    var id_cds = req.body.id_cds
+    var nome_cds = req.body.nome_cds
+    var tipo_cds = req.body.tipo_cds
+    var materie  = []
+    for (i = 0; ; i++) {
+        if (req.body['id_' + i] !== 'undefined') {
+            scelta = req.body['scelta_' + i]
+            if (scelta.toUpperCase() === 'SI') {
+                scelta = true
+            } else {
+                scelta = false
+            }
+            materie.push({
+                id:  req.body['id_' + i],
+                nome:  req.body['nome_' + i],
+                ssd: req.body['ssd_' + i],
+                cfu:  req.body['cfu_' + i],
+                anno:  req.body['anno_' + i],
+                scelta:  scelta
+            })
+        }
+    }
+    db.serialize(() => {
+        db.get(`select id from CDS where id = ${id_cds}`, (err, row) => {
+            if (err) {
+                console.log(err)
+            } else {
+                if (row.id == id_cds) {
+                    // MODIFICA CDS
+                    db.all(`SELECT P.id, P.anno, P.scelta, I.nome` +
+                        `, I.cfu, I.ssd, C.tipo AS tipo_cds,` +
+                        `C.id AS id_cds, C.nome AS nome_cds FROM CDS as C, Programmi as P, Insegnamenti AS I ` +
+                        `WHERE P.id_insegnamento = I.id AND ` +
+                        `P.id_corso = C.id AND C.id = ${id_cds}`, (err, rows) => {
+                        if (err) {
+                            console.log(err)
+                        } else {
+                            var sql = 'UPDATE CDS SET'
+                            if (rows[0].nome_cds !== nome_cds) {
+                                sql += ` nome = ${nome_cds} `
+                            }
+                            if (rows[0].tipo_cds !== tipo_cds) {
+                                if (sql !== 'UPDATE CDS SET') sql += ','
+                                sql += ` tipo = ${tipo_cds} `
+                            }
+                            if (sql !== 'UPDATE CDS SET') {
+                                sql += `where id = ${id_cds}`
+                            } else {
+                                sql = null
+                            }
+                            db.get(sql, (err, row) => {
+                                if (err) {
+                                    console.log(err)
+                                }
+                            })
+                            var sql1
+                            var sql2
+                            rows.forEach(row => {
+                                sql1 = 'UPDATE Insegnamenti SET'
+                                sql2 = 'UPDATE Programmi SET'
+                                materie.forEach((materia_input, i) => {
+                                    if (materia_input.id === row.id.toString()) {
+                                        if (materia_input.nome !== row.nome.toString()) {
+                                            sql1 += `nome = ${materia_input.nome}`
+                                        }
+                                        if (materia_input.ssd !== row.ssd.toString()) {
+                                            if (sql1 !== 'UPDATE Insegnamenti SET') sql1 += ','
+                                            sql1 += `ssd = ${ materia_input.ssd }`
+                                        }
+                                        if (materia_input.cfu !== row.cfu.toString()) {
+                                            if (sql1 !== 'UPDATE Insegnamenti SET') sql1 += ','
+                                            sql1 += `cfu = ${materia_input.cfu}`
+                                        }
+                                        if (materia_input.scelta !== row.scelta.toString()) {
+                                            sql2 += `scelta = ${materia_input.scelta}`
+                                        }
+                                        if (materia_input.anno !== row.anno.toString()) {
+                                            if (sql2 !== 'UPDATE Programmi SET') sql2 += ','
+                                            sql2 += `anno = ${materia_input.anno}`
+                                        }
+                                        if (sql1 !== 'UPDATE Insegnamenti SET') {
+                                            sql1 += `where id = ${materia_input.id}`
+                                        }
+                                        if (sql2 !== 'UPDATE Programmi SET') {
+                                            sql2 += `where id_insegnamento = ${materia_input.id}`
+                                        }
+                                        materie[i] = null
+                                    }
+                                })
+                                if (sql1 !== 'UPDATE Insegnamenti SET') {
+                                    db.get(sql1, (err, row) => {
+                                        if (err) {
+                                            console.log(err)
+                                        }
+                                    })
+                                }
+                                if (sql2 !== 'UPDATE Programmi SET') {
+                                    db.get(sql2, (err, row) => {
+                                        if (err) {
+                                            console.log(err)
+                                        }
+                                    })
+                                }
+                            })
+                        }
+                    })
+                } else {
+                    // CREA CDS
+                    var sql = `INSERT INTO CDS (id, nome, tipo) VALUES(${id_cds}, \"${nome_cds}\", \"${tipo_cds}\")`
+                    db.get(sql2, (err, row) => {
+                        if (err) {
+                            console.log(err)
+                        }
+                    })
+                }
+                // insert all remaining elements from materie
+                var sql = ""
+                materie.forEach(element => {
+                    sql += `INSERT INTO Insegnamenti (id, nome, cfu, ssd) VALUES (${element.id}, \"${element.nome}\", ${element.cfu}, \"${element.ssd}\";\n`;
+                    sql += `INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (${id_corso}, ${element.id}, ${element.scelta}, ${element.anno});\n`;
+                })
+                db.exec(sql, (err, row) => {
+                    if (err) {
+                        console.log(err)
+                    }
+                })
+            }
+        })
+    }
+})
+
+server.get("/admin/crea_modifica_cds", (req, res) => {
     res.render('crea_modifica_cds', {
         rows: null,
         utente: req.session.utente,
-        path: '/crea_modifica_cds',
+        path: '/admin/crea_modifica_cds',
         depth: 1,
         lista_materie_ssd: lista_materie_ssd
     });
