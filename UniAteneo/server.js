@@ -103,6 +103,23 @@ function get_error_parm(error_string) {
     return '?error=' + error_string.split(' ').join('+')
 }
 
+function get_materie_e_cds() {
+    var ret
+    db.serialize(() => {
+        db.all(`SELECT P.id_insegnamento, P.anno, P.scelta, I.nome AS nome_insegnamento, I.cfu, I.path_scheda_trasparenza, I.ssd, C.tipo AS tipo_cds, C.nome AS nome_cds, C.id AS id_cds FROM CDS as C, Programmi as P, Insegnamenti as I ` +
+                `WHERE P.id_insegnamento = I.id AND ` +
+                `P.id_corso = C.id`, (err, rows) => {
+            if (err) {
+                console.log(err)
+                res.redirect('/' + get_error_parm("errore: 5342"))
+            } else {
+                ret = rows
+            }
+        })
+    })
+    return ret
+}
+
 server.get("/logout", (req, res) => {
     if (req.session.utente) {
         req.session.utente = null
@@ -186,8 +203,9 @@ server.post("/admin/elimina_cds", (req, res) => {
         res.redirect('/' + get_error_parm("Pagina riservata all'amministratore"))
         return
     }
-    var id_cds = req.body.id_cds
-    if (id_cds) {
+    var id_cds = req.body.id_cds.trimEnd().trimStart()
+    console.log(id_cds)
+    if (id_cds !== "") {
         db.serialize(() => {
             db.run(`DELETE FROM CDS WHERE id = ${id_cds};`, (err, row) => {
                 if (err) {
@@ -201,6 +219,8 @@ server.post("/admin/elimina_cds", (req, res) => {
                 }
             })
         })
+    } else {
+        res.redirect("/admin/elimina_cds" + get_error_parm("Inserire un codice"))
     }
 })
 
@@ -354,10 +374,10 @@ server.get("/admin/crea_modifica_cds", (req, res) => {
         return
     }
     res.render('admin/crea_modifica_cds', {
-        rows: null,
+        rows: get_materie_e_cds(),
         utente: req.session.utente,
         path: '/admin/crea_modifica_cds',
-        depth: 1,
+        depth: 2,
         lista_materie_ssd: lista_materie_ssd
     })
 })
