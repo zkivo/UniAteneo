@@ -33,6 +33,8 @@
     <Content Include="server.js" />
     <Content Include="package.json" />
     <Content Include="README.md" />
+    <Content Include="views\admin\elimina_cds.ejs" />
+    <Content Include="views\admin\admin_page.ejs" />
     <Content Include="views\crea_modifica_cds.ejs" />
     <Content Include="views\footer.ejs" />
     <Content Include="views\index.ejs" />
@@ -42,6 +44,7 @@
     <Folder Include="data\sql\" />
     <Folder Include="views\" />
     <Folder Include="public\" />
+    <Folder Include="views\admin\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
   <ProjectExtensions>

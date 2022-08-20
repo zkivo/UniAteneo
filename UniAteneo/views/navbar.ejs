@@ -10,22 +10,6 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 
-  
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" defer></script>
-	<script defer>
-		let paramString = window.location.search.split('?')[1];
-		let queryString = new URLSearchParams(paramString);
-
-		for (let pair of queryString.entries()) {
-			//console.log("Key is: " + pair[0]);
-			//console.log("Value is: " + pair[1]);
-			if (pair[0] === 'error') {
-				alert('Error: ' + pair[1])
-			}
-		}
-	</script>
-
 </head>
 
 <body>
@@ -88,4 +72,3 @@
     <img src="<%=str%>images/logo.png" class="img-fluid p-3">
     <h1>UniAteneo</h1> 
   </div>
-</body>
