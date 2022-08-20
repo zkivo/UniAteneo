@@ -103,6 +103,10 @@ function get_error_parm(error_string) {
     return '?error=' + error_string.split(' ').join('+')
 }
 
+function get_text_parm(str) {
+    return '?text=' + str.split(' ').join('+')
+}
+
 server.get("/logout", (req, res) => {
     if (req.session.utente) {
         req.session.utente = null
@@ -191,14 +195,19 @@ server.post("/admin/elimina_cds", (req, res) => {
         return
     }
     var id_cds = req.body.id_cds.trimEnd().trimStart()
-    console.log(id_cds)
     if (id_cds !== "") {
+        num = parseInt(id_cds, 10);
+        if (isNaN(num)) {
+            res.redirect("/admin/elimina_cds" + get_error_parm("Nessun corso con id: " + id_cds))
+            return
+        }
+        id_cds = num
         db.serialize(() => {
-            db.run(`DELETE FROM CDS WHERE id = ${id_cds};`, (err, row) => {
+            db.get(`DELETE FROM Programmi WHERE id_corso = ${id_cds};`, (err, row) => {
                 if (err) {
                     console.log(err)
                 } else {
-                    db.run(`DELETE Programmi WHERE id = ${id_cds};`, (err, row) => {
+                    db.get(`DELETE FROM CDS WHERE id = ${id_cds};`, (err, row) => {
                         if (err) {
                             console.log(err)
                         }
@@ -250,10 +259,10 @@ server.post("/admin/crea_modifica_cds", (req, res) => {
                 if (row.id == id_cds) {
                     // MODIFICA CDS
                     db.all(`SELECT P.id, P.anno, P.scelta, I.nome` +
-                        `, I.cfu, I.ssd, C.tipo AS tipo_cds,` +
-                        `C.id AS id_cds, C.nome AS nome_cds FROM CDS as C, Programmi as P, Insegnamenti AS I ` +
-                        `WHERE P.id_insegnamento = I.id AND ` +
-                        `P.id_corso = C.id AND C.id = ${id_cds}`, (err, rows) => {
+                           `, I.cfu, I.ssd, C.tipo AS tipo_cds,` +
+                           `C.id AS id_cds, C.nome AS nome_cds FROM CDS as C, Programmi as P, Insegnamenti AS I ` +
+                           `WHERE P.id_insegnamento = I.id AND ` +
+                           `P.id_corso = C.id AND C.id = ${id_cds}`, (err, rows) => {
                             if (err) {
                                 console.log(err)
                             } else {
@@ -362,28 +371,28 @@ server.get("/admin/crea_modifica_cds", (req, res) => {
     }
     db.serialize(() => {
         db.all('Select * from CDS', (err, rows) => {
-                if (err) {
-                    console.log(err)
-                    res.redirect('/admin/crea_modifica_cds' + get_error_parm("errore: 5342"))
-                } else {
-                    db.all('Select * from CDS', (err, rows2) => {
-                        if (err) {
-                            console.log(err)
-                            res.redirect('/admin/crea_modifica_cds' + get_error_parm("errore: 3345"))
-                        } else {
-                            res.render('admin/crea_modifica_cds', {
-                                lista_cds: rows,
-                                lista_materie: rows2,
-                                utente: req.session.utente,
-                                path: '/admin/crea_modifica_cds',
-                                depth: 2,
-                                lista_materie_ssd: lista_materie_ssd
-                            })
-                        }
-                    })
+            if (err) {
+                console.log(err)
+                res.redirect('/admin/crea_modifica_cds' + get_error_parm("errore: 5342"))
+            } else {
+                db.all('Select * from CDS', (err, rows2) => {
+                    if (err) {
+                        console.log(err)
+                        res.redirect('/admin/crea_modifica_cds' + get_error_parm("errore: 3345"))
+                    } else {
+                        res.render('admin/crea_modifica_cds', {
+                            lista_cds: rows,
+                            lista_materie: rows2,
+                            utente: req.session.utente,
+                            path: '/admin/crea_modifica_cds',
+                            depth: 2,
+                            lista_materie_ssd: lista_materie_ssd
+                        })
+                    }
+                })
 
-                }
-            })
+            }
+        })
     })
 
 })

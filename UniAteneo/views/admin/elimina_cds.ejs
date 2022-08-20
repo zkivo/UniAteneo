@@ -1,19 +1,17 @@
 <%- include('../navbar.ejs') %>
-<form>
-    <div class="container text-center g-5">
-        <form action="<%= path %>" method="post">
-            <div class="row justify-content-between">
-                <div class="col">
-                    <label class="col-form-label">Codice</label>
-                </div>
-                <div class="col">
-                    <input id="cds" type="text" class="form-control" name="id_cds">
-                </div>
-                <div class="col">
-                    <button type="submit" class="btn btn-primary">Elimina</button>
-                </div>
+<div class="container text-center g-5">
+    <form action="<%= path %>" method="POST">
+        <div class="row justify-content-between">
+            <div class="col">
+                <label class="col-form-label">Codice</label>
             </div>
-        </form>
-    </div>
-</form>
+            <div class="col">
+                <input id="cds" type="text" class="form-control" name="id_cds">
+            </div>
+            <div class="col">
+                <button type="submit" class="btn btn-primary">Elimina</button>
+            </div>
+        </div>
+    </form>
+</div>
 <%- include('../footer.ejs') %>
