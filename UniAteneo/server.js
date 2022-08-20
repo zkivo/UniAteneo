@@ -408,6 +408,11 @@ server.post("/login", (req, res) => {
             if (err)
                 console.log(err);
             else {
+                if (typeof row === 'undefined') {
+                    console.log("Incorrect username");
+                    res.redirect("/" + get_error_parm("Username o password non corretta."))
+                    return;
+                }
                 if (row.nome === nome &&
                         row.cognome === cognome &&
                         bcrypt.compareSync(password, row.password)) {
