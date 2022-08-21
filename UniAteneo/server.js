@@ -414,6 +414,30 @@ server.get("/admin/admin_page", (req, res) => {
     })
 })
 
+server.get("/admin/crea_rim_docente", (req, res) => {
+    if (typeof req.session.utente === 'undefined') {
+        res.redirect('/' + get_error_parm("Effettua prima il login"))
+        return
+    }
+    if (req.session.utente.tipo !== 'admin') {
+        res.redirect('/' + get_error_parm("Pagina riservata all'amministratore"))
+        return
+    }
+    db.all('Select * from CDS', (err, rows) => {
+        if (err) {
+            console.log(err)
+        } else {
+            res.render('admin/crea_rim_docente', {
+                cds : rows,
+                utente: req.session.utente,
+                path: '/admin/crea_rim_docente',
+                depth: 2,
+                lista_materie_ssd: lista_materie_ssd
+            })
+        }
+    })
+})
+
 server.post("/login", (req, res) => {
     var username, nome, cognome, password;
     if (req.body.username === 'admin' &&

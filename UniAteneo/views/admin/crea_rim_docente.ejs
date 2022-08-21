@@ -1,0 +1,94 @@
+<%- include('../navbar.ejs') %>
+<div class="container mt-2">
+    <form action="<%= path %>" method="POST">
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="radio" id="radio_crea" value="true" checked>
+      <label class="form-check-label" for="radio_crea">
+        Crea docente
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="radio" id="radio_rimuovi" value="true" >
+      <label class="form-check-label" for="radio_rimuovi">
+        Rimuovi docente
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="radio" id="radio_materia" value="true">
+      <label class="form-check-label" for="radio_materia">
+        Assegna insegnamento
+      </label>
+    </div>
+    <div class="row mt-1 g-2">
+        <div class="col-auto">
+            <label for="nome_docente" class="form-label">Nome docente</label>
+            <input type="text" class="form-control" id="nome_docente" aria-describedby="Nome docente">
+        </div>
+        <div class="col-auto">
+            <label for="cognome_docente" class="form-label">Cognome docente</label>
+            <input type="text" class="form-control" id="cognome_docente" aria-describedby="Nome docente">
+        </div>
+        <div class="col-1">
+            <label for="ssd_docente" class="form-label">SSD</label>
+            <input type="text" class="form-control" list="datalist_ssd" id="ssd_docente" aria-describedby="SSD">
+            <datalist id="datalist_ssd">
+            <% lista_materie_ssd.forEach(e => { %> <option value="<%= e.ssd %>"> <% }) %>
+            </datalist>
+        </div>
+        <div class="col-auto">
+            <label for="password_docente" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password_docente" aria-describedby="Password">
+        </div>
+    </div>
+    <div class="row mt-1 g-2">
+      <div class="col-auto">
+        <label for="id_materia" class="col-form-label">Inserisci codice insegnamento da assegnare:</label>
+      </div>
+      <div class="col-1">
+        <input type="text" id="id_materia" list="datalist_id_materie" class="form-control" aria-describedby="id_materia">
+        <datalist id="datalist_id_materie">
+            <% cds.forEach(e => { %> <option value="<%= e.id %>"> <% }) %>
+        </datalist>
+      </div>
+    </div>
+    </form>
+    <script>
+        var radio_crea = document.getElementById('radio_crea');
+        var radio_rimuovi = document.getElementById('radio_rimuovi');
+        var radio_materia = document.getElementById('radio_materia');
+        var ssd_docente = document.getElementById('ssd_docente');
+        var password_docente = document.getElementById('password_docente');
+        var id_materia = document.getElementById('id_materia');
+        radio_crea.addEventListener("change", function () {
+            if (radio_crea.checked) {
+                ssd_docente.disabled = false
+                password_docente.disabled = false
+                id_materia.disabled = true
+                radio_crea.value = "checked"
+                radio_rimuovi.value = ""
+                radio_materia.value = ""
+            }
+        });
+        radio_rimuovi.addEventListener("change", function () {
+            if (radio_rimuovi.checked) {
+                ssd_docente.disabled = true
+                password_docente.disabled = true
+                id_materia.disabled = true
+                radio_crea.value = ""
+                radio_rimuovi.value = "checked"
+                radio_materia.value = ""
+            }
+        });
+        radio_materia.addEventListener("change", function () {
+            if (radio_materia.checked) {
+                ssd_docente.disabled = true
+                password_docente.disabled = true
+                id_materia.disabled = false
+                radio_crea.value = ""
+                radio_rimuovi.value = ""
+                radio_materia.value = "checked"
+            }
+        });
+    </script>
+</div>
+<%- include('../footer.ejs') %>
