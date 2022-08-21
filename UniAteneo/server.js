@@ -203,16 +203,25 @@ server.post("/admin/elimina_cds", (req, res) => {
         }
         id_cds = num
         db.serialize(() => {
-            db.get(`DELETE FROM Programmi WHERE id_corso = ${id_cds};`, (err, row) => {
-                if (err) {
-                    console.log(err)
-                } else {
-                    db.get(`DELETE FROM CDS WHERE id = ${id_cds};`, (err, row) => {
-                        if (err) {
-                            console.log(err)
-                        }
-                    })
+            db.get(`select COUNT(id) from CDS where id = ${id_cds};`, (err, row) => {
+                if (row['COUNT(id)'] < 1) {
+                    res.redirect("/admin/elimina_cds" + get_error_parm("Nessun corso con id: " + id_cds))
+                    return
                 }
+                db.get(`DELETE FROM CDS WHERE id = ${id_cds};`, (err, row) => {
+                    if (err) {
+                        console.log(err)
+                    } else {
+                        db.get(`DELETE FROM Programmi WHERE id_corso = ${id_cds};`, (err, row) => {
+                            if (err) {
+                                console.log(err)
+                            } else {
+                                res.redirect("/admin/elimina_cds" + get_text_parm("Corso eliminato con successo"))
+                            }
+                        })
+                    }
+                })
+
             })
         })
     } else {
