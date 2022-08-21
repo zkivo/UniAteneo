@@ -1,53 +1,33 @@
 <%- include('../navbar.ejs') %>
-<form>
-    <div class="container text-center mt-3">
-        <div class="row g-3 align-items-center">
-          <div class="col-1">
-            <label class="col-form-label">Codice</label>
-          </div>
-          <div class="col-1">
-            <input type="text" class="form-control">
-          </div>
-          <div class="col-auto">
-            <label class="col-form-label">Denominazione</label>
-          </div>
-          <div class="col-4">
-            <input type="text" class="form-control"">
-          </div>
-            <div class="col-auto">
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Tipo di laurea</option>
-                    <option value="1">Triennale</option>
-                    <option value="2">Magistrale</option>
-                    <option value="3">Magistrale a ciclo unico</option>
-                </select>
-            </div>
-        </div>
-        <div class="row mt-3 align-items-center">
-          <div class="col-1">
-            <label class="col-form-label">#1</label>
-          </div>
-          <div class="col-4">
-            <input type="text" class="form-control" list="datalist_nomi" placeholder="Denominazione insegnamento">
-            <datalist id="datalist_nomi">
-              <% lista_materie_ssd.forEach(e => { %> <option value="<%= e.nome %>"> <% }) %>
-            </datalist>
-          </div>
-          <div class="col-2">
-            <input type="text" class="form-control" list="datalist_ssd" placeholder="S.S.D.">
-              <datalist id="datalist_ssd">
-              <% lista_materie_ssd.forEach(e => { %> <option value="<%= e.ssd %>"> <% }) %>
-              </datalist>
-          </div>
-          <div class="col-1">
-            <input type="text" class="form-control" value="6">
+<div class="container text-center mt-3">
+  <div class="accordion" id="accordionExample">
+    <% var i = 0 %>
+    <%  lista_cds.forEach(e => { %>
+    <% var corso = e.id %>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTwo<%=i%>">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo<%=i%>" aria-expanded="false" aria-controls="collapseTwo<%=i%>">
+            <%= e.nome %>
+          </button>
+        </h2>
+        <div id="collapseTwo<%=i%>" class="accordion-collapse collapse" aria-labelledby="headingTwo<%=i%>" data-bs-parent="#accordionExample">
+          <div class="accordion-body h-50">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <%  lista_materie.forEach(e => { %>
+                  <% if(e.id_cds !== corso) return; %>
+                  <button type="button" class="list-group-item list-group-item-action"> <%= e.nome_insegnamento %></button>
+                <% }) %>
+              </li>
+            </ul>	
           </div>
         </div>
-        <div class="row mt-3 align-items-center">
-            <div class="col-1">
-                <button type="button" class="btn btn-secondary">+</button>
-            </div>
-        </div>
-    </div>
-</form>
+      </div>
+      <% i++ %>
+    <% }) %>
+  </div>
+</div>
+
+
+
 <%- include('../footer.ejs') %>

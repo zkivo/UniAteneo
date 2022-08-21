@@ -366,7 +366,11 @@ server.get("/admin/crea_modifica_cds", (req, res) => {
                     console.log(err)
                     res.redirect('/admin/crea_modifica_cds' + get_error_parm("errore: 5342"))
                 } else {
-                    db.all('Select * from CDS', (err, rows2) => {
+                    db.all(`SELECT P.id_insegnamento, P.anno, P.scelta, I.nome AS nome_insegnamento, I.cfu, I.path_scheda_trasparenza, I.ssd, I.id_docente, D.nome AS nome_docente, D.cognome AS cognome_docente, C.tipo AS tipo_cds, C.id AS id_cds FROM CDS as C, Programmi as P, Insegnamenti as I, ` +
+                            `Docenti as D WHERE ` +
+                            `P.id_insegnamento = I.id AND ` +
+                            `I.id_docente = D.id AND ` +
+                            `P.id_corso = C.id`, (err, rows2) => {
                         if (err) {
                             console.log(err)
                             res.redirect('/admin/crea_modifica_cds' + get_error_parm("errore: 3345"))
@@ -385,6 +389,25 @@ server.get("/admin/crea_modifica_cds", (req, res) => {
                 }
             })
     })
+
+})
+
+server.get("/admin/crea_cds", (req, res) => {
+    if (typeof req.session.utente === 'undefined') {
+        res.redirect('/' + get_error_parm("Effettua prima il login"))
+        return
+    }
+    if (req.session.utente.tipo !== 'admin') {
+        res.redirect('/' + get_error_parm("Pagina riservata all'amministratore"))
+        return
+    }
+    res.render('admin/crea_cds', {
+        rows: null,
+        utente: req.session.utente,
+        path: '/admin/crea_cds',
+        depth: 2,
+        lista_materie_ssd: lista_materie_ssd
+    });
 
 })
 

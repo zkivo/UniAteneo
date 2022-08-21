@@ -1,0 +1,94 @@
+<%- include('../navbar.ejs') %>
+
+<div class="container text-center mt-3">
+    <form action="/admin/crea_cds" method="POST">
+        <div class="row g-3 align-items-center">
+          <div class="col-1">
+            <label class="col-form-label">Codice</label>
+          </div>
+          <div class="col-1">
+            <input type="text" class="form-control">
+          </div>
+          <div class="col-auto">
+            <label class="col-form-label">Denominazione</label>
+          </div>
+          <div class="col-4">
+            <input type="text" class="form-control"">
+          </div>
+          <div class="col-auto">
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Tipo di laurea</option>
+                <option value="1">Triennale</option>
+                <option value="2">Magistrale</option>
+                <option value="3">Magistrale a ciclo unico</option>
+            </select>
+          </div>
+          <div class="col-auto">
+            <button type="submit" class="btn btn-primary">Invia</button>
+          </div>
+        </div>
+    
+
+    <table id="myTable" class="table mt-2" data-toggle="table" data-mobile-responsive="true" data-pagination="true" data-height="460">
+        <thead>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+                <input id="tot_righe" type="text" hidden name="tot_righe">
+                <input type="text" name="mat-1" class="form-control" list="datalist_nomi" placeholder="Denominazione insegnamento">
+                <datalist id="datalist_nomi">
+                  <% lista_materie_ssd.forEach(e => { %> <option value="<%= e.nome %>"> <% }) %>
+                </datalist>
+            </td>
+            <td>
+                <input type="text" name="ssd-1" class="form-control" list="datalist_ssd" placeholder="S.S.D.">
+                <datalist id="datalist_ssd">
+                <% lista_materie_ssd.forEach(e => { %> <option value="<%= e.ssd %>"> <% }) %>
+                </datalist>
+            </td>
+            <td>
+                <input type="text" name="cfu-1" class="form-control" placeholder="CFU">
+            </td>
+            <td>
+              <a href="#" id="addrow">Aggiungi</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+</form>
+
+
+
+<%- include('../footer.ejs') %>
+
+<script>
+    var i=1;
+    $(document).ready(function() {
+      //Try to get tbody first with jquery children. works faster!
+
+      var tbody = $('#myTable').children('tbody');
+
+      //Then if no tbody just select your table 
+      var table = tbody.length ? tbody : $('#myTable');
+
+      $('#addrow').click(function() {
+        //Add row
+        i++;
+        document.getElementById('tot_righe').value = i.toString();
+        // var prova = document.getElementById('tot_righe')
+        // console.log(prova.value)
+        table.append('<tr><td> <input type="text" name="mat-'+ i +'" class="form-control" list="datalist_nomi" placeholder="Denominazione insegnamento"> <datalist id="datalist_nomi"> <% lista_materie_ssd.forEach(e => { %> <option value="<%= e.nome %>"> <% }) %> </datalist> </td>  <td> <input type="text" name="ssd-'+ i +'" class="form-control" list="datalist_ssd" placeholder="S.S.D."><datalist id="datalist_ssd"><% lista_materie_ssd.forEach(e => { %> <option value="<%= e.ssd %>"> <% }) %></datalist> </td> <td> <input type="text" name="cfu-'+ i +'" class="form-control" placeholder="CFU"></td> <td >  <button   class="btn btnDelete btn-secondary"   id="delrow"  >-</button>  </td>  </tr>  ');
+      })
+
+      $("#myTable").on('click', '.btnDelete', function() {
+        $(this).closest('tr').remove();
+        i--;
+        document.getElementById('tot_righe').value = i.toString();
+        // var prova = document.getElementById('tot_righe')
+        // console.log(prova.value)
+      });
+
+    });
+  </script>
