@@ -409,6 +409,44 @@ server.get("/admin/crea_modifica_cds", (req, res) => {
 
 })
 
+server.post("/admin/crea_cds", (req, res) => {
+    if (typeof req.session.utente === 'undefined') {
+        res.redirect('/' + get_error_parm("Effettua prima il login"))
+        return
+    }
+    if (req.session.utente.tipo !== 'admin') {
+        res.redirect('/' + get_error_parm("Pagina riservata all'amministratore"))
+        return
+    }
+    var id_cds = req.body.id_cds
+    var nome_cds = req.body.nome_cds
+    var tipo_cds = req.body.tipo_cds
+    var tot_mat = req.body.tot_righe
+    var materie = []
+    db.serialize(() => {
+        db.get(`select COUNT(id) from CDS where id = ${id_cds};`, (err, row) => {
+            if (row['COUNT(id)'] > 0) {
+                res.redirect("/admin/crea_cds" + get_error_parm("Esiste già un corso con id: " + id_cds))
+                return
+            } else {
+                var i = 0
+                while (i < tot_righe) {
+                    var nome = req.body['mat-' + i]
+                    var ssd = req.body['ssd-' + i]
+                    var cfu = req.body['ssd-' + i]
+                    if (typeof nome !== 'undefined') {
+                        if (nome === '' ||
+                                ssd === '' ||
+                                cfu === '') {
+
+                        }
+                    }
+                }
+            }
+        })
+    })
+})
+
 server.get("/admin/crea_cds", (req, res) => {
     if (typeof req.session.utente === 'undefined') {
         res.redirect('/' + get_error_parm("Effettua prima il login"))

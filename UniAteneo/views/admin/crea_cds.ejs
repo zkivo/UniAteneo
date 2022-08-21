@@ -7,16 +7,16 @@
             <label class="col-form-label">Codice</label>
           </div>
           <div class="col-1">
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" name="id_cds" required>
           </div>
           <div class="col-auto">
-            <label class="col-form-label">Denominazione</label>
+            <label class="col-form-label" >Denominazione</label>
           </div>
           <div class="col-4">
-            <input type="text" class="form-control"">
+            <input type="text" class="form-control" name="nome_cds" required>
           </div>
           <div class="col-auto">
-            <select class="form-select" aria-label="Default select example">
+            <select class="form-select" aria-label="Default select example" name="tipo_cds" required>
                 <option selected>Tipo di laurea</option>
                 <option value="1">Triennale</option>
                 <option value="2">Magistrale</option>
@@ -36,19 +36,19 @@
           <tr>
             <td>
                 <input id="tot_righe" type="text" hidden name="tot_righe">
-                <input type="text" name="mat-1" class="form-control" list="datalist_nomi" placeholder="Denominazione insegnamento">
+                <input type="text" name="mat-1" required class="form-control" list="datalist_nomi" placeholder="Denominazione insegnamento">
                 <datalist id="datalist_nomi">
                   <% lista_materie_ssd.forEach(e => { %> <option value="<%= e.nome %>"> <% }) %>
                 </datalist>
             </td>
             <td>
-                <input type="text" name="ssd-1" class="form-control" list="datalist_ssd" placeholder="S.S.D.">
+                <input type="text" name="ssd-1" required class="form-control" list="datalist_ssd" placeholder="S.S.D.">
                 <datalist id="datalist_ssd">
                 <% lista_materie_ssd.forEach(e => { %> <option value="<%= e.ssd %>"> <% }) %>
                 </datalist>
             </td>
             <td>
-                <input type="text" name="cfu-1" class="form-control" placeholder="CFU">
+                <input type="text" name="cfu-1" required class="form-control" placeholder="CFU">
             </td>
             <td>
               <a href="#" id="addrow">Aggiungi</a>
