@@ -414,14 +414,21 @@ server.get("/admin/crea_modifica_cds", (req, res) => {
 
 })
 
-function send_html_plus_data(path, obj) {
-    var chiavi = Object.keys(obj)
-    str = '?'
-    chiavi.forEach(chiave => {
-        str += chiave + "=" + obj[chiave].toString() + "&"
-    })
-    if (str !== '?') str = str.substring(0, str.length - 1)
-}
+// function send_html_with_data(ejs_file, obj, req, res) {
+//     var chiavi = Object.keys(obj)
+//     str = '?'
+//     chiavi.forEach(chiave => {
+//         str += chiave + "=" + obj[chiave].toString().split(' ').join('+') + "&"
+//     })
+//     if (str !== '?') str = str.substring(0, str.length - 1)
+//     conn_path = '/' + ejs_file
+//     res.render(ejs_file + str, {
+//         utente: req.session.utente,
+//         path: conn_path,
+//         depth: conn_path.split('/').length,
+//         lista_materie_ssd: lista_materie_ssd
+//     })
+// }
 
 server.post("/admin/crea_cds", (req, res) => {
     if (typeof req.session.utente === 'undefined') {
@@ -432,18 +439,54 @@ server.post("/admin/crea_cds", (req, res) => {
         res.redirect('/' + get_error_parm("Pagina riservata all'amministratore"))
         return
     }
+    var pallina = {}
     var id_cds = req.body.id_cds
+    pallina['id_cds'] = id_cds
+    var nome_cds = req.body.nome_cds.trimEnd().trimStart()
+    pallina['nome_cds'] = nome_cds
+    var tipo_cds = req.body.tipo_cds
+    pallina['tipo_cds'] = tipo_cds
+    var tot_righe = req.body.tot_righe
+    pallina['tot_righe'] = tot_righe
+    var needed_cfu
+    var i = 0
+    var j = 0
+    var materie = []
+    while (i < parseInt(tot_righe, 10)) {
+        var nome = req.body['nome_' + j]
+        if (typeof nome === 'undefined') {
+            j++
+            continue
+        }
+        var ssd = req.body['ssd_' + j]
+        var cfu = req.body['cfu_' + j]
+        // var id = get_new_id_insegnamento()
+        materie.push({
+            nome: nome,
+            ssd : ssd,
+            cfu : cfu
+        })
+        i++;
+        j++;
+    }
+    pallina.materie = materie
+ /* ****************************************** */
     num = parseInt(id_cds, 10);
     if (isNaN(num)) {
-        var chiavi = Object.keys(req.body)
-        res.redirect("/admin/crea_cds" + get_error_parm("Il codice del corso deve essere un numero"))
+        pallina['error'] = "Il codice del corso deve essere un numero"
+        res.render('admin/crea_cds', {
+            pallina : pallina,
+            utente: req.session.utente,
+            path: '/admin/crea_cds',
+            depth: 2,
+            lista_materie_ssd: lista_materie_ssd
+        })
         return
     }
+    return
     id_cds = num
-    var nome_cds = req.body.nome_cds.trimEnd().trimStart()
-    var tipo_cds = req.body.tipo_cds
-    var needed_cfu
     if (tipo_cds === 'Tipo di laurea') {
+        send_html_plus_data('/admin/crea_cds',obj, res)
         res.redirect("/admin/crea_cds" + get_error_parm("Selezionare il tipo di laurea"))
         return
     } else if (tipo_cds === 'Triennale') {
@@ -456,7 +499,6 @@ server.post("/admin/crea_cds", (req, res) => {
         tipo_cds = 'LMC'
         needed_cfu = 300
     }
-    var tot_righe = parseInt(req.body.tot_righe, 10)
     var materie = []
     db.serialize(() => {
         console.log(`select COUNT(*) from CDS where id = ${id_cds} OR (nome = \"${nome_cds}\" AND tipo = \"${tipo_cds}\")`)

@@ -7,23 +7,21 @@
             <label class="col-form-label">Codice</label>
           </div>
           <div class="col-1">
-            <input type="text" class="form-control" name="id_cds" required>
+            <input type="text" class="form-control" name="id_cds" required autofocus value="<% if (typeof pallina !== 'undefined') {%><%= pallina.id_cds %><%} %>">
           </div>
           <div class="col-auto">
             <label class="col-form-label" >Denominazione</label>
           </div>
           <div class="col-4">
-<<<<<<< HEAD
-=======
-            <input type="text" class="form-control" name="nome_cds" required>
->>>>>>> 32da8208373f64859a8f71547803462ba9c784b3
+            <input type="text" class="form-control" name="nome_cds" required value="<% if (typeof pallina !== 'undefined') {%><%= pallina.nome_cds %><%} %>">
+
           </div>
           <div class="col-auto">
             <select class="form-select" aria-label="Default select example" name="tipo_cds" required>
-                <option selected>Tipo di laurea</option>
-                <option>Triennale</option>
-                <option>Magistrale</option>
-                <option>Magistrale a ciclo unico</option>
+                <option <% if (typeof pallina === 'undefined') { %> selected <% } %> >Tipo di laurea</option>
+                <option <% if (typeof pallina !== 'undefined') { if ( pallina.tipo_cds === 'Triennale') { %> selected <% } } %> >Triennale</option>
+                <option <% if (typeof pallina !== 'undefined') { if ( pallina.tipo_cds === 'Magistrale') { %> selected <% } } %> >Magistrale</option>
+                <option <% if (typeof pallina !== 'undefined') { if ( pallina.tipo_cds === 'Magistrale a ciclo unico') { %> selected <% } } %> >Magistrale a ciclo unico</option>
             </select>
           </div>
           <div class="col-auto">
@@ -38,31 +36,52 @@
         <tbody>
           <tr>
             <td>
-                <input id="tot_righe" type="text" hidden name="tot_righe">
-                <input type="text" name="mat-1" required class="form-control" list="datalist_nomi" placeholder="Denominazione insegnamento">
+                <input id="tot_righe" type="text" hidden name="tot_righe" value="1">
+                <input type="text" name="nome_0" required class="form-control" list="datalist_nomi" placeholder="Denominazione insegnamento" value="<% if (typeof pallina !== 'undefined') {%><%= pallina.materie[0].nome %><%} %>">
                 <datalist id="datalist_nomi">
                   <% lista_materie_ssd.forEach(e => { %> <option value="<%= e.nome %>"> <% }) %>
                 </datalist>
             </td>
             <td>
-                <input type="text" name="ssd-1" required class="form-control" list="datalist_ssd" placeholder="S.S.D.">
+                <input type="text" name="ssd_0" required class="form-control" list="datalist_ssd" placeholder="S.S.D." value="<% if (typeof pallina !== 'undefined') {%><%= pallina.materie[0].ssd %><%} %>">
                 <datalist id="datalist_ssd">
                 <% lista_materie_ssd.forEach(e => { %> <option value="<%= e.ssd %>"> <% }) %>
                 </datalist>
             </td>
             <td>
                 <!--<input type="text" name="cfu-1" required class="form-control" placeholder="CFU">-->
-                <select class="form-select" aria-label="Default select example" name="cfu-1" required>
-                    <option selected>3</option>
-                    <option>6</option>
-                    <option>9</option>
-                    <option>12</option>
+                <select class="form-select" aria-label="Default select example" name="cfu_0" required>
+                  <option <% if (typeof pallina === 'undefined') { %> selected <% } %> >3</option>
+                  <option <% if (typeof pallina !== 'undefined') { if ( pallina.materie[0].cfu === '6') { %> selected <% } } %> >6</option>
+                  <option <% if (typeof pallina !== 'undefined') { if ( pallina.materie[0] === '9') { %> selected <% } } %> >9</option>
+                  <option <% if (typeof pallina !== 'undefined') { if ( pallina.materie[0] === '12') { %> selected <% } } %> >12</option>
                 </select>
             </td>
             <td>
               <a href="#" id="addrow" style="color: #FFFFFF;"><button type="button" class="btn btn-secondary">Aggiungi</button></a>
             </td>
           </tr>
+          <% if (typeof pallina !== 'undefined') { pallina.materie.forEach((materia,index) => { if (index == 0) return; %>
+            <tr>
+                <td> <input type="text" name="nome_<%= index.toString() %>" class="form-control" list="datalist_nomi"
+                        placeholder="Denominazione insegnamento" required> <datalist id="datalist_nomi" value="<%= materia.nome %>">
+                        <% lista_materie_ssd.forEach(e=> { %> <option value="<%= e.nome %>">
+                                <% }) %>
+                    </datalist> </td>
+                <td> <input type="text" name="ssd_<%= index.toString() %>"" class="form-control" list="datalist_ssd" placeholder="S.S.D."
+                        required><datalist id="datalist_ssd" value="<%= materia.ssd %>">
+                        <% lista_materie_ssd.forEach(e=> { %> <option value="<%= e.ssd %>">
+                                <% }) %>
+                    </datalist> </td>
+                <td> <select class="form-select" aria-label="Default select example" name="cfu_<%= index.toString() %>" required>
+                    <option <% if (materia.cfu === '3') { %> selected <% } %> >3</option>
+                    <option <% if (materia.cfu === '6') { %> selected <% } %> >6</option>
+                    <option <% if (materia.cfu === '9') { %> selected <% } %> >9</option>
+                    <option <% if (materia.cfu === '12') { %> selected <% } %> >12</option>
+                    </select></td>
+                <td> <button class="btn btnDelete btn-secondary" id="delrow">-</button> </td>
+            </tr>
+            <% }) } %>
         </tbody>
       </table>
 </div>
@@ -73,7 +92,7 @@
 <%- include('../footer.ejs') %>
 
 <script>
-    var i=1;
+    var tot_righe = 1;
     $(document).ready(function() {
       //Try to get tbody first with jquery children. works faster!
 
@@ -84,11 +103,11 @@
 
       $('#addrow').click(function() {
         //Add row
-        i++;
-        document.getElementById('tot_righe').value = i.toString();
         // var prova = document.getElementById('tot_righe')
         // console.log(prova.value)
-          table.append('<tr><td> <input type="text" name="mat-' + i + '" class="form-control" list="datalist_nomi" placeholder="Denominazione insegnamento"> <datalist id="datalist_nomi"> <% lista_materie_ssd.forEach(e => { %> <option value="<%= e.nome %>"> <% }) %> </datalist> </td>  <td> <input type="text" name="ssd-' + i + '" class="form-control" list="datalist_ssd" placeholder="S.S.D."><datalist id="datalist_ssd"><% lista_materie_ssd.forEach(e => { %> <option value="<%= e.ssd %>"> <% }) %></datalist> </td> <td>           <select class="form-select" aria-label="Default select example" name="cfu-' + i + '" required> <option selected>3</option> <option>6</option> <option>9</option> <option>12</option> </select></td> <td >  <button   class="btn btnDelete btn-secondary"   id="delrow"  >-</button>  </td>  </tr>  ');
+          table.append('<tr><td> <input type="text" name="nome_' + tot_righe + '" class="form-control" list="datalist_nomi" placeholder="Denominazione insegnamento" required> <datalist id="datalist_nomi"> <% lista_materie_ssd.forEach(e => { %> <option value="<%= e.nome %>"> <% }) %> </datalist> </td>  <td> <input type="text" name="ssd_' + tot_righe + '" class="form-control" list="datalist_ssd" placeholder="S.S.D." required><datalist id="datalist_ssd"><% lista_materie_ssd.forEach(e => { %> <option value="<%= e.ssd %>"> <% }) %></datalist> </td> <td>           <select class="form-select" aria-label="Default select example" name="cfu_' + tot_righe + '" required> <option selected>3</option> <option>6</option> <option>9</option> <option>12</option> </select></td> <td >  <button   class="btn btnDelete btn-secondary"   id="delrow"  >-</button>  </td>  </tr>  ');
+          tot_righe++
+          document.getElementById('tot_righe').value = i.toString();
       })
 
       $("#myTable").on('click', '.btnDelete', function() {
