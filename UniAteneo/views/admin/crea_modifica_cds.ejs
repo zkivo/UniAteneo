@@ -12,7 +12,7 @@
         </h2>
         <div id="collapseTwo<%=i%>" class="accordion-collapse collapse" aria-labelledby="headingTwo<%=i%>" data-bs-parent="#accordionExample">
           <div class="accordion-body h-50">
-            <ul class="list-group list-group-flush">
+            <ul class="list-group list-group-flush overflow-auto" style="max-height: 550px; min-height: 200px;" >
               <li class="list-group-item">
                 <%  lista_materie.forEach(e => { %>
                   <% if(e.id_cds !== corso) return; %>
