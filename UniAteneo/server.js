@@ -420,6 +420,7 @@ function send_html_plus_data(path, obj) {
     chiavi.forEach(chiave => {
         str += chiave + "=" + obj[chiave].toString() + "&"
     })
+    if (str !== '?') str = str.substring(0, str.length - 1)
 }
 
 server.post("/admin/crea_cds", (req, res) => {
