@@ -19,6 +19,11 @@ const db = new sqlite3.Database(path_db, initiate_db);
 const lista_materie_ssd = JSON.parse(fs.readFileSync("./data/materie_ssd.json"))
 const server = express();
 
+var start_id_insegnamenti = 2020
+function get_new_id_insegnamento() {
+    return start_id_insegnamenti += 25
+}
+
 server.use(express.static('public'))
 server.set('view engine', 'ejs');
 
@@ -203,16 +208,25 @@ server.post("/admin/elimina_cds", (req, res) => {
         }
         id_cds = num
         db.serialize(() => {
-            db.get(`DELETE FROM Programmi WHERE id_corso = ${id_cds};`, (err, row) => {
-                if (err) {
-                    console.log(err)
-                } else {
-                    db.get(`DELETE FROM CDS WHERE id = ${id_cds};`, (err, row) => {
-                        if (err) {
-                            console.log(err)
-                        }
-                    })
+            db.get(`select COUNT(id) from CDS where id = ${id_cds};`, (err, row) => {
+                if (row['COUNT(id)'] < 1) {
+                    res.redirect("/admin/elimina_cds" + get_error_parm("Nessun corso con id: " + id_cds))
+                    return
                 }
+                db.get(`DELETE FROM CDS WHERE id = ${id_cds};`, (err, row) => {
+                    if (err) {
+                        console.log(err)
+                    } else {
+                        db.get(`DELETE FROM Programmi WHERE id_corso = ${id_cds};`, (err, row) => {
+                            if (err) {
+                                console.log(err)
+                            } else {
+                                res.redirect("/admin/elimina_cds" + get_text_parm("Corso eliminato con successo"))
+                            }
+                        })
+                    }
+                })
+
             })
         })
     } else {
@@ -398,6 +412,92 @@ server.get("/admin/crea_modifica_cds", (req, res) => {
         })
     })
 
+})
+
+function send_html_plus_data(path, obj) {
+    var chiavi = Object.keys(obj)
+    str = '?'
+    chiavi.forEach(chiave => {
+        str += chiave + "=" + obj[chiave].toString() + "&"
+    })
+    if (str !== '?') str = str.substring(0, str.length - 1)
+}
+
+server.post("/admin/crea_cds", (req, res) => {
+    if (typeof req.session.utente === 'undefined') {
+        res.redirect('/' + get_error_parm("Effettua prima il login"))
+        return
+    }
+    if (req.session.utente.tipo !== 'admin') {
+        res.redirect('/' + get_error_parm("Pagina riservata all'amministratore"))
+        return
+    }
+    var id_cds = req.body.id_cds
+    num = parseInt(id_cds, 10);
+    if (isNaN(num)) {
+        var chiavi = Object.keys(req.body)
+        res.redirect("/admin/crea_cds" + get_error_parm("Il codice del corso deve essere un numero"))
+        return
+    }
+    id_cds = num
+    var nome_cds = req.body.nome_cds.trimEnd().trimStart()
+    var tipo_cds = req.body.tipo_cds
+    var needed_cfu
+    if (tipo_cds === 'Tipo di laurea') {
+        res.redirect("/admin/crea_cds" + get_error_parm("Selezionare il tipo di laurea"))
+        return
+    } else if (tipo_cds === 'Triennale') {
+        tipo_cds = 'LT'
+        needed_cfu = 180
+    } else if (tipo_cds === 'Magistrale') {
+        tipo_cds = 'LM'
+        needed_cfu = 120
+    } else if (tipo_cds === 'Magistrale a ciclo unico') {
+        tipo_cds = 'LMC'
+        needed_cfu = 300
+    }
+    var tot_righe = parseInt(req.body.tot_righe, 10)
+    var materie = []
+    db.serialize(() => {
+        console.log(`select COUNT(*) from CDS where id = ${id_cds} OR (nome = \"${nome_cds}\" AND tipo = \"${tipo_cds}\")`)
+        db.get(`select COUNT(*) from CDS where id = ${id_cds} OR (nome = \"${nome_cds}\" AND tipo = \"${tipo_cds}\")`, (err, row) => {
+            console.log("row: ", row)
+            if (row['COUNT(*)'] > 0) {
+                res.redirect("/admin/crea_cds" + get_error_parm("Esiste un corso con id: " + id_cds + "\n" +
+                                                                "Oppure esiste con questo nome e tipo di laurea."))
+                return
+            } else {
+                var i = 0
+                var j = 0
+                var materie = []
+                var tot_cfu = 0
+                while (i < tot_righe) {
+                    var id = get_new_id_insegnamento()
+                    var nome = req.body['mat-' + j]
+                    if (typeof nome === 'undefined') {
+                        j++
+                        continue
+                    }
+                    var ssd = req.body['ssd-' + j]
+                    var cfu = parseInt(req.body['cfu-' + j], 10)
+                    materie.push({
+                        id: id,
+                        nome: nome,
+                        ssd : ssd,
+                        cfu : cfu
+                    })
+                    tot_cfu += cfu
+                    i++;
+                    j++;
+                }
+                if (tot_cfu != needed_cfu) {
+                    res.redirect("/admin/crea_cds" + get_error_parm("La somma dei cfu deve fare " + needed_cfu))
+                    return
+                }
+
+            }
+        })
+    })
 })
 
 server.get("/admin/crea_cds", (req, res) => {
