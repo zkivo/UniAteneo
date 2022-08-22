@@ -36,8 +36,8 @@
         <tbody>
           <tr>
             <td>
-                <input id="tot_righe" type="text" hidden name="tot_righe" value="1">
-                <input type="text" name="nome_0" required class="form-control" list="datalist_nomi" placeholder="Denominazione insegnamento" value="<% if (typeof pallina !== 'undefined') {%><%= pallina.materie[0].nome %><%} %>">
+                <input id="tot_righe" type="text" hidden name="tot_righe" value="<% if (typeof pallina !== 'undefined') { %><%= pallina.tot_righe %><% } else { %>1<% } %>">
+                <input type="text" name="nome_0" required class="form-control" list="datalist_nomi" placeholder="Denominazione insegnamento" value="<% if (typeof pallina !== 'undefined') { %><%= pallina.materie[0].nome %><% } %>">
                 <datalist id="datalist_nomi">
                   <% lista_materie_ssd.forEach(e => { %> <option value="<%= e.nome %>"> <% }) %>
                 </datalist>
@@ -49,53 +49,46 @@
                 </datalist>
             </td>
             <td>
-                <!--<input type="text" name="cfu-1" required class="form-control" placeholder="CFU">-->
                 <select class="form-select" aria-label="Default select example" name="cfu_0" required>
                   <option <% if (typeof pallina === 'undefined') { %> selected <% } %> >3</option>
                   <option <% if (typeof pallina !== 'undefined') { if ( pallina.materie[0].cfu === '6') { %> selected <% } } %> >6</option>
-                  <option <% if (typeof pallina !== 'undefined') { if ( pallina.materie[0] === '9') { %> selected <% } } %> >9</option>
-                  <option <% if (typeof pallina !== 'undefined') { if ( pallina.materie[0] === '12') { %> selected <% } } %> >12</option>
+                  <option <% if (typeof pallina !== 'undefined') { if ( pallina.materie[0].cfu === '9') { %> selected <% } } %> >9</option>
+                  <option <% if (typeof pallina !== 'undefined') { if ( pallina.materie[0].cfu === '12') { %> selected <% } } %> >12</option>
                 </select>
             </td>
             <td>
-              <a href="#" id="addrow" style="color: #FFFFFF;"><button type="button" class="btn btn-secondary">Aggiungi</button></a>
+              <a href="#" id="addrow" style="color: #FFFFFF;"><button  type="button" class="btn btn-secondary">Aggiungi</button></a>
             </td>
           </tr>
-          <% if (typeof pallina !== 'undefined') { pallina.materie.forEach((materia,index) => { if (index == 0) return; %>
-            <tr>
-                <td> <input type="text" name="nome_<%= index.toString() %>" class="form-control" list="datalist_nomi"
-                        placeholder="Denominazione insegnamento" required> <datalist id="datalist_nomi" value="<%= materia.nome %>">
-                        <% lista_materie_ssd.forEach(e=> { %> <option value="<%= e.nome %>">
-                                <% }) %>
-                    </datalist> </td>
-                <td> <input type="text" name="ssd_<%= index.toString() %>"" class="form-control" list="datalist_ssd" placeholder="S.S.D."
-                        required><datalist id="datalist_ssd" value="<%= materia.ssd %>">
-                        <% lista_materie_ssd.forEach(e=> { %> <option value="<%= e.ssd %>">
-                                <% }) %>
-                    </datalist> </td>
-                <td> <select class="form-select" aria-label="Default select example" name="cfu_<%= index.toString() %>" required>
-                    <option <% if (materia.cfu === '3') { %> selected <% } %> >3</option>
-                    <option <% if (materia.cfu === '6') { %> selected <% } %> >6</option>
-                    <option <% if (materia.cfu === '9') { %> selected <% } %> >9</option>
-                    <option <% if (materia.cfu === '12') { %> selected <% } %> >12</option>
-                    </select></td>
-                <td> <button class="btn btnDelete btn-secondary" id="delrow">-</button> </td>
+          <% if (typeof pallina !== 'undefined') { pallina.materie.forEach((materia,index) => { if (index == 0) { return } %>
+          <tr>
+              <td> <input type="text" name="nome_<%= index.toString() %>" class="form-control" list="datalist_nomi"
+                      placeholder="Denominazione insegnamento" required value="<%= materia.nome %>">
+                  </datalist> </td>
+              <td> <input type="text" name="ssd_<%= index.toString() %>" class="form-control" list="datalist_ssd" placeholder="S.S.D."
+                      required value="<%= materia.ssd %>">
+                  </datalist> </td>
+              <td> <select class="form-select" aria-label="Default select example" name="cfu_<%= index.toString() %>" required>
+                  <option <% if (materia.cfu === '3') { %> selected <% } %> >3</option>
+                  <option <% if (materia.cfu === '6') { %> selected <% } %> >6</option>
+                  <option <% if (materia.cfu === '9') { %> selected <% } %> >9</option>
+                  <option <% if (materia.cfu === '12') { %> selected <% } %> >12</option>
+                  </select></td>
+              <td> <button class="btn btnDelete btn-secondary" id="delrow">-</button> </td>
             </tr>
-            <% }) } %>
+          <% }) } %>
         </tbody>
       </table>
 </div>
 </form>
-
-
-
 <%- include('../footer.ejs') %>
-
 <script>
-    var tot_righe = 1;
+    <% if (typeof pallina !== 'undefined') { if (pallina.error !== 'undefined') { %> alert("<%= pallina.error %>") <% } } %>
+    
+    var i_righe = <% if (typeof pallina !== 'undefined') { %><%= pallina.tot_righe %><% } else { %>1<% } %>;
+
     $(document).ready(function() {
       //Try to get tbody first with jquery children. works faster!
-
       var tbody = $('#myTable').children('tbody');
 
       //Then if no tbody just select your table 
@@ -105,15 +98,16 @@
         //Add row
         // var prova = document.getElementById('tot_righe')
         // console.log(prova.value)
-          table.append('<tr><td> <input type="text" name="nome_' + tot_righe + '" class="form-control" list="datalist_nomi" placeholder="Denominazione insegnamento" required> <datalist id="datalist_nomi"> <% lista_materie_ssd.forEach(e => { %> <option value="<%= e.nome %>"> <% }) %> </datalist> </td>  <td> <input type="text" name="ssd_' + tot_righe + '" class="form-control" list="datalist_ssd" placeholder="S.S.D." required><datalist id="datalist_ssd"><% lista_materie_ssd.forEach(e => { %> <option value="<%= e.ssd %>"> <% }) %></datalist> </td> <td>           <select class="form-select" aria-label="Default select example" name="cfu_' + tot_righe + '" required> <option selected>3</option> <option>6</option> <option>9</option> <option>12</option> </select></td> <td >  <button   class="btn btnDelete btn-secondary"   id="delrow"  >-</button>  </td>  </tr>  ');
-          tot_righe++
-          document.getElementById('tot_righe').value = i.toString();
+          console.log("asd", i_righe);
+          table.append('<tr><td> <input type="text" name="nome_' + i_righe.toString() + '" class="form-control" list="datalist_nomi" placeholder="Denominazione insegnamento" required> <datalist id="datalist_nomi"> <% lista_materie_ssd.forEach(e => { %> <option value="<%= e.nome %>"> <% }) %> </datalist> </td>  <td> <input type="text" name="ssd_' + i_righe.toString() + '" class="form-control" list="datalist_ssd" placeholder="S.S.D." required><datalist id="datalist_ssd"><% lista_materie_ssd.forEach(e => { %> <option value="<%= e.ssd %>"> <% }) %></datalist> </td> <td>           <select class="form-select" aria-label="Default select example" name="cfu_' + i_righe.toString() + '" required> <option selected>3</option> <option>6</option> <option>9</option> <option>12</option> </select></td> <td >  <button   class="btn btnDelete btn-secondary"   id="delrow"  >-</button>  </td>  </tr>  ');
+          i_righe++;
+          document.getElementById('tot_righe').value = i_righe.toString();
       })
 
       $("#myTable").on('click', '.btnDelete', function() {
         $(this).closest('tr').remove();
-        i--;
-        document.getElementById('tot_righe').value = i.toString();
+        i_righe--;
+        document.getElementById('tot_righe').value = i_righe.toString();
         // var prova = document.getElementById('tot_righe')
         // console.log(prova.value)
       });

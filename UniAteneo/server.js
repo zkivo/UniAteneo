@@ -483,11 +483,16 @@ server.post("/admin/crea_cds", (req, res) => {
         })
         return
     }
-    return
     id_cds = num
     if (tipo_cds === 'Tipo di laurea') {
-        send_html_plus_data('/admin/crea_cds',obj, res)
-        res.redirect("/admin/crea_cds" + get_error_parm("Selezionare il tipo di laurea"))
+        pallina['error'] = "Selezionare il tipo di laurea"
+        res.render('admin/crea_cds', {
+            pallina : pallina,
+            utente: req.session.utente,
+            path: '/admin/crea_cds',
+            depth: 2,
+            lista_materie_ssd: lista_materie_ssd
+        })
         return
     } else if (tipo_cds === 'Triennale') {
         tipo_cds = 'LT'
@@ -499,16 +504,22 @@ server.post("/admin/crea_cds", (req, res) => {
         tipo_cds = 'LMC'
         needed_cfu = 300
     }
-    var materie = []
     db.serialize(() => {
         console.log(`select COUNT(*) from CDS where id = ${id_cds} OR (nome = \"${nome_cds}\" AND tipo = \"${tipo_cds}\")`)
         db.get(`select COUNT(*) from CDS where id = ${id_cds} OR (nome = \"${nome_cds}\" AND tipo = \"${tipo_cds}\")`, (err, row) => {
             console.log("row: ", row)
             if (row['COUNT(*)'] > 0) {
-                res.redirect("/admin/crea_cds" + get_error_parm("Esiste un corso con id: " + id_cds + "\n" +
-                                                                "Oppure esiste con questo nome e tipo di laurea."))
+                pallina.error = "Esiste un corso con id: " + id_cds.toString() + "\nOppure esiste con questo nome e tipo di laurea."
+                res.render('admin/crea_cds', {
+                    pallina : pallina,
+                    utente: req.session.utente,
+                    path: '/admin/crea_cds',
+                    depth: 2,
+                    lista_materie_ssd: lista_materie_ssd
+                })
                 return
             } else {
+                return
                 var i = 0
                 var j = 0
                 var materie = []
