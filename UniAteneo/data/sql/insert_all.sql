@@ -1,4 +1,5 @@
-INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (-1, '', '', '','');
+INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (-1, 'Da assegnare', '', '','');
+INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (0, '', '', '','');
 INSERT INTO CDS (id, nome, tipo) VALUES (5200, "Architettura", "LT");
 
 -- Architettura - LT --

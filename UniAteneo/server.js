@@ -520,9 +520,9 @@ server.post("/admin/crea_cds", (req, res) => {
         max_anno = 5
     }
     db.serialize(() => {
-        console.log(`select COUNT(*) from CDS where id = ${id_cds} OR (nome = \"${nome_cds}\" AND tipo = \"${tipo_cds}\")`)
+        //console.log(`select COUNT(*) from CDS where id = ${id_cds} OR (nome = \"${nome_cds}\" AND tipo = \"${tipo_cds}\")`)
         db.get(`select COUNT(*) from CDS where id = ${id_cds} OR (nome = \"${nome_cds}\" AND tipo = \"${tipo_cds}\")`, async (err, row) => {
-            console.log("row: ", row)
+            //console.log("row: ", row)
             if (row['COUNT(*)'] > 0) {
                 pallina.error = "Esiste un corso con id: " + id_cds + "\\nOppure un esiste corso con questo nome e tipo di laurea."
                 res.render('admin/crea_cds', {
@@ -678,23 +678,26 @@ server.post("/admin/crea_cds", (req, res) => {
             // }
             //sql to db
             db.get('select MAX(id) from Insegnamenti', (err, row) => {
-                max = row['MAX(id)']
+                if (err) {
+                    console.log(err)
+                    return
+                }
+                var id = row['MAX(id)']
                 var sql = `INSERT INTO CDS (id, nome, tipo) VALUES (${id_cds}, \"${nome_cds}\", \"${tipo_cds}\");\n`
                 materie.forEach(mat => {
-                    is = get_new_id_insegnamento();
-                    sql += `INSERT INTO Insegnamenti (id,nome,cfu,ssd) VALUES (${id}, \"${mat.nome}\", ${mat.cfu}, \"${mat.ssd}\");\n`
+                    id += 25;
+                    sql += `INSERT INTO Insegnamenti (id,nome,cfu,ssd,id_docente) VALUES (${id}, \"${mat.nome}\", ${mat.cfu}, \"${mat.ssd}\", -1);\n`
                     sql += `INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (${id_cds}, ${id}, FALSE, ${mat.anno});\n`
                 })
-                db.exec(sql)
-            }) 
-            console.log(id_cds, nome_cds, tipo_cds)
-            var sql = `INSERT INTO CDS (id, nome, tipo) VALUES (${id_cds}, \"${nome_cds}\", \"${tipo_cds}\");\n`
-            materie.forEach(mat => {
-                is = get_new_id_insegnamento();
-                sql += `INSERT INTO Insegnamenti (id,nome,cfu,ssd) VALUES (${id}, \"${mat.nome}\", ${mat.cfu}, \"${mat.ssd}\");\n`
-                sql += `INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (${id_cds}, ${id}, FALSE, ${mat.anno});\n`
+                db.exec(sql, (err,row) => {
+                    if (err) {
+                        console.log(err)
+                        return
+                    }
+                    res.redirect('/portale' + get_text_parm("Inserimento avvenuto con successo"))
+                })
+
             })
-            db.exec(sql)
         })
     })
 })
