@@ -54,7 +54,9 @@
               <label for="scelta_0" class="form-label">Scelta</label>
               <select class="form-select" aria-label="Default select example" name="scelta_0" required>
                 <option <% if (typeof pallina === 'undefined') { %> selected <% } %> >No</option>
-                <option <% if (typeof pallina !== 'undefined') { if ( pallina.materie[0].scelta === 'Si') { %> selected <% } } %> >Si</option>
+                <option <% if (typeof pallina !== 'undefined') { if ( pallina.materie[0].scelta === 'Primo blocco') { %> selected <% } } %> >Primo blocco</option>
+                <option <% if (typeof pallina !== 'undefined') { if ( pallina.materie[0].scelta === 'Secondo blocco') { %> selected <% } } %> >Secondo blocco</option>
+                <option <% if (typeof pallina !== 'undefined') { if ( pallina.materie[0].scelta === 'Terzo blocco') { %> selected <% } } %> >Terzo blocco</option>
               </select>
           </td>
             <td>
@@ -93,7 +95,9 @@
               <td> 
                   <select class="form-select" aria-label="Default select example" name="scelta_<%= index.toString() %>" required>
                     <option <% if (materia.scelta === 'Si') { %> selected <% } %> >Si</option>
-                    <option <% if (materia.scelta === 'No') { %> selected <% } %> >No</option>
+                    <option <% if (materia.scelta === 'Primo blocco') { %> selected <% } %> >Primo blocco</option>
+                    <option <% if (materia.scelta === 'Secondo blocco') { %> selected <% } %> >Secondo blocco</option>
+                    <option <% if (materia.scelta === 'Terzo blocco') { %> selected <% } %> >Terzo blocco</option>
                   </select>
               </td>
                 <td>
@@ -140,7 +144,8 @@
         // var prova = document.getElementById('tot_righe')
         // console.log(prova.value)
           console.log("asd", i_righe);
-          table.append('<tr><td><input type="text" name="nome_' + i_righe.toString() + '" class="form-control" list="datalist_nomi"placeholder="Denominazione insegnamento" required> <datalist id="datalist_nomi"><% lista_materie_ssd.forEach(e=> { %> <option value="<%= e.nome %>"><% }) %></datalist></td><td> <input type="text" name="ssd_' + i_righe.toString() + '" class="form-control" list="datalist_ssd"placeholder="S.S.D." required><datalist id="datalist_ssd"><% lista_materie_ssd.forEach(e=> { %> <option value="<%= e.ssd %>"><% }) %></datalist> </td><td><select class="form-select" aria-label="Default select example" name="scelta_' + i_righe.toString() + '"required><option selected>No</option><option>Si</option></select></td><td><select class="form-select" aria-label="Default select example" name="anno_' + i_righe.toString() + '" required><option selected>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></td><td> <select class="form-select" aria-label="Default select example" name="cfu_' + i_righe.toString() + '" required><option selected>3</option><option>6</option><option>9</option><option>12</option></select></td><td> <button class="btn btnDelete btn-secondary" id="delrow">-</button> </td></tr> ');          i_righe++;
+          table.append('<tr><td><input type="text" name="nome_' + i_righe.toString() + '" class="form-control" list="datalist_nomi"placeholder="Denominazione insegnamento" required> <datalist id="datalist_nomi"><% lista_materie_ssd.forEach(e=> { %> <option value="<%= e.nome %>"><% }) %></datalist></td><td> <input type="text" name="ssd_' + i_righe.toString() + '" class="form-control" list="datalist_ssd"placeholder="S.S.D." required><datalist id="datalist_ssd"><% lista_materie_ssd.forEach(e=> { %> <option value="<%= e.ssd %>"><% }) %></datalist> </td><td><select class="form-select" aria-label="Default select example" name="scelta_' + i_righe.toString() + '"required><option selected>No</option><option>Primo blocco</option><option>Secondo blocco</option><option>Terzo blocco</option></select></td><td><select class="form-select" aria-label="Default select example" name="anno_' + i_righe.toString() + '" required><option selected>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></td><td> <select class="form-select" aria-label="Default select example" name="cfu_' + i_righe.toString() + '" required><option selected>3</option><option>6</option><option>9</option><option>12</option></select></td><td> <button class="btn btnDelete btn-secondary" id="delrow">-</button> </td></tr> '); 
+          i_righe++;
           document.getElementById('tot_righe').value = i_righe.toString();
       })
 
