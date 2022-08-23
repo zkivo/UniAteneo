@@ -7,6 +7,7 @@ const fs = require('fs');
 const multer = require('multer');
 const path = require('path');
 const helpers = require('./js/helpers');
+const { basename } = require('path');
 
 const path_db = "./data/db.sqlite";
 const path_create_tables = "./data/sql/create_tables.sql";
@@ -19,8 +20,15 @@ const db = new sqlite3.Database(path_db, initiate_db);
 const lista_materie_ssd = JSON.parse(fs.readFileSync("./data/materie_ssd.json"))
 const server = express();
 
-var start_id_insegnamenti = 2020
-function get_new_id_insegnamento() {
+var start_id_insegnamenti = -1
+async function get_new_id_insegnamento() {
+    if (start_id_insegnamenti == -1) {
+        await db.get('select MAX(id) from Insegnamenti', (err, row) => {
+            console.log(row)
+            start_id_insegnamenti = row['MAX(id)']
+        })
+        return start_id_insegnamenti += 25
+    }
     return start_id_insegnamenti += 25
 }
 
@@ -513,7 +521,7 @@ server.post("/admin/crea_cds", (req, res) => {
     }
     db.serialize(() => {
         console.log(`select COUNT(*) from CDS where id = ${id_cds} OR (nome = \"${nome_cds}\" AND tipo = \"${tipo_cds}\")`)
-        db.get(`select COUNT(*) from CDS where id = ${id_cds} OR (nome = \"${nome_cds}\" AND tipo = \"${tipo_cds}\")`, (err, row) => {
+        db.get(`select COUNT(*) from CDS where id = ${id_cds} OR (nome = \"${nome_cds}\" AND tipo = \"${tipo_cds}\")`, async (err, row) => {
             console.log("row: ", row)
             if (row['COUNT(*)'] > 0) {
                 pallina.error = "Esiste un corso con id: " + id_cds + "\\nOppure un esiste corso con questo nome e tipo di laurea."
@@ -549,17 +557,6 @@ server.post("/admin/crea_cds", (req, res) => {
                 }
             })
             if (flag) return
-            // if (tot_cfu != needed_cfu) {
-            //     pallina.error = "I cfu totali devono essere: " + needed_cfu + "\\nInvece sono stati inseriti: " + tot_cfu + " cfu"
-            //     res.render('admin/crea_cds', {
-            //         pallina : pallina,
-            //         utente: req.session.utente,
-            //         path: '/admin/crea_cds',
-            //         depth: 2,
-            //         lista_materie_ssd: lista_materie_ssd
-            //     })
-            //     return
-            // }
             nome_materie = materie.map(element => {
                 return element.nome.toUpperCase()
             })
@@ -661,9 +658,43 @@ server.post("/admin/crea_cds", (req, res) => {
                     if (flag) return
                 }
             }
-            //continue without error
-            // toto: verificare che le materie a scelta siano
-            // inserite correttamente
+
+            // **************************************
+            //     TODO: controllare la correttezza
+            //           delle materie a scelta
+            // **************************************
+
+            // ultimo controllo è sulla totalità dei cfu
+            // if (tot_cfu != needed_cfu) {
+            //     pallina.error = "I cfu totali devono essere: " + needed_cfu + "\\nInvece sono stati inseriti: " + tot_cfu + " cfu"
+            //     res.render('admin/crea_cds', {
+            //         pallina : pallina,
+            //         utente: req.session.utente,
+            //         path: '/admin/crea_cds',
+            //         depth: 2,
+            //         lista_materie_ssd: lista_materie_ssd
+            //     })
+            //     return
+            // }
+            //sql to db
+            db.get('select MAX(id) from Insegnamenti', (err, row) => {
+                max = row['MAX(id)']
+                var sql = `INSERT INTO CDS (id, nome, tipo) VALUES (${id_cds}, \"${nome_cds}\", \"${tipo_cds}\");\n`
+                materie.forEach(mat => {
+                    is = get_new_id_insegnamento();
+                    sql += `INSERT INTO Insegnamenti (id,nome,cfu,ssd) VALUES (${id}, \"${mat.nome}\", ${mat.cfu}, \"${mat.ssd}\");\n`
+                    sql += `INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (${id_cds}, ${id}, FALSE, ${mat.anno});\n`
+                })
+                db.exec(sql)
+            }) 
+            console.log(id_cds, nome_cds, tipo_cds)
+            var sql = `INSERT INTO CDS (id, nome, tipo) VALUES (${id_cds}, \"${nome_cds}\", \"${tipo_cds}\");\n`
+            materie.forEach(mat => {
+                is = get_new_id_insegnamento();
+                sql += `INSERT INTO Insegnamenti (id,nome,cfu,ssd) VALUES (${id}, \"${mat.nome}\", ${mat.cfu}, \"${mat.ssd}\");\n`
+                sql += `INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (${id_cds}, ${id}, FALSE, ${mat.anno});\n`
+            })
+            db.exec(sql)
         })
     })
 })
@@ -677,12 +708,15 @@ server.get("/admin/crea_cds", (req, res) => {
         res.redirect('/' + get_error_parm("Pagina riservata all'amministratore"))
         return
     }
-    db.serialize(()=> {
-        db.all(`select I.id as id_materia, I.nome as nome_materia,`+
-                ` I.ssd as ssd_materia From Insegnamento as I,` +
-                `Programmi as P where P.id_insegnamento = I.id and` +
-                `P.scelta = false`, (err, rows) => {
-            if (err) return
+    db.serialize(() => {
+        db.all("SELECT I.id as id_materia, I.nome as nome_materia, "+
+                "I.ssd as ssd_materia From Insegnamenti as I, " +
+                "Programmi as P where P.id_insegnamento = I.id and " +
+                "P.scelta = false;", (err, rows) => {
+            if (err) {
+                console.log(err)
+                return
+            }
             res.render('admin/crea_cds', {
                 rows: rows,
                 utente: req.session.utente,
@@ -797,10 +831,10 @@ server.get('/manifesto/:id_cds', (req, res) => {
     var id_corso = req.params.id_cds
     db.serialize(() => {
         db.all(`SELECT P.id_insegnamento, P.anno, P.scelta, I.nome AS nome_insegnamento, I.cfu, I.path_scheda_trasparenza, I.ssd, I.id_docente, D.nome AS nome_docente, D.cognome AS cognome_docente, C.tipo AS tipo_cds FROM CDS as C, Programmi as P, Insegnamenti as I, ` +
-                `Docenti as D WHERE (P.id_corso = ${id_corso} AND ` +
+                `Docenti as D WHERE P.id_corso = ${id_corso} AND ` +
                 `P.id_insegnamento = I.id AND ` +
-                `I.id_docente = D.id AND ` +
-                `P.id_corso = C.id)` , (err, rows) => {
+                `P.id_corso = C.id AND ` +
+                `I.id_docente = D.id` , (err, rows) => {
             if (err) {
                 console.log(err)
                 res.redirect('/' + get_error_parm("errore: 2345"))
@@ -809,7 +843,7 @@ server.get('/manifesto/:id_cds', (req, res) => {
                     res.redirect('/' + get_error_parm(`id corso: ${id_corso} inesistente`))
                     return
                 }
-                console.log(rows)
+                //console.log(rows)
                 if (req.session.utente) {
                     res.render('manifesto', {
                         rows: rows,
