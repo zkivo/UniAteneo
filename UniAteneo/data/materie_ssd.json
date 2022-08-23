@@ -1,5 +1,17 @@
 [
     {
+        "ssd": "",
+        "nome": "Tirocinio"
+    },
+    {
+        "ssd": "",
+        "nome": "Tesi"
+    },
+    {
+        "ssd": "",
+        "nome": "Prova finale"
+    },
+    {
         "ssd": "MAT/05",
         "nome": "Istituzioni di matematiche"
     },

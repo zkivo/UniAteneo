@@ -662,6 +662,8 @@ server.post("/admin/crea_cds", (req, res) => {
                 }
             }
             //continue without error
+            // toto: verificare che le materie a scelta siano
+            // inserite correttamente
         })
     })
 })
