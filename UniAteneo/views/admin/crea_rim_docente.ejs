@@ -22,11 +22,17 @@
     <div class="row mt-1 g-2">
         <div class="col-auto">
             <label for="nome_docente" class="form-label">Nome docente</label>
-            <input type="text" class="form-control" id="nome_docente" aria-describedby="Nome docente">
+            <input type="text" class="form-control" list="datalist_nomi_docenti" id="nome_docente" aria-describedby="Nome docente">
+            <datalist id="datalist_nomi_docenti">
+              <% docenti.forEach(e => { %> <option value="<%= e.nome %>"> <% }) %>
+            </datalist>
         </div>
         <div class="col-auto">
             <label for="cognome_docente" class="form-label">Cognome docente</label>
-            <input type="text" class="form-control" id="cognome_docente" aria-describedby="Nome docente">
+            <input type="text" class="form-control" list="datalist_cognomi_docenti" id="cognome_docente" aria-describedby="Nome docente">
+            <datalist id="datalist_cognomi_docenti">
+              <% docenti.forEach(e => { %> <option value="<%= e.cognome %>"> <% }) %>
+            </datalist>
         </div>
         <div class="col-1">
             <label for="ssd_docente" class="form-label">SSD</label>
@@ -45,13 +51,62 @@
         <label for="id_materia" class="col-form-label">Inserisci codice insegnamento da assegnare:</label>
       </div>
       <div class="col-1">
-        <input type="text" id="id_materia" list="datalist_id_materie" class="form-control" aria-describedby="id_materia">
-        <datalist id="datalist_id_materie">
-            <% cds.forEach(e => { %> <option value="<%= e.id %>"> <% }) %>
-        </datalist>
+        <select type="text" id="id_materia" class="form-control" aria-describedby="id_materia">
+            <% cds.forEach(e => { %> <option><%= e.id %></option> <% }) %>
+        </select>
       </div>
     </div>
+    <button type="button" class="btn btn-primary">Invia</button>
     </form>
+    <!-- --------------------------------- -->
+    <!-- LISTE DOCENTI E INSEGNAMENTI -->
+    <!-- --------------------------------- -->
+    <div class="accordion mt-5" id="accordionExample">
+      <div class="card">
+        <div class="card-header" id="headingOne">
+          <h2 class="mb-0">
+            <button class="unibtn btn collapsed" style="width: 100%;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+              Docenti attivi nell'ateneo (nome, cognome e SSD)
+            </button>
+          </h2>
+        </div>
+    
+        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+              <%  docenti.forEach(docente => {
+                  if (docente.id == 0 || docente.id == -1) return; %>
+                  <p class="lead"><%= docente.nome %> <%= docente.cognome%> - <%= docente.ssd%></p>
+              <% }) %>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header" id="headingTwo">
+          <h2 class="mb-0">
+            <button class="btn collapsed" style="width: 100%;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              Insegnementi non assegnati (codice, denominazione ed SSD)
+            </button>
+          </h2>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <%  materie.forEach(materia => {
+                    if (materia.id == 0) return; %>
+                    <p class="lead"><%= materia.id %> : <%= materia.nome %> - <%= materia.ssd %></p>
+                <% }) %>
+              </li>
+            </ul>									
+          </div>
+        </div>
+      </div>
+    </div>
     <script>
         var radio_crea = document.getElementById('radio_crea');
         var radio_rimuovi = document.getElementById('radio_rimuovi');

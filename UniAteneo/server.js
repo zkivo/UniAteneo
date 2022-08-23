@@ -760,15 +760,29 @@ server.get("/admin/crea_rim_docente", (req, res) => {
     db.all('Select * from CDS', (err, rows) => {
         if (err) {
             console.log(err)
-        } else {
-            res.render('admin/crea_rim_docente', {
-                cds : rows,
-                utente: req.session.utente,
-                path: '/admin/crea_rim_docente',
-                depth: 2,
-                lista_materie_ssd: lista_materie_ssd
-            })
+            return
         }
+        db.all('select * from docenti where id <> -1 AND id <> 0', (err, docenti) => {
+            if (err) {
+                console.log(err)
+                return
+            }
+            db.all('select * from Insegnamenti where id_docente = -1', (err, materie) => {
+                if (err) {
+                    console.log(err)
+                    return
+                }
+                res.render('admin/crea_rim_docente', {
+                    cds : rows,
+                    docenti : docenti,
+                    materie: materie,
+                    utente: req.session.utente,
+                    path: '/admin/crea_rim_docente',
+                    depth: 2,
+                    lista_materie_ssd: lista_materie_ssd
+                })
+            })
+        })
     })
 })
 
