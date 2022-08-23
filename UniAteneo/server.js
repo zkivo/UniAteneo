@@ -677,14 +677,21 @@ server.get("/admin/crea_cds", (req, res) => {
         res.redirect('/' + get_error_parm("Pagina riservata all'amministratore"))
         return
     }
-    res.render('admin/crea_cds', {
-        rows: null,
-        utente: req.session.utente,
-        path: '/admin/crea_cds',
-        depth: 2,
-        lista_materie_ssd: lista_materie_ssd
-    });
-
+    db.serialize(()=> {
+        db.all(`select I.id as id_materia, I.nome as nome_materia,`+
+                ` I.ssd as ssd_materia From Insegnamento as I,` +
+                `Programmi as P where P.id_insegnamento = I.id and` +
+                `P.scelta = false`, (err, rows) => {
+            if (err) return
+            res.render('admin/crea_cds', {
+                rows: rows,
+                utente: req.session.utente,
+                path: '/admin/crea_cds',
+                depth: 2,
+                lista_materie_ssd: lista_materie_ssd
+            })
+        });
+    })
 })
 
 server.get("/admin/admin_page", (req, res) => {
