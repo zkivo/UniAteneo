@@ -50,7 +50,14 @@
                   <td> <%= row.ssd %> </td>
                   <td> <%= row.nome_insegnamento %> </td>
                   <td> <%= row.cfu %> </td>
-                  <td> <% if(row.id_docente != -1 ) { %> <%= row.nome_docente + " " + row.cognome_docente %> <% } %> </td>
+                  <td> 
+                    <%
+                      var nome = row.nome_insegnamento.toUpperCase()
+                      if (nome !== 'TESI' && nome !== 'PROVA FINALE' && nome !== 'TIROCINIO') {
+                      var index = docenti.map(doc => {return doc.id}).indexOf(row.id_docente); 
+                      if(index != -1) { %> <%= docenti[index].nome + " " + docenti[index].cognome %> <% } } 
+                    %> 
+                  </td>
                   <% if(row.scelta == 1) { %>
                       <td><%= 'Si' %></td>
                   <% } else { %>
@@ -87,7 +94,13 @@
                   <td> <%= row.ssd %> </td>
                   <td> <%= row.nome_insegnamento %> </td>
                   <td> <%= row.cfu %> </td>
-                 <td> <% if(row.id_docente != -1 ) { %> <%= row.nome_docente + " " + row.cognome_docente %> <% } %> </td>
+                 <td> 
+                  <% 
+                    var nome = row.nome_insegnamento.toUpperCase()
+                    if (nome !== 'TESI' && nome !== 'PROVA FINALE' && nome !== 'TIROCINIO') {
+                    var index = docenti.map(doc => {return doc.id}).indexOf(row.id_docente); 
+                    if(index != -1) { %> <%= docenti[index].nome + " " + docenti[index].cognome %> <% } } %> 
+                  </td>
                   <% if(row.scelta == 1) { %>
                       <td><%= 'Si' %></td>
                   <% } else { %>
@@ -125,7 +138,13 @@
                     <td> <%= row.ssd %> </td>
                     <td> <%= row.nome_insegnamento %> </td>
                     <td> <%= row.cfu %> </td>
-                    <td> <% if(row.id_docente != -1 ) { %> <%= row.nome_docente + " " + row.cognome_docente %> <% } %> </td>
+                    <td> 
+                      <% 
+                        var nome = row.nome_insegnamento.toUpperCase()
+                        if (nome !== 'TESI' && nome !== 'PROVA FINALE' && nome !== 'TIROCINIO') {
+                        var index = docenti.map(doc => {return doc.id}).indexOf(row.id_docente); 
+                        if(index != -1) { %> <%= docenti[index].nome + " " + docenti[index].cognome %> <% } } %> 
+                      </td>
                     <% if(row.scelta == 1) { %>
                         <td><%= 'Si' %></td>
                     <% } else { %>

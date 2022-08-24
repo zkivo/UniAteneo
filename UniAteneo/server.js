@@ -762,12 +762,14 @@ server.get("/admin/crea_rim_docente", (req, res) => {
             console.log(err)
             return
         }
-        db.all('select * from docenti where id <> -1 AND id <> 0', (err, docenti) => {
+        // docenti senza insegnamenti assegnati
+        db.all('select * from docenti where id not in (select id_docente from Insegnamenti)', (err, docenti) => {
             if (err) {
                 console.log(err)
                 return
             }
-            db.all('select * from Insegnamenti where id_docente = -1', (err, materie) => {
+            // insegnamenti senza docenti assegnati
+            db.all('select * from Insegnamenti where id_docente is null', (err, materie) => {
                 if (err) {
                     console.log(err)
                     return
@@ -847,36 +849,32 @@ server.post("/login", (req, res) => {
 server.get('/manifesto/:id_cds', (req, res) => {
     var id_corso = req.params.id_cds
     db.serialize(() => {
-        db.all(`SELECT P.id_insegnamento, P.anno, P.scelta, I.nome AS nome_insegnamento, I.cfu, I.path_scheda_trasparenza, I.ssd, I.id_docente, D.nome AS nome_docente, D.cognome AS cognome_docente, C.tipo AS tipo_cds FROM CDS as C, Programmi as P, Insegnamenti as I, ` +
-                `Docenti as D WHERE P.id_corso = ${id_corso} AND ` +
-                `P.id_insegnamento = I.id AND ` +
-                `P.id_corso = C.id AND ` +
-                `I.id_docente = D.id` , (err, rows) => {
+        db.all(`SELECT P.id_insegnamento, P.anno, P.scelta, I.nome AS nome_insegnamento, I.cfu, I.path_scheda_trasparenza, I.ssd, I.id_docente, C.tipo AS tipo_cds FROM CDS as C, Programmi as P, Insegnamenti as I ` +
+                ` WHERE P.id_corso = ${id_corso} AND ` +
+                ` P.id_insegnamento = I.id AND ` +
+                ` P.id_corso = C.id`, (err, rows) => {
             if (err) {
                 console.log(err)
                 res.redirect('/' + get_error_parm("errore: 2345"))
-            } else {
-                if (rows.length == 0) {
-                    res.redirect('/' + get_error_parm(`id corso: ${id_corso} inesistente`))
+                return
+            }
+            if (rows.length == 0) {
+                res.redirect('/' + get_error_parm(`id corso: ${id_corso} inesistente`))
+                return
+            }
+            db.all('select * from Docenti', (err, docenti) => {
+                if (err) {
+                    console.log(err)
                     return
                 }
-                //console.log(rows)
-                if (req.session.utente) {
-                    res.render('manifesto', {
-                        rows: rows,
-                        utente: req.session.utente,
-                        path: '/manifesto/' + id_corso,
-                        depth : 2
-                    })
-                } else {
-                    res.render('manifesto', {
-                        rows: rows,
-                        utente: null,
-                        path: '/manifesto/' + id_corso,
-                        depth: 2
-                    })
-                }
-            }
+                res.render('manifesto', {
+                    rows: rows,
+                    docenti : docenti,
+                    utente: req.session.utente,
+                    path: '/manifesto/' + id_corso,
+                    depth: 2
+                })
+            })
         })
     })
 })
