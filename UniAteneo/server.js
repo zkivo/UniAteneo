@@ -624,7 +624,15 @@ server.post("/admin/crea_cds", (req, res) => {
             //     delle materie a scelta
             // **************************************
             db.all('select I.* from Programmi as P, Insegnamenti as I ' +
-                    'where P.id_insegnamento = I.id and P.scelta = false', (err, mat_attive) => {
+                    'where P.id_insegnamento = I.id and P.scelta = false and ' +
+                    'I.nome <> "Tirocinio" and ' + 
+                    'I.nome <> "Prova finale" and ' + 
+                    'I.nome <> "Tesi"', (err, mat_attive) => {
+
+                // ---------------------------------------
+                //  TODO controllare che i corsi inseriti
+                // abbiano gli stessi ssd nel database
+                // ---------------------------------------
                 if (err) {
                     console.log(err)
                     return
@@ -652,10 +660,7 @@ server.post("/admin/crea_cds", (req, res) => {
                 }
                 var flag = false
                 materie.forEach(materia => {
-                    console.log(materia, flag)
-                    if (flag) {
-                        return
-                    }
+                    if (flag) return
                     if (materia.scelta !== 'No') {
                         // controlla che nel campo nome ci sia un numero
                         // e che appartenga ad un insegnamento attivo
@@ -677,9 +682,6 @@ server.post("/admin/crea_cds", (req, res) => {
                         }
                     }
                     if (materia.scelta === 'Primo blocco') {
-                        // --------------------------------
-                        //          TODO NON ENTRA QUA
-                        // --------------------------------
                         if (scelta_1.num_trovate == 3) {
                             pallina.error = 'Le materie a scelta devono essere massimo 3 per blocco.'
                             flag = true
@@ -789,12 +791,13 @@ server.post("/admin/crea_cds", (req, res) => {
                         scelta_3.materie.push(materia.nome)
                     }
                 })
-                console.log(scelta_1, scelta_2, scelta_3)
-                if ((scelta_1.num_trovate > 0 && scelta_1.num_trovate < 3) || 
-                        (scelta_2.num_trovate > 0 && scelta_2.num_trovate < 3) || 
-                        (scelta_3.num_trovate > 0 && scelta_3.num_trovate < 3))  {
-                    pallina.error = 'Le materie a scelta devono essere 3 per blocco'
-                    flag = true
+                if (!flag) {
+                    if ((scelta_1.num_trovate > 0 && scelta_1.num_trovate < 3) || 
+                            (scelta_2.num_trovate > 0 && scelta_2.num_trovate < 3) || 
+                            (scelta_3.num_trovate > 0 && scelta_3.num_trovate < 3))  {
+                        pallina.error = 'Le materie a scelta devono essere 3 per blocco'
+                        flag = true
+                    }
                 }
                 if (flag) {
                     res.render('admin/crea_cds', {
@@ -863,6 +866,10 @@ server.post("/admin/crea_cds", (req, res) => {
                             scelta = true
                             blocco = 3
                         }
+                        // ------------------------------------------------------------
+                        //      TODO : se a scelta non creare insegnamenti
+                        //             ma inserirlo in programmi con il flag scelta
+                        // ------------------------------------------------------------
                         sql += `INSERT INTO Insegnamenti (id,nome,cfu,ssd,id_docente) VALUES (${id}, \"${mat.nome}\", ${mat.cfu}, \"${mat.ssd}\", -1);\n`
                         sql += `INSERT INTO Programmi (id_corso, id_insegnamento, scelta, blocco, anno) VALUES (${id_cds}, ${id}, ${scelta}, ${blocco}, ${mat.anno});\n`
                     })
