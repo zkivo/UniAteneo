@@ -2,19 +2,19 @@
 <div class="container mt-2">
     <form action="<%= path %>" method="POST">
     <div class="form-check">
-      <input class="form-check-input" type="radio" name="radio" id="radio_crea" value="true" checked>
+      <input class="form-check-input" type="radio" name="radio_crea" id="radio_crea" checked>
       <label class="form-check-label" for="radio_crea">
         Crea docente
       </label>
     </div>
     <div class="form-check">
-      <input class="form-check-input" type="radio" name="radio" id="radio_rimuovi" value="true" >
+      <input class="form-check-input" type="radio" name="radio_rimuovi" id="radio_rimuovi" >
       <label class="form-check-label" for="radio_rimuovi">
         Rimuovi docente
       </label>
     </div>
     <div class="form-check">
-      <input class="form-check-input" type="radio" name="radio" id="radio_materia" value="true">
+      <input class="form-check-input" type="radio" name="radio_materia" id="radio_materia" >
       <label class="form-check-label" for="radio_materia">
         Assegna insegnamento
       </label>
@@ -22,28 +22,28 @@
     <div class="row mt-1 g-2">
         <div class="col-auto">
             <label for="nome_docente" class="form-label">Nome docente</label>
-            <input type="text" class="form-control" list="datalist_nomi_docenti" id="nome_docente" aria-describedby="Nome docente">
+            <input type="text" class="form-control" name="nome_docente" list="datalist_nomi_docenti" id="nome_docente" aria-describedby="Nome docente">
             <datalist id="datalist_nomi_docenti">
               <% docenti.forEach(e => { %> <option value="<%= e.nome %>"> <% }) %>
             </datalist>
         </div>
         <div class="col-auto">
             <label for="cognome_docente" class="form-label">Cognome docente</label>
-            <input type="text" class="form-control" list="datalist_cognomi_docenti" id="cognome_docente" aria-describedby="Nome docente">
+            <input type="text" class="form-control" name="cognome_docente" list="datalist_cognomi_docenti" id="cognome_docente" aria-describedby="Nome docente">
             <datalist id="datalist_cognomi_docenti">
               <% docenti.forEach(e => { %> <option value="<%= e.cognome %>"> <% }) %>
             </datalist>
         </div>
         <div class="col-1">
             <label for="ssd_docente" class="form-label">SSD</label>
-            <input type="text" class="form-control" list="datalist_ssd" id="ssd_docente" aria-describedby="SSD">
+            <input type="text" class="form-control" name="ssd_docente" list="datalist_ssd" id="ssd_docente" aria-describedby="SSD">
             <datalist id="datalist_ssd">
             <% lista_materie_ssd.forEach(e => { %> <option value="<%= e.ssd %>"> <% }) %>
             </datalist>
         </div>
         <div class="col-auto">
             <label for="password_docente" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password_docente" aria-describedby="Password">
+            <input type="password" class="form-control" name="password_docente" id="password_docente" aria-describedby="Password">
         </div>
     </div>
     <div class="row mt-1 g-2">
@@ -51,7 +51,7 @@
         <label for="id_materia" class="col-form-label">Inserisci codice insegnamento da assegnare:</label>
       </div>
       <div class="col-1">
-        <select type="text" id="id_materia" class="form-control" aria-describedby="id_materia">
+        <select type="text" name="id_materia" id="id_materia" class="form-control" aria-describedby="id_materia">
             <% cds.forEach(e => { %> <option><%= e.id %></option> <% }) %>
         </select>
       </div>

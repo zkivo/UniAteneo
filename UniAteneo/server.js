@@ -20,16 +20,16 @@ const db = new sqlite3.Database(path_db, initiate_db);
 const lista_materie_ssd = JSON.parse(fs.readFileSync("./data/materie_ssd.json"))
 const server = express();
 
-var start_id_insegnamenti = -1
-async function get_new_id_insegnamento() {
-    if (start_id_insegnamenti == -1) {
-        await db.get('select MAX(id) from Insegnamenti', (err, row) => {
-            console.log(row)
-            start_id_insegnamenti = row['MAX(id)']
-        })
-        return start_id_insegnamenti += 25
+function assert_you_are_admin(req, res) {
+    if (typeof req.session.utente === 'undefined') {
+        res.redirect('/' + get_error_parm("Effettua prima il login"))
+        return false
     }
-    return start_id_insegnamenti += 25
+    if (req.session.utente.tipo !== 'admin') {
+        res.redirect('/' + get_error_parm("Pagina riservata all'amministratore"))
+        return false
+    }
+    return true
 }
 
 server.use(express.static('public'))
@@ -182,14 +182,7 @@ server.get('/portale', (req, res) => {
 })
 
 server.get("/admin/elimina_cds", (req, res) => {
-    if (typeof req.session.utente === 'undefined') {
-        res.redirect('/' + get_error_parm("Effettua prima il login"))
-        return
-    }
-    if (req.session.utente.tipo !== 'admin') {
-        res.redirect('/' + get_error_parm("Pagina riservata all'amministratore"))
-        return
-    }
+    if (!assert_you_are_admin(req, res)) return
     res.render('admin/elimina_cds', {
         rows: null,
         utente: req.session.utente,
@@ -199,14 +192,7 @@ server.get("/admin/elimina_cds", (req, res) => {
 })
 
 server.post("/admin/elimina_cds", (req, res) => {
-    if (typeof req.session.utente === 'undefined') {
-        res.redirect('/' + get_error_parm("Effettua prima il login"))
-        return
-    }
-    if (req.session.utente.tipo !== 'admin') {
-        res.redirect('/' + get_error_parm("Pagina riservata all'amministratore"))
-        return
-    }
+    if (!assert_you_are_admin(req, res)) return
     var id_cds = req.body.id_cds.trimEnd().trimStart()
     if (id_cds !== "") {
         num = parseInt(id_cds, 10);
@@ -243,14 +229,7 @@ server.post("/admin/elimina_cds", (req, res) => {
 })
 
 server.post("/admin/crea_modifica_cds", (req, res) => {
-    if (typeof req.session.utente === 'undefined') {
-        res.redirect('/' + get_error_parm("Effettua prima il login"))
-        return
-    }
-    if (req.session.utente.tipo !== 'admin') {
-        res.redirect('/' + get_error_parm("Pagina riservata all'amministratore"))
-        return
-    }
+    if (!assert_you_are_admin(req, res)) return
     var id_cds = req.body.id_cds
     var nome_cds = req.body.nome_cds
     var tipo_cds = req.body.tipo_cds
@@ -383,14 +362,7 @@ server.post("/admin/crea_modifica_cds", (req, res) => {
 })
 
 server.get("/admin/crea_modifica_cds", (req, res) => {
-    if (typeof req.session.utente === 'undefined') {
-        res.redirect('/' + get_error_parm("Effettua prima il login"))
-        return
-    }
-    if (req.session.utente.tipo !== 'admin') {
-        res.redirect('/' + get_error_parm("Pagina riservata all'amministratore"))
-        return
-    }
+    if (!assert_you_are_admin(req, res)) return
     db.serialize(() => {
         db.all('Select * from CDS', (err, rows) => {
                 if (err) {
@@ -439,14 +411,7 @@ server.get("/admin/crea_modifica_cds", (req, res) => {
 // }
 
 server.post("/admin/crea_cds", (req, res) => {
-    if (typeof req.session.utente === 'undefined') {
-        res.redirect('/' + get_error_parm("Effettua prima il login"))
-        return
-    }
-    if (req.session.utente.tipo !== 'admin') {
-        res.redirect('/' + get_error_parm("Pagina riservata all'amministratore"))
-        return
-    }
+    if (!assert_you_are_admin(req, res)) return
     var pallina = {}
     var id_cds = req.body.id_cds
     pallina['id_cds'] = id_cds
@@ -457,19 +422,16 @@ server.post("/admin/crea_cds", (req, res) => {
     var tot_righe = req.body.tot_righe
     pallina['tot_righe'] = tot_righe
     var needed_cfu
-    var i = 0
-    var j = 0
     var materie = []
-    while (i < parseInt(tot_righe, 10)) {
-        var nome = req.body['nome_' + j]
+    for (i = 0; i < parseInt(tot_righe, 10); i++) {
+        var nome = req.body['nome_' + i]
         if (typeof nome === 'undefined') {
-            j++
             continue
         }
-        var ssd = req.body['ssd_' + j]
-        var cfu = req.body['cfu_' + j]
-        var anno = req.body['anno_' + j]
-        var scelta = req.body['scelta_' + j]
+        var ssd = req.body['ssd_' + i]
+        var cfu = req.body['cfu_' + i]
+        var anno = req.body['anno_' + i]
+        var scelta = req.body['scelta_' + i]
         materie.push({
             nome: nome,
             ssd : ssd,
@@ -477,10 +439,10 @@ server.post("/admin/crea_cds", (req, res) => {
             anno : anno,
             scelta : scelta
         })
-        i++;
-        j++;
     }
     pallina.materie = materie
+ /* ****************************************** */
+ /* ************* pallina filled ****************** */
  /* ****************************************** */
     num = parseInt(id_cds, 10);
     if (isNaN(num)) {
@@ -534,15 +496,10 @@ server.post("/admin/crea_cds", (req, res) => {
                 })
                 return
             }
-            // controllare che la somma dei cfu è needed cfu
-            // che gli anni non superano siano sbagliati
-            // che tirocinio/tesi/prova finale e materie a scelta siano 
-            // inseriti correttamente
-            var tot_cfu = 0
+            // controllare che gli anni non superino max_anno 
             var flag = false
             materie.forEach((materia, index) => {
                 if (flag) return
-                tot_cfu += parseInt(materia.cfu, 10)
                 if (parseInt(materia.anno, 10) > max_anno) {
                     pallina.error = "Per questo tipo di leaure l'anno massimo è: " + max_anno
                     res.render('admin/crea_cds', {
@@ -557,6 +514,9 @@ server.post("/admin/crea_cds", (req, res) => {
                 }
             })
             if (flag) return
+            // controllare che 
+            // tirocinio/tesi/prova finale e materie a scelta
+            // siano inseriti correttamente
             nome_materie = materie.map(element => {
                 return element.nome.toUpperCase()
             })
@@ -664,7 +624,60 @@ server.post("/admin/crea_cds", (req, res) => {
             //           delle materie a scelta
             // **************************************
 
+            var scelta_1 = {
+                num_trovate : 0,
+                ssd : "",
+                cfu : 0
+            }
+            var scelta_2 = {
+                num_trovate : 0,
+                ssd : "",
+                cfu : 0
+            }
+            var scelta_3 = {
+                num_trovate : 0,
+                ssd : "",
+                cfu : 0
+            }
+            materie.forEach(materia => {
+                if (materia.scelta === 'Primo blocco' && scelta_1 == false) {
+                    tot_cfu += parseInt(materia.cfu, 10)
+                    scelta_1 = true
+                } else if (materia.scelta === 'Secondo blocco' &&
+                        scelta_2 == false) {
+                    tot_cfu += parseInt(materia.cfu, 10)
+                    scelta_2 = true
+                } else if (materia.scelta === 'Terzo blocco' &&
+                        scelta_3 == false) {
+                    tot_cfu += parseInt(materia.cfu, 10)
+                    scelta_3 = true
+                }
+            })
+
             // ultimo controllo è sulla totalità dei cfu
+            // var tot_cfu = 0
+            // var scelta_1 = false
+            // var scelta_2 = false
+            // var scelta_3 = false
+            // materie.forEach(materia => {
+            //     if (materia.scelta === 'No') {
+            //         tot_cfu += parseInt(materia.cfu, 10)
+            //         return
+            //     }
+            //     if (materia.scelta === 'Primo blocco' &&
+            //             scelta_1 == false) {
+            //         tot_cfu += parseInt(materia.cfu, 10)
+            //         scelta_1 = true
+            //     } else if (materia.scelta === 'Secondo blocco' &&
+            //             scelta_2 == false) {
+            //         tot_cfu += parseInt(materia.cfu, 10)
+            //         scelta_2 = true
+            //     } else if (materia.scelta === 'Terzo blocco' &&
+            //             scelta_3 == false) {
+            //         tot_cfu += parseInt(materia.cfu, 10)
+            //         scelta_3 = true
+            //     }
+            // })
             // if (tot_cfu != needed_cfu) {
             //     pallina.error = "I cfu totali devono essere: " + needed_cfu + "\\nInvece sono stati inseriti: " + tot_cfu + " cfu"
             //     res.render('admin/crea_cds', {
@@ -703,14 +716,7 @@ server.post("/admin/crea_cds", (req, res) => {
 })
 
 server.get("/admin/crea_cds", (req, res) => {
-    if (typeof req.session.utente === 'undefined') {
-        res.redirect('/' + get_error_parm("Effettua prima il login"))
-        return
-    }
-    if (req.session.utente.tipo !== 'admin') {
-        res.redirect('/' + get_error_parm("Pagina riservata all'amministratore"))
-        return
-    }
+    if (!assert_you_are_admin(req, res)) return
     db.serialize(() => {
         db.all("SELECT I.id as id_materia, I.nome as nome_materia, "+
                 "I.ssd as ssd_materia From Insegnamenti as I, " +
@@ -732,14 +738,7 @@ server.get("/admin/crea_cds", (req, res) => {
 })
 
 server.get("/admin/admin_page", (req, res) => {
-    if (typeof req.session.utente === 'undefined') {
-        res.redirect('/' + get_error_parm("Effettua prima il login"))
-        return
-    }
-    if (req.session.utente.tipo !== 'admin') {
-        res.redirect('/' + get_error_parm("Pagina riservata all'amministratore"))
-        return
-    }
+    if (!assert_you_are_admin(req, res)) return
     res.render('admin/admin_page', {
         rows: null,
         utente: req.session.utente,
@@ -748,15 +747,40 @@ server.get("/admin/admin_page", (req, res) => {
     })
 })
 
+server.post("/admin/crea_rim_docente", (req, res) => {
+    if (!assert_you_are_admin(req, res)) return
+    if (req.body.radio_crea === 'checked') {
+        nome = req.body.nome_docente.trimEnd().trimStart().toUpperCase()
+        cognome = req.body.cognome_docente.trimEnd().trimStart().toUpperCase()
+        ssd = req.body.ssd_docente.trimEnd().trimStart()
+        password = req.body.password_docente.trimEnd().trimStart()
+        if (nome === '' || cognome === '' || ssd === '' || password === '') {
+            res.redirect("/admin/crea_rim_docente" + get_error_parm("Riempire tutti i campi non disabilitati"))
+            return
+        }
+        db.all(`select COUNT(*) from Docenti where nome = ${nome} and cognome = ${cognome}`, (err, rows) => {
+            if (err) {
+                console.log(err)
+                return
+            }
+            if (rows['COUNT(*)'] > 0) {
+                res.redirect("/admin/crea_rim_docente" + get_error_parm("Esiste gia' un docente con questo nome e cognome"))
+                return
+            }
+            password = bcrypt.hashSync(cognome.toLowerCase() + '1234', 10)
+        })
+        
+    } else if (req.body.radio_rimuovi === 'checked') {
+
+    } else if (req.body.radio_materia === 'checked') {
+        
+    } else {
+        res.redirect("/admin/crea_rim_docente" + get_error_parm("error:5001"))
+    }
+})
+
 server.get("/admin/crea_rim_docente", (req, res) => {
-    if (typeof req.session.utente === 'undefined') {
-        res.redirect('/' + get_error_parm("Effettua prima il login"))
-        return
-    }
-    if (req.session.utente.tipo !== 'admin') {
-        res.redirect('/' + get_error_parm("Pagina riservata all'amministratore"))
-        return
-    }
+    if (!assert_you_are_admin(req, res)) return
     db.all('Select * from CDS', (err, rows) => {
         if (err) {
             console.log(err)
