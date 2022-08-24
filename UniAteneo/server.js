@@ -26,7 +26,7 @@ function assert_you_are_admin(req, res) {
         return false
     }
     if (req.session.utente.tipo !== 'admin') {
-        res.redirect('/' + get_error_parm("Pagina riservata all'amministratore"))
+        res.redirect('/' + get_error_parm("Pagina riservata all amministratore"))
         return false
     }
     return true
@@ -501,7 +501,7 @@ server.post("/admin/crea_cds", (req, res) => {
             materie.forEach((materia, index) => {
                 if (flag) return
                 if (parseInt(materia.anno, 10) > max_anno) {
-                    pallina.error = "Per questo tipo di leaure l'anno massimo è: " + max_anno
+                    pallina.error = "Per questo tipo di leaura l anno massimo è: " + max_anno
                     res.render('admin/crea_cds', {
                         pallina : pallina,
                         utente: req.session.utente,
@@ -620,96 +620,261 @@ server.post("/admin/crea_cds", (req, res) => {
             }
 
             // **************************************
-            //     TODO: controllare la correttezza
-            //           delle materie a scelta
+            //     controllare la correttezza
+            //     delle materie a scelta
             // **************************************
-
-            var scelta_1 = {
-                num_trovate : 0,
-                ssd : "",
-                cfu : 0
-            }
-            var scelta_2 = {
-                num_trovate : 0,
-                ssd : "",
-                cfu : 0
-            }
-            var scelta_3 = {
-                num_trovate : 0,
-                ssd : "",
-                cfu : 0
-            }
-            materie.forEach(materia => {
-                if (materia.scelta === 'Primo blocco' && scelta_1 == false) {
-                    tot_cfu += parseInt(materia.cfu, 10)
-                    scelta_1 = true
-                } else if (materia.scelta === 'Secondo blocco' &&
-                        scelta_2 == false) {
-                    tot_cfu += parseInt(materia.cfu, 10)
-                    scelta_2 = true
-                } else if (materia.scelta === 'Terzo blocco' &&
-                        scelta_3 == false) {
-                    tot_cfu += parseInt(materia.cfu, 10)
-                    scelta_3 = true
-                }
-            })
-
-            // ultimo controllo è sulla totalità dei cfu
-            // var tot_cfu = 0
-            // var scelta_1 = false
-            // var scelta_2 = false
-            // var scelta_3 = false
-            // materie.forEach(materia => {
-            //     if (materia.scelta === 'No') {
-            //         tot_cfu += parseInt(materia.cfu, 10)
-            //         return
-            //     }
-            //     if (materia.scelta === 'Primo blocco' &&
-            //             scelta_1 == false) {
-            //         tot_cfu += parseInt(materia.cfu, 10)
-            //         scelta_1 = true
-            //     } else if (materia.scelta === 'Secondo blocco' &&
-            //             scelta_2 == false) {
-            //         tot_cfu += parseInt(materia.cfu, 10)
-            //         scelta_2 = true
-            //     } else if (materia.scelta === 'Terzo blocco' &&
-            //             scelta_3 == false) {
-            //         tot_cfu += parseInt(materia.cfu, 10)
-            //         scelta_3 = true
-            //     }
-            // })
-            // if (tot_cfu != needed_cfu) {
-            //     pallina.error = "I cfu totali devono essere: " + needed_cfu + "\\nInvece sono stati inseriti: " + tot_cfu + " cfu"
-            //     res.render('admin/crea_cds', {
-            //         pallina : pallina,
-            //         utente: req.session.utente,
-            //         path: '/admin/crea_cds',
-            //         depth: 2,
-            //         lista_materie_ssd: lista_materie_ssd
-            //     })
-            //     return
-            // }
-            //sql to db
-            db.get('select MAX(id) from Insegnamenti', (err, row) => {
+            db.all('select I.* from Programmi as P, Insegnamenti as I ' +
+                    'where P.id_insegnamento = I.id and P.scelta = false', (err, mat_attive) => {
                 if (err) {
                     console.log(err)
                     return
                 }
-                var id = row['MAX(id)']
-                var sql = `INSERT INTO CDS (id, nome, tipo) VALUES (${id_cds}, \"${nome_cds}\", \"${tipo_cds}\");\n`
-                materie.forEach(mat => {
-                    id += 25;
-                    sql += `INSERT INTO Insegnamenti (id,nome,cfu,ssd,id_docente) VALUES (${id}, \"${mat.nome}\", ${mat.cfu}, \"${mat.ssd}\", -1);\n`
-                    sql += `INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (${id_cds}, ${id}, FALSE, ${mat.anno});\n`
+                var scelta_1 = {
+                    num_trovate : 0,
+                    anno : 0,             
+                    ssd : "",
+                    cfu : 0,
+                    materie : []
+                }
+                var scelta_2 = {
+                    num_trovate : 0,
+                    anno : 0,
+                    ssd : "",
+                    cfu : 0,
+                    materie : []
+                }
+                var scelta_3 = {
+                    num_trovate : 0,
+                    anno : 0,
+                    ssd : "",
+                    cfu : 0,
+                    materie : []
+                }
+                var flag = false
+                materie.forEach(materia => {
+                    console.log(materia, flag)
+                    if (flag) {
+                        return
+                    }
+                    if (materia.scelta !== 'No') {
+                        // controlla che nel campo nome ci sia un numero
+                        // e che appartenga ad un insegnamento attivo
+                        id = parseInt(materia.nome, 10)
+                        if (isNaN(id)) {
+                            pallina.error = 'Inserire un codice di Insegnamento per le materie a scelta'
+                            flag = true
+                            return
+                        }
+                        if (!mat_attive.map(e => {return e.id}).includes(id)) {
+                            pallina.error = 'Inserire un codice di insegnamento attivo nell ateneo per le materie a scelta'
+                            flag = true
+                            return
+                        }
+                        if (materia.anno === '1') {
+                            pallina.error = 'Le materie a scelta devono essere erogate dal secondo anno in poi'
+                            flag = true
+                            return
+                        }
+                    }
+                    if (materia.scelta === 'Primo blocco') {
+                        // --------------------------------
+                        //          TODO NON ENTRA QUA
+                        // --------------------------------
+                        if (scelta_1.num_trovate == 3) {
+                            pallina.error = 'Le materie a scelta devono essere massimo 3 per blocco.'
+                            flag = true
+                            return
+                        }
+                        if (scelta_1.num_trovate == 0) {
+                            scelta_1.ssd = materia.ssd
+                            scelta_1.cfu = materia.cfu
+                            scelta_1.anno = materia.anno
+                            scelta_1.num_trovate++
+                            scelta_1.materie.push(materia.nome)
+                            return
+                        }
+                        if (materia.ssd !== scelta_1.ssd) {
+                            pallina.error = 'Le materie a scelta devono avere lo stesso ssd per blocco'
+                            flag = true
+                            return
+                        }
+                        if (materia.anno !== scelta_1.anno) {
+                            pallina.error = 'Le materie a scelta devono avere lo stesso anno per blocco'
+                            flag = true
+                            return
+                        }
+                        if (materia.cfu !== scelta_1.cfu) {
+                            pallina.error = 'Le materie a scelta devono avere gli stessi CFU per blocco'
+                            flag = true
+                            return
+                        }
+                        if (scelta_1.materie.includes(materia.nome)) {
+                            pallina.error = 'Le materie a scelta devono essere diverse dentro un blocco'
+                            flag = true
+                            return
+                        }
+                        scelta_1.num_trovate++
+                        scelta_1.materie.push(materia.nome)
+                    } else if (materia.scelta === 'Secondo blocco') {
+                        if (scelta_2.num_trovate == 3) {
+                            pallina.error = 'Le materie a scelta devono essere massimo 3 per blocco.'
+                            flag = true
+                            return
+                        }
+                        if (scelta_2.num_trovate == 0) {
+                            scelta_2.ssd = materia.ssd
+                            scelta_2.cfu = materia.cfu
+                            scelta_2.anno = materia.anno
+                            scelta_2.num_trovate++
+                            scelta_2.materie.push(materia.nome)
+                            return
+                        }
+                        if (materia.ssd !== scelta_2.ssd) {
+                            pallina.error = 'Le materie a scelta devono avere lo stesso ssd per blocco'
+                            flag = true
+                            return
+                        }
+                        if (materia.anno !== scelta_2.anno) {
+                            pallina.error = 'Le materie a scelta devono avere lo stesso anno per blocco'
+                            flag = true
+                            return
+                        }
+                        if (materia.cfu !== scelta_2.cfu) {
+                            pallina.error = 'Le materie a scelta devono avere gli stessi CFU per blocco'
+                            flag = true
+                            return
+                        }
+                        if (scelta_2.materie.includes(materia.nome)) {
+                            pallina.error = 'Le materie a scelta devono essere diverse dentro un blocco'
+                            flag = true
+                            return
+                        }
+                        scelta_2.num_trovate++
+                        scelta_2.materie.push(materia.nome)
+                    } else if (materia.scelta === 'Terzo blocco') {
+                        if (scelta_3.num_trovate == 3) {
+                            pallina.error = 'Le materie a scelta devono essere massimo 3 per blocco.'
+                            flag = true
+                            return
+                        }
+                        if (scelta_3.num_trovate == 0) {
+                            scelta_3.ssd = materia.ssd
+                            scelta_3.cfu = materia.cfu
+                            scelta_3.anno = materia.anno
+                            scelta_3.num_trovate++
+                            scelta_3.materie.push(materia.nome)
+                            return
+                        }
+                        if (materia.ssd !== scelta_3.ssd) {
+                            pallina.error = 'Le materie a scelta devono avere lo stesso ssd per blocco'
+                            flag = true
+                            return
+                        }
+                        if (materia.anno !== scelta_3.anno) {
+                            pallina.error = 'Le materie a scelta devono avere lo stesso anno per blocco'
+                            flag = true
+                            return
+                        }
+                        if (materia.cfu !== scelta_3.cfu) {
+                            pallina.error = 'Le materie a scelta devono avere gli stessi CFU per blocco'
+                            flag = true
+                            return
+                        }
+                        if (scelta_3.materie.includes(materia.nome)) {
+                            pallina.error = 'Le materie a scelta devono essere diverse dentro un blocco'
+                            flag = true
+                            return
+                        }
+                        scelta_3.num_trovate++
+                        scelta_3.materie.push(materia.nome)
+                    }
                 })
-                db.exec(sql, (err,row) => {
+                console.log(scelta_1, scelta_2, scelta_3)
+                if ((scelta_1.num_trovate > 0 && scelta_1.num_trovate < 3) || 
+                        (scelta_2.num_trovate > 0 && scelta_2.num_trovate < 3) || 
+                        (scelta_3.num_trovate > 0 && scelta_3.num_trovate < 3))  {
+                    pallina.error = 'Le materie a scelta devono essere 3 per blocco'
+                    flag = true
+                }
+                if (flag) {
+                    res.render('admin/crea_cds', {
+                        pallina : pallina,
+                        utente: req.session.utente,
+                        path: '/admin/crea_cds',
+                        depth: 2,
+                        lista_materie_ssd: lista_materie_ssd
+                    })
+                    return
+                }
+                // ultimo controllo è sulla totalità dei cfu
+                // var tot_cfu = 0
+                // var scelta_1 = false
+                // var scelta_2 = false
+                // var scelta_3 = false
+                // materie.forEach(materia => {
+                //     if (materia.scelta === 'No') {
+                //         tot_cfu += parseInt(materia.cfu, 10)
+                //         return
+                //     }
+                //     if (materia.scelta === 'Primo blocco' &&
+                //             scelta_1 == false) {
+                //         tot_cfu += parseInt(materia.cfu, 10)
+                //         scelta_1 = true
+                //     } else if (materia.scelta === 'Secondo blocco' &&
+                //             scelta_2 == false) {
+                //         tot_cfu += parseInt(materia.cfu, 10)
+                //         scelta_2 = true
+                //     } else if (materia.scelta === 'Terzo blocco' &&
+                //             scelta_3 == false) {
+                //         tot_cfu += parseInt(materia.cfu, 10)
+                //         scelta_3 = true
+                //     }
+                // })
+                // if (tot_cfu != needed_cfu) {
+                //     pallina.error = "I cfu totali devono essere: " + needed_cfu + "\\nInvece sono stati inseriti: " + tot_cfu + " cfu"
+                //     res.render('admin/crea_cds', {
+                //         pallina : pallina,
+                //         utente: req.session.utente,
+                //         path: '/admin/crea_cds',
+                //         depth: 2,
+                //         lista_materie_ssd: lista_materie_ssd
+                //     })
+                //     return
+                // }
+                //sql to db
+                db.get('select MAX(id) from Insegnamenti', (err, row) => {
                     if (err) {
                         console.log(err)
                         return
                     }
-                    res.redirect('/portale' + get_text_parm("Inserimento avvenuto con successo"))
-                })
+                    var id = row['MAX(id)']
+                    var sql = `INSERT INTO CDS (id, nome, tipo) VALUES (${id_cds}, \"${nome_cds}\", \"${tipo_cds}\");\n`
+                    materie.forEach(mat => {
+                        id += 25;
+                        var scelta = false
+                        var blocco = 0
+                        if (mat.scelta === 'Primo blocco') {
+                            scelta = true
+                            blocco = 1
+                        } else if (mat.scelta === 'Secondo blocco') {
+                            scelta = true
+                            blocco = 2
+                        } else if (mat.scelta === 'Terzo blocco') {
+                            scelta = true
+                            blocco = 3
+                        }
+                        sql += `INSERT INTO Insegnamenti (id,nome,cfu,ssd,id_docente) VALUES (${id}, \"${mat.nome}\", ${mat.cfu}, \"${mat.ssd}\", -1);\n`
+                        sql += `INSERT INTO Programmi (id_corso, id_insegnamento, scelta, blocco, anno) VALUES (${id_cds}, ${id}, ${scelta}, ${blocco}, ${mat.anno});\n`
+                    })
+                    db.exec(sql, (err,row) => {
+                        if (err) {
+                            console.log(err)
+                            return
+                        }
+                        res.redirect('/portale' + get_text_parm("Inserimento avvenuto con successo"))
+                    })
 
+                })
             })
         })
     })
