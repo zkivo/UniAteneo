@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS Programmi (
 	scelta bool,
 	blocco tinyINTEGER,  -- 0,1,2 OR 3
 	anno   tinyINTEGER,  -- 1,2,3,4 OR 5
-	PRIMARY KEY (id_corso, id_insegnamento),
+	PRIMARY KEY (id_corso, id_insegnamento, blocco),
 	FOREIGN KEY (id_corso)		  REFERENCES CDS(id),
 	FOREIGN KEY (id_insegnamento) REFERENCES Insegnamenti(id)
 );
