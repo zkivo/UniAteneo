@@ -33,7 +33,7 @@
     <table id="myTable" class="table mt-2" data-toggle="table" data-mobile-responsive="true" data-pagination="true" data-height="460">
         <thead>
         </thead>
-        <tbody>
+        <tbody id="tbody">
           <tr>
             <td>
                 <label for="nome_0" class="form-label">Denominazione</label>
@@ -46,7 +46,10 @@
             </td>
             <td>
                 <label for="ssd_0" class="form-label">S.S.D.</label>
-                <input type="text" id="ssd_0" name="ssd_0" class="form-control" list="datalist_ssd" placeholder="S.S.D." <% if (typeof pallina !== 'undefined') {%>value="<%= pallina.materie[0].ssd %>"<% } %> required>
+                <input type="text" id="ssd_0" name="ssd_0" class="form-control" list="datalist_ssd" placeholder="S.S.D." 
+                <% if (typeof pallina !== 'undefined') {%>value="<%= pallina.materie[0].ssd %>" 
+                <% if (pallina.materie[0].scelta !== 'No' || pallina.materie[0].nome === 'Tesi' || 
+                pallina.materie[0].nome === 'Tirocinio' || pallina.materie[0].nome === 'Prova finale') {%> disabled <% } } %> required>
                 <datalist id="datalist_ssd">
                 <% lista_materie_ssd.forEach(e => { %> <option value="<%= e.ssd %>"> <% }) %>
                 </datalist>
@@ -82,7 +85,7 @@
                 </select>
             </td>
             <td>
-              <a href="#" id="addrow" style="color: #FFFFFF;"><button  type="button" class="btn btn-secondary">Aggiungi</button></a>
+              <button id="addrow" type="button" class="btn btn-secondary">Aggiungi</button>
             </td>
           </tr>
           <% if (typeof pallina !== 'undefined') { pallina.materie.forEach((materia,index) => { if (index == 0) { return } %>
@@ -99,7 +102,11 @@
                   name="ssd_<%= index.toString() %>" 
                   class="form-control" list="datalist_ssd" 
                   placeholder="S.S.D." required 
-                  value="<%= materia.ssd %>">
+                  value="<%= materia.ssd %>"
+                  <%if (materia.scelta !== 'No' || 
+                     materia.nome === 'Tesi' || 
+                     materia.nome === 'Tirocinio' || 
+                     materia.nome === 'Prova finale') {%>disabled<% } %> >
               </td>
               <td> 
                   <select class="form-select" id="scelta_<%= index.toString() %>"
@@ -147,15 +154,8 @@
     
     var i_righe = <% if (typeof pallina !== 'undefined') { %><%= pallina.tot_righe %><% } else { %>1<% } %>;
 
-    // assegna i callback ai tag
-    for (i = 0; i < i_righe; i++) {
-      document.getElementById('scelta_' + i).onchange = scelta_onchange
-      document.getElementById('nome_' + i).onchange = nome_onchange
-      document.getElementById('nome_' + i).onkeyup = nome_onchange
-    }
+    var materie_attive = JSON.parse('<% if (typeof materie_attive !== 'undefined') {%><%-JSON.stringify(materie_attive).split("'").join("\\'")%><%}%>'); 
 
-    var materie_attive = JSON.parse('<% if (typeof materie_attive !== 'undefined') {%><%-JSON.stringify(materie_attive).split("'").join("\\'")%><%}%>')    
-    
     function nome_onchange() {
       var testo = this.value.trimEnd().trimStart()
       var ssd = document.getElementById('ssd_' + this.id.split('_')[1])
@@ -211,32 +211,64 @@
           }
       }
     }
+    
+    function add_riga() {
+      console.log("add row on click")
+      tbody = document.getElementById('tbody')
+      tbody.innerHTML += '<tr><td><input type="text" id="nome_' + i_righe.toString() + '" name="nome_' + i_righe.toString() + '" class="form-control" list="datalist_nomi"placeholder="Denominazione insegnamento" required> <datalist id="datalist_nomi"><% lista_materie_ssd.forEach(e=> { %> <option value="<%= e.nome %>"><% }) %></datalist></td><td> <input type="text" id="ssd_' + i_righe.toString() + '" name="ssd_' + i_righe.toString() + '" class="form-control" list="datalist_ssd"placeholder="S.S.D." required><datalist id="datalist_ssd"><% lista_materie_ssd.forEach(e=> { %> <option value="<%= e.ssd %>"><% }) %></datalist> </td><td><select class="form-select" aria-label="Default select example" id="scelta_' + i_righe.toString() + '" name="scelta_' + i_righe.toString() + '"required><option selected>No</option><option>Primo blocco</option><option>Secondo blocco</option><option>Terzo blocco</option></select></td><td><select class="form-select" aria-label="Default select example" id="anno_' + i_righe.toString() + '" name="anno_' + i_righe.toString() + '" required><option selected>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></td><td> <select class="form-select" aria-label="Default select example" id="cfu_' + i_righe.toString() + '" name="cfu_' + i_righe.toString() + '" required><option selected>3</option><option>6</option><option>9</option><option>12</option></select></td><td> <button class="btn btnDelete btn-secondary" id="delrow">-</button> </td></tr> ';
+      document.getElementById('scelta_' + i_righe).onchange = scelta_onchange
+      document.getElementById('nome_' + i_righe).onchange = nome_onchange
+      document.getElementById('nome_' + i_righe).onkeyup = nome_onchange
+      i_righe++;
+      document.getElementById('tot_righe').value = i_righe.toString();
+      document.getElementById('addrow').onclick = add_riga;
+    }
 
-    $(document).ready(function() {
-      //Try to get tbody first with jquery children. works faster!
-      var tbody = $('#myTable').children('tbody');
+    function del_riga() {
+      console.log("del row on click")
+      tbody = document.getElementById('tbody')
+      tbody.removeChild(tbody.lastChild)
+      document.getElementById('delrow').onclick = del_riga;
+    }
 
-      //Then if no tbody just select your table 
-      var table = tbody.length ? tbody : $('#myTable');
+    document.getElementById('addrow').onclick = add_riga;
+    document.getElementById('delrow').onclick = del_riga;
 
-      $('#addrow').click(function() {
-        //Add row
-        // var prova = document.getElementById('tot_righe')
-        // console.log(prova.value)
-          console.log("asd", i_righe);
-          table.append('<tr><td><input type="text" id="nome_' + i_righe.toString() + '" name="nome_' + i_righe.toString() + '" class="form-control" list="datalist_nomi"placeholder="Denominazione insegnamento" required> <datalist id="datalist_nomi"><% lista_materie_ssd.forEach(e=> { %> <option value="<%= e.nome %>"><% }) %></datalist></td><td> <input type="text" id="ssd_' + i_righe.toString() + '" name="ssd_' + i_righe.toString() + '" class="form-control" list="datalist_ssd"placeholder="S.S.D." required><datalist id="datalist_ssd"><% lista_materie_ssd.forEach(e=> { %> <option value="<%= e.ssd %>"><% }) %></datalist> </td><td><select class="form-select" aria-label="Default select example" id="scelta_' + i_righe.toString() + '" name="scelta_' + i_righe.toString() + '"required><option selected>No</option><option>Primo blocco</option><option>Secondo blocco</option><option>Terzo blocco</option></select></td><td><select class="form-select" aria-label="Default select example" id="anno_' + i_righe.toString() + '" name="anno_' + i_righe.toString() + '" required><option selected>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></td><td> <select class="form-select" aria-label="Default select example" id="cfu_' + i_righe.toString() + '" name="cfu_' + i_righe.toString() + '" required><option selected>3</option><option>6</option><option>9</option><option>12</option></select></td><td> <button class="btn btnDelete btn-secondary" id="delrow">-</button> </td></tr> ');
-          document.getElementById('scelta_' + i_righe).onchange = scelta_onchange
-          i_righe++;
-          document.getElementById('tot_righe').value = i_righe.toString();
-      })
+    // assegna i callback ai tag
+    for (i = 0; i < i_righe; i++) {
+      console.log(i)
+      document.getElementById('scelta_' + i).onchange = scelta_onchange;
+      document.getElementById('nome_' + i).onchange = nome_onchange;
+      document.getElementById('nome_' + i).onkeyup = nome_onchange;
+    }
 
-      $("#myTable").on('click', '.btnDelete', function() {
-        $(this).closest('tr').remove();
-        document.getElementById('tot_righe').value = i_righe.toString();
-        // var prova = document.getElementById('tot_righe')
-        // console.log(prova.value)
-      });
+    /* $(document).ready(function() { */
+    //   //Try to get tbody first with jquery children. works faster!
+    //   var tbody = $('#myTable').children('tbody');
 
-    });
+    //   //Then if no tbody just select your table 
+    //   var table = tbody.length ? tbody : $('#myTable');
+
+    //   $('#addrow').click(function() {
+    //     //Add row
+    //     // var prova = document.getElementById('tot_righe')
+    //     // console.log(prova.value)
+    //       console.log("asd", i_righe);
+    //       // table.append('<tr><td><input type="text" id="nome_' + i_righe.toString() + '" name="nome_' + i_righe.toString() + '" class="form-control" list="datalist_nomi"placeholder="Denominazione insegnamento" required> <datalist id="datalist_nomi"><% lista_materie_ssd.forEach(e=> { %> <option value="<%= e.nome %>"><% }) %></datalist></td><td> <input type="text" id="ssd_' + i_righe.toString() + '" name="ssd_' + i_righe.toString() + '" class="form-control" list="datalist_ssd"placeholder="S.S.D." required><datalist id="datalist_ssd"><% lista_materie_ssd.forEach(e=> { %> <option value="<%= e.ssd %>"><% }) %></datalist> </td><td><select class="form-select" aria-label="Default select example" id="scelta_' + i_righe.toString() + '" name="scelta_' + i_righe.toString() + '"required><option selected>No</option><option>Primo blocco</option><option>Secondo blocco</option><option>Terzo blocco</option></select></td><td><select class="form-select" aria-label="Default select example" id="anno_' + i_righe.toString() + '" name="anno_' + i_righe.toString() + '" required><option selected>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></td><td> <select class="form-select" aria-label="Default select example" id="cfu_' + i_righe.toString() + '" name="cfu_' + i_righe.toString() + '" required><option selected>3</option><option>6</option><option>9</option><option>12</option></select></td><td> <button class="btn btnDelete btn-secondary" id="delrow">-</button> </td></tr> ');
+    //       // document.getElementById('scelta_' + i_righe).onchange = scelta_onchange
+    //       // document.getElementById('nome_' + i_righe).onchange = nome_onchange
+    //       // document.getElementById('nome_' + i_righe).onkeyup = nome_onchange
+    //       // i_righe++;
+    //       // document.getElementById('tot_righe').value = i_righe.toString();
+    //   })
+
+    //   $("#myTable").on('click', '.btnDelete', function() {
+    //     $(this).closest('tr').remove();
+    //     document.getElementById('tot_righe').value = i_righe.toString();
+    //     // var prova = document.getElementById('tot_righe')
+    //     // console.log(prova.value)
+    //   });
+
+    // });
 
 </script>
