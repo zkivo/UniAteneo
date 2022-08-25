@@ -435,208 +435,207 @@ server.post("/admin/crea_cds", (req, res) => {
         materie.push({
             nome: nome.trimEnd().trimStart(),
             ssd : (typeof ssd !== 'undefined' ? ssd.trimEnd().trimStart() : ""),
-            cfu : (typeof ssd !== 'undefined' ? cfu.trimEnd().trimStart() : ""),
-            anno : (typeof ssd !== 'undefined' ? anno.trimEnd().trimStart() : ""),
-            scelta : (typeof ssd !== 'undefined' ? scelta.trimEnd().trimStart() : "")
+            cfu : (typeof cfu !== 'undefined' ? cfu.trimEnd().trimStart() : ""),
+            anno : (typeof anno !== 'undefined' ? anno.trimEnd().trimStart() : ""),
+            scelta : (typeof scelta !== 'undefined' ? scelta.trimEnd().trimStart() : "")
         })
     }
     pallina.materie = materie
+    console.log(materie)
  /* ****************************************** */
  /* ************* pallina filled ****************** */
  /* ****************************************** */
-    num = parseInt(id_cds, 10);
-    if (isNaN(num)) {
-        pallina['error'] = "Il codice del corso deve essere un numero"
-        res.render('admin/crea_cds', {
-            pallina : pallina,
-            utente: req.session.utente,
-            path: '/admin/crea_cds',
-            depth: 2,
-            lista_materie_ssd: lista_materie_ssd
-        })
-        return
-    }
-    id_cds = num
-    var max_anno = -1
-    if (tipo_cds === 'Tipo di laurea') {
-        pallina['error'] = "Selezionare il tipo di laurea"
-        res.render('admin/crea_cds', {
-            pallina : pallina,
-            utente: req.session.utente,
-            path: '/admin/crea_cds',
-            depth: 2,
-            lista_materie_ssd: lista_materie_ssd
-        })
-        return
-    } else if (tipo_cds === 'Triennale') {
-        tipo_cds = 'LT'
-        needed_cfu = 180
-        max_anno = 3
-    } else if (tipo_cds === 'Magistrale') {
-        tipo_cds = 'LM'
-        needed_cfu = 120
-        max_anno = 2
-    } else if (tipo_cds === 'Magistrale a ciclo unico') {
-        tipo_cds = 'LMC'
-        needed_cfu = 300
-        max_anno = 5
-    }
-    db.serialize(() => {
-        //console.log(`select COUNT(*) from CDS where id = ${id_cds} OR (nome = \"${nome_cds}\" AND tipo = \"${tipo_cds}\")`)
-        db.get(`select COUNT(*) from CDS where id = ${id_cds} OR (nome = \"${nome_cds}\" AND tipo = \"${tipo_cds}\")`, async (err, row) => {
-            //console.log("row: ", row)
-            if (row['COUNT(*)'] > 0) {
-                pallina.error = "Esiste un corso con id: " + id_cds + "\\nOppure un esiste corso con questo nome e tipo di laurea."
-                res.render('admin/crea_cds', {
-                    pallina : pallina,
-                    utente: req.session.utente,
-                    path: '/admin/crea_cds',
-                    depth: 2,
-                    lista_materie_ssd: lista_materie_ssd
-                })
-                return
-            }
-            // controllare che gli anni non superino max_anno 
-            var flag = false
-            materie.forEach((materia, index) => {
-                if (flag) return
-                if (parseInt(materia.anno, 10) > max_anno) {
-                    pallina.error = "Per questo tipo di leaura l anno massimo è: " + max_anno
+    db.all('select I.* from Programmi as P, Insegnamenti as I ' +
+            'where P.id_insegnamento = I.id and P.scelta = false and ' +
+            'I.nome <> "Tirocinio" and ' + 
+            'I.nome <> "Prova finale" and ' + 
+            'I.nome <> "Tesi"', (err, materie_attive) => {
+        if (err) {
+            console.log(err)
+            return
+        }
+        num = parseInt(id_cds, 10);
+        if (isNaN(num)) {
+            pallina['error'] = "Il codice del corso deve essere un numero"
+            res.render('admin/crea_cds', {
+                pallina : pallina,
+                utente: req.session.utente,
+                path: '/admin/crea_cds',
+                depth: 2,
+                lista_materie_ssd: lista_materie_ssd, materie_attive : materie_attive
+            })
+            return
+        }
+        id_cds = num
+        var max_anno = -1
+        if (tipo_cds === 'Tipo di laurea') {
+            pallina['error'] = "Selezionare il tipo di laurea"
+            res.render('admin/crea_cds', {
+                pallina : pallina,
+                utente: req.session.utente,
+                path: '/admin/crea_cds',
+                depth: 2,
+                lista_materie_ssd: lista_materie_ssd, materie_attive : materie_attive
+            })
+            return
+        } else if (tipo_cds === 'Triennale') {
+            tipo_cds = 'LT'
+            needed_cfu = 180
+            max_anno = 3
+        } else if (tipo_cds === 'Magistrale') {
+            tipo_cds = 'LM'
+            needed_cfu = 120
+            max_anno = 2
+        } else if (tipo_cds === 'Magistrale a ciclo unico') {
+            tipo_cds = 'LMC'
+            needed_cfu = 300
+            max_anno = 5
+        }
+        db.serialize(() => {
+            //console.log(`select COUNT(*) from CDS where id = ${id_cds} OR (nome = \"${nome_cds}\" AND tipo = \"${tipo_cds}\")`)
+            db.get(`select COUNT(*) from CDS where id = ${id_cds} OR (nome = \"${nome_cds}\" AND tipo = \"${tipo_cds}\")`, async (err, row) => {
+                //console.log("row: ", row)
+                if (row['COUNT(*)'] > 0) {
+                    pallina.error = "Esiste un corso con id: " + id_cds + "\\nOppure un esiste corso con questo nome e tipo di laurea."
                     res.render('admin/crea_cds', {
                         pallina : pallina,
                         utente: req.session.utente,
                         path: '/admin/crea_cds',
                         depth: 2,
-                        lista_materie_ssd: lista_materie_ssd
+                        lista_materie_ssd: lista_materie_ssd, materie_attive : materie_attive
                     })
-                    flag = true
                     return
                 }
-            })
-            if (flag) return
-            // controllare che 
-            // tirocinio/tesi/prova finale e materie a scelta
-            // siano inseriti correttamente
-            nome_materie = materie.map(element => {
-                return element.nome.toUpperCase()
-            })
-            if (!nome_materie.includes('TIROCINIO')) {
-                pallina.error = "Il corso di studi deve prevedere un Tirocinio"
-                res.render('admin/crea_cds', {
-                    pallina : pallina,
-                    utente: req.session.utente,
-                    path: '/admin/crea_cds',
-                    depth: 2,
-                    lista_materie_ssd: lista_materie_ssd
-                })
-                return
-            }
-            flag = false
-            materie.forEach(mat => {
-                if (flag) return
-                if (mat.nome.toUpperCase() === 'TIROCINIO') {
-                    if (parseInt(mat.cfu,10) != 3 &&
-                            parseInt(mat.cfu,10) != 6) {
-                        flag = true
-                        pallina.error = "Il Tirocinio deve essere di 3 o 6 CFU"
+                // controllare che gli anni non superino max_anno 
+                var flag = false
+                materie.forEach((materia, index) => {
+                    if (flag) return
+                    if (parseInt(materia.anno, 10) > max_anno) {
+                        pallina.error = "Per questo tipo di leaura l anno massimo è: " + max_anno
                         res.render('admin/crea_cds', {
                             pallina : pallina,
                             utente: req.session.utente,
                             path: '/admin/crea_cds',
                             depth: 2,
-                            lista_materie_ssd: lista_materie_ssd
+                            lista_materie_ssd: lista_materie_ssd, materie_attive : materie_attive
                         })
+                        flag = true
                         return
                     }
-                }
-            })
-            if (flag) return
-            if (tipo_cds === 'LT') {
-                if (!nome_materie.includes('PROVA FINALE')) {
-                    pallina.error = "La Triennale deve prevedere la Prova Finale"
+                })
+                if (flag) return
+                // controllare che 
+                // tirocinio/tesi/prova finale e materie a scelta
+                // siano inseriti correttamente
+
+                // TODO: SE SONO A SCELTA RITORNARE ERROR
+
+                nome_materie = materie.map(element => {
+                    return element.nome.toUpperCase()
+                })
+                if (!nome_materie.includes('TIROCINIO')) {
+                    pallina.error = "Il corso di studi deve prevedere un Tirocinio"
                     res.render('admin/crea_cds', {
                         pallina : pallina,
                         utente: req.session.utente,
                         path: '/admin/crea_cds',
                         depth: 2,
-                        lista_materie_ssd: lista_materie_ssd
+                        lista_materie_ssd: lista_materie_ssd, materie_attive : materie_attive
                     })
                     return
-                } else {
-                    flag = false
-                    materie.forEach(mat => {
-                        if (flag) return
-                        if (mat.nome.toUpperCase() === 'PROVA FINALE') {
-                            if (parseInt(mat.cfu,10) != 9 &&
-                                    parseInt(mat.cfu,10) != 12) {
-                                flag = true
-                                pallina.error = "La prova finale deve essere di 9 o 12 CFU"
-                                res.render('admin/crea_cds', {
-                                    pallina : pallina,
-                                    utente: req.session.utente,
-                                    path: '/admin/crea_cds',
-                                    depth: 2,
-                                    lista_materie_ssd: lista_materie_ssd
-                                })
-                                return
-                            }
-                        }
-                    })
+                }
+                flag = false
+                materie.forEach(mat => {
                     if (flag) return
-                }
-            } else {
-                if (!nome_materie.includes('TESI')) {
-                    pallina.error = "I corsi Magistrali prevedono la Tesi"
-                    res.render('admin/crea_cds', {
-                        pallina : pallina,
-                        utente: req.session.utente,
-                        path: '/admin/crea_cds',
-                        depth: 2,
-                        lista_materie_ssd: lista_materie_ssd
-                    })
-                    return
-                } else {
-                    flag = false
-                    materie.forEach(mat => {
-                        if (flag) return
-                        if (mat.nome.toUpperCase() === 'TESI') {
-                            if (parseInt(mat.cfu,10) != 9 &&
-                                    parseInt(mat.cfu,10) != 12) {
-                                flag = true
-                                pallina.error = "La Tesi deve essere di 9 o 12 CFU"
-                                res.render('admin/crea_cds', {
-                                    pallina : pallina,
-                                    utente: req.session.utente,
-                                    path: '/admin/crea_cds',
-                                    depth: 2,
-                                    lista_materie_ssd: lista_materie_ssd
-                                })
-                                return
-                            }
+                    if (mat.nome.toUpperCase() === 'TIROCINIO') {
+                        if (parseInt(mat.cfu,10) != 3 &&
+                                parseInt(mat.cfu,10) != 6) {
+                            flag = true
+                            pallina.error = "Il Tirocinio deve essere di 3 o 6 CFU"
+                            res.render('admin/crea_cds', {
+                                pallina : pallina,
+                                utente: req.session.utente,
+                                path: '/admin/crea_cds',
+                                depth: 2,
+                                lista_materie_ssd: lista_materie_ssd, materie_attive : materie_attive
+                            })
+                            return
                         }
-                    })
-                    if (flag) return
+                    }
+                })
+                if (flag) return
+                if (tipo_cds === 'LT') {
+                    if (!nome_materie.includes('PROVA FINALE')) {
+                        pallina.error = "La Triennale deve prevedere la Prova Finale"
+                        res.render('admin/crea_cds', {
+                            pallina : pallina,
+                            utente: req.session.utente,
+                            path: '/admin/crea_cds',
+                            depth: 2,
+                            lista_materie_ssd: lista_materie_ssd, materie_attive : materie_attive
+                        })
+                        return
+                    } else {
+                        flag = false
+                        materie.forEach(mat => {
+                            if (flag) return
+                            if (mat.nome.toUpperCase() === 'PROVA FINALE') {
+                                if (parseInt(mat.cfu,10) != 9 &&
+                                        parseInt(mat.cfu,10) != 12) {
+                                    flag = true
+                                    pallina.error = "La prova finale deve essere di 9 o 12 CFU"
+                                    res.render('admin/crea_cds', {
+                                        pallina : pallina,
+                                        utente: req.session.utente,
+                                        path: '/admin/crea_cds',
+                                        depth: 2,
+                                        lista_materie_ssd: lista_materie_ssd, materie_attive : materie_attive
+                                    })
+                                    return
+                                }
+                            }
+                        })
+                        if (flag) return
+                    }
+                } else {
+                    if (!nome_materie.includes('TESI')) {
+                        pallina.error = "I corsi Magistrali prevedono la Tesi"
+                        res.render('admin/crea_cds', {
+                            pallina : pallina,
+                            utente: req.session.utente,
+                            path: '/admin/crea_cds',
+                            depth: 2,
+                            lista_materie_ssd: lista_materie_ssd, materie_attive : materie_attive
+                        })
+                        return
+                    } else {
+                        flag = false
+                        materie.forEach(mat => {
+                            if (flag) return
+                            if (mat.nome.toUpperCase() === 'TESI') {
+                                if (parseInt(mat.cfu,10) != 9 &&
+                                        parseInt(mat.cfu,10) != 12) {
+                                    flag = true
+                                    pallina.error = "La Tesi deve essere di 9 o 12 CFU"
+                                    res.render('admin/crea_cds', {
+                                        pallina : pallina,
+                                        utente: req.session.utente,
+                                        path: '/admin/crea_cds',
+                                        depth: 2,
+                                        lista_materie_ssd: lista_materie_ssd, materie_attive : materie_attive
+                                    })
+                                    return
+                                }
+                            }
+                        })
+                        if (flag) return
+                    }
                 }
-            }
 
-            // **************************************
-            //     controllare la correttezza
-            //     delle materie a scelta
-            // **************************************
-            db.all('select I.* from Programmi as P, Insegnamenti as I ' +
-                    'where P.id_insegnamento = I.id and P.scelta = false and ' +
-                    'I.nome <> "Tirocinio" and ' + 
-                    'I.nome <> "Prova finale" and ' + 
-                    'I.nome <> "Tesi"', (err, mat_attive) => {
-
-                // ---------------------------------------
-                //  TODO controllare che i corsi inseriti
-                // abbiano gli stessi ssd nel database
-                // ---------------------------------------
-                if (err) {
-                    console.log(err)
-                    return
-                }
+                // **************************************
+                //     controllare la correttezza
+                //     delle materie a scelta
+                // **************************************
                 var scelta_1 = {
                     num_trovate : 0,
                     anno : 0,             
@@ -670,8 +669,26 @@ server.post("/admin/crea_cds", (req, res) => {
                             flag = true
                             return
                         }
-                        if (!mat_attive.map(e => {return e.id}).includes(id)) {
-                            pallina.error = 'Inserire un codice di insegnamento attivo nell ateneo per le materie a scelta'
+                        // la materia deve esistere nell'ateneo
+                        // ed avere ssd corretto
+                        var trovato = false
+                        var corretto = false
+                        materie_attive.forEach(mat => {
+                            if (trovato) return
+                            if (mat.id == id) {
+                                trovato = true
+                                if (mat.ssd === materia.ssd) {
+                                    corretto = true
+                                }
+                            }
+                        })
+                        if (!trovato) {
+                            pallina.error = 'Il codice della materia a scelta deve fare riferimento ad un insegnamento attivo nell ateneo'
+                            flag = true
+                            return
+                        }
+                        if (!corretto) {
+                            pallina.error = 'L SSD della materia a scelta deve essere coerente con il codice scelto'
                             flag = true
                             return
                         }
@@ -805,7 +822,7 @@ server.post("/admin/crea_cds", (req, res) => {
                         utente: req.session.utente,
                         path: '/admin/crea_cds',
                         depth: 2,
-                        lista_materie_ssd: lista_materie_ssd
+                        lista_materie_ssd: lista_materie_ssd, materie_attive : materie_attive
                     })
                     return
                 }
@@ -840,7 +857,7 @@ server.post("/admin/crea_cds", (req, res) => {
                 //         utente: req.session.utente,
                 //         path: '/admin/crea_cds',
                 //         depth: 2,
-                //         lista_materie_ssd: lista_materie_ssd
+                //         lista_materie_ssd: lista_materie_ssd, materie_attive : materie_attive
                 //     })
                 //     return
                 // }
@@ -866,12 +883,12 @@ server.post("/admin/crea_cds", (req, res) => {
                             scelta = true
                             blocco = 3
                         }
-                        // ------------------------------------------------------------
-                        //      TODO : se a scelta non creare insegnamenti
-                        //             ma inserirlo in programmi con il flag scelta
-                        // ------------------------------------------------------------
-                        sql += `INSERT INTO Insegnamenti (id,nome,cfu,ssd,id_docente) VALUES (${id}, \"${mat.nome}\", ${mat.cfu}, \"${mat.ssd}\", -1);\n`
-                        sql += `INSERT INTO Programmi (id_corso, id_insegnamento, scelta, blocco, anno) VALUES (${id_cds}, ${id}, ${scelta}, ${blocco}, ${mat.anno});\n`
+                        if (!scelta) {
+                            sql += `INSERT INTO Insegnamenti (id,nome,cfu,ssd) VALUES (${id}, \"${mat.nome}\", ${mat.cfu}, \"${mat.ssd}\");\n`
+                            sql += `INSERT INTO Programmi (id_corso, id_insegnamento, scelta, blocco, anno) VALUES (${id_cds}, ${id}, false, 0, ${mat.anno});\n`
+                        } else {
+                            sql += `INSERT INTO Programmi (id_corso, id_insegnamento, scelta, blocco, anno) VALUES (${id_cds}, ${mat.nome}, true, ${blocco}, ${mat.anno});\n`
+                        }
                     })
                     db.exec(sql, (err,row) => {
                         if (err) {
@@ -890,9 +907,11 @@ server.post("/admin/crea_cds", (req, res) => {
 server.get("/admin/crea_cds", (req, res) => {
     if (!assert_you_are_admin(req, res)) return
     db.serialize(() => {
-        db.all("SELECT I.id, I.nome, I.ssd From Insegnamenti as I, " +
-                "Programmi as P where P.id_insegnamento = I.id and " +
-                "P.scelta = false;", (err, materie_attive) => {
+        db.all('select I.* from Programmi as P, Insegnamenti as I ' +
+                'where P.id_insegnamento = I.id and P.scelta = false and ' +
+                'I.nome <> "Tirocinio" and ' + 
+                'I.nome <> "Prova finale" and ' + 
+                'I.nome <> "Tesi"', (err, materie_attive) => {
             if (err) {
                 console.log(err)
                 return
@@ -902,7 +921,7 @@ server.get("/admin/crea_cds", (req, res) => {
                 utente: req.session.utente,
                 path: '/admin/crea_cds',
                 depth: 2,
-                lista_materie_ssd: lista_materie_ssd
+                lista_materie_ssd: lista_materie_ssd, materie_attive : materie_attive
             })
         });
     })
