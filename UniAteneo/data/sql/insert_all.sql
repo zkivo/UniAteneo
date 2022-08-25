@@ -81,7 +81,7 @@ INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (6390, "ANTONINA",
 INSERT INTO Insegnamenti (id, nome, cfu, ssd, id_docente) VALUES (7995, "Tecniche della rappresentazione digitale", 3, "ICAR/17", 6390);
 INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (5200, 7995, TRUE, 3);
 INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (6420, "GASPARE", "ROSSELLI", "ICAR/17", "$2b$10$ItPn/r.ns.FZmucuxmCrCe64aML6m/.E9nBvvij2iJWHm9ms1GneS");
-INSERT INTO Insegnamenti (id, nome, cfu, ssd, id_docente) VALUES (7845, "Realtà virtuale e fragilit� (Grandi Sfide - Salute)", 3, "ICAR/17", 6420);
+INSERT INTO Insegnamenti (id, nome, cfu, ssd, id_docente) VALUES (7845, "Realtà virtuale e fragilità (Grandi Sfide - Salute)", 3, "ICAR/17", 6420);
 INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (5200, 7845, TRUE, 3);
 INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (6510, "BENVENUTO", "CARFAGNA", "ICAR/17", "$2b$10$51Cy4EW/uCU/n6g8.Fv//OBa97r36U7HAp1dxoS2lLc5DRlK/DV8W");
 INSERT INTO Insegnamenti (id, nome, cfu, ssd, id_docente) VALUES (6820, "Tecniche della rappresentazione digitale", 3, "ICAR/17", 6510);
@@ -297,7 +297,7 @@ INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (6420, "GASPARE", 
 INSERT INTO Insegnamenti (id, nome, cfu, ssd, id_docente) VALUES (12145, "Tecniche della rappresentazione digitale", 3, "ICAR/17", 6420);
 INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (7000, 12145, TRUE, 3);
 INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (6420, "GASPARE", "ROSSELLI", "ICAR/17", "$2b$10$ItPn/r.ns.FZmucuxmCrCe64aML6m/.E9nBvvij2iJWHm9ms1GneS");
-INSERT INTO Insegnamenti (id, nome, cfu, ssd, id_docente) VALUES (10870, "Realtà virtuale e fragilit� (Grandi Sfide - Salute)", 3, "ICAR/17", 6420);
+INSERT INTO Insegnamenti (id, nome, cfu, ssd, id_docente) VALUES (10870, "Realtà virtuale e fragilità (Grandi Sfide - Salute)", 3, "ICAR/17", 6420);
 INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (7000, 10870, TRUE, 3);
 INSERT INTO CDS (id, nome, tipo) VALUES (7600, "Ingegneria Elettronica", "LT");
 
@@ -373,7 +373,7 @@ INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (6420, "GASPARE", 
 INSERT INTO Insegnamenti (id, nome, cfu, ssd, id_docente) VALUES (12145, "Tecniche della rappresentazione digitale", 3, "ICAR/17", 6420);
 INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (7600, 12145, FALSE, 3);
 INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (6420, "GASPARE", "ROSSELLI", "ICAR/17", "$2b$10$ItPn/r.ns.FZmucuxmCrCe64aML6m/.E9nBvvij2iJWHm9ms1GneS");
-INSERT INTO Insegnamenti (id, nome, cfu, ssd, id_docente) VALUES (10870, "Realtà virtuale e fragilit� (Grandi Sfide - Salute)", 3, "ICAR/17", 6420);
+INSERT INTO Insegnamenti (id, nome, cfu, ssd, id_docente) VALUES (10870, "Realtà virtuale e fragilità (Grandi Sfide - Salute)", 3, "ICAR/17", 6420);
 INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (7600, 10870, FALSE, 3);
 INSERT INTO Insegnamenti (id, nome, cfu, id_docente) VALUES (30920, "Tirocinio", 3, -1);
 INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (7600, 30920, FALSE, 3);
@@ -604,7 +604,7 @@ INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (7830, "GIOACCHINO
 INSERT INTO Insegnamenti (id, nome, cfu, ssd, id_docente) VALUES (27170, "Distributed systems programming", 3, "ING-INF/05", 7830);
 INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (9400, 27170, FALSE, 3);
 INSERT INTO Docenti (id, nome, cognome, ssd, password) VALUES (6420, "GASPARE", "ROSSELLI", "ICAR/17", "$2b$10$ItPn/r.ns.FZmucuxmCrCe64aML6m/.E9nBvvij2iJWHm9ms1GneS");
-INSERT INTO Insegnamenti (id, nome, cfu, ssd, id_docente) VALUES (7845, "Realtà virtuale e fragilit� (Grandi Sfide - Salute)", 3, "ICAR/17", 6420);
+INSERT INTO Insegnamenti (id, nome, cfu, ssd, id_docente) VALUES (7845, "Realtà virtuale e fragilità (Grandi Sfide - Salute)", 3, "ICAR/17", 6420);
 INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (9400, 7845, FALSE, 3);
 INSERT INTO Insegnamenti (id, nome, cfu, id_docente) VALUES (31070, "Tirocinio", 6, -1);
 INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (9400, 31070, FALSE, 3);

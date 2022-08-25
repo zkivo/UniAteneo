@@ -32,6 +32,10 @@ function assert_you_are_admin(req, res) {
     return true
 }
 
+function solo_unici(value, index, self) {
+    return self.indexOf(value) === index;
+}
+
 server.use(express.static('public'))
 server.set('view engine', 'ejs');
 
@@ -1063,10 +1067,15 @@ server.post("/login", (req, res) => {
 server.get('/manifesto/:id_cds', (req, res) => {
     var id_corso = req.params.id_cds
     db.serialize(() => {
-        db.all(`SELECT P.id_insegnamento, P.anno, P.scelta, I.nome AS nome_insegnamento, I.cfu, I.path_scheda_trasparenza, I.ssd, I.id_docente, C.tipo AS tipo_cds FROM CDS as C, Programmi as P, Insegnamenti as I ` +
-                ` WHERE P.id_corso = ${id_corso} AND ` +
+        db.all(`SELECT P.id_insegnamento, P.anno, P.blocco, ` +
+                `P.scelta, I.nome AS nome_insegnamento, I.cfu, ` +
+                `I.path_scheda_trasparenza, I.ssd, I.id_docente, ` +
+                `C.tipo AS tipo_cds FROM CDS as C, Programmi as P, ` +
+                `Insegnamenti as I WHERE P.id_corso = ${id_corso} AND ` +
                 ` P.id_insegnamento = I.id AND ` +
                 ` P.id_corso = C.id`, (err, rows) => {
+            strings = rows.map(e => {return JSON.stringify(e)}).filter(solo_unici)
+            rows = strings.map(e => {return JSON.parse(e)})
             if (err) {
                 console.log(err)
                 res.redirect('/' + get_error_parm("errore: 2345"))

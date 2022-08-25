@@ -1,172 +1,284 @@
 <%- include('navbar.ejs') %>
-	<main>
-
-		<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog modal-dialog-centered">
-			  <div class="modal-content">
-				<div class="modal-header">
-				  <h5 class="modal-title" id="exampleModalLabel">Login</h5>
-				  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-					<form action="/login" method="POST">
-						<div class="mb-3">
-						  <label for="username" class="form-label">Username</label>
-						  <input type="username" class="form-control" id="username" name="username" aria-describedby="usernameHelp" required>
-						</div>
-						<div class="mb-3">
-						  <label for="password" class="form-label">Password</label>
-						  <input type="password" class="form-control" id="password" name="password" required>
-						</div>
-						</div>
-						<div class="modal-footer">
-								<button type="submit" class="btn btn-primary">Invia</button>
-						</div>
-					</form>
-			  </div>
-			</div>
-		</div>
-
-		<div class="container text-center pt-3">
-			<div class="shadow p-3 mb-5 bg-body rounded">
-        <h2>Insegnamenti primo anno</h2>
-				<table class="table table-hover">
-            <thead>
+  <div class="container text-center pt-3">
+    <div class="shadow p-3 mb-5 bg-body rounded">
+      <h2>Insegnamenti primo anno</h2>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">ID Materia</th>
+            <th scope="col">SSD</th>
+            <th scope="col">Denominazione</th>
+            <th scope="col">CFU</th>
+            <th scope="col">Docente</th>
+            <th scope="col">A scelta</th>
+            <th scope="col">N. gruppo</th>
+            <th scope="col">Scheda di Trasparenza</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% rows.forEach((row)=> { %>
+            <% if (row.anno !=1) return; %>
               <tr>
-                <th scope="col">ID Materia</th>
-                <th scope="col">SSD</th>
-                <th scope="col">Denominazione</th>
-                <th scope="col">CFU</th>
-                <th scope="col">Docente</th>
-                <th scope="col">A scelta</th>
-                <th scope="col">Scheda di Trasparenza</th>                        
+                <td>
+                  <%= row.id_insegnamento %>
+                </td>
+                <td>
+                  <%= row.ssd %>
+                </td>
+                <td>
+                  <%= row.nome_insegnamento %>
+                </td>
+                <td>
+                  <%= row.cfu %>
+                </td>
+                <td>
+                  <% var nome = row.nome_insegnamento.toUpperCase() 
+                    if (nome !=='TESI' && nome !=='PROVA FINALE' && nome
+                    !=='TIROCINIO' ) { var index=docenti.map(doc=> {return doc.id}).indexOf(row.id_docente);
+                    if(index != -1) { %> <%= docenti[index].nome + " " + docenti[index].cognome %>
+                      <% } } %>
+                </td>
+                <td>
+                  <%if (row.scelta) {%> Si <% } else {%> No <%}%>
+                </td>
+                <td>
+                  <%if (row.scelta) {%>
+                    <%=row.blocco%>
+                      <% } %>
+                </td>
+                <td> <button class="btn">Scheda di Trasparenza</button> </td>
               </tr>
-            </thead>
-            <tbody>
-              <% rows.forEach((row) => { %>
-                <% if (row.anno != 1) return; %>
+
+              <% }) %>
+        </tbody>
+        <tfoot>
+          <tr class="table-dark"></tr>
+        </tfoot>
+      </table>
+
+      <h2>Insegnamenti secondo anno</h2>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">ID Materia</th>
+            <th scope="col">SSD</th>
+            <th scope="col">Denominazione</th>
+            <th scope="col">CFU</th>
+            <th scope="col">Docente</th>
+            <th scope="col">A scelta</th>
+            <th scope="col">N. gruppo</th>
+            <th scope="col">Scheda di Trasparenza</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% rows.forEach((row)=> { %>
+            <% if (row.anno !=2) return; %>
+              <tr>
+                <td>
+                  <%= row.id_insegnamento %>
+                </td>
+                <td>
+                  <%= row.ssd %>
+                </td>
+                <td>
+                  <%= row.nome_insegnamento %>
+                </td>
+                <td>
+                  <%= row.cfu %>
+                </td>
+                <td>
+                  <% var nome=row.nome_insegnamento.toUpperCase() 
+                    if (nome !=='TESI' && nome !=='PROVA FINALE' && nome
+                    !=='TIROCINIO' ) { var index=docenti.map(doc=> {return doc.id}).indexOf(row.id_docente);
+                    if(index != -1) { %> <%= docenti[index].nome + " " + docenti[index].cognome %>
+                      <% } } %>
+                </td>
+                <td>
+                  <%if (row.scelta) {%> Si <% } else {%> No <%}%>
+                </td>
+                <td>
+                  <%if (row.scelta) {%>
+                    <%=row.blocco%>
+                      <% } %>
+                </td>
+                <td> <button class="btn">Scheda di Trasparenza</button> </td>
+              </tr>
+
+              <% }) %>
+        </tbody>
+        <tfoot>
+          <tr class="table-dark"></tr>
+        </tfoot>
+      </table>
+
+      <% if(rows[0].tipo_cds !=='LM' ) { %>
+        <h2>Insegnamenti terzo anno</h2>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">ID Materia</th>
+              <th scope="col">SSD</th>
+              <th scope="col">Denominazione</th>
+              <th scope="col">CFU</th>
+              <th scope="col">Docente</th>
+              <th scope="col">A scelta</th>
+              <th scope="col">N. gruppo</th>
+              <th scope="col">Scheda di Trasparenza</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% rows.forEach((row)=> { %>
+              <% if (row.anno !=3) return; %>
                 <tr>
-                  <td> <%= row.id_insegnamento %> </td>
-                  <td> <%= row.ssd %> </td>
-                  <td> <%= row.nome_insegnamento %> </td>
-                  <td> <%= row.cfu %> </td>
-                  <td> 
-                    <%
-                      var nome = row.nome_insegnamento.toUpperCase()
-                      if (nome !== 'TESI' && nome !== 'PROVA FINALE' && nome !== 'TIROCINIO') {
-                      var index = docenti.map(doc => {return doc.id}).indexOf(row.id_docente); 
-                      if(index != -1) { %> <%= docenti[index].nome + " " + docenti[index].cognome %> <% } } 
-                    %> 
+                  <td>
+                    <%= row.id_insegnamento %>
                   </td>
-                  <% if(row.scelta == 1) { %>
-                      <td><%= 'Si' %></td>
-                  <% } else { %>
-                    <td><%= 'No' %></td>
-                  <% } %> 
+                  <td>
+                    <%= row.ssd %>
+                  </td>
+                  <td>
+                    <%= row.nome_insegnamento %>
+                  </td>
+                  <td>
+                    <%= row.cfu %>
+                  </td>
+                  <td>
+                    <% var nome=row.nome_insegnamento.toUpperCase() 
+                    if (nome !=='TESI' && nome !=='PROVA FINALE' && nome
+                      !=='TIROCINIO' ) { var index=docenti.map(doc=> {return doc.id}).indexOf(row.id_docente);
+                      if(index != -1) { %> <%= docenti[index].nome + " " + docenti[index].cognome %>
+                        <% } } %>
+                  </td>
+                  <td>
+                    <%if (row.scelta) {%> Si <% } else {%> No <%}%>
+                  </td>
+                  <td>
+                    <%if (row.scelta) {%>
+                      <%=row.blocco%>
+                        <% } %>
+                  </td>
                   <td> <button class="btn">Scheda di Trasparenza</button> </td>
                 </tr>
-                
-              <% }) %>
-            </tbody>
-            <tfoot>
-              <tr class="table-dark"></tr>
-            </tfoot>
-        </table>
 
-        <h2>Insegnamenti secondo anno</h2>
-				<table class="table table-hover">
-            <thead>
-              <tr>
-                <th scope="col">ID Materia</th>
-                <th scope="col">SSD</th>
-                <th scope="col">Denominazione</th>
-                <th scope="col">CFU</th>
-                <th scope="col">Docente</th>
-                <th scope="col">A scelta</th>
-                <th scope="col">Scheda di Trasparenza</th>                        
-              </tr>
-            </thead>
-            <tbody>
-              <% rows.forEach((row) => { %>
-                <% if (row.anno != 2) return; %>
-                <tr>
-                  <td> <%= row.id_insegnamento %> </td>
-                  <td> <%= row.ssd %> </td>
-                  <td> <%= row.nome_insegnamento %> </td>
-                  <td> <%= row.cfu %> </td>
-                 <td> 
-                  <% 
-                    var nome = row.nome_insegnamento.toUpperCase()
-                    if (nome !== 'TESI' && nome !== 'PROVA FINALE' && nome !== 'TIROCINIO') {
-                    var index = docenti.map(doc => {return doc.id}).indexOf(row.id_docente); 
-                    if(index != -1) { %> <%= docenti[index].nome + " " + docenti[index].cognome %> <% } } %> 
-                  </td>
-                  <% if(row.scelta == 1) { %>
-                      <td><%= 'Si' %></td>
-                  <% } else { %>
-                    <td><%= 'No' %></td>
-                  <% } %> 
-                  <td> <button class="btn">Scheda di Trasparenza</button> </td>
-                </tr>
-                
-              <% }) %>
-            </tbody>
-            <tfoot>
-              <tr class="table-dark"></tr>
-            </tfoot>
+                <% }) %>
+          </tbody>
+          <tfoot>
+            <tr class="table-dark"></tr>
+          </tfoot>
         </table>
-
-        <% if(rows[0].tipo_cds === 'LT') { %>
-          <h2>Insegnamenti terzo anno</h2>
+        <% if(rows[0].tipo_cds !=='LT' ) {%>
+          <h2>Insegnamenti quarto anno</h2>
           <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th scope="col">ID Materia</th>
-                  <th scope="col">SSD</th>
-                  <th scope="col">Denominazione</th>
-                  <th scope="col">CFU</th>
-                  <th scope="col">Docente</th>
-                  <th scope="col">A scelta</th>
-                  <th scope="col">Scheda di Trasparenza</th>                        
-                </tr>
-              </thead>
-              <tbody>
-                <% rows.forEach((row) => { %>
-                  <% if (row.anno != 3) return; %>
+            <thead>
+              <tr>
+                <th scope="col">ID Materia</th>
+                <th scope="col">SSD</th>
+                <th scope="col">Denominazione</th>
+                <th scope="col">CFU</th>
+                <th scope="col">Docente</th>
+                <th scope="col">A scelta</th>
+                <th scope="col">N. gruppo</th>
+                <th scope="col">Scheda di Trasparenza</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% rows.forEach((row)=> { %>
+                <% if (row.anno !=4) return; %>
                   <tr>
-                    <td> <%= row.id_insegnamento %> </td>
-                    <td> <%= row.ssd %> </td>
-                    <td> <%= row.nome_insegnamento %> </td>
-                    <td> <%= row.cfu %> </td>
-                    <td> 
-                      <% 
-                        var nome = row.nome_insegnamento.toUpperCase()
-                        if (nome !== 'TESI' && nome !== 'PROVA FINALE' && nome !== 'TIROCINIO') {
-                        var index = docenti.map(doc => {return doc.id}).indexOf(row.id_docente); 
-                        if(index != -1) { %> <%= docenti[index].nome + " " + docenti[index].cognome %> <% } } %> 
-                      </td>
-                    <% if(row.scelta == 1) { %>
-                        <td><%= 'Si' %></td>
-                    <% } else { %>
-                      <td><%= 'No' %></td>
-                    <% } %> 
+                    <td>
+                      <%= row.id_insegnamento %>
+                    </td>
+                    <td>
+                      <%= row.ssd %>
+                    </td>
+                    <td>
+                      <%= row.nome_insegnamento %>
+                    </td>
+                    <td>
+                      <%= row.cfu %>
+                    </td>
+                    <td>
+                      <% var nome=row.nome_insegnamento.toUpperCase() 
+                      if (nome !=='TESI' && nome !=='PROVA FINALE' &&
+                        nome !=='TIROCINIO' ) { var index=docenti.map(doc=> {return doc.id}).indexOf(row.id_docente);
+                        if(index != -1) { %> <%= docenti[index].nome + " " + docenti[index].cognome %>
+                          <% } } %>
+                    </td>
+                    <td>
+                      <%if (row.scelta) {%> Si <% } else {%> No <%}%>
+                    </td>
+                    <td>
+                      <%if (row.scelta) {%>
+                        <%=row.blocco%>
+                          <% } %>
+                    </td>
                     <td> <button class="btn">Scheda di Trasparenza</button> </td>
                   </tr>
-                  
-                <% }) %>
-              </tbody>
-              <tfoot>
-                <tr class="table-dark"></tr>
-              </tfoot>
+
+                  <% }) %>
+            </tbody>
+            <tfoot>
+              <tr class="table-dark"></tr>
+            </tfoot>
           </table>
-        <% } %>
+          <h2>Insegnamenti quinto anno</h2>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">ID Materia</th>
+                <th scope="col">SSD</th>
+                <th scope="col">Denominazione</th>
+                <th scope="col">CFU</th>
+                <th scope="col">Docente</th>
+                <th scope="col">A scelta</th>
+                <th scope="col">N. gruppo</th>
+                <th scope="col">Scheda di Trasparenza</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% rows.forEach((row)=> { %>
+                <% if (row.anno !=5) return; %>
+                  <tr>
+                    <td>
+                      <%= row.id_insegnamento %>
+                    </td>
+                    <td>
+                      <%= row.ssd %>
+                    </td>
+                    <td>
+                      <%= row.nome_insegnamento %>
+                    </td>
+                    <td>
+                      <%= row.cfu %>
+                    </td>
+                    <td>
+                      <% var nome=row.nome_insegnamento.toUpperCase() 
+                        if (nome !=='TESI' && nome !=='PROVA FINALE' &&
+                            nome !=='TIROCINIO' ) { 
+                            var index=docenti.map(doc=> {return doc.id}).indexOf(row.id_docente);
+                            if(index != -1) { %> 
+                              <%= docenti[index].nome + " " + docenti[index].cognome %>
+                      <% } } %>
+                    </td>
+                    <td>
+                      <%if (row.scelta) {%> Si <% } else {%> No <%}%>
+                    </td>
+                    <td>
+                      <%if (row.scelta) {%>
+                        <%=row.blocco%>
+                          <% } %>
+                    </td>
+                    <td> <button class="btn">Scheda di Trasparenza</button> </td>
+                  </tr>
 
-
-			</div>
-		</div>
-	</main>
-  
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+                  <% }) %>
+            </tbody>
+            <tfoot>
+              <tr class="table-dark"></tr>
+            </tfoot>
+          </table>
+          <% } %>
+            <% } %>
+    </div>
+  </div>
+  <%- include('footer.ejs') %>
