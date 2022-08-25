@@ -413,13 +413,13 @@ server.get("/admin/crea_modifica_cds", (req, res) => {
 server.post("/admin/crea_cds", (req, res) => {
     if (!assert_you_are_admin(req, res)) return
     var pallina = {}
-    var id_cds = req.body.id_cds
+    var id_cds = req.body.id_cds.trimEnd().trimStart()
     pallina['id_cds'] = id_cds
     var nome_cds = req.body.nome_cds.trimEnd().trimStart()
     pallina['nome_cds'] = nome_cds
-    var tipo_cds = req.body.tipo_cds
+    var tipo_cds = req.body.tipo_cds.trimEnd().trimStart()
     pallina['tipo_cds'] = tipo_cds
-    var tot_righe = req.body.tot_righe
+    var tot_righe = req.body.tot_righe.trimEnd().trimStart()
     pallina['tot_righe'] = tot_righe
     var needed_cfu
     var materie = []
@@ -433,11 +433,11 @@ server.post("/admin/crea_cds", (req, res) => {
         var anno = req.body['anno_' + i]
         var scelta = req.body['scelta_' + i]
         materie.push({
-            nome: nome,
-            ssd : ssd,
-            cfu : cfu,
-            anno : anno,
-            scelta : scelta
+            nome: nome.trimEnd().trimStart(),
+            ssd : (typeof ssd !== 'undefined' ? ssd.trimEnd().trimStart() : ""),
+            cfu : (typeof ssd !== 'undefined' ? cfu.trimEnd().trimStart() : ""),
+            anno : (typeof ssd !== 'undefined' ? anno.trimEnd().trimStart() : ""),
+            scelta : (typeof ssd !== 'undefined' ? scelta.trimEnd().trimStart() : "")
         })
     }
     pallina.materie = materie
@@ -890,16 +890,15 @@ server.post("/admin/crea_cds", (req, res) => {
 server.get("/admin/crea_cds", (req, res) => {
     if (!assert_you_are_admin(req, res)) return
     db.serialize(() => {
-        db.all("SELECT I.id as id_materia, I.nome as nome_materia, "+
-                "I.ssd as ssd_materia From Insegnamenti as I, " +
+        db.all("SELECT I.id, I.nome, I.ssd From Insegnamenti as I, " +
                 "Programmi as P where P.id_insegnamento = I.id and " +
-                "P.scelta = false;", (err, rows) => {
+                "P.scelta = false;", (err, materie_attive) => {
             if (err) {
                 console.log(err)
                 return
             }
             res.render('admin/crea_cds', {
-                rows: rows,
+                materie_attive: materie_attive,
                 utente: req.session.utente,
                 path: '/admin/crea_cds',
                 depth: 2,

@@ -38,21 +38,24 @@
             <td>
                 <label for="nome_0" class="form-label">Denominazione</label>
                 <input id="tot_righe" type="text" hidden name="tot_righe" value="<% if (typeof pallina !== 'undefined') { %><%= pallina.tot_righe %><% } else { %>1<% } %>">
-                <input type="text" name="nome_0" required class="form-control" list="datalist_nomi" placeholder="Denominazione insegnamento" value="<% if (typeof pallina !== 'undefined') { %><%= pallina.materie[0].nome %><% } %>">
+                <input type="text" id="nome_0" name="nome_0" required class="form-control" list="datalist_nomi" placeholder="Denominazione insegnamento" value="<% if (typeof pallina !== 'undefined') { %><%= pallina.materie[0].nome %><% } %>">
                 <datalist id="datalist_nomi">
                   <% lista_materie_ssd.forEach(e => { %> <option value="<%= e.nome %>"> <% }) %>
+                  <% if (typeof materie_attive !== 'undefined') { materie_attive.forEach(materia => {%> <option value="<%= materia.id %>"> <% }) }  %>
                 </datalist>
             </td>
             <td>
                 <label for="ssd_0" class="form-label">S.S.D.</label>
-                <input type="text" name="ssd_0" required class="form-control" list="datalist_ssd" placeholder="S.S.D." value="<% if (typeof pallina !== 'undefined') {%><%= pallina.materie[0].ssd %><%} %>">
+                <input type="text" id="ssd_0" name="ssd_0" class="form-control" list="datalist_ssd" placeholder="S.S.D." <% if (typeof pallina !== 'undefined') {%>value="<%= pallina.materie[0].ssd %>"<% } %> required>
                 <datalist id="datalist_ssd">
                 <% lista_materie_ssd.forEach(e => { %> <option value="<%= e.ssd %>"> <% }) %>
                 </datalist>
             </td>
             <td>
               <label for="scelta_0" class="form-label">Scelta</label>
-              <select class="form-select" aria-label="Default select example" name="scelta_0" required>
+              <select class="form-select"
+              aria-label="Default select example" 
+              id="scelta_0" name="scelta_0" required>
                 <option <% if (typeof pallina === 'undefined') { %> selected <% } %> >No</option>
                 <option <% if (typeof pallina !== 'undefined') { if ( pallina.materie[0].scelta === 'Primo blocco') { %> selected <% } } %> >Primo blocco</option>
                 <option <% if (typeof pallina !== 'undefined') { if ( pallina.materie[0].scelta === 'Secondo blocco') { %> selected <% } } %> >Secondo blocco</option>
@@ -61,7 +64,7 @@
           </td>
             <td>
               <label for="anno_0" class="form-label">Anno</label>
-              <select class="form-select" aria-label="Default select example" name="anno_0" required>
+              <select class="form-select" aria-label="Default select example" id="anno_0" name="anno_0" required>
                 <option <% if (typeof pallina === 'undefined') { %> selected <% } %> >1</option>
                 <option <% if (typeof pallina !== 'undefined') { if ( pallina.materie[0].anno === '2') { %> selected <% } } %> >2</option>
                 <option <% if (typeof pallina !== 'undefined') { if ( pallina.materie[0].anno === '3') { %> selected <% } } %> >3</option>
@@ -71,7 +74,7 @@
           </td>
             <td>
                 <label for="cfu" class="form-label">CFU</label>
-                <select class="form-select" aria-label="Default select example" name="cfu_0" required>
+                <select class="form-select" aria-label="Default select example" id="cfu_0" name="cfu_0" required>
                   <option <% if (typeof pallina === 'undefined') { %> selected <% } %> >3</option>
                   <option <% if (typeof pallina !== 'undefined') { if ( pallina.materie[0].cfu === '6') { %> selected <% } } %> >6</option>
                   <option <% if (typeof pallina !== 'undefined') { if ( pallina.materie[0].cfu === '9') { %> selected <% } } %> >9</option>
@@ -84,16 +87,24 @@
           </tr>
           <% if (typeof pallina !== 'undefined') { pallina.materie.forEach((materia,index) => { if (index == 0) { return } %>
           <tr>
-              <td> <input type="text" name="nome_<%= index.toString() %>" class="form-control" list="datalist_nomi"
-                      placeholder="Denominazione insegnamento" required value="<%= materia.nome %>">
-                  </datalist>
-              </td>
-              <td> <input type="text" name="ssd_<%= index.toString() %>" class="form-control" list="datalist_ssd" placeholder="S.S.D."
-                      required value="<%= materia.ssd %>">
-                  </datalist>
+              <td> 
+                <input type="text" id="nome_<%= index.toString() %>" 
+                  name="nome_<%= index.toString() %>" 
+                  class="form-control" list="datalist_nomi" 
+                  placeholder="Denominazione insegnamento" 
+                  required value="<%= materia.nome %>">
               </td>
               <td> 
-                  <select class="form-select" aria-label="Default select example" name="scelta_<%= index.toString() %>" required>
+                <input type="text" id="ssd_<%= index.toString() %>"
+                  name="ssd_<%= index.toString() %>" 
+                  class="form-control" list="datalist_ssd" 
+                  placeholder="S.S.D." required 
+                  value="<%= materia.ssd %>">
+              </td>
+              <td> 
+                  <select class="form-select" id="scelta_<%= index.toString() %>"
+                    aria-label="Default select example"
+                    name="scelta_<%= index.toString() %>" required>
                     <option <% if (materia.scelta === 'No') { %> selected <% } %> >No</option>
                     <option <% if (materia.scelta === 'Primo blocco') { %> selected <% } %> >Primo blocco</option>
                     <option <% if (materia.scelta === 'Secondo blocco') { %> selected <% } %> >Secondo blocco</option>
@@ -101,7 +112,9 @@
                   </select>
               </td>
                 <td>
-                  <select class="form-select" aria-label="Default select example" name="anno_<%= index.toString() %>" required>
+                  <select class="form-select" id="anno_<%= index.toString() %>"
+                    aria-label="Default select example" 
+                    name="anno_<%= index.toString() %>" required>
                     <option <% if (materia.anno === '1') { %> selected <% } %> >1</option>
                     <option <% if (materia.anno === '2') { %> selected <% } %> >2</option>
                     <option <% if (materia.anno === '3') { %> selected <% } %> >3</option>
@@ -110,12 +123,14 @@
                   </select>
               </td>
               <td> 
-                <select class="form-select" aria-label="Default select example" name="cfu_<%= index.toString() %>" required>
-                    <option <% if (materia.cfu === '3') { %> selected <% } %> >3</option>
-                    <option <% if (materia.cfu === '6') { %> selected <% } %> >6</option>
-                    <option <% if (materia.cfu === '9') { %> selected <% } %> >9</option>
-                    <option <% if (materia.cfu === '12') { %> selected <% } %> >12</option>
-                  </select>
+                <select class="form-select" id="cfu_<%= index.toString() %>"
+                  aria-label="Default select example" 
+                  name="cfu_<%= index.toString() %>" required>
+                  <option <% if (materia.cfu === '3') { %> selected <% } %> >3</option>
+                  <option <% if (materia.cfu === '6') { %> selected <% } %> >6</option>
+                  <option <% if (materia.cfu === '9') { %> selected <% } %> >9</option>
+                  <option <% if (materia.cfu === '12') { %> selected <% } %> >12</option>
+                </select>
               </td>
               <td> 
                 <button class="btn btnDelete btn-secondary" id="delrow">-</button>
@@ -132,6 +147,71 @@
     
     var i_righe = <% if (typeof pallina !== 'undefined') { %><%= pallina.tot_righe %><% } else { %>1<% } %>;
 
+    // assegna i callback ai tag
+    for (i = 0; i < i_righe; i++) {
+      document.getElementById('scelta_' + i).onchange = scelta_onchange
+      document.getElementById('nome_' + i).onchange = nome_onchange
+      document.getElementById('nome_' + i).onkeyup = nome_onchange
+    }
+
+    var materie_attive = JSON.parse('<% if (typeof materie_attive !== 'undefined') {%><%-JSON.stringify(materie_attive).split("'").join("\\'")%><%}%>')    
+    
+    function nome_onchange() {
+      var testo = this.value.trimEnd().trimStart()
+      var ssd = document.getElementById('ssd_' + this.id.split('_')[1])
+      var scelta = document.getElementById('scelta_' + this.id.split('_')[1])
+      switch(testo) {
+        case 'Tesi':
+        case 'Prova finale':
+        case 'Tirocinio':
+          ssd.disabled = true
+          ssd.value = ""
+          return
+        default:
+          if (scelta.value === "No") {
+            ssd.disabled = false
+          }
+      }
+      var index = materie_attive.map(e => {return e.nome}).indexOf(testo)
+      if (index != -1) {
+        ssd.value = materie_attive[index].ssd
+        return
+      }
+      num = parseInt(testo)
+      if (isNaN(num)) return
+      index = materie_attive.map(e => {return e.id}).indexOf(num)
+      if (index != -1) {
+        ssd.value = materie_attive[index].ssd
+        return
+      }
+    }
+
+    function scelta_onchange() {
+      var nome = document.getElementById('nome_' + this.id.split('_')[1])
+      num = this.id.split('_')[1]
+      switch(this.value) {
+        case 'Primo blocco':
+        case 'Secondo blocco':
+        case 'Terzo blocco':
+          document.getElementById('nome_' + num).placeholder = "Codice insegnamento"
+          ssd = document.getElementById('ssd_' + num)
+          ssd.disabled = true
+          break
+        default:
+          document.getElementById('nome_' + num).placeholder = "Denominazione insegnamento"
+          ssd = document.getElementById('ssd_' + num)
+          switch(nome.value) {
+            case 'Tesi':
+            case 'Prova finale':
+            case 'Tirocinio':
+              ssd.disabled = true
+              return
+            default:
+              ssd.disabled = false
+          }
+      }
+    }
+
     $(document).ready(function() {
       //Try to get tbody first with jquery children. works faster!
       var tbody = $('#myTable').children('tbody');
@@ -144,7 +224,8 @@
         // var prova = document.getElementById('tot_righe')
         // console.log(prova.value)
           console.log("asd", i_righe);
-          table.append('<tr><td><input type="text" name="nome_' + i_righe.toString() + '" class="form-control" list="datalist_nomi"placeholder="Denominazione insegnamento" required> <datalist id="datalist_nomi"><% lista_materie_ssd.forEach(e=> { %> <option value="<%= e.nome %>"><% }) %></datalist></td><td> <input type="text" name="ssd_' + i_righe.toString() + '" class="form-control" list="datalist_ssd"placeholder="S.S.D." required><datalist id="datalist_ssd"><% lista_materie_ssd.forEach(e=> { %> <option value="<%= e.ssd %>"><% }) %></datalist> </td><td><select class="form-select" aria-label="Default select example" name="scelta_' + i_righe.toString() + '"required><option selected>No</option><option>Primo blocco</option><option>Secondo blocco</option><option>Terzo blocco</option></select></td><td><select class="form-select" aria-label="Default select example" name="anno_' + i_righe.toString() + '" required><option selected>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></td><td> <select class="form-select" aria-label="Default select example" name="cfu_' + i_righe.toString() + '" required><option selected>3</option><option>6</option><option>9</option><option>12</option></select></td><td> <button class="btn btnDelete btn-secondary" id="delrow">-</button> </td></tr> '); 
+          table.append('<tr><td><input type="text" id="nome_' + i_righe.toString() + '" name="nome_' + i_righe.toString() + '" class="form-control" list="datalist_nomi"placeholder="Denominazione insegnamento" required> <datalist id="datalist_nomi"><% lista_materie_ssd.forEach(e=> { %> <option value="<%= e.nome %>"><% }) %></datalist></td><td> <input type="text" id="ssd_' + i_righe.toString() + '" name="ssd_' + i_righe.toString() + '" class="form-control" list="datalist_ssd"placeholder="S.S.D." required><datalist id="datalist_ssd"><% lista_materie_ssd.forEach(e=> { %> <option value="<%= e.ssd %>"><% }) %></datalist> </td><td><select class="form-select" aria-label="Default select example" id="scelta_' + i_righe.toString() + '" name="scelta_' + i_righe.toString() + '"required><option selected>No</option><option>Primo blocco</option><option>Secondo blocco</option><option>Terzo blocco</option></select></td><td><select class="form-select" aria-label="Default select example" id="anno_' + i_righe.toString() + '" name="anno_' + i_righe.toString() + '" required><option selected>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></td><td> <select class="form-select" aria-label="Default select example" id="cfu_' + i_righe.toString() + '" name="cfu_' + i_righe.toString() + '" required><option selected>3</option><option>6</option><option>9</option><option>12</option></select></td><td> <button class="btn btnDelete btn-secondary" id="delrow">-</button> </td></tr> ');
+          document.getElementById('scelta_' + i_righe).onchange = scelta_onchange
           i_righe++;
           document.getElementById('tot_righe').value = i_righe.toString();
       })
@@ -157,4 +238,5 @@
       });
 
     });
+
 </script>
