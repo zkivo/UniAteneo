@@ -156,7 +156,7 @@
 </form>
 <%- include('../footer.ejs') %>
 <script>
-    <% if (typeof pallina !== 'undefined') { if (pallina.error !== 'undefined') { %> alert("<%= pallina.error %>") <% } } %>
+    <% if (typeof pallina !== 'undefined') { if (typeof pallina.error !== 'undefined') { %> alert("<%= pallina.error %>") <% } } %>
     
     var unique_index = <% if (typeof pallina !== 'undefined') { %><%= pallina.tot_righe %><% } else { %>1<% } %>;
     console.log("unique_index:", unique_index)
@@ -203,15 +203,6 @@
           break
         default:
           document.getElementById('nome_' + num).placeholder = "Denominazione insegnamento"
-          // switch(nome.value) {
-          //   case 'Tesi':
-          //   case 'Prova finale':
-          //   case 'Tirocinio':
-          //     document.getElementById('ssd_' + num).disabled = true
-          //     break
-          //   default:
-          //     document.getElementById('ssd_' + num).disabled = false
-          // }
       }
     }
 
