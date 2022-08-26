@@ -1275,6 +1275,55 @@ server.post('/upload', (req, res) => {
     });
 });
 
+server.get("/admin/orari_ricevimenti", (req, res) => {
+    db.serialize(() => {
+        db.all(`SELECT id, nome, cognome, inizio_ricevimento, fine_ricevimento FROM Docenti WHERE id != 0 AND id != -1 AND (inizio_ricevimento is null AND fine_ricevimento is null)`, (err, rows) => {
+            if (err) {
+                console.log(err)
+                res.redirect('/' + get_error_parm("errore: 5432"))
+            } else {
+                if (rows.length == 0) {
+                    res.redirect('/admin/orari_ricevimenti' + get_error_parm(`Non esistono docenti`))
+                    return
+                }
+                if (!assert_you_are_admin(req, res)) return
+                console.log(rows);
+                res.render('admin/orari_ricevimenti', {
+                    rows: rows,
+                    utente: req.session.utente,
+                    path: '/admin/orari_ricevimenti',
+                    depth : 2
+                })
+            }
+        })
+    })
+})
+
+server.post("/admin/orari_ricevimenti", (req, res) => {
+    if (!assert_you_are_admin(req, res)) return
+    var docente = req.body.docente.trimStart().trimEnd().split(' - ');
+    var id = docente[0];
+    var cognomenome = docente[1].trimStart().trimEnd().split(' ');
+    var cognome = cognomenome[0];
+    var nome = cognomenome[1];
+    var inizio = req.body.inizio;
+    var fine = req.body.fine;
+
+    console.log(req.body);
+    console.log(typeof req.body.inizio);
+
+    var sql = `UPDATE Docenti SET inizio_ricevimento = \"${inizio}\", fine_ricevimento = \"${fine}\" WHERE id = ${id};`
+    db.exec(sql, (err,row) => {
+        if (err) {
+            console.log(err)
+            return
+        }
+        res.redirect('/admin/orari_ricevimenti' + get_text_parm("Inserimento avvenuto con successo"))
+    })
+
+
+});
+
 server.listen(web_port, () => {
     console.log(`web server is listeing to port: ${web_port}.`)
 })

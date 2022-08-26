@@ -1,0 +1,43 @@
+<%- include('../navbar.ejs') %>
+
+<div class="container text-center g-5">
+    <h2 class="mt-2">Inserisci il docente</h2>
+    <form action="<%= path %>" method="POST">
+        <div class="row justify-content-center">
+            <div class="col-3">
+                <input type="text" id="docente" name="docente" required class="form-control" list="datalist_nomi" placeholder="Docente">
+                <datalist id="datalist_nomi">
+                  <% for(var i=0; i < rows.length; i++) { %> 
+                        <option id="opt_<%=i%>" name="<%=rows[i].id%>"> <%= rows[i].id + ' - ' + rows[i].cognome + ' ' + rows[i].nome %> </option>
+                  <% } %>                 
+                </datalist>
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary" >Invia</button>
+            </div>
+        </div>
+
+        <div id="orari" class="container mt-2 row justify-content-center">
+            <div class="col-2">
+                <input type="time" id="inizio" name="inizio" required class="form-control" >
+            </div>
+            
+            <div class="col-2">
+                <input type="time" id="fine" name="fine" required class="form-control">
+            </div>
+        </div>
+
+
+    </form>
+</div>
+<%- include('../footer.ejs') %>
+
+<script>
+    // function show() {
+    //   var x = document.getElementById("orari");
+    //   if (x.style.display === "none") {
+    //     x.style.display = "show";
+    //   }
+    // }
+</script>
+

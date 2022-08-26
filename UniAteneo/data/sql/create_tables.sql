@@ -14,6 +14,8 @@ CREATE TABLE IF NOT EXISTS Docenti (
 	nome     tinytext,
 	cognome  tinytext,
 	ssd      tinytext,
+	inizio_ricevimento time,
+	fine_ricevimento time,
 	password text,
 	UNIQUE (nome, cognome)
 );
@@ -77,4 +79,14 @@ CREATE TABLE IF NOT EXISTS InscrizioniEsami (
 	PRIMARY KEY (matricola, id_esame),
 	FOREIGN KEY (matricola) REFERENCES Studente(matricola),
 	FOREIGN KEY (id_esame)  REFERENCES Esame(id)
+);
+
+CREATE TABLE IF NOT EXISTS Ricevimenti (
+	id             INTEGER PRIMARY KEY AUTOINCREMENT,
+	id_docente     tinytext,
+	id_materia     tinytext,
+	giorno         date,
+	ora            time,
+	FOREIGN KEY (id_docente) REFERENCES Docenti(id),
+	FOREIGN KEY (id_materia) REFERENCES Insegnamenti(id)
 );
