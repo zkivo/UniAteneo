@@ -398,6 +398,55 @@ server.post("/admin/elimina_cds", (req, res) => {
 
 // })
 
+server.post("/admin/modifica_cds", (req, res) => {
+    if (!assert_you_are_admin(req, res)) return
+    var pallina = {}
+    var id_cds = req.body.id_cds.trimEnd().trimStart()
+    pallina['id_cds'] = id_cds
+    var nome_cds = req.body.nome_cds.trimEnd().trimStart()
+    pallina['nome_cds'] = nome_cds
+    var tipo_cds = req.body.tipo_cds.trimEnd().trimStart()
+    pallina['tipo_cds'] = tipo_cds
+    var tot_righe = req.body.tot_righe.trimEnd().trimStart()
+    pallina['tot_righe'] = tot_righe
+    var materie = []
+    for (i = 0; i < parseInt(tot_righe, 10); i++) {
+        var nome = req.body['nome_' + i]
+        if (typeof nome === 'undefined') {
+            continue
+        }
+        var ssd = req.body['ssd_' + i]
+        var cfu = req.body['cfu_' + i]
+        var anno = req.body['anno_' + i]
+        var scelta = req.body['scelta_' + i]
+        materie.push({
+            nome: nome.trimEnd().trimStart(),
+            ssd : (typeof ssd !== 'undefined' ? ssd.trimEnd().trimStart() : ""),
+            cfu : (typeof cfu !== 'undefined' ? cfu.trimEnd().trimStart() : ""),
+            anno : (typeof anno !== 'undefined' ? anno.trimEnd().trimStart() : ""),
+            scelta : (typeof scelta !== 'undefined' ? scelta.trimEnd().trimStart() : "")
+        })
+    }
+    pallina.materie = materie
+    // console.log(pallina)
+    var needed_cfu
+    var max_anno
+    if (tipo_cds === 'LT') {
+        needed_cfu = 180
+        max_anno = 3
+    } else if (tipo_cds === 'LM') {
+        needed_cfu = 120
+        max_anno = 2
+    } else if (tipo_cds === 'LMC') {
+        needed_cfu = 300
+        max_anno = 5
+    }
+ /* ****************************************** */
+ /* ************* pallina filled ****************** */
+ /* ****************************************** */
+
+})
+
 server.post("/admin/prendi_cds", (req, res) => {
     if (!assert_you_are_admin(req, res)) return
     db.serialize(() => {
@@ -425,6 +474,8 @@ server.post("/admin/prendi_cds", (req, res) => {
                     pallina['id_cds'] = id_cds
                     var nome_cds = req.body.nome_cds.trimEnd().trimStart()
                     pallina['nome_cds'] = nome_cds
+                    var tipo_cds = lista_cds.filter(cds => cds.id.toString() === id_cds)[0].tipo
+                    pallina['tipo_cds'] = tipo_cds
                     var tot_righe = programma.length
                     pallina['tot_righe'] = tot_righe
                     var materie = programma.map(materia => {

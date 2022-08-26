@@ -7,10 +7,10 @@
                     <label class="col-form-label">Codice</label>
                 </div>
                 <div class="col-1">
-                    <select class="form-select" id="id_cds" name="id_cds" required autofocus <% if (typeof pallina
-                        !=='undefined' ) {%>disabled<%}%>>
+                    <select class="form-select" id="id_cds" required autofocus <% if (typeof pallina
+                        !=='undefined' ) {%>disabled<%} else {%>name="id_cds"<%}%>>
                             <% lista_cds.forEach(cds=> { %>
-                                <option>
+                                <option <%if (typeof pallina !== 'undefined') { if (pallina.id_cds === cds.id.toString()) {%>selected<% } }%> >
                                     <%=cds.id%>
                                 </option>
                                 <% })%>
@@ -39,6 +39,11 @@
             </datalist>
             <input id="tot_righe" type="text" hidden name="tot_righe"
                 value="<% if (typeof pallina !== 'undefined') { %><%= pallina.tot_righe %><% } else { %>1<% } %>">
+            
+            <% if (typeof pallina !== 'undefined') { %><input id="tipo_cds" type="text" hidden name="tipo_cds"
+                value="<%= pallina.tipo_cds %>"><% }%>
+            <% if (typeof pallina !== 'undefined') { %><input type="text" hidden name="id_cds"
+                value="<%= pallina.id_cds %>"><% }%>
 
             <!-- ------------------------------
                            TABELLA
