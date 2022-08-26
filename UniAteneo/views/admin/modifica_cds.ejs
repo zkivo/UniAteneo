@@ -19,6 +19,8 @@
                 <div class="col-auto">
                     <input type="text" id="nome_cds" name="nome_cds" class="form-control" readonly>
                 </div>
+                    <% if (typeof pallina !== 'undefined') { %><div class="col-1"><input id="tipo_cds" class="form-control" type="text" readonly name="tipo_cds"
+                        value="<%= pallina.tipo_cds %>"></div><% }%>
                 <div class="col-auto">
                     <button type="submit" class="btn btn-primary">
                         <% if (typeof pallina !=='undefined' ) {%>Modifica<%} else {%>Invia<% } %>
@@ -40,10 +42,9 @@
             <input id="tot_righe" type="text" hidden name="tot_righe"
                 value="<% if (typeof pallina !== 'undefined') { %><%= pallina.tot_righe %><% } else { %>1<% } %>">
             
-            <% if (typeof pallina !== 'undefined') { %><input id="tipo_cds" type="text" hidden name="tipo_cds"
-                value="<%= pallina.tipo_cds %>"><% }%>
             <% if (typeof pallina !== 'undefined') { %><input type="text" hidden name="id_cds"
                 value="<%= pallina.id_cds %>"><% }%>
+                
 
             <!-- ------------------------------
                            TABELLA
@@ -55,6 +56,7 @@
                 <tbody>
                     <% if (typeof pallina !=='undefined' ) { pallina.materie.forEach((materia,index)=> {%>
                         <tr>
+                            <input type="text" hidden name="id_<%= index %>" value="<%= materia.id %>">
                             <td>
                                 <% if (index==0) {%> <label for="nome_<%=index%>"
                                         class="form-label">Denominazione</label>
@@ -104,7 +106,7 @@
                                         </select>
                             </td>
                             <td>
-                                <% if (index==0) {%> <label for="cfu_<%=index%>" class="form-label">S.S.D.</label>
+                                <% if (index==0) {%> <label for="cfu_<%=index%>" class="form-label">CFU</label>
                                     <% } %>
                                         <select class="form-select" id="cfu_<%= index.toString() %>"
                                             aria-label="Default select example" name="cfu_<%= index.toString() %>"
