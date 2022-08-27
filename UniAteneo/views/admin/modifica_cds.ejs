@@ -108,9 +108,9 @@
                             <td>
                                 <% if (index==0) {%> <label for="cfu_<%=index%>" class="form-label">CFU</label>
                                     <% } %>
+                                        <input hidden id="cfu_hidden_<%=index%>" name="cfu_<%=index%>" value="<%=materia.cfu %>">
                                         <select class="form-select" id="cfu_<%= index.toString() %>"
-                                            aria-label="Default select example" name="cfu_<%= index.toString() %>"
-                                            required>
+                                            aria-label="Default select example" required <%if (materia.scelta !== 'No') {%> disabled <%}%>>
                                             <option <% if (materia.cfu==='3' ) { %> selected <% } %> >3</option>
                                             <option <% if (materia.cfu==='6' ) { %> selected <% } %> >6</option>
                                             <option <% if (materia.cfu==='9' ) { %> selected <% } %> >9</option>
@@ -158,6 +158,8 @@
                 var testo = this.value.trimEnd().trimStart()
                 var ssd = document.getElementById('ssd_' + this.id.split('_')[1])
                 var scelta = document.getElementById('scelta_' + this.id.split('_')[1])
+                var cfu = document.getElementById('cfu_' + this.id.split('_')[1])
+                var cfu_hidden = document.getElementById('cfu_hidden_' + this.id.split('_')[1])
                 switch (testo) {
                     case 'Tesi':
                     case 'Prova finale':
@@ -178,6 +180,8 @@
                 index = materie_attive.map(e => { return e.id }).indexOf(num)
                 if (index != -1) {
                     ssd.value = materie_attive[index].ssd
+                    cfu.value = materie_attive[index].cfu
+                    cfu_hidden.value = materie_attive[index].cfu
                     return
                 }
             }
@@ -190,12 +194,19 @@
                     case 'Secondo blocco':
                     case 'Terzo blocco':
                         document.getElementById('nome_' + num).placeholder = "Codice insegnamento"
-                        // document.getElementById('ssd_' + num).disabled = true
+                        document.getElementById('cfu_' + num).disabled = true
                         break
                     default:
                         document.getElementById('nome_' + num).placeholder = "Denominazione insegnamento"
+                        document.getElementById('cfu_' + num).disabled = false
                 }
             }
+
+            function cfu_onchange() {
+                var cfu = document.getElementById('cfu_' + this.id.split('_')[1])
+                var cfu_hidden = document.getElementById('cfu_hidden_' + this.id.split('_')[1])
+                cfu_hidden.value = cfu.value
+                }
 
             // assegna i callback ai tag
             for (i = 0; i < unique_index; i++) {
@@ -203,6 +214,7 @@
                 document.getElementById('scelta_' + i).onchange = scelta_onchange
                 document.getElementById('nome_' + i).onchange = nome_onchange
                 document.getElementById('nome_' + i).onkeyup = nome_onchange
+                document.getElementById('cfu_' + i).onchange = cfu_onchange
             }
 
             $(document).ready(function () {
@@ -217,10 +229,11 @@
                     // var prova = document.getElementById('tot_righe')
                     // console.log(prova.value)
                     console.log("asd", unique_index);
-                    table.append('<tr><td><input type="text" id="nome_' + unique_index.toString() + '" name="nome_' + unique_index.toString() + '" class="form-control" list="datalist_nomi"placeholder="Denominazione insegnamento" required> <datalist id="datalist_nomi"><% lista_materie_ssd.forEach(e=> { %> <option value="<%= e.nome %>"><% }) %></datalist></td><td> <input type="text" id="ssd_' + unique_index.toString() + '" name="ssd_' + unique_index.toString() + '" class="form-control" list="datalist_ssd"placeholder="S.S.D." required><datalist id="datalist_ssd"><% lista_materie_ssd.forEach(e=> { %> <option value="<%= e.ssd %>"><% }) %></datalist> </td><td><select class="form-select" aria-label="Default select example" id="scelta_' + unique_index.toString() + '" name="scelta_' + unique_index.toString() + '"required><option selected>No</option><option>Primo blocco</option><option>Secondo blocco</option><option>Terzo blocco</option></select></td><td><select class="form-select" aria-label="Default select example" id="anno_' + unique_index.toString() + '" name="anno_' + unique_index.toString() + '" required><option selected>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></td><td> <select class="form-select" aria-label="Default select example" id="cfu_' + unique_index.toString() + '" name="cfu_' + unique_index.toString() + '" required><option selected>3</option><option>6</option><option>9</option><option>12</option></select></td><td> <button class="btn btnDelete btn-secondary" id="delrow">-</button> </td></tr> ');
+                    table.append('<tr> <td><input type="text" id="nome_' + unique_index.toString() + '" name="nome_' + unique_index.toString() + '" class="form-control" list="datalist_nomi" placeholder="Denominazione insegnamento" required> <datalist id="datalist_nomi"> <% lista_materie_ssd.forEach(e=> { %> <option value="<%= e.nome %>"> <% }) %> </datalist></td> <td> <input type="text" id="ssd_' + unique_index.toString() + '" name="ssd_' + unique_index.toString() + '" class="form-control" list="datalist_ssd" placeholder="S.S.D." required><datalist id="datalist_ssd"> <% lista_materie_ssd.forEach(e=> { %> <option value="<%= e.ssd %>"> <% }) %> </datalist> </td> <td><select class="form-select" aria-label="Default select example" id="scelta_' + unique_index.toString() + '" name="scelta_' + unique_index.toString() + '" required> <option selected>No</option> <option>Primo blocco</option> <option>Secondo blocco</option> <option>Terzo blocco</option> </select></td> <td><select class="form-select" aria-label="Default select example" id="anno_' + unique_index.toString() + '" name="anno_' + unique_index.toString() + '" required> <option selected>1</option> <option>2</option> <option>3</option> <option>4</option> <option>5</option> </select></td> <td>  <input hidden id="cfu_hidden_' + unique_index + '" name="cfu_' + unique_index + '" value="3"> <select class="form-select" aria-label="Default select example" id="cfu_' + unique_index.toString() + '" required> <option selected>3</option> <option>6</option> <option>9</option> <option>12</option> </select></td> <td> <button class="btn btnDelete btn-secondary" id="delrow">-</button> </td> </tr> ');
                     document.getElementById('scelta_' + unique_index).onchange = scelta_onchange
                     document.getElementById('nome_' + unique_index).onchange = nome_onchange
                     document.getElementById('nome_' + unique_index).onkeyup = nome_onchange
+                    document.getElementById('cfu_' + unique_index).onchange = cfu_onchange
                     unique_index++;
                     document.getElementById('tot_righe').value = unique_index.toString();
                 })
