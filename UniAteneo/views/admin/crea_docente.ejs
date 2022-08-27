@@ -1,0 +1,65 @@
+<%- include('../navbar.ejs') %>
+<div class="container text-center">
+    <form action="<%= path %>" method="POST">
+        <div class="row m-3 justify-content-center">
+            <h1>Crea docente</h1>
+            <!-- <div class="col-auto form-floating mb-3">
+                <input type="text" class="form-control" id="nome" name="nome">
+                <label for="nome">Nome</label>
+            </div>
+            <div class="col-auto form-floating mb-3">
+                <input type="text" class="form-control" id="cognome" name="cognome">
+                <label for="cognome">Cognome</label>
+            </div> -->
+            <div class="col-auto">
+                <label for="nome" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="nome" name="nome" required>
+            </div>
+            <div class="col-auto">
+                <label for="cognome" class="form-label">Cognome</label>
+                <input type="text" class="form-control" id="cognome" name="cognome" required>
+            </div>
+        </div>
+        <div class="row m-3 justify-content-center">
+            <div class="col-2">
+                <label for="ssd" class="form-label">S.S.D.</label>
+            </div>
+            <div class="col-auto">
+                <input type="text" class="form-control" id="ssd" name="ssd" required>
+            </div>
+        </div>
+        <div class="row m-3 justify-content-center">
+            <div class="col-2">
+                <label for="password_1" class="form-label">Password</label>
+            </div>
+            <div class="col-auto">
+                <input type="password" class="form-control" id="password_1" name="password_1" required>
+            </div>
+        </div>
+        <div class="row m-3 justify-content-center">
+            <div class="col-2">
+                <label for="password_2" class="form-label">Conferma password</label>
+            </div>
+            <div class="col-auto">
+                <input type="password" class="form-control" id="password_2" name="password_2" required>
+            </div>
+        </div>
+        <div class="form-text">La password deve contenerer almeno 8 caratteri</div>
+        <button type="submit" class="btn btn-primary mt-3">Crea docente</button>
+        <!-- <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1">
+    </div>
+    <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button> -->
+    </form>
+</div>
+<%- include('../footer.ejs') %>

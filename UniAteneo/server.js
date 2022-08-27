@@ -1371,6 +1371,41 @@ server.get("/admin/modifica_cds", (req, res) => {
 })
 
 // -----------------------------------
+//        POST CREA DOCENTE
+// -----------------------------------
+
+server.post("/admin/crea_docente", (req, res) => {
+    if (!assert_you_are_admin(req, res)) return
+
+    /*
+        - verificare che pass1 e pass2 siano uguali
+        - controlllare che non esista doc con  questo
+        nome e cognome
+    */
+
+    res.render('admin/crea_docente', {
+        utente: req.session.utente,
+        path: '/admin/crea_docente',
+        depth: 2,
+        lista_materie_ssd: lista_materie_ssd
+    })
+})
+
+// -----------------------------------
+//        GET CREA DOCENTE
+// -----------------------------------
+
+server.get("/admin/crea_docente", (req, res) => {
+    if (!assert_you_are_admin(req, res)) return
+    res.render('admin/crea_docente', {
+        utente: req.session.utente,
+        path: '/admin/crea_docente',
+        depth: 2,
+        lista_materie_ssd: lista_materie_ssd
+    })
+})
+
+// -----------------------------------
 //        GET CREA CDS
 // -----------------------------------
 
