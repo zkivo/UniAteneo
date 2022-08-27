@@ -1,19 +1,41 @@
 <%- include('../navbar.ejs') %>
 
-<div class="container text-center g-5">
-    <h2 class="mt-2">Inserisci il codice del CDS da eliminare</h2>
-    <form action="<%= path %>" method="POST">
-        <div class="row justify-content-between">
-            <div class="col">
-                <label class="col-form-label">Codice</label>
+    <div class="container text-center g-5">
+        <h2 class="mt-2">Inserisci il codice del CDS da eliminare</h2>
+        <form action="<%= path %>" method="POST">
+            <div class="row justify-content-center">
+                <div class="col-auto">
+                    <label class="col-form-label">Codice</label>
+                </div>
+                <div class="col-auto">
+                    <select id="cds" type="text" class="form-select" name="id_cds">
+                        <%if (typeof lista_cds !=='undefined' ) { lista_cds.forEach(cds=> {%>
+                            <option>
+                                <%=cds.id%>
+                            </option>
+                        <% })}%>
+                    </select>
+                </div>
+                <div class="col-auto">
+                    <input type="text" id="nome" class="form-control" disabled>
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary">Elimina</button>
+                </div>
             </div>
-            <div class="col">
-                <input id="cds" type="text" class="form-control" name="id_cds">
-            </div>
-            <div class="col">
-                <button type="submit" class="btn btn-primary">Elimina</button>
-            </div>
-        </div>
-    </form>
-</div>
+        </form>
+    </div>
+<script>
+    var cds = document.getElementById('cds')
+    var nome = document.getElementById('nome')
+    var lista_cds = JSON.parse('<% if (typeof lista_cds !== 'undefined') {%><%-JSON.stringify(lista_cds).split("'").join("\\'")%><%}%>')
+    
+    cds.onchange = cds_onchange
+    function cds_onchange() {
+        num = parseInt(cds.value)
+        index = lista_cds.map(e => { return e.id }).indexOf(num)
+        nome.value = lista_cds[index].nome
+    }
+    cds_onchange()
+</script>
 <%- include('../footer.ejs') %>

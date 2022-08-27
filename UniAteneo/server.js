@@ -185,16 +185,30 @@ server.get('/portale', (req, res) => {
     }
 })
 
+// -----------------------------------
+//        GET ELIMINA CDS
+// -----------------------------------
+
 server.get("/admin/elimina_cds", (req, res) => {
     if (!assert_you_are_admin(req, res)) return
-    res.render('admin/elimina_cds', {
-        rows: null,
-        utente: req.session.utente,
-        path: '/admin/elimina_cds',
-        depth: 2
-    });
+    db.all('select * from CDS', (err, lista_cds) => {
+        if (err) {
+            console.log(err)
+            return
+        }
+        res.render('admin/elimina_cds', {
+            lista_cds,
+            utente: req.session.utente,
+            path: '/admin/elimina_cds',
+            depth: 2
+        });
+    })
 })
 
+// -----------------------------------
+//        POST ELIMINA CDS
+// -----------------------------------
+// TODO: eliminare anche i singoli insegnamenti
 server.post("/admin/elimina_cds", (req, res) => {
     if (!assert_you_are_admin(req, res)) return
     var id_cds = req.body.id_cds.trimEnd().trimStart()
@@ -219,7 +233,7 @@ server.post("/admin/elimina_cds", (req, res) => {
                             if (err) {
                                 console.log(err)
                             } else {
-                                res.redirect("/admin/elimina_cds" + get_text_parm("Corso eliminato con successo"))
+                                res.redirect("/admin/admin_page" + get_text_parm("Corso eliminato con successo"))
                             }
                         })
                     }
