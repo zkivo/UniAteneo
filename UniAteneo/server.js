@@ -232,171 +232,9 @@ server.post("/admin/elimina_cds", (req, res) => {
     }
 })
 
-// server.post("/admin/crea_modifica_cds", (req, res) => {
-//     if (!assert_you_are_admin(req, res)) return
-//     var id_cds = req.body.id_cds
-//     var nome_cds = req.body.nome_cds
-//     var tipo_cds = req.body.tipo_cds
-//     var materie = []
-//     for (i = 0; ; i++) {
-//         if (req.body['id_' + i] !== 'undefined') {
-//             scelta = req.body['scelta_' + i]
-//             if (scelta.toUpperCase() === 'SI') {
-//                 scelta = true
-//             } else {
-//                 scelta = false
-//             }
-//             materie.push({
-//                 id: req.body['id_' + i],
-//                 nome: req.body['nome_' + i],
-//                 ssd: req.body['ssd_' + i],
-//                 cfu: req.body['cfu_' + i],
-//                 anno: req.body['anno_' + i],
-//                 scelta: scelta
-//             })
-//         }
-//     }
-//     db.serialize(() => {
-//         db.get(`select id from CDS where id = ${id_cds}`, (err, row) => {
-//             if (err) {
-//                 console.log(err)
-//             } else {
-//                 if (row.id == id_cds) {
-//                     // MODIFICA CDS
-//                     db.all(`SELECT P.id, P.anno, P.scelta, I.nome` +
-//                            `, I.cfu, I.ssd, C.tipo AS tipo_cds,` +
-//                            `C.id AS id_cds, C.nome AS nome_cds FROM CDS as C, Programmi as P, Insegnamenti AS I ` +
-//                            `WHERE P.id_insegnamento = I.id AND ` +
-//                            `P.id_corso = C.id AND C.id = ${id_cds}`, (err, rows) => {
-//                             if (err) {
-//                                 console.log(err)
-//                             } else {
-//                                 var sql = 'UPDATE CDS SET'
-//                                 if (rows[0].nome_cds !== nome_cds) {
-//                                     sql += ` nome = ${nome_cds} `
-//                                 }
-//                                 if (rows[0].tipo_cds !== tipo_cds) {
-//                                     if (sql !== 'UPDATE CDS SET') sql += ','
-//                                     sql += ` tipo = ${tipo_cds} `
-//                                 }
-//                                 if (sql !== 'UPDATE CDS SET') {
-//                                     sql += `where id = ${id_cds}`
-//                                 } else {
-//                                     sql = null
-//                                 }
-//                                 db.get(sql, (err, row) => {
-//                                     if (err) {
-//                                         console.log(err)
-//                                     }
-//                                 })
-//                                 var sql1
-//                                 var sql2
-//                                 rows.forEach(row => {
-//                                     sql1 = 'UPDATE Insegnamenti SET'
-//                                     sql2 = 'UPDATE Programmi SET'
-//                                     materie.forEach((materia_input, i) => {
-//                                         if (materia_input.id === row.id.toString()) {
-//                                             if (materia_input.nome !== row.nome.toString()) {
-//                                                 sql1 += `nome = ${materia_input.nome}`
-//                                             }
-//                                             if (materia_input.ssd !== row.ssd.toString()) {
-//                                                 if (sql1 !== 'UPDATE Insegnamenti SET') sql1 += ','
-//                                                 sql1 += `ssd = ${materia_input.ssd}`
-//                                             }
-//                                             if (materia_input.cfu !== row.cfu.toString()) {
-//                                                 if (sql1 !== 'UPDATE Insegnamenti SET') sql1 += ','
-//                                                 sql1 += `cfu = ${materia_input.cfu}`
-//                                             }
-//                                             if (materia_input.scelta !== row.scelta.toString()) {
-//                                                 sql2 += `scelta = ${materia_input.scelta}`
-//                                             }
-//                                             if (materia_input.anno !== row.anno.toString()) {
-//                                                 if (sql2 !== 'UPDATE Programmi SET') sql2 += ','
-//                                                 sql2 += `anno = ${materia_input.anno}`
-//                                             }
-//                                             if (sql1 !== 'UPDATE Insegnamenti SET') {
-//                                                 sql1 += `where id = ${materia_input.id}`
-//                                             }
-//                                             if (sql2 !== 'UPDATE Programmi SET') {
-//                                                 sql2 += `where id_insegnamento = ${materia_input.id}`
-//                                             }
-//                                             materie[i] = null
-//                                         }
-//                                     })
-//                                     if (sql1 !== 'UPDATE Insegnamenti SET') {
-//                                         db.get(sql1, (err, row) => {
-//                                             if (err) {
-//                                                 console.log(err)
-//                                             }
-//                                         })
-//                                     }
-//                                     if (sql2 !== 'UPDATE Programmi SET') {
-//                                         db.get(sql2, (err, row) => {
-//                                             if (err) {
-//                                                 console.log(err)
-//                                             }
-//                                         })
-//                                     }
-//                                 })
-//                             }
-//                         })
-//                 } else {
-//                     // CREA CDS
-//                     var sql = `INSERT INTO CDS (id, nome, tipo) VALUES(${id_cds}, \"${nome_cds}\", \"${tipo_cds}\")`
-//                     db.get(sql2, (err, row) => {
-//                         if (err) {
-//                             console.log(err)
-//                         }
-//                     })
-//                 }
-//                 // insert all remaining elements from materie
-//                 var sql = ""
-//                 materie.forEach(element => {
-//                     sql += `INSERT INTO Insegnamenti (id, nome, cfu, ssd) VALUES (${element.id}, \"${element.nome}\", ${element.cfu}, \"${element.ssd}\";\n`;
-//                     sql += `INSERT INTO Programmi (id_corso, id_insegnamento, scelta, anno) VALUES (${id_corso}, ${element.id}, ${element.scelta}, ${element.anno});\n`;
-//                 })
-//                 db.exec(sql, (err, row) => {
-//                     if (err) {
-//                         console.log(err)
-//                     }
-//                 })
-//             }
-//         })
-//     })
-// })
-
-// server.get("/admin/crea_modifica_cds", (req, res) => {
-//     if (!assert_you_are_admin(req, res)) return
-//     db.serialize(() => {
-//         db.all('Select * from CDS', (err, rows) => {
-//                 if (err) {
-//                     console.log(err)
-//                     res.redirect('/admin/crea_modifica_cds' + get_error_parm("errore: 5342"))
-//                 } else {
-//                     db.all(`SELECT P.id_insegnamento, P.anno, P.scelta, I.nome AS nome_insegnamento, I.cfu, I.path_scheda_trasparenza, I.ssd, I.id_docente, D.nome AS nome_docente, D.cognome AS cognome_docente, C.tipo AS tipo_cds, C.id AS id_cds FROM CDS as C, Programmi as P, Insegnamenti as I, ` +
-//                             `Docenti as D WHERE ` +
-//                             `P.id_insegnamento = I.id AND ` +
-//                             `I.id_docente = D.id AND ` +
-//                             `P.id_corso = C.id`, (err, rows2) => {
-//                         if (err) {
-//                             console.log(err)
-//                             res.redirect('/admin/crea_modifica_cds' + get_error_parm("errore: 3345"))
-//                         } else {
-//                             res.render('admin/crea_modifica_cds', {
-//                                 lista_cds: rows,
-//                                 lista_materie: rows2,
-//                                 utente: req.session.utente,
-//                                 path: '/admin/crea_modifica_cds',
-//                                 depth: 2,
-//                                 lista_materie_ssd: lista_materie_ssd
-//                             })
-//                         }
-//                     })
-//             }
-//         })
-//     })
-
-// })
+// -----------------------------------
+//        POST MODIFICA CDS
+// -----------------------------------
 
 server.post("/admin/modifica_cds", (req, res) => {
     if (!assert_you_are_admin(req, res)) return
@@ -869,25 +707,25 @@ server.post("/admin/modifica_cds", (req, res) => {
                             }
                             var id = row['MAX(id)']
                             var sql = ""
-                            materie.forEach(mat => {
+                            materie.forEach(materia => {
                                 id += 25;
                                 var scelta = false
                                 var blocco = 0
-                                if (mat.scelta === 'Primo blocco') {
+                                if (materia.scelta === 'Primo blocco') {
                                     scelta = true
                                     blocco = 1
-                                } else if (mat.scelta === 'Secondo blocco') {
+                                } else if (materia.scelta === 'Secondo blocco') {
                                     scelta = true
                                     blocco = 2
-                                } else if (mat.scelta === 'Terzo blocco') {
+                                } else if (materia.scelta === 'Terzo blocco') {
                                     scelta = true
                                     blocco = 3
                                 }
                                 if (!scelta) {
-                                    sql += `INSERT INTO Insegnamenti (id,nome,cfu,ssd) VALUES (${id}, \"${mat.nome}\", ${mat.cfu}, \"${mat.ssd}\");\n`
-                                    sql += `INSERT INTO Programmi (id_corso, id_insegnamento, scelta, blocco, anno) VALUES (${id_cds}, ${id}, false, 0, ${mat.anno});\n`
+                                    sql += `INSERT INTO Insegnamenti (id,nome,cfu,ssd) VALUES (${id}, \"${materia.nome}\", ${materia.cfu}, \"${materia.ssd}\");\n`
+                                    sql += `INSERT INTO Programmi (id_corso, id_insegnamento, scelta, blocco, anno) VALUES (${id_cds}, ${id}, false, 0, ${materia.anno});\n`
                                 } else {
-                                    sql += `INSERT INTO Programmi (id_corso, id_insegnamento, scelta, blocco, anno) VALUES (${id_cds}, ${mat.nome}, true, ${blocco}, ${mat.anno});\n`
+                                    sql += `INSERT INTO Programmi (id_corso, id_insegnamento, scelta, blocco, anno) VALUES (${id_cds}, ${materia.nome}, true, ${blocco}, ${materia.anno});\n`
                                 }
                             })
                             db.exec(sql, (err,row) => {
@@ -906,6 +744,10 @@ server.post("/admin/modifica_cds", (req, res) => {
 
     })
 })
+
+// -----------------------------------
+//        POST PRENDI CDS
+// -----------------------------------
 
 server.post("/admin/prendi_cds", (req, res) => {
     if (!assert_you_are_admin(req, res)) return
@@ -982,6 +824,10 @@ server.post("/admin/prendi_cds", (req, res) => {
         });
     })
 })
+
+// -----------------------------------
+//        POST CREA CDS
+// -----------------------------------
 
 server.post("/admin/crea_cds", (req, res) => {
     if (!assert_you_are_admin(req, res)) return
@@ -1475,6 +1321,10 @@ server.post("/admin/crea_cds", (req, res) => {
     })
 })
 
+// -----------------------------------
+//        GET MODIFICA CDS
+// -----------------------------------
+
 server.get("/admin/modifica_cds", (req, res) => {
     if (!assert_you_are_admin(req, res)) return
     db.serialize(() => {
@@ -1506,6 +1356,10 @@ server.get("/admin/modifica_cds", (req, res) => {
     })
 })
 
+// -----------------------------------
+//        GET CREA CDS
+// -----------------------------------
+
 server.get("/admin/crea_cds", (req, res) => {
     if (!assert_you_are_admin(req, res)) return
     db.serialize(() => {
@@ -1529,6 +1383,10 @@ server.get("/admin/crea_cds", (req, res) => {
     })
 })
 
+// -----------------------------------
+//        GET ADMIN PAGE
+// -----------------------------------
+
 server.get("/admin/admin_page", (req, res) => {
     if (!assert_you_are_admin(req, res)) return
     res.render('admin/admin_page', {
@@ -1538,6 +1396,7 @@ server.get("/admin/admin_page", (req, res) => {
         depth: 2
     })
 })
+
 
 server.post("/admin/crea_rim_docente", (req, res) => {
     if (!assert_you_are_admin(req, res)) return
