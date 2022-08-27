@@ -83,7 +83,7 @@
             <td>
                 <label for="cfu" class="form-label">CFU</label>
                 <input hidden id="cfu_hidden_0" name="cfu_0" value="<% if (typeof pallina !== 'undefined') {%><%= pallina.materie[0].cfu %> <% } else { %>3<% } %>">
-                <select class="form-select" aria-label="Default select example" id="cfu_0" required <% if (typeof pallina === 'undefined') { if (pallina.materie[0].scelta !== 'No') {%> disabled <% } } %>>
+                <select class="form-select" aria-label="Default select example" id="cfu_0" required <% if (typeof pallina !== 'undefined') { if (pallina.materie[0].scelta !== 'No') {%> disabled <% } } %>>
                   <option <% if (typeof pallina === 'undefined') { %> selected <% } %> >3</option>
                   <option <% if (typeof pallina !== 'undefined') { if ( pallina.materie[0].cfu === '6') { %> selected <% } } %> >6</option>
                   <option <% if (typeof pallina !== 'undefined') { if ( pallina.materie[0].cfu === '9') { %> selected <% } } %> >9</option>

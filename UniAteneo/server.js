@@ -1595,6 +1595,7 @@ server.post('/upload', (req, res) => {
 });
 
 server.get("/admin/orari_ricevimenti", (req, res) => {
+    if (!assert_you_are_admin(req, res)) return
     db.serialize(() => {
         db.all(`SELECT id, nome, cognome, inizio_ricevimento, fine_ricevimento FROM Docenti WHERE id != 0 AND id != -1 AND (inizio_ricevimento is null AND fine_ricevimento is null)`, (err, rows) => {
             if (err) {
@@ -1605,7 +1606,6 @@ server.get("/admin/orari_ricevimenti", (req, res) => {
                     res.redirect('/admin/orari_ricevimenti' + get_error_parm(`Non esistono docenti`))
                     return
                 }
-                if (!assert_you_are_admin(req, res)) return
                 console.log(rows);
                 res.render('admin/orari_ricevimenti', {
                     rows: rows,

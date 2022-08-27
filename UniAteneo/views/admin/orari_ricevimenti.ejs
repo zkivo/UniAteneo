@@ -13,17 +13,19 @@
                 </datalist>
             </div>
             <div class="col-auto">
-                <button type="submit" class="btn btn-primary" >Invia</button>
+                <button id="invia" type="submit" class="btn btn-primary" >Invia</button>
             </div>
         </div>
 
         <div id="orari" class="container mt-2 row justify-content-center">
             <div class="col-2">
-                <input type="time" id="inizio" name="inizio" required class="form-control" >
+                <label for="inizio">Inizio</label>
+                <input type="time" id="inizio" name="inizio" required class="form-control">
             </div>
             
             <div class="col-2">
-                <input type="time" id="fine" name="fine" required class="form-control">
+                <label for="fine">Fine</label>
+                <input type="time" id="fine" name="fine" required class="form-control" onchange="check()">
             </div>
         </div>
 
@@ -33,11 +35,24 @@
 <%- include('../footer.ejs') %>
 
 <script>
+    console.log(document.getElementById('inizio').value)
     // function show() {
     //   var x = document.getElementById("orari");
     //   if (x.style.display === "none") {
     //     x.style.display = "show";
     //   }
     // }
+
+    function check() {
+        x = document.getElementById('inizio').value;
+        y = document.getElementById('fine').value;
+
+        if (x > y){
+            document.getElementById('invia').setAttribute('disabled', '')
+        }
+        else {
+            document.getElementById('invia').removeAttribute('disabled', '')
+        }
+    }
 </script>
 
