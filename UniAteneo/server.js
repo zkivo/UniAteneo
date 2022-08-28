@@ -782,7 +782,7 @@ server.post("/admin/modifica_cds", (req, res) => {
                                     return
                                 }
                                 //console.log(sql)
-                                res.redirect('/portale' + get_text_parm("Modifica avvenuta con successo"))
+                                res.redirect('/admin/admin_page' + get_text_parm("Modifica avvenuta con successo"))
                             })
                         })
                     })
@@ -1360,7 +1360,7 @@ server.post("/admin/crea_cds", (req, res) => {
                             console.log(err)
                             return
                         }
-                        res.redirect('/portale' + get_text_parm("Inserimento avvenuto con successo"))
+                        res.redirect('/admin/admin_page' + get_text_parm("Inserimento avvenuto con successo"))
                     })
 
                 })
@@ -1474,6 +1474,34 @@ server.post("/admin/elimina_docente", (req, res) => {
             return
         }
         res.redirect("/admin/admin_page" + get_text_parm("Docente rimosso con successo."))
+    })
+})
+
+// -----------------------------------
+//        GET ASSOCIA INSEGNAMENTO
+// -----------------------------------
+
+server.get("/admin/associa_insegnamento", (req, res) => {
+    if (!assert_you_are_admin(req, res)) return
+    db.all("select * from Docenti order by nome", (err, docenti)=> {
+        if (err) {
+            console.log(err)
+            return
+        }
+        db.all("select * from Insegnamenti order by id", (err, materie)=> {
+            if (err) {
+                console.log(err)
+                return
+            }
+            docenti = docenti.filter(docente => docente.nome !== "" && docente.nome !== "Da assegnare")
+            res.render('admin/associa_insegnamento', {
+                docenti,
+                materie,
+                utente: req.session.utente,
+                path: '/admin/associa_insegnamento',
+                depth: 2
+            })
+        })
     })
 })
 
@@ -1746,7 +1774,7 @@ server.post('/upload', (req, res) => {
         }
 
         console.log(`PDF CARICATO`);
-        res.redirect('portale');
+        res.redirect('/docente');
     });
 });
 

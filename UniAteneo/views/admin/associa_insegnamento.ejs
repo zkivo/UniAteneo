@@ -1,0 +1,42 @@
+<%- include('../navbar.ejs') %>
+
+<div class="container text-center g-5">
+    <h2 class="mt-2">Associa insegnamento a docente</h2>
+    <form action="<%= path %>" method="POST">
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <label class="col-form-label">Docente</label>
+            </div> 
+            <div class="col-auto">
+                <select id="docente" type="text" class="form-select" name="docente" required>
+                    <%if (typeof docenti !=='undefined' ) { docenti.forEach(docente=> {%>
+                        <option>
+                            <%=docente.nome + " " + docente.cognome%>
+                        </option>
+                    <% })}%>
+                </select>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <label class="col-form-label">Insegnamento</label>
+            </div>
+            <div class="col-auto">
+                <select id="materia" type="text" class="form-select" name="materia" required>
+                    <%if (typeof materie !=='undefined' ) { materie.forEach(materia=> {%>
+                        <option>
+                            <%=materia.id + " - " + materia.nome%>
+                        </option>
+                    <% })}%>
+                </select>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary">Assegna</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<%- include('../footer.ejs') %>
