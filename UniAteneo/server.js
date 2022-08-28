@@ -32,6 +32,19 @@ function assert_you_are_admin(req, res) {
     return true
 }
 
+function assert_you_are_docente(req, res) {
+    if (typeof req.session.utente === 'undefined') {
+        res.redirect('/' + get_error_parm("Effettua prima il login"))
+        return false
+    }
+    if (req.session.utente.tipo !== 'docente') {
+        res.redirect('/' + get_error_parm("Pagina riservata al docente"))
+        return false
+    }
+    return true
+}
+
+
 function solo_unici(value, index, self) {
     return self.indexOf(value) === index;
 }
@@ -161,11 +174,19 @@ server.get('/portale', (req, res) => {
                                     res.redirect('/' + get_error_parm(`Non esistono insegnamenti`))
                                     return
                                 }
-                                res.render('docente', {
-                                    rows: rows,
-                                    utente: req.session.utente,
-                                    path: '/portale',
-                                    depth : 1
+                                db.all(`SELECT * FROM Ricevimenti WHERE id_docente = ${id_docente} ORDER BY id DESC`, (err, rice) => {
+                                    if (err) {
+                                        console.log(err)
+                                        res.redirect('/' + get_error_parm("errore: 7567"))
+                                    } else {
+                                        res.render('docente', {
+                                            rows: rows,
+                                            rice: rice,
+                                            utente: req.session.utente,
+                                            path: '/portale',
+                                            depth : 1
+                                        })
+                                    }
                                 })
                             }
                         })
@@ -1829,6 +1850,24 @@ server.post("/admin/crea_studente", (req, res) => {
             return
         }
         res.redirect('/admin/crea_studente' + get_text_parm("Inserimento avvenuto con successo"))
+    })
+
+})
+
+server.post("/crea_ricevimento", (req, res) => {
+    if(!assert_you_are_docente(req,res)) return;    
+
+    var codice = req.body.codice1;
+    var data = req.body.data.trimStart().trimEnd();
+    var inizio = req.body.inizio.trimStart().trimEnd();
+    
+    var sql = `INSERT INTO Ricevimenti (id_docente, id_materia, giorno, ora) VALUES (${req.session.utente.id},  \"${codice}\", \"${data}\", \"${inizio}\");`
+    db.exec(sql, (err,row) => {
+        if (err) {
+            console.log(err)
+            return
+        }
+        res.redirect('/portale' + get_text_parm("Inserimento avvenuto con successo"))
     })
 
 })
