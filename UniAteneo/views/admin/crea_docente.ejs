@@ -22,10 +22,13 @@
         </div>
         <div class="row m-3 justify-content-center">
             <div class="col-2">
-                <label for="ssd" class="form-label">S.S.D.</label>
+                <label for="ssd" class="form-label" list="datalist_ssd">S.S.D.</label>
             </div>
             <div class="col-auto">
-                <input type="text" class="form-control" id="ssd" name="ssd" required>
+                <input type="text" class="form-control" list="datalist_ssd" id="ssd" name="ssd" required>
+                <datalist id="datalist_ssd">
+                    <% lista_materie_ssd.forEach(e => { %> <option value="<%= e.ssd %>"> <% }) %>
+                </datalist>
             </div>
         </div>
         <div class="row m-3 justify-content-center">
@@ -44,7 +47,7 @@
                 <input type="password" class="form-control" id="password_2" name="password_2" required>
             </div>
         </div>
-        <div class="form-text">La password deve contenerer almeno 8 caratteri</div>
+        <!-- <div class="form-text">La password deve contenerer almeno 8 caratteri</div> -->
         <button type="submit" class="btn btn-primary mt-3">Crea docente</button>
         <!-- <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Email address</label>

@@ -36,6 +36,11 @@ function solo_unici(value, index, self) {
     return self.indexOf(value) === index;
 }
 
+function get_lista_unica(lista) {
+    strings = lista.map(e => {return JSON.stringify(e)}).filter(solo_unici)
+    return strings.map(e => {return JSON.parse(e)})
+}
+
 server.use(express.static('public'))
 server.set('view engine', 'ejs');
 
@@ -150,10 +155,10 @@ server.get('/portale', (req, res) => {
                                 `P.id_corso = C.id AND D.id = ${id_docente}`, (err, rows) => {
                             if (err) {
                                 console.log(err)
-                                res.redirect('/' + get_error_parm("errore: 5432"))
+                                res.redirect('/' + get_error_parm("errore: 7567"))
                             } else {
                                 if (rows.length == 0) {
-                                    res.redirect('/portale' + get_error_parm(`Non esistono insegnamenti`))
+                                    res.redirect('/' + get_error_parm(`Non esistono insegnamenti`))
                                     return
                                 }
                                 res.render('docente', {
@@ -219,7 +224,6 @@ server.post("/admin/elimina_cds", (req, res) => {
             return
         }
         id_cds = num
-        
         db.all(`select * from Programmi as P, Insegnamenti as I ` +
                 `where P.id_insegnamento = I.id and ` +
                 `P.id_corso = ${id_cds}`, (err, materie_attuali) => {
@@ -1386,17 +1390,50 @@ server.get("/admin/modifica_cds", (req, res) => {
 server.post("/admin/crea_docente", (req, res) => {
     if (!assert_you_are_admin(req, res)) return
 
-    /*
-        - verificare che pass1 e pass2 siano uguali
-        - controlllare che non esista doc con  questo
-        nome e cognome
-    */
+    db.all("select * from Docenti", (err, docenti) => {
+        if (err) {
+            console.log(err)
+            return
+        }
+        docenti = get_lista_unica(docenti)
+        nome = req.body.nome.trimEnd().trimStart().toUpperCase()
+        cognome = req.body.cognome.trimEnd().trimStart().toUpperCase()
+        nomi_e_cognomi = docenti.map(docente => {
+            return docente.nome.toUpperCase() + " " + 
+                docente.cognome.toUpperCase()
+        })
+        if (nomi_e_cognomi.includes(nome + " " + cognome)) {
+            res.redirect("/admin/crea_docente" + get_error_parm("Esiste gia' docente con questo nome e cognome"))
+            return
+        }
+        ssd = req.body.ssd.trimEnd().trimStart()
+        password_1 = req.body.password_1.trimEnd().trimStart()
+        password_2 = req.body.password_2.trimEnd().trimStart()
+        if (password_1 !== password_2) {
+            res.redirect("/admin/crea_docente" + get_error_parm("Le password inserite sono diverse"))
+            return
+        }
+        password = bcrypt.hashSync(password_1, 10)
+        db.get('select MAX(id) from Docenti', (err, row) => {
+            if (err) {
+                console.log(err)
+                return
+            }
+            var id = 8000 
+            if (row['MAX(id)'] !== null) {
+                id = row['MAX(id)']
+                id += 25
+            }
+            db.run("INSERT INTO Docenti (id, nome, cognome, ssd, password)" +
+                   ` VALUES (${id}, \"${nome}\", \"${cognome}\", \"${ssd}\", \"${password}\")`, (err) => {
+                if (err) {
+                    console.log(err)
+                    return
+                }
+                res.redirect("/admin/admin_page" + get_text_parm("Docente creato correttamente"))
+            })
+        })
 
-    res.render('admin/crea_docente', {
-        utente: req.session.utente,
-        path: '/admin/crea_docente',
-        depth: 2,
-        lista_materie_ssd: lista_materie_ssd
     })
 })
 
@@ -1543,7 +1580,7 @@ server.post("/login", (req, res) => {
         res.redirect("/" + get_error_parm("Username o password non corretta."))
         return;
     }
-    console.log("input:", nome, cognome, password)
+    //console.log("input:", nome, cognome, password)
     db.serialize(() => {
         db.get(`SELECT * FROM Docenti WHERE nome = \"${nome}\" AND ` +
                 `cognome = \"${cognome}\"`, (err, row) => {
