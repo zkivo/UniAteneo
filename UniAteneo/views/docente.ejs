@@ -16,7 +16,7 @@
 </div>
 
 <div class="modal fade" id="ricevimentiModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Ricevimenti</h5>
@@ -41,19 +41,52 @@
                             <div class="row justify-content-center">
                                 <div class="col-auto" >
                                     <input type="hidden" id="codice1" name="codice1">
-                                    <input type="date" class="form-control" id="start" name="trip-start" value="<%=anno + mese + giorno%>" min="<%=anno + mese + giorno%>" required>
+                                    <input type="date" class="form-control" id="data" name="data" value="<%=anno + mese + giorno%>" min="<%=anno + mese + giorno%>" required>
                                 </div>
                                 
                                 <div class="col-4" >
                                     <input type="time" class="form-control" id="inizio" name="inizio"  required >
                                 </div>
+
+                                <div class="col-auto" >
+                                    <button type="submit" class="btn btn-primary">Invia</button>
+                                </div>
                             </div>                                               
                         </div>
-                </div>
 
+
+                        <div class="container mt-2 overflow-auto" style="height: 20;">
+                            <p1>Ricevimenti creati:</p1>
+                            <table class="table table-hover w-25 mx-auto">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">Data</th>
+                                    <th scope="col">Orario</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                <% rice.forEach((e)=> { %>
+                                    <tr>
+                                        <td>
+                                          <%= e.giorno %>
+                                        </td>
+                                        <td>
+                                          <%= e.ora %>
+                                        </td>
+                                    </tr>
+                        
+                                <% }) %>
+                                </tbody>
+                                <tfoot>
+                                  <tr class="table-dark"></tr>
+                                </tfoot>
+                              </table>
+                        </div>
+                </div>
+<!-- 
                 <div class="modal-footer" >
                     <button type="submit" class="btn btn-primary">Invia</button>
-                </div>
+                </div> -->
             </form>
         </div>
     </div>
@@ -84,7 +117,7 @@
                     <td> <%= row.ssd %> </td>
                     <td> <%= row.nome_insegnamento %> </td>
                     <td> <%= row.cfu %> </td>
-                    <td> <button class="btn btn-primary" onclick="modalChange(<%=cod%>,'#ricevimentiModal')" data-bs-toggle="modal" data-bs-target="#ricevimentiModal">Modifica</button> </td>
+                    <td> <button class="btn btn-primary px-4" onclick="modalChange(<%=cod%>,'#ricevimentiModal')" data-bs-toggle="modal" data-bs-target="#ricevimentiModal">Crea</button> </td>
                     <td> <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#esamiModal">Modifica</button> </td>
                     <td> <button class="btn btn-primary" onclick="modalChange(<%=cod%>,'#schedaModal')" data-bs-toggle="modal" data-bs-target="#schedaModal">Modifica</button> </td>
                     </tr>
