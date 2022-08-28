@@ -1,0 +1,26 @@
+<%- include('../navbar.ejs') %>
+
+<div class="container text-center g-5">
+    <h2 class="mt-2">Scegli il docente da rimuovere</h2>
+    <form action="<%= path %>" method="POST">
+        <div class="row justify-content-center">
+            <!-- <div class="col-auto">
+                <label class="col-form-label">Codice</label>
+            </div> -->
+            <div class="col-auto">
+                <select id="docente" type="text" class="form-select" name="docente" required>
+                    <%if (typeof docenti !=='undefined' ) { docenti.forEach(docente=> {%>
+                        <option>
+                            <%=docente.nome + " " + docente.cognome%>
+                        </option>
+                    <% })}%>
+                </select>
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary">Elimina</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<%- include('../footer.ejs') %>
