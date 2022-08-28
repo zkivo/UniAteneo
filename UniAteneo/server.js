@@ -1457,6 +1457,34 @@ server.post("/admin/elimina_docente", (req, res) => {
 })
 
 // -----------------------------------
+//        POST ASSOCIA INSEGNAMENTO
+// -----------------------------------
+
+server.post("/admin/associa_insegnamento", (req, res) => {
+    if (!assert_you_are_admin(req, res)) return
+    docente = req.body.docente
+    materia = req.body.materia
+    var id_materia = materia.split("-")[0].trimEnd().trimStart()
+    nome = docente.split(" ")[0].trimEnd().trimStart()
+    cognome = docente.split(" ")[1].trimEnd().trimStart()
+    db.get(`select * from Docenti where nome = \"${nome}\" and ` + 
+            `cognome = \"${cognome}\"`,(err, docente)=> {
+        if (err) {
+            console.log(err)
+            return
+        }
+        // TODO: CONTROLLA CHE L'SSD COMBACI e che i cfu del docente
+        db.run(`update Insegnamenti set id_docente = ${docente.id} where id = ${id_materia}`, err => {
+            if (err) {
+                console.log(err)
+                return
+            }
+            res.redirect("/admin/admin_page" + get_text_parm("Insegnamento associato con successo"))
+        })
+    })
+})
+
+// -----------------------------------
 //        GET ASSOCIA INSEGNAMENTO
 // -----------------------------------
 
@@ -1467,7 +1495,9 @@ server.get("/admin/associa_insegnamento", (req, res) => {
             console.log(err)
             return
         }
-        db.all("select * from Insegnamenti order by id", (err, materie)=> {
+        db.all("select * from Insegnamenti where id_docente is null and " +
+                "nome <> \"Tesi\" and nome <> \"Tirocinio\" and " +
+                "nome <> \"Prova finale\" order by id", (err, materie)=> {
             if (err) {
                 console.log(err)
                 return
