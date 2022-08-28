@@ -8,8 +8,40 @@
                 <h5 class="modal-title" id="exampleModalLabel">Esami</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <p1>COMINGSOON</p1>
+            <div class="modal-body text-center">
+                <p1>Studenti iscritti all'esame:</p1>
+                <table class="table table-hover mx-auto">
+                    <thead>
+                      <tr>
+                        <th scope="col">Matricola</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Data Iscrizione</th>
+                        <th scope="col">Convalida</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    <% esami.forEach((e)=> { %>
+                        <tr>
+                            <td>
+                              <%= e.matricola %>
+                            </td>
+                            <td>
+                              <%= e.nome + ' ' + e.cognome %>
+                            </td>
+                            <td>
+                                <%= e.data_iscrizione %>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-primary">Vai</button>
+                            </td>
+                        </tr>
+            
+                    <% }) %>
+                    </tbody>
+                    <tfoot>
+                      <tr class="table-dark"></tr>
+                    </tfoot>
+                  </table>
             </div>
       </div>
     </div>
@@ -24,7 +56,7 @@
             </div>
             <form method="POST" action="/crea_ricevimento">
                 <div class="modal-body text-center">
-                    <p1>Inserisci la data e l'orario del ricevimento</p1>
+                    <p1>Inserisci data, orario, durata e numero massimo di studenti ammessi</p1>
                         <%var data = new Date().toLocaleDateString().split('/'); %>
                         <%var anno = data[2] + '-';%>
                         <%var giorno = data[0]; %>
@@ -42,26 +74,31 @@
                                 <div class="col-auto" >
                                     <input type="hidden" id="codice1" name="codice1">
                                     <input type="date" class="form-control" id="data" name="data" value="<%=anno + mese + giorno%>" min="<%=anno + mese + giorno%>" required>
+                                    <input type="number" class="form-control mt-2" id="durata" name="durata" placeholder="Durata" required >
                                 </div>
                                 
                                 <div class="col-4" >
                                     <input type="time" class="form-control" id="inizio" name="inizio"  required >
+                                    <input type="number" class="form-control mt-2" id="studenti" name="studenti" placeholder="Max. Studenti" required >
+                                    
                                 </div>
 
                                 <div class="col-auto" >
                                     <button type="submit" class="btn btn-primary">Invia</button>
                                 </div>
-                            </div>                                               
+                            </div>                                          
                         </div>
 
 
                         <div class="container mt-2 overflow-auto" style="height: 20;">
                             <p1>Ricevimenti creati:</p1>
-                            <table class="table table-hover w-25 mx-auto">
+                            <table class="table table-hover w-50 mx-auto">
                                 <thead>
                                   <tr>
                                     <th scope="col">Data</th>
                                     <th scope="col">Orario</th>
+                                    <th scope="col">Durata</th>
+                                    <th scope="col">Max. Studenti</th>
                                   </tr>
                                 </thead>
                                 <tbody>
@@ -72,6 +109,12 @@
                                         </td>
                                         <td>
                                           <%= e.ora %>
+                                        </td>
+                                        <td>
+                                            <%= e.durata %>
+                                        </td>
+                                        <td>
+                                            <%= e.numstudenti %>
                                         </td>
                                     </tr>
                         

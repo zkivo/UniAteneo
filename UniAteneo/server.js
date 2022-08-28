@@ -179,12 +179,25 @@ server.get('/portale', (req, res) => {
                                         console.log(err)
                                         res.redirect('/' + get_error_parm("errore: 7567"))
                                     } else {
-                                        res.render('docente', {
-                                            rows: rows,
-                                            rice: rice,
-                                            utente: req.session.utente,
-                                            path: '/portale',
-                                            depth : 1
+                                        if (rows.length == 0) {
+                                            res.redirect('/' + get_error_parm(`Non esistono insegnamenti`))
+                                            return
+                                        }
+                                        db.all(`SELECT I.matricola, I.id_esame, I.data_iscrizione, E.id_insegnamento, S.nome, S.cognome `+
+                                                `FROM IscrizioniEsami as I, Esami as E, Studente as S WHERE I.matricola = S.matricola AND I.id_esame = E.id`, (err, esami) => {
+                                            if (err) {
+                                                console.log(err)
+                                                res.redirect('/' + get_error_parm("errore: 7567"))
+                                            } else {
+                                                res.render('docente', {
+                                                    rows: rows,
+                                                    rice: rice,
+                                                    esami: esami,
+                                                    utente: req.session.utente,
+                                                    path: '/portale',
+                                                    depth : 1
+                                                })
+                                            }
                                         })
                                     }
                                 })
@@ -1888,8 +1901,10 @@ server.post("/crea_ricevimento", (req, res) => {
     var codice = req.body.codice1;
     var data = req.body.data.trimStart().trimEnd();
     var inizio = req.body.inizio.trimStart().trimEnd();
+    var durata = req.body.durata;
+    var num = req.body.studenti;
     
-    var sql = `INSERT INTO Ricevimenti (id_docente, id_materia, giorno, ora) VALUES (${req.session.utente.id},  \"${codice}\", \"${data}\", \"${inizio}\");`
+    var sql = `INSERT INTO Ricevimenti (id_docente, id_materia, giorno, ora, durata, numstudenti) VALUES (${req.session.utente.id},  \"${codice}\", \"${data}\", \"${inizio}\", ${durata}, ${num});`
     db.exec(sql, (err,row) => {
         if (err) {
             console.log(err)

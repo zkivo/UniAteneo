@@ -68,16 +68,16 @@ CREATE TABLE IF NOT EXISTS Esami (
 	id              INTEGER,
 	id_insegnamento INTEGER,
 	id_corso        INTEGER,
-	data            datetime,
 	PRIMARY KEY (id),
 	FOREIGN KEY (id_insegnamento) REFERENCES Insegnamenti(id),
 	FOREIGN KEY (id_corso) 		  REFERENCES CDS(id)
 );
 
-CREATE TABLE IF NOT EXISTS InscrizioniEsami (
+CREATE TABLE IF NOT EXISTS IscrizioniEsami (
 	matricola       INTEGER,
 	id_esame        INTEGER,
 	data_iscrizione datetime,
+	sostenuto       boolean DEFAULT false,
 	PRIMARY KEY (matricola, id_esame),
 	FOREIGN KEY (matricola) REFERENCES Studente(matricola),
 	FOREIGN KEY (id_esame)  REFERENCES Esami(id)
@@ -85,10 +85,12 @@ CREATE TABLE IF NOT EXISTS InscrizioniEsami (
 
 CREATE TABLE IF NOT EXISTS Ricevimenti (
 	id             INTEGER PRIMARY KEY AUTOINCREMENT,
-	id_docente     tinytext,
-	id_materia     tinytext,
+	id_docente     INTEGER,
+	id_materia     INTEGER,
 	giorno         date,
 	ora            time,
+	durata         INTEGER,
+	numstudenti    INTEGER,
 	FOREIGN KEY (id_docente) REFERENCES Docenti(id),
 	FOREIGN KEY (id_materia) REFERENCES Insegnamenti(id)
 );
