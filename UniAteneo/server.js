@@ -1692,7 +1692,7 @@ server.post('/upload', (req, res) => {
 server.get("/admin/orari_ricevimenti", (req, res) => {
     if (!assert_you_are_admin(req, res)) return
     db.serialize(() => {
-        db.all(`SELECT id, nome, cognome, inizio_ricevimento, fine_ricevimento FROM Docenti WHERE id != 0 AND id != -1 AND (inizio_ricevimento is null AND fine_ricevimento is null)`, (err, rows) => {
+        db.all(`SELECT id, nome, cognome, inizio_ricevimento, fine_ricevimento FROM Docenti WHERE id != 0 AND id != -1 AND (inizio_ricevimento is null AND fine_ricevimento is null) ORDER BY cognome, nome`, (err, rows) => {
             if (err) {
                 console.log(err)
                 res.redirect('/' + get_error_parm("errore: 5432"))
@@ -1732,7 +1732,7 @@ server.post("/admin/orari_ricevimenti", (req, res) => {
             console.log(err)
             return
         }
-        res.redirect('/admin/orari_ricevimenti' + get_text_parm("Inserimento avvenuto con successo"))
+        res.redirect('/admin/admin_page' + get_text_parm("Inserimento avvenuto con successo"))
     })
 
 

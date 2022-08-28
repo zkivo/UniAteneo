@@ -5,12 +5,13 @@
     <form action="<%= path %>" method="POST">
         <div class="row justify-content-center">
             <div class="col-3">
-                <input type="text" id="docente" name="docente" required class="form-control" list="datalist_nomi" placeholder="Docente">
-                <datalist id="datalist_nomi">
+                <select type="text" id="docente" name="docente" required class="form-control">
+                <!-- <datalist id="datalist_nomi"> -->
                   <% for(var i=0; i < rows.length; i++) { %> 
                         <option id="opt_<%=i%>" name="<%=rows[i].id%>"> <%= rows[i].id + ' - ' + rows[i].cognome + ' ' + rows[i].nome %> </option>
                   <% } %>                 
-                </datalist>
+                <!-- </datalist> -->
+                </select>
             </div>
             <div class="col-auto">
                 <button id="invia" type="submit" class="btn btn-primary" >Invia</button>
@@ -20,7 +21,7 @@
         <div id="orari" class="container mt-2 row justify-content-center">
             <div class="col-2">
                 <label for="inizio">Inizio</label>
-                <input type="time" id="inizio" name="inizio" required class="form-control">
+                <input type="time" id="inizio" name="inizio" required class="form-control" onchange="check()">
             </div>
             
             <div class="col-2">
@@ -47,7 +48,7 @@
         x = document.getElementById('inizio').value;
         y = document.getElementById('fine').value;
 
-        if (x > y){
+        if (x >= y){
             document.getElementById('invia').setAttribute('disabled', '')
         }
         else {
