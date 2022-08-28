@@ -148,7 +148,7 @@ server.get('/portale', (req, res) => {
             case 'docente':
                 var id_docente = req.session.utente.id
                     db.serialize(() => {
-                        db.all(`SELECT P.id_insegnamento, P.anno, P.scelta, I.nome AS nome_insegnamento, I.cfu, I.path_scheda_trasparenza, I.ssd, I.id_docente, D.nome AS nome_docente, D.cognome AS cognome_docente, C.tipo AS tipo_cds FROM CDS as C, Programmi as P, Insegnamenti as I, ` +
+                        db.all(`SELECT DISTINCT P.id_insegnamento, P.anno, P.scelta, I.nome AS nome_insegnamento, I.cfu, I.path_scheda_trasparenza, I.ssd, I.id_docente, D.nome AS nome_docente, D.cognome AS cognome_docente, C.tipo AS tipo_cds FROM CDS as C, Programmi as P, Insegnamenti as I, ` +
                                 `Docenti as D WHERE ` +
                                 `P.id_insegnamento = I.id AND ` +
                                 `I.id_docente = D.id AND ` +
@@ -1806,9 +1806,61 @@ server.post("/admin/orari_ricevimenti", (req, res) => {
         }
         res.redirect('/admin/admin_page' + get_text_parm("Inserimento avvenuto con successo"))
     })
-
-
 });
+
+server.get("/admin/crea_studente", (req, res) => {
+    db.serialize(() => {
+        db.all(`SELECT MAX(matricola) FROM Studente`, (err, rows) => {
+            if (err) {
+                console.log(err)
+                res.redirect('/' + get_error_parm("errore: 5432"))
+            } else {
+                if (rows[0]['MAX(matricola)'] === null) {
+                    console.log('Non esistono studenti');
+                }
+                db.all(`SELECT id, nome, tipo FROM CDS`, (err, cds) => {
+                    if (err) {
+                        console.log(err)
+                        res.redirect('/' + get_error_parm("errore: 5432"))
+                    }
+                    console.log(rows);
+                    res.render('admin/crea_studente', {
+                        cds: cds,
+                        rows: rows,
+                        utente: req.session.utente,
+                        path: '/admin/crea_studente',
+                        depth : 2
+                    })
+                })
+            }
+        })
+    })
+});
+
+
+server.post("/admin/crea_studente", (req, res) => {
+    if (!assert_you_are_admin(req, res)) return 
+    var matricola = req.body.matricola;
+    var nome = req.body.nome.trimStart().trimEnd();
+    var cognome = req.body.cognome.trimStart().trimEnd();
+    // var reddito = req.body.reddito;
+    var password = req.body.password;
+    password2 = bcrypt.hashSync(password, 10)
+    var corso = req.body.corso.trimStart().trimEnd().split(' ');
+    var corso2 = corso[1].trimStart().trimEnd().split(' - ');
+    var id = corso2[0];
+
+    var sql = `INSERT INTO Studente (matricola, nome, cognome, password, id_corso) VALUES (${matricola},  \"${nome}\", \"${cognome}\", \"${password2}\", ${id});`
+    db.exec(sql, (err,row) => {
+        if (err) {
+            console.log(err)
+            return
+        }
+        res.redirect('/admin/crea_studente' + get_text_parm("Inserimento avvenuto con successo"))
+    })
+
+})
+
 
 server.listen(web_port, () => {
     console.log(`web server is listeing to port: ${web_port}.`)

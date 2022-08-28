@@ -1,16 +1,5 @@
 <%- include('navbar.ejs') %>
-<div class="modal fade" id="ricevimentiModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ricevimenti</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-            </div>
-      </div>
-    </div>
-</div>
+
 
 <div class="modal fade" id="esamiModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -26,7 +15,49 @@
     </div>
 </div>
 
+<div class="modal fade" id="ricevimentiModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ricevimenti</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="POST" action="/crea_ricevimento">
+                <div class="modal-body text-center">
+                    <p1>Inserisci la data e l'orario del ricevimento</p1>
+                        <%var data = new Date().toLocaleDateString().split('/'); %>
+                        <%var anno = data[2] + '-';%>
+                        <%var giorno = data[0]; %>
+                        <%var mese; %>
+                        <%if(data[1] <= 9) { %>
+                            <%mese = '0' + data[1] + '-'; %>
+                        <%} else { %>
+                            <%mese = data[1] + '-'; %>
+                        <%}%>
+                        <%var ora = (new Date()).getHours();%>
+                        <%var mins = (new Date()).getMinutes();%>
+                        <%var orario = ora.toString() + ':' + mins.toString() %>
+                        <div class="container mt-2">
+                            <div class="row justify-content-center">
+                                <div class="col-auto" >
+                                    <input type="hidden" id="codice1" name="codice1">
+                                    <input type="date" class="form-control" id="start" name="trip-start" value="<%=anno + mese + giorno%>" min="<%=anno + mese + giorno%>" required>
+                                </div>
+                                
+                                <div class="col-4" >
+                                    <input type="time" class="form-control" id="inizio" name="inizio"  required >
+                                </div>
+                            </div>                                               
+                        </div>
+                </div>
 
+                <div class="modal-footer" >
+                    <button type="submit" class="btn btn-primary">Invia</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 <div class="container text-center pt-3">
     <div class="shadow p-3 mb-5 bg-body rounded">
@@ -53,9 +84,9 @@
                     <td> <%= row.ssd %> </td>
                     <td> <%= row.nome_insegnamento %> </td>
                     <td> <%= row.cfu %> </td>
-                    <td> <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ricevimentiModal">Modifica</button> </td>
+                    <td> <button class="btn btn-primary" onclick="modalChange(<%=cod%>,'#ricevimentiModal')" data-bs-toggle="modal" data-bs-target="#ricevimentiModal">Modifica</button> </td>
                     <td> <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#esamiModal">Modifica</button> </td>
-                    <td> <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#schedaModal">Modifica</button> </td>
+                    <td> <button class="btn btn-primary" onclick="modalChange(<%=cod%>,'#schedaModal')" data-bs-toggle="modal" data-bs-target="#schedaModal">Modifica</button> </td>
                     </tr>
                     
                 <% }) %>
@@ -74,13 +105,11 @@
                         </div>
                         <div class="modal-body">
                             <form method="POST" action="/upload" enctype="multipart/form-data">
-                                <div>
-                                    <label>Seleziona la scheda di trasparenza:</label>
-                                    <input type="hidden" id="codice" name="codice" value="<%= cod %>">
-                                    <input type="file" name="scheda_trasparenza" />
-                                </div>
-                                <div>
-                                    <input type="submit" name="btn_upload" value="Upload" />
+                                <label>Seleziona la scheda di trasparenza:</label>
+                                <div class="input-group mb-3">
+                                    <input type="hidden" id="codice" name="codice">
+                                    <input type="file" name="scheda_trasparenza" class="form-control" id="inputGroupFile02">
+                                    <button type="submit" class="btn btn-primary" >Upload</button>
                                 </div>
                             </form>
                         </div>
@@ -91,3 +120,25 @@
     </div>
 </div>
 </body>
+
+<%- include('footer.ejs') %>
+<script>
+    function modalChange(cod, modal) {
+        if (modal == '#schedaModal') {
+            document.getElementById('codice').setAttribute("value", cod)
+            //document.getElementById('schedaModal').setAttribute("id", "schedaModal" + cod );
+        }
+
+        if (modal == '#ricevimentiModal') {
+            document.getElementById('codice1').setAttribute("value", cod)
+            //document.getElementById('schedaModal').setAttribute("id", "schedaModal" + cod );
+        }
+    }
+
+    // var btn = document.getElementsByClassName("modal1btn");
+    // for(var i = 0; i < btn.length; i++) {
+    //     btn[i].setAttribute('data-bs-toggle', 'modal');
+    //     btn[i].setAttribute('data-bs-target', '#ricevimentiModal');
+    // }
+</script>
+

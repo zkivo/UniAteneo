@@ -1,0 +1,54 @@
+<%- include('../navbar.ejs') %>
+
+<div class="container shadow-sm card mt-2 ">
+    <div class="container text-center g-5 card-body ">
+        <h2 class="mt-2">Inserisci i dati dello studente</h2>
+        <form action="<%= path %>" method="POST">
+
+            <div class="row justify-content-center">
+                <div class="mb-3 col-auto mt-2">
+                    <% if(rows[0]['MAX(matricola)'] === null) { %>
+                        <input type="number" class="form-control" id="matricola" name="matricola" aria-describedby="nome" required hidden value="6000">
+                    <%} else {%>
+                        <input type="number" class="form-control" id="matricola" name="matricola" aria-describedby="nome" required hidden value="<%= rows[0]['MAX(matricola)'] + 20%>">
+                    <%}%>                    
+                    <input type="text" class="form-control" id="nome" name="nome" aria-describedby="nome" placeholder="Nome" required>
+                </div>
+
+                <div class="mb-3 col-auto mt-2">                   
+                    <input type="text" class="form-control" id="cognome" name="cognome" aria-describedby="cognome" placeholder="Cognome" required>
+                </div>
+
+                <div class="mb-3 col-auto mt-2">                   
+                    <input type="text" class="form-control" id="password" name="password" aria-describedby="password" placeholder="Password" required>
+                </div>
+
+                <div class="mb-3 col-auto mt-2">
+                    <button type="submit" class="btn btn-primary">Invia</button>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <!-- <div class="mb-3 col-auto">                  
+                    <input type="number" min="0" class="form-control" id="reddito" name="reddito" aria-describedby="reddito" placeholder="Reddito" required>
+                </div> -->
+
+                <div class="mb-3 col-auto">                    
+                    <select class="form-control" id="corso" name="corso" aria-describedby="corso" list="datalist_cds" required>
+                        <option selected disabled>Corso di studi</option>
+                    <datalist id="datalist_cds">
+                        <% for(var i=0; i < cds.length; i++) { %> 
+                              <option id="opt_<%=i%>" name="<%=cds[i].id%>"> <%= cds[i].tipo + ' ' + cds[i].id + ' - ' + cds[i].nome %> </option>
+                        <% } %>                 
+                    </datalist>
+                    
+                </div>
+            </div>
+
+            
+        </form> 
+    </div>
+</div>
+
+
+<%- include('../footer.ejs') %>

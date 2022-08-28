@@ -45,10 +45,12 @@ CREATE TABLE IF NOT EXISTS Studente (
 	matricola   INTEGER,
 	nome        tinytext,
 	cognome     tinytext,
+	password text,
 	reddito     INTEGER,
 	anno        tinyINTEGER,     -- 1,2,3,4 OR 5
 	rate_pagate tinyINTEGER,	 -- 0,1 OR 2
 	id_corso    INTEGER,
+	UNIQUE (nome, cognome)
 	PRIMARY KEY (matricola),
 	FOREIGN KEY (id_corso) REFERENCES CDS(id)
 );
