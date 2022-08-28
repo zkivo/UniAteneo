@@ -8,7 +8,7 @@
                 <select type="text" id="docente" name="docente" required class="form-control">
                 <!-- <datalist id="datalist_nomi"> -->
                   <% for(var i=0; i < rows.length; i++) { %> 
-                        <option id="opt_<%=i%>" name="<%=rows[i].id%>"> <%= rows[i].id + ' - ' + rows[i].cognome + ' ' + rows[i].nome %> </option>
+                        <option id="opt_<%=i%>" name="<%=rows[i].id%>"> <%= rows[i].id + ' - ' + rows[i].nome + ' ' + rows[i].cognome %> </option>
                   <% } %>                 
                 <!-- </datalist> -->
                 </select>

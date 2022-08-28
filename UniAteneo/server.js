@@ -50,7 +50,7 @@ server.use(bodyParser.urlencoded({ extended: true }))
 server.use(session({
     resave: false,            
     saveUninitialized: false,
-    secret: 'keyboard cat'
+    secret: 'iV60!95Jg@qt'
 }));
 
 
@@ -1438,6 +1438,46 @@ server.post("/admin/crea_docente", (req, res) => {
 })
 
 // -----------------------------------
+//        POST ELIMINA DOCENTE
+// -----------------------------------
+
+server.post("/admin/elimina_docente", (req, res) => {
+    if (!assert_you_are_admin(req, res)) return
+    docente = req.body.docente
+    nome = docente.split(" ")[0].trimEnd().trimStart()
+    cognome = docente.split(" ")[1].trimEnd().trimStart()
+    db.run(`delete from Docenti where nome = \"${nome}\" and ` + 
+            `cognome = \"${cognome}\"`,(err)=> {
+        if (err) {
+            console.log(err)
+            return
+        }
+        res.redirect("/admin/admin_page" + get_text_parm("Docente rimosso con successo."))
+    })
+})
+
+// -----------------------------------
+//        GET ELIMINA DOCENTE
+// -----------------------------------
+
+server.get("/admin/elimina_docente", (req, res) => {
+    if (!assert_you_are_admin(req, res)) return
+    db.all("select * from Docenti order by nome", (err, docenti)=> {
+        if (err) {
+            console.log(err)
+            return
+        }
+        docenti = docenti.filter(docente => docente.nome !== "" && docente.nome !== "Da assegnare")
+        res.render('admin/elimina_docente', {
+            docenti,
+            utente: req.session.utente,
+            path: '/admin/elimina_docente',
+            depth: 2
+        })
+    })
+})
+
+// -----------------------------------
 //        GET CREA DOCENTE
 // -----------------------------------
 
@@ -1689,10 +1729,14 @@ server.post('/upload', (req, res) => {
     });
 });
 
+// -----------------------------------
+//        GET ORARI RICEVIMENTI
+// -----------------------------------
+
 server.get("/admin/orari_ricevimenti", (req, res) => {
     if (!assert_you_are_admin(req, res)) return
     db.serialize(() => {
-        db.all(`SELECT id, nome, cognome, inizio_ricevimento, fine_ricevimento FROM Docenti WHERE id != 0 AND id != -1 AND (inizio_ricevimento is null AND fine_ricevimento is null) ORDER BY cognome, nome`, (err, rows) => {
+        db.all(`SELECT id, nome, cognome, inizio_ricevimento, fine_ricevimento FROM Docenti WHERE id != 0 AND id != -1 AND (inizio_ricevimento is null AND fine_ricevimento is null) ORDER BY nome`, (err, rows) => {
             if (err) {
                 console.log(err)
                 res.redirect('/' + get_error_parm("errore: 5432"))
@@ -1701,7 +1745,7 @@ server.get("/admin/orari_ricevimenti", (req, res) => {
                     res.redirect('/admin/orari_ricevimenti' + get_error_parm(`Non esistono docenti`))
                     return
                 }
-                console.log(rows);
+                //console.log(rows);
                 res.render('admin/orari_ricevimenti', {
                     rows: rows,
                     utente: req.session.utente,
@@ -1718,13 +1762,13 @@ server.post("/admin/orari_ricevimenti", (req, res) => {
     var docente = req.body.docente.trimStart().trimEnd().split(' - ');
     var id = docente[0];
     var cognomenome = docente[1].trimStart().trimEnd().split(' ');
-    var cognome = cognomenome[0];
-    var nome = cognomenome[1];
+    var cognome = cognomenome[1];
+    var nome = cognomenome[0];
     var inizio = req.body.inizio;
     var fine = req.body.fine;
 
-    console.log(req.body);
-    console.log(typeof req.body.inizio);
+    // console.log(req.body);
+    // console.log(typeof req.body.inizio);
 
     var sql = `UPDATE Docenti SET inizio_ricevimento = \"${inizio}\", fine_ricevimento = \"${fine}\" WHERE id = ${id};`
     db.exec(sql, (err,row) => {
