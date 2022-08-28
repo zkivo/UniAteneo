@@ -207,11 +207,11 @@ server.get("/admin/elimina_cds", (req, res) => {
 
 // -----------------------------------
 //        POST ELIMINA CDS
-// -----------------------------------
-// TODO: eliminare anche i singoli insegnamenti
+// ----------------------------------
+
 server.post("/admin/elimina_cds", (req, res) => {
     if (!assert_you_are_admin(req, res)) return
-    var id_cds = req.body.id_cds.trimEnd().trimStart()
+    var id_cds = req.body.id_cds.trimEnd().trimStart()    
     if (id_cds !== "") {
         num = parseInt(id_cds, 10);
         if (isNaN(num)) {
@@ -219,30 +219,39 @@ server.post("/admin/elimina_cds", (req, res) => {
             return
         }
         id_cds = num
-        db.serialize(() => {
-            db.get(`select COUNT(id) from CDS where id = ${id_cds};`, (err, row) => {
-                if (row['COUNT(id)'] < 1) {
-                    res.redirect("/admin/elimina_cds" + get_error_parm("Nessun corso con id: " + id_cds))
+        
+        db.all(`select * from Programmi as P, Insegnamenti as I ` +
+                `where P.id_insegnamento = I.id and ` +
+                `P.id_corso = ${id_cds}`, (err, materie_attuali) => {
+            if (err) {
+                console.log(err)
+                return
+            }
+            strings = materie_attuali.map(e => {return JSON.stringify(e)}).filter(solo_unici)
+            materie_attuali = strings.map(e => {return JSON.parse(e)})
+            db.get(`delete from Programmi as P where P.id_corso = ${id_cds}`, (err) => {
+                if (err) {
+                    console.log(err)
                     return
                 }
-                db.get(`DELETE FROM CDS WHERE id = ${id_cds};`, (err, row) => {
+                del_sql = ""
+                materie_attuali.forEach(materia_attuale => {
+                    del_sql += `delete from Insegnamenti as I where I.id = ${materia_attuale.id};\n`
+                })
+                db.exec(del_sql, (err) => {
                     if (err) {
                         console.log(err)
-                    } else {
-                        db.get(`DELETE FROM Programmi WHERE id_corso = ${id_cds};`, (err, row) => {
-                            if (err) {
-                                console.log(err)
-                            } else {
-                                res.redirect("/admin/admin_page" + get_text_parm("Corso eliminato con successo"))
-                            }
-                        })
+                        return
                     }
+                    db.get(`DELETE FROM CDS WHERE id = ${id_cds};`, (err, row) => {
+                        if (err) {
+                            console.log(err)
+                        }
+                        res.redirect("/admin/admin_page" + get_text_parm("Corso eliminato con successo"))
+                    })
                 })
-
             })
         })
-    } else {
-        res.redirect("/admin/elimina_cds" + get_error_parm("Inserire un codice"))
     }
 })
 

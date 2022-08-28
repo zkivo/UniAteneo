@@ -8,7 +8,7 @@
                     <label class="col-form-label">Codice</label>
                 </div>
                 <div class="col-auto">
-                    <select id="cds" type="text" class="form-select" name="id_cds">
+                    <select id="cds" type="text" class="form-select" name="id_cds" required>
                         <%if (typeof lista_cds !=='undefined' ) { lista_cds.forEach(cds=> {%>
                             <option>
                                 <%=cds.id%>
