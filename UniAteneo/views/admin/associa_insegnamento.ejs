@@ -11,11 +11,14 @@
                 <select id="docente" type="text" class="form-select" name="docente" required>
                     <%if (typeof docenti !=='undefined' ) { docenti.forEach(docente=> {%>
                         <option>
-                            <%=docente.nome + " " + docente.cognome%>
+                            <%=docente.nome + " " + docente.cognome + " - SSD: " + docente.ssd%>
                         </option>
                     <% })}%>
                 </select>
             </div>
+            <!-- <div class="col-auto">
+                <input type="text" id="ssd" class="form-control" disabled>
+            </div> -->
         </div>
         <div class="row justify-content-center m-3">
             <div class="col-auto">
@@ -25,7 +28,7 @@
                 <select id="materia" type="text" class="form-select" name="materia" required>
                     <%if (typeof materie !=='undefined' ) { materie.forEach(materia=> {%>
                         <option>
-                            <%=materia.id + " - " + materia.nome%>
+                            <%=materia.id + " _ " + materia.ssd + " _ "+ materia.nome + " _  CFU: " + materia.cfu %>
                         </option>
                     <% })}%>
                 </select>
@@ -38,5 +41,21 @@
         </div>
     </form>
 </div>
+
+<script>
+    <%if (typeof error !== 'undefined') {%> alert("<%=error%>") <%}%>
+    // var docente = document.getElementById('docente')
+    // var ssd = document.getElementById('ssd')
+    // var docenti = JSON.parse('<% if (typeof docenti !== 'undefined') {%><%-JSON.stringify(docenti).split("'").join("\\'")%><%}%>')
+    
+    // docente.onchange = docente_onchange
+    // function docente_onchange() {
+    //     index = docenti.map(e => { 
+    //         return e.nome + " " +  e.cognome 
+    //     }).indexOf(docente.value)
+    //     if (index != -1) ssd.value = docenti[index].ssd
+    // }
+    // docente_onchange()
+</script>
 
 <%- include('../footer.ejs') %>

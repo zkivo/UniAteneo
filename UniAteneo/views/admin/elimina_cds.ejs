@@ -34,7 +34,7 @@
     function cds_onchange() {
         num = parseInt(cds.value)
         index = lista_cds.map(e => { return e.id }).indexOf(num)
-        nome.value = lista_cds[index].nome
+        if (index != -1) nome.value = lista_cds[index].nome
     }
     cds_onchange()
 </script>

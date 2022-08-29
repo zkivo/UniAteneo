@@ -32,20 +32,12 @@
         "nome": "Lingua inglese I livello"
     },
     {
-        "ssd": "ICAR/14",
-        "nome": "Atelier Fondamenti di Progettazione da Tabella 1"
-    },
-    {
         "ssd": "ICAR/12",
         "nome": "Cultura e fondamenti di Tecnologia dell'architettura"
     },
     {
         "ssd": "ICAR/21",
         "nome": "Urbanistica"
-    },
-    {
-        "ssd": "ICAR/21",
-        "nome": "Atelier Città e Territorio a scelta da Tabella 2"
     },
     {
         "ssd": "ICAR/06",
@@ -58,10 +50,6 @@
     {
         "ssd": "ING-IND/11",
         "nome": "Fisica tecnica ambientale"
-    },
-    {
-        "ssd": "ICAR/08",
-        "nome": "Atelier Costruzione a scelta da Tabella 3"
     },
     {
         "ssd": "ING-IND/22",
@@ -82,138 +70,6 @@
     {
         "ssd": "ICAR/22",
         "nome": "Teorie e strumenti per le valutazioni immobiliari"
-    },
-    {
-        "ssd": "ICAR/14",
-        "nome": "Atelier Fondamenti di Progettazione A"
-    },
-    {
-        "ssd": "ICAR/14",
-        "nome": "Atelier Fondamenti di Progettazione B"
-    },
-    {
-        "ssd": "ICAR/14",
-        "nome": "Atelier Fondamenti di Progettazione C"
-    },
-    {
-        "ssd": "ICAR/14",
-        "nome": "Atelier Fondamenti di Progettazione D"
-    },
-    {
-        "ssd": "ICAR/14",
-        "nome": "Atelier Fondamenti di Progettazione E"
-    },
-    {
-        "ssd": "ICAR/14",
-        "nome": "Atelier Fondamenti di Progettazione F"
-    },
-    {
-        "ssd": "ICAR/14",
-        "nome": "Atelier Città e Territorio A"
-    },
-    {
-        "ssd": "ICAR/21",
-        "nome": "Atelier Città e Territorio B"
-    },
-    {
-        "ssd": "ICAR/14",
-        "nome": "Atelier Città e Territorio C"
-    },
-    {
-        "ssd": "MAT/07",
-        "nome": "Atelier Città e Territorio D"
-    },
-    {
-        "ssd": "ICAR/14",
-        "nome": "Atelier Città e Territorio E"
-    },
-    {
-        "ssd": "ICAR/14",
-        "nome": "Atelier Città e Territorio F"
-    },
-    {
-        "ssd": "ICAR/14",
-        "nome": "Atelier Costruzione A"
-    },
-    {
-        "ssd": "ICAR/12",
-        "nome": "Atelier Costruzione B"
-    },
-    {
-        "ssd": "ICAR/14",
-        "nome": "Atelier Costruzione C"
-    },
-    {
-        "ssd": "ICAR/14",
-        "nome": "Atelier Costruzione D"
-    },
-    {
-        "ssd": "ICAR/14",
-        "nome": "Atelier Costruzione E"
-    },
-    {
-        "ssd": "ICAR/12",
-        "nome": "Atelier Costruzione F"
-    },
-    {
-        "ssd": "ICAR/18",
-        "nome": "Laboratorio di Storia dell'architettura e della città A"
-    },
-    {
-        "ssd": "ICAR/18",
-        "nome": "Laboratorio di Storia dell'architettura e della città B"
-    },
-    {
-        "ssd": "ICAR/18",
-        "nome": "Laboratorio di Storia dell'architettura e della città C"
-    },
-    {
-        "ssd": "ICAR/18",
-        "nome": "Laboratorio di Storia dell'architettura e della città D"
-    },
-    {
-        "ssd": "ICAR/18",
-        "nome": "Laboratorio di Storia dell'architettura e della città E"
-    },
-    {
-        "ssd": "ICAR/14",
-        "nome": "Laboratorio di Teoria del progetto A"
-    },
-    {
-        "ssd": "ICAR/14",
-        "nome": "Laboratorio di Teoria del progetto B"
-    },
-    {
-        "ssd": "ICAR/14",
-        "nome": "Laboratorio di Teoria del progetto C"
-    },
-    {
-        "ssd": "ICAR/14",
-        "nome": "Laboratorio di Teoria del progetto D"
-    },
-    {
-        "ssd": "ICAR/14",
-        "nome": "Laboratorio di Teoria del progetto E"
-    },
-    {
-        "ssd": "ING-IND/11",
-        "nome": "Atelier Architettura degli interni"
-    },
-    {
-        "ssd": "ICAR/14",
-        "nome": "Atelier Design-build"
-    },
-    {
-        "ssd": "ICAR/14",
-        "nome": "Atelier Progettazione urbana"
-    },
-    {
-        "ssd": "ICAR/14",
-        "nome": "Atelier Progetto e Modellazione"
-    },
-    {
-        "ssd": "ICAR/09",
-        "nome": "Atelier: restauro e strutture"
     },
     {
         "ssd": "ICAR/12",
