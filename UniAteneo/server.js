@@ -1934,7 +1934,7 @@ server.post("/crea_ricevimento", (req, res) => {
     var durata = req.body.durata;
     var num = req.body.studenti;
     
-    var sql = `INSERT INTO Ricevimenti (id_docente, id_materia, giorno, ora, durata, numstudenti) VALUES (${req.session.utente.id},  \"${codice}\", \"${data}\", \"${inizio}\", ${durata}, ${num});`
+    var sql = `INSERT INTO Ricevimenti (id_docente, id_materia, giorno, ora, durata, numstudenti) VALUES (${req.session.utente.id},  ${codice}, \"${data}\", \"${inizio}\", ${durata}, ${num});`
     db.exec(sql, (err,row) => {
         if (err) {
             console.log(err)

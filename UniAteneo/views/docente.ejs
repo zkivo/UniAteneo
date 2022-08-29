@@ -21,6 +21,9 @@
                     </thead>
                     <tbody>
                     <% esami.forEach((e)=> { %>
+                        <%if(typeof cod === 'undefined')%>
+                        <%if(e.id_insegnamento != esame)  return;%>   
+                        <%console.log(e.id_insegnamento)%>
                         <tr>
                             <td>
                               <%= e.matricola %>
@@ -160,8 +163,8 @@
                     <td> <%= row.ssd %> </td>
                     <td> <%= row.nome_insegnamento %> </td>
                     <td> <%= row.cfu %> </td>
-                    <td> <button class="btn btn-primary px-4" onclick="modalChange(<%=cod%>,'#ricevimentiModal')" data-bs-toggle="modal" data-bs-target="#ricevimentiModal">Crea</button> </td>
-                    <td> <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#esamiModal">Modifica</button> </td>
+                    <td> <button id="<%=cod%>" value="<%=cod%>" class="btn btn-primary px-4" onclick="modalChange(<%=cod%>,'#ricevimentiModal')" data-bs-toggle="modal" data-bs-target="#ricevimentiModal">Crea</button> </td>
+                    <td> <button class="btn btn-primary" onclick="modalChange(<%=cod%>,'#esamiModal')" data-bs-toggle="modal" data-bs-target="#esamiModal">Modifica</button> </td>
                     <td> <button class="btn btn-primary" onclick="modalChange(<%=cod%>,'#schedaModal')" data-bs-toggle="modal" data-bs-target="#schedaModal">Modifica</button> </td>
                     </tr>
                     
@@ -202,12 +205,17 @@
     function modalChange(cod, modal) {
         if (modal == '#schedaModal') {
             document.getElementById('codice').setAttribute("value", cod)
-            //document.getElementById('schedaModal').setAttribute("id", "schedaModal" + cod );
         }
 
         if (modal == '#ricevimentiModal') {
             document.getElementById('codice1').setAttribute("value", cod)
-            //document.getElementById('schedaModal').setAttribute("id", "schedaModal" + cod );
+        }
+
+        if (modal == '#esamiModal') {
+            <%var esame = cod;%>
+            console.log(cod);
+
+            // document.getElementById('codice1').setAttribute("value", cod)
         }
     }
 
