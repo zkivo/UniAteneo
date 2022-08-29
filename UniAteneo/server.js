@@ -1880,6 +1880,14 @@ server.post('/upload', (req, res) => {
     });
 });
 
+server.post('/download', (req,res) => {
+    console.log(req.body.download);
+
+    var file = `${__dirname}/public/uploads/scheda_trasparenza-${req.body.download}.pdf`;
+    res.download(file);
+});
+
+
 // -----------------------------------
 //        GET ORARI RICEVIMENTI
 // -----------------------------------
