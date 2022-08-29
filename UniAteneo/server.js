@@ -44,6 +44,17 @@ function assert_you_are_docente(req, res) {
     return true
 }
 
+function assert_you_are_studente(req, res) {
+    if (typeof req.session.utente === 'undefined') {
+        res.redirect('/' + get_error_parm("Effettua prima il login"))
+        return false
+    }
+    if (req.session.utente.tipo !== 'studente') {
+        res.redirect('/' + get_error_parm("Pagina riservata al docente"))
+        return false
+    }
+    return true
+}
 
 function solo_unici(value, index, self) {
     return self.indexOf(value) === index;
@@ -154,7 +165,7 @@ server.get("/logout", (req, res) => {
 function portale_docente(req, res) {
     var id_docente = req.session.utente.id
     db.serialize(() => {
-        db.all(`SELECT DISTINCT P.id_insegnamento, P.anno, P.scelta, I.nome AS nome_insegnamento, I.cfu, I.path_scheda_trasparenza, I.ssd, I.id_docente, D.nome AS nome_docente, D.cognome AS cognome_docente, C.tipo AS tipo_cds FROM CDS as C, Programmi as P, Insegnamenti as I, ` +
+        db.all(`SELECT DISTINCT P.id_insegnamento, P.anno, P.scelta, I.nome AS nome_insegnamento, I.cfu, I.scheda_trasparenza, I.ssd, I.id_docente, D.nome AS nome_docente, D.cognome AS cognome_docente, C.tipo AS tipo_cds FROM CDS as C, Programmi as P, Insegnamenti as I, ` +
                 `Docenti as D WHERE ` +
                 `P.id_insegnamento = I.id AND ` +
                 `I.id_docente = D.id AND ` +
@@ -1753,9 +1764,9 @@ server.post("/login", (req, res) => {
                 console.log(err);
             else {
                 if (typeof row === 'undefined') {
-                    console.log("Incorrect username");
+                    console.log("Incorrect username2");
                     res.redirect("/" + get_error_parm("Username o password non corretta."))
-                    return;
+                    return;                    
                 }
                 if (row.nome === nome &&
                         row.cognome === cognome &&
@@ -1786,7 +1797,7 @@ server.get('/manifesto/:id_cds', (req, res) => {
     db.serialize(() => {
         db.all(`SELECT P.id_insegnamento, P.anno, P.blocco, ` +
                 `P.scelta, I.nome AS nome_insegnamento, I.cfu, ` +
-                `I.path_scheda_trasparenza, I.ssd, I.id_docente, ` +
+                `I.scheda_trasparenza, I.ssd, I.id_docente, ` +
                 `C.tipo AS tipo_cds FROM CDS as C, Programmi as P, ` +
                 `Insegnamenti as I WHERE P.id_corso = ${id_corso} AND ` +
                 ` P.id_insegnamento = I.id AND ` +
@@ -1819,17 +1830,18 @@ server.get('/manifesto/:id_cds', (req, res) => {
     })
 })
 
-const storage = multer.diskStorage({
+const storage = multer.diskStorage({                                                            //crea una nuova istanza del "disco virtuale"
     destination: function(req, file, cb) {
-        cb(null, 'public/uploads/');
+        cb(null, 'public/uploads/');                                                            // imposta il percorso dei file caricati
     },
 
     filename: function(req, file, cb) {
-        cb(null, file.fieldname + '-' + req.body.codice + path.extname(file.originalname));
+        cb(null, file.fieldname + '-' + req.body.codice + path.extname(file.originalname));     //imposta il nome e l'estensione che il file salvato deve avere
     }
 });
 
 server.post('/upload', (req, res) => {
+    if(!assert_you_are_docente(req,res)) return;
     let upload = multer({ storage: storage, fileFilter: helpers.pdfFilter }).single('scheda_trasparenza');
 
     upload(req, res, function(err) {
@@ -1837,10 +1849,12 @@ server.post('/upload', (req, res) => {
         // req.body contains information of text fields, if there were any
 
         if (req.fileValidationError) {
-            return res.send(req.fileValidationError);
+            //return res.send(req.fileValidationError);
+            return res.redirect('/portale' + get_text_parm("Solo PDF accettati!"));
         }
         else if (!req.file) {
-            return res.send('Seleziona un PDF da caricare.');
+            //return res.send('Seleziona un PDF da caricare.');
+            return res.redirect('/portale' + get_text_parm("Seleziona un PDF da caricare"));
         }
         else if (err instanceof multer.MulterError) {
             return res.send(err);
@@ -1849,8 +1863,19 @@ server.post('/upload', (req, res) => {
             return res.send(err);
         }
 
-        console.log(`PDF CARICATO`);
-        res.redirect('/docente');
+        var codice = req.body.codice;
+        var docente = req.session.utente.id;
+
+        var sql = `UPDATE Insegnamenti SET scheda_trasparenza = TRUE WHERE id = ${codice} AND id_docente = ${docente};`
+        db.exec(sql, (err,row) => {
+            if (err) {
+                console.log(err)
+                return
+            }
+            console.log(`PDF CARICATO`);
+            return res.redirect('/portale' + get_text_parm("Scheda di trasparenza caricata!"));
+        })
+        
     });
 });
 
@@ -1977,6 +2002,15 @@ server.post("/crea_ricevimento", (req, res) => {
         res.redirect('/portale' + get_text_parm("Inserimento avvenuto con successo"))
     })
 
+})
+
+server.get("/studente", (req,res) => {
+    if(!assert_you_are_studente(req,res)) return;  
+
+    res.render('studente', {
+        path: 'studente',
+        depth : 1
+    })
 })
 
 

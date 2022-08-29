@@ -2,7 +2,7 @@ body,h1 {font-family: "Raleway", sans-serif}
 body, html {height: 100%; background-color: #fff;}
 div p {font-family: "Lato", sans-serif; color: #262626; text-align: justify;}
 
-.unibtn:focus {
+/* .unibtn:focus {
     outline: none;
     box-shadow: none;
 }
@@ -40,9 +40,9 @@ option[value=""][disabled] {
 }
 option {
   color: black;
-}
+} */ */
 
-input[type=button], input[type=submit], input[type=reset] {
+/* input[type=button], input[type=submit], input[type=reset] {
     background-color: #FFFFFD;
     border: 2px solid #ccc;
     color: black;
@@ -53,15 +53,15 @@ input[type=button], input[type=submit], input[type=reset] {
     -webkit-transition: 0.5s;
     transition: 0.5s;
     outline: none;
-}
+} */
 
-input[type="button"]:hover, input[type=submit]:hover, input[type=reset]:hover {
+/* input[type="button"]:hover, input[type=submit]:hover, input[type=reset]:hover {
     border: 2px solid #000;
     background-color: #000;
     color: white;
-}
+} */
 
-
+/* 
 .buttonalike {
     background-color: #FFFFFD;
     border: 2px solid #ccc;
