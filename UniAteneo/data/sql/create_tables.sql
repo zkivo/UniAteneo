@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS Insegnamenti (
 	id   INTEGER PRIMARY KEY, --AUTOINCREMENT,
 	nome tinytext,
 	cfu  tinyINTEGER,
-	path_scheda_trasparenza text,
+	scheda_trasparenza bool,
 	ssd  tinytext,          
 	id_docente INTEGER,      
 	FOREIGN KEY (id_docente) REFERENCES Docenti(id)

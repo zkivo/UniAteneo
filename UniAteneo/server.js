@@ -154,7 +154,7 @@ server.get("/logout", (req, res) => {
 function portale_docente(req, res) {
     var id_docente = req.session.utente.id
     db.serialize(() => {
-        db.all(`SELECT DISTINCT P.id_insegnamento, P.anno, P.scelta, I.nome AS nome_insegnamento, I.cfu, I.path_scheda_trasparenza, I.ssd, I.id_docente, D.nome AS nome_docente, D.cognome AS cognome_docente, C.tipo AS tipo_cds FROM CDS as C, Programmi as P, Insegnamenti as I, ` +
+        db.all(`SELECT DISTINCT P.id_insegnamento, P.anno, P.scelta, I.nome AS nome_insegnamento, I.cfu, I.scheda_trasparenza, I.ssd, I.id_docente, D.nome AS nome_docente, D.cognome AS cognome_docente, C.tipo AS tipo_cds FROM CDS as C, Programmi as P, Insegnamenti as I, ` +
                 `Docenti as D WHERE ` +
                 `P.id_insegnamento = I.id AND ` +
                 `I.id_docente = D.id AND ` +
@@ -1786,7 +1786,7 @@ server.get('/manifesto/:id_cds', (req, res) => {
     db.serialize(() => {
         db.all(`SELECT P.id_insegnamento, P.anno, P.blocco, ` +
                 `P.scelta, I.nome AS nome_insegnamento, I.cfu, ` +
-                `I.path_scheda_trasparenza, I.ssd, I.id_docente, ` +
+                `I.scheda_trasparenza, I.ssd, I.id_docente, ` +
                 `C.tipo AS tipo_cds FROM CDS as C, Programmi as P, ` +
                 `Insegnamenti as I WHERE P.id_corso = ${id_corso} AND ` +
                 ` P.id_insegnamento = I.id AND ` +
@@ -1808,6 +1808,7 @@ server.get('/manifesto/:id_cds', (req, res) => {
                     return
                 }
                 res.render('manifesto', {
+                    id_corso,
                     rows: rows,
                     docenti : docenti,
                     utente: req.session.utente,
