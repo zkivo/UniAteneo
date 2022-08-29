@@ -1,142 +1,144 @@
 <%- include('navbar.ejs') %>
 
-
-<div class="modal fade" id="esamiModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Esami</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body text-center">
-                <p1>Studenti iscritti all'esame:</p1>
-                <table class="table table-hover mx-auto">
-                    <thead>
-                      <tr>
-                        <th scope="col">Matricola</th>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Data Iscrizione</th>
-                        <th scope="col">Convalida</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                    <% esami.forEach((e)=> { %>
-                        <%if(typeof cod === 'undefined')%>
-                        <%if(e.id_insegnamento != esame)  return;%>   
-                        <%console.log(e.id_insegnamento)%>
-                        <tr>
-                            <td>
-                              <%= e.matricola %>
-                            </td>
-                            <td>
-                              <%= e.nome + ' ' + e.cognome %>
-                            </td>
-                            <td>
-                                <%= e.data_iscrizione %>
-                            </td>
-                            <td>
-                                <button type="button" class="btn btn-primary">Vai</button>
-                            </td>
-                        </tr>
-            
-                    <% }) %>
-                    </tbody>
-                    <tfoot>
-                      <tr class="table-dark"></tr>
-                    </tfoot>
-                  </table>
-            </div>
-      </div>
-    </div>
-</div>
-
-<div class="modal fade" id="ricevimentiModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ricevimenti</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form method="POST" action="/crea_ricevimento">
-                <div class="modal-body text-center">
-                    <p1>Inserisci data, orario, durata e numero massimo di studenti ammessi</p1>
-                        <%var data = new Date().toLocaleDateString().split('/'); %>
-                        <%var anno = data[2] + '-';%>
-                        <%var giorno = data[0]; %>
-                        <%var mese; %>
-                        <%if(data[1] <= 9) { %>
-                            <%mese = '0' + data[1] + '-'; %>
-                        <%} else { %>
-                            <%mese = data[1] + '-'; %>
-                        <%}%>
-                        <%var ora = (new Date()).getHours();%>
-                        <%var mins = (new Date()).getMinutes();%>
-                        <%var orario = ora.toString() + ':' + mins.toString() %>
-                        <div class="container mt-2">
-                            <div class="row justify-content-center">
-                                <div class="col-auto" >
-                                    <input type="hidden" id="codice1" name="codice1">
-                                    <input type="date" class="form-control" id="data" name="data" value="<%=anno + mese + giorno%>" min="<%=anno + mese + giorno%>" required>
-                                    <input type="number" class="form-control mt-2" id="durata" name="durata" placeholder="Durata" required >
-                                </div>
-                                
-                                <div class="col-4" >
-                                    <input type="time" class="form-control" id="inizio" name="inizio"  required >
-                                    <input type="number" class="form-control mt-2" id="studenti" name="studenti" placeholder="Max. Studenti" required >
-                                    
-                                </div>
-
-                                <div class="col-auto" >
-                                    <button type="submit" class="btn btn-primary">Invia</button>
-                                </div>
-                            </div>                                          
-                        </div>
-
-
-                        <div class="container mt-2 overflow-auto" style="height: 20;">
-                            <p1>Ricevimenti creati:</p1>
-                            <table class="table table-hover w-50 mx-auto">
-                                <thead>
-                                  <tr>
-                                    <th scope="col">Data</th>
-                                    <th scope="col">Orario</th>
-                                    <th scope="col">Durata</th>
-                                    <th scope="col">Max. Studenti</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                <% rice.forEach((e)=> { %>
-                                    <tr>
-                                        <td>
-                                          <%= e.giorno %>
-                                        </td>
-                                        <td>
-                                          <%= e.ora %>
-                                        </td>
-                                        <td>
-                                            <%= e.durata %>
-                                        </td>
-                                        <td>
-                                            <%= e.numstudenti %>
-                                        </td>
-                                    </tr>
-                        
-                                <% }) %>
-                                </tbody>
-                                <tfoot>
-                                  <tr class="table-dark"></tr>
-                                </tfoot>
-                              </table>
-                        </div>
+<%rows.forEach((row) => { %>
+    <div class="modal fade" id="esamiModal<%=row.id_insegnamento%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Esami</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-<!-- 
-                <div class="modal-footer" >
-                    <button type="submit" class="btn btn-primary">Invia</button>
-                </div> -->
-            </form>
+                <div class="modal-body text-center">
+                    <p1>Studenti iscritti all'esame:</p1>
+                    <table class="table table-hover mx-auto">
+                        <thead>
+                          <tr>
+                            <th scope="col">Matricola</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Data Iscrizione</th>
+                            <th scope="col">Convalida</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        <% esami.forEach((e)=> { %>
+                            <%if(e.id_insegnamento != row.id_insegnamento)  return;%>   
+                            <tr>
+                                <td>
+                                  <%= e.matricola %>
+                                </td>
+                                <td>
+                                  <%= e.nome + ' ' + e.cognome %>
+                                </td>
+                                <td>
+                                    <%= e.data_iscrizione %>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-primary">Vai</button>
+                                </td>
+                            </tr>
+                
+                        <% }) %>
+                        </tbody>
+                        <tfoot>
+                          <tr class="table-dark"></tr>
+                        </tfoot>
+                      </table>
+                </div>
+          </div>
         </div>
     </div>
-</div>
+<%})%>
+
+<%rows.forEach((row) => { %>
+    <div class="modal fade" id="ricevimentiModal<%=row.id_insegnamento%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ricevimenti</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form method="POST" action="/crea_ricevimento">
+                    <div class="modal-body text-center">
+                        <p1>Inserisci data, orario, durata e numero massimo di studenti ammessi</p1>
+                            <%var data = new Date().toLocaleDateString().split('/'); %>
+                            <%var anno = data[2] + '-';%>
+                            <%var giorno = data[0]; %>
+                            <%var mese; %>
+                            <%if(data[1] <= 9) { %>
+                                <%mese = '0' + data[1] + '-'; %>
+                            <%} else { %>
+                                <%mese = data[1] + '-'; %>
+                            <%}%>
+                            <%var ora = (new Date()).getHours();%>
+                            <%var mins = (new Date()).getMinutes();%>
+                            <%var orario = ora.toString() + ':' + mins.toString() %>
+                            <div class="container mt-2">
+                                <div class="row justify-content-center">
+                                    <div class="col-auto" >
+                                        <input type="hidden" id="codice1<%=row.id_insegnamento%>" name="codice1" value="<%=row.id_insegnamento%>">
+                                        <input type="date" class="form-control" id="data" name="data" value="<%=anno + mese + giorno%>" min="<%=anno + mese + giorno%>" required>
+                                        <input type="number" class="form-control mt-2" id="durata" name="durata" placeholder="Durata" required >
+                                    </div>
+                                    
+                                    <div class="col-4" >
+                                        <input type="time" class="form-control" id="inizio" name="inizio"  required >
+                                        <input type="number" class="form-control mt-2" id="studenti" name="studenti" placeholder="Max. Studenti" required >
+                                        
+                                    </div>
+
+                                    <div class="col-auto" >
+                                        <button type="submit" class="btn btn-primary">Invia</button>
+                                    </div>
+                                </div>                                          
+                            </div>
+
+
+                            <div class="container mt-2 overflow-auto" style="height: 20;">
+                                <p1>Ricevimenti creati:</p1>
+                                <table class="table table-hover w-50 mx-auto">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Data</th>
+                                        <th scope="col">Orario</th>
+                                        <th scope="col">Durata</th>
+                                        <th scope="col">Max. Studenti</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <% rice.forEach((e)=> { %>
+                                        <%if(e.id_materia != row.id_insegnamento)  return;%>   
+                                        <tr>
+                                            <td>
+                                            <%= e.giorno %>
+                                            </td>
+                                            <td>
+                                            <%= e.ora %>
+                                            </td>
+                                            <td>
+                                                <%= e.durata %>
+                                            </td>
+                                            <td>
+                                                <%= e.numstudenti %>
+                                            </td>
+                                        </tr>
+                            
+                                    <% }) %>
+                                    </tbody>
+                                    <tfoot>
+                                    <tr class="table-dark"></tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                    </div>
+    <!-- 
+                    <div class="modal-footer" >
+                        <button type="submit" class="btn btn-primary">Invia</button>
+                    </div> -->
+                </form>
+            </div>
+        </div>
+    </div>
+<%})%>
 
 <div class="container text-center pt-3">
     <div class="shadow p-3 mb-5 bg-body rounded">
@@ -163,8 +165,8 @@
                     <td> <%= row.ssd %> </td>
                     <td> <%= row.nome_insegnamento %> </td>
                     <td> <%= row.cfu %> </td>
-                    <td> <button id="<%=cod%>" value="<%=cod%>" class="btn btn-primary px-4" onclick="modalChange(<%=cod%>,'#ricevimentiModal')" data-bs-toggle="modal" data-bs-target="#ricevimentiModal">Crea</button> </td>
-                    <td> <button class="btn btn-primary" onclick="modalChange(<%=cod%>,'#esamiModal')" data-bs-toggle="modal" data-bs-target="#esamiModal">Modifica</button> </td>
+                    <td> <button id="<%=cod%>" value="<%=cod%>" class="btn btn-primary px-4" onclick="modalChange(<%=cod%>,'#ricevimentiModal')" data-bs-toggle="modal" data-bs-target="#ricevimentiModal<%=cod%>">Crea</button> </td>
+                    <td> <button class="btn btn-primary" onclick="modalChange(<%=cod%>,'#esamiModal')" data-bs-toggle="modal" data-bs-target="#esamiModal<%=cod%>">Modifica</button> </td>
                     <td> <button class="btn btn-primary" onclick="modalChange(<%=cod%>,'#schedaModal')" data-bs-toggle="modal" data-bs-target="#schedaModal">Modifica</button> </td>
                     </tr>
                     
@@ -208,21 +210,8 @@
         }
 
         if (modal == '#ricevimentiModal') {
-            document.getElementById('codice1').setAttribute("value", cod)
-        }
-
-        if (modal == '#esamiModal') {
-            <%var esame = cod;%>
-            console.log(cod);
-
-            // document.getElementById('codice1').setAttribute("value", cod)
+            document.getElementById('codice1'+cod).setAttribute("value", cod)
         }
     }
-
-    // var btn = document.getElementsByClassName("modal1btn");
-    // for(var i = 0; i < btn.length; i++) {
-    //     btn[i].setAttribute('data-bs-toggle', 'modal');
-    //     btn[i].setAttribute('data-bs-target', '#ricevimentiModal');
-    // }
 </script>
 
