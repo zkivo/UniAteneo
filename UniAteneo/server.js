@@ -1819,6 +1819,7 @@ server.get('/manifesto/:id_cds', (req, res) => {
                     return
                 }
                 res.render('manifesto', {
+                    id_corso,
                     rows: rows,
                     docenti : docenti,
                     utente: req.session.utente,

@@ -46,7 +46,11 @@
                     <%=row.blocco%>
                       <% } %>
                 </td>
-                <td> <button class="btn">Scheda di Trasparenza</button> </td>
+                <td> 
+                  <% if (row.scheda_trasparenza) {%>
+                    <a href="/uploads/scheda_trasparenza-<%=row.id_insegnamento%>.pdf"><img src="/images/download.svg"></a>
+                  <%}%> 
+                </td>
               </tr>
 
               <% }) %>
@@ -101,7 +105,11 @@
                     <%=row.blocco%>
                       <% } %>
                 </td>
-                <td> <button class="btn">Scheda di Trasparenza</button> </td>
+                <td> 
+                  <% if (row.scheda_trasparenza) {%>
+                    <a href="/uploads/scheda_trasparenza-<%=row.id_insegnamento%>.pdf"><img src="/images/download.svg"></a>
+                  <%}%> 
+                </td>
               </tr>
 
               <% }) %>
@@ -157,7 +165,11 @@
                       <%=row.blocco%>
                         <% } %>
                   </td>
-                  <td> <button class="btn">Scheda di Trasparenza</button> </td>
+                  <td> 
+                  <% if (row.scheda_trasparenza) {%>
+                    <a href="/uploads/scheda_trasparenza-<%=row.id_insegnamento%>.pdf"><img src="/images/download.svg"></a>
+                  <%}%> 
+                </td>
                 </tr>
 
                 <% }) %>
@@ -212,7 +224,11 @@
                         <%=row.blocco%>
                           <% } %>
                     </td>
-                    <td> <button class="btn">Scheda di Trasparenza</button> </td>
+                    <td> 
+                  <% if (row.scheda_trasparenza) {%>
+                    <a href="/uploads/scheda_trasparenza-<%=row.id_insegnamento%>.pdf"><img src="/images/download.svg"></a>
+                  <%}%> 
+                </td>
                   </tr>
 
                   <% }) %>
@@ -268,7 +284,11 @@
                         <%=row.blocco%>
                           <% } %>
                     </td>
-                    <td> <button class="btn">Scheda di Trasparenza</button> </td>
+                    <td> 
+                  <% if (row.scheda_trasparenza) {%>
+                    <a href="/uploads/scheda_trasparenza-<%=row.id_insegnamento%>.pdf"><img src="/images/download.svg"></a>
+                  <%}%> 
+                </td>
                   </tr>
 
                   <% }) %>
