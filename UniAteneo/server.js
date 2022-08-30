@@ -50,7 +50,7 @@ function assert_you_are_studente(req, res) {
         return false
     }
     if (req.session.utente.tipo !== 'studente') {
-        res.redirect('/' + get_error_parm("Pagina riservata allo studente"))
+        res.redirect('/' + get_error_parm("Pagina riservata a studenti"))
         return false
     }
     return true
@@ -1816,6 +1816,8 @@ server.post("/login", (req, res) => {
                             nome : nome,
                             cognome : cognome
                         }
+                        res.redirect('/')
+                        return
                     } else {
                         console.log("Incorrect password for docente");
                         res.redirect("/" + get_error_parm("Username o password non corretta."))
@@ -2021,6 +2023,15 @@ server.post("/admin/crea_studente", (req, res) => {
     var matricola = req.body.matricola;
     var nome = req.body.nome.trimStart().trimEnd().toUpperCase();
     var cognome = req.body.cognome.trimStart().trimEnd().toUpperCase();
+    db.get(`select count(*) from Studente where nome = ${nome} and cognome = ${cognome}`, (err,ret) => {
+        if (err) {
+            console.log(err)
+            return
+        }
+        if (ret['count(*)'] > 0) {
+
+        }
+    })
     var password1 = req.body.password1;
     var password2 = req.body.password2;
     if (password1 !== password2) {
@@ -2041,6 +2052,41 @@ server.post("/admin/crea_studente", (req, res) => {
         res.redirect('/admin/crea_studente' + get_text_parm("Inserimento avvenuto con successo"))
     })
 
+})
+
+// -----------------------------------
+//        POST PAGA SECONDAD TASSA
+// -----------------------------------
+
+server.post("/studente/paga_seconda_tassa", (req, res) => {
+    if (!assert_you_are_studente(req, res)) return
+    res.render('studente/paga_seconda_tassa', {
+        utente: req.session.utente,
+        path: '/studente/paga_seconda_tassa',
+        depth : 2
+    })
+})
+
+// -----------------------------------
+//        GET PAGA SECONDAD TASSA
+// -----------------------------------
+
+server.get("/studente/paga_seconda_tassa", (req, res) => {
+    if (!assert_you_are_studente(req, res)) return
+    nome = req.session.utente.nome.toUpperCase()
+    cognome = req.session.utente.cognome.toUpperCase()
+    db.get(`select * from Studente where nome = \"${nome}\" and cognome \"${cognome}\"`, (err, studente) => {
+        if (err) {
+            console.log(err)
+            return
+        }
+        res.render('studente/paga_seconda_tassa', {
+            studenti,
+            utente: req.session.utente,
+            path: '/studente/paga_seconda_tassa',
+            depth : 2
+        })
+    })
 })
 
 server.post("/crea_ricevimento", (req, res) => {
