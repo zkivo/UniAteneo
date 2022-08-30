@@ -1,18 +1,59 @@
 <%- include('../navbar.ejs') %>
 <div class="container text-center">
+    <% if (studente.rate_pagate == 1) {%>
+    <h2 class="mt-3">Paga seconda rata</h2>
+    <%if (studente.reddito >= 25000) {%> 
+        <h2 class="mt-3">Totale da pagare: 1250€</h2>
+    <% } else if (studente.reddito >= 20000) {%>
+        <h2 class="mt-3">Totale da pagare: 1000€</h2>
+    <% } else if (studente.reddito >= 15000) {%>
+        <h2 class="mt-3">Totale da pagare: 750€</h2>
+    <% } else if (studente.reddito >= 10000) {%>
+        <h2 class="mt-3">Totale da pagare: 500€</h2>
+    <% } else if (studente.reddito >= 5000) {%>
+        <h2 class="mt-3">Totale da pagare: 250€</h2>
+    <% } else {%>
+        <h2 class="mt-3">Totale da pagare: 0€</h2>
+    <%}%>
     <form action="<%= path %>" method="POST">
-        <h3>Paga seconda rata</h3>
+        <div class="row justify-content-center mt-3">
+            <div class="col-3">
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="credit_number" placeholder="1234 1234 1234 1234" <%if (studente.reddito < 5000) {%>disabled<%}%> required>
+                    <label for="credit_number">Credit card number</label>
+                  </div>                  
+            </div>
+        </div>
+        <div class="row justify-content-center mt-3">
+            <div class="col-1">     
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="month" placeholder="month" <%if (studente.reddito < 5000) {%>disabled<%}%> required>
+                    <label for="month">month</label>
+                </div>               
+            </div>
+            <div class="col-1">   
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="year" placeholder="year" <%if (studente.reddito < 5000) {%>disabled<%}%> required>
+                    <label for="month">year</label>
+                </div>         
+            </div>
+            <div class="col-2">   
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="csv" placeholder="csv" <%if (studente.reddito < 5000) {%>disabled<%}%> required>
+                    <label for="csv">csv</label>
+                </div>         
+            </div>
+        </div>
         <div class="row justify-content-center mt-3">
             <div class="col-auto">
-                <select id="studente" type="text" class="form-select" name="studente" required>
-                    <%if (typeof studenti !=='undefined' ) { studenti.forEach(studente=> {%>
-                        <option>
-                            <%=studente.nome + " " + studente.cognome%>
-                        </option>
-                    <% })}%>
-                </select>
+                <button type="submit" class="btn btn-primary" <%if (studente.reddito < 5000) {%>disabled<%}%>>Paga ora</button>
             </div>
         </div>
     </form>
+    <% } else if (studente.rate_pagate == 2) {%>
+        <h2 class="mt-3">Hai gia' pagato la seconda rata</h2>
+    <% } else { %>
+        <h2 class="mt-3">Devi pagare la prima rata durante l'iscrizione ad un anno</h2>
+    <% } %>
 </div>
 <%- include('../footer.ejs') %>

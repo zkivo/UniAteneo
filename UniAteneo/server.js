@@ -214,7 +214,7 @@ function portale_docente(req, res) {
 
 function portale_studente(req, res) {
     var id = req.session.utente.id;
-    console.log(id);
+    //console.log(id);
     res.render('studente/studente_page', {
         utente: req.session.utente,
         path: '/studente/studente_page',
@@ -228,7 +228,7 @@ server.get('/portale', (req, res) => {
         res.redirect('/' + get_error_parm("Effettua prima il login"))
         return
     }
-    console.log(req.session.utente)
+    //console.log(req.session.utente)
     if (req.session.utente) {
         switch (req.session.utente.tipo) {
             case 'docente':
@@ -237,13 +237,6 @@ server.get('/portale', (req, res) => {
             case 'studente':
                 portale_studente(req,res)
                 break;
-                // res.render('studente', {
-                //     rows: null,
-                //     utente: req.session.utente,
-                //     path: '/portale',
-                //     depth: 1
-                // });
-
             case 'admin':
                 res.redirect("admin/admin_page")
                 break
@@ -2023,47 +2016,47 @@ server.post("/admin/crea_studente", (req, res) => {
     var matricola = req.body.matricola;
     var nome = req.body.nome.trimStart().trimEnd().toUpperCase();
     var cognome = req.body.cognome.trimStart().trimEnd().toUpperCase();
-    db.get(`select count(*) from Studente where nome = ${nome} and cognome = ${cognome}`, (err,ret) => {
+    db.get(`select count(*) from Studente where nome = \"${nome}\" and cognome = \"${cognome}\"`, (err,ret) => {
         if (err) {
             console.log(err)
             return
         }
+        //console.log(ret)
         if (ret['count(*)'] > 0) {
-
-        }
-    })
-    var password1 = req.body.password1;
-    var password2 = req.body.password2;
-    if (password1 !== password2) {
-        res.redirect('/admin/crea_studente' + get_error_parm("Le password devono coincidere"))
-        return
-    }
-    var password = bcrypt.hashSync(password1, 10)
-    var corso = req.body.corso.trimStart().trimEnd().split(' ');
-    var id = corso[1].trimStart().trimEnd()//.split(' - ');
-    //var id = corso2[0];
-
-    var sql = `INSERT INTO Studente (matricola, nome, cognome, password, id_corso) VALUES (${matricola},  \"${nome}\", \"${cognome}\", \"${password}\", ${id});`
-    db.exec(sql, (err,row) => {
-        if (err) {
-            console.log(err)
+            res.redirect("/admin/crea_studente" + get_error_parm("Esiste gia' uno studende con questo nome e cognome"))
             return
         }
-        res.redirect('/admin/crea_studente' + get_text_parm("Inserimento avvenuto con successo"))
+        var password1 = req.body.password1;
+        var password2 = req.body.password2;
+        if (password1 !== password2) {
+            res.redirect('/admin/crea_studente' + get_error_parm("Le password devono coincidere"))
+            return
+        }
+        var password = bcrypt.hashSync(password1, 10)
+        var corso = req.body.corso.trimStart().trimEnd().split(' ');
+        var id = corso[1].trimStart().trimEnd()//.split(' - ');
+        //var id = corso2[0];
+    
+        var sql = `INSERT INTO Studente (matricola, nome, cognome, password, id_corso) VALUES (${matricola},  \"${nome}\", \"${cognome}\", \"${password}\", ${id});`
+        db.exec(sql, (err,row) => {
+            if (err) {
+                console.log(err)
+                return
+            }
+            res.redirect('/admin/crea_studente' + get_text_parm("Inserimento avvenuto con successo"))
+        })
     })
-
 })
 
 // -----------------------------------
-//        POST PAGA SECONDAD TASSA
+//        POST PAGA SECONDA TASSA
 // -----------------------------------
 
 server.post("/studente/paga_seconda_tassa", (req, res) => {
     if (!assert_you_are_studente(req, res)) return
-    res.render('studente/paga_seconda_tassa', {
-        utente: req.session.utente,
-        path: '/studente/paga_seconda_tassa',
-        depth : 2
+    db.run(`update Studente set rate_pagate = 2 where ` + 
+            `nome = \"${nome}\" and cognome = \"${cognome}\"`, err => {
+        res.redirect("/portale")
     })
 })
 
@@ -2075,13 +2068,13 @@ server.get("/studente/paga_seconda_tassa", (req, res) => {
     if (!assert_you_are_studente(req, res)) return
     nome = req.session.utente.nome.toUpperCase()
     cognome = req.session.utente.cognome.toUpperCase()
-    db.get(`select * from Studente where nome = \"${nome}\" and cognome \"${cognome}\"`, (err, studente) => {
+    db.get(`select * from Studente where nome = \"${nome}\" and cognome = \"${cognome}\"`, (err, studente) => {
         if (err) {
             console.log(err)
             return
         }
         res.render('studente/paga_seconda_tassa', {
-            studenti,
+            studente,
             utente: req.session.utente,
             path: '/studente/paga_seconda_tassa',
             depth : 2
