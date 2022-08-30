@@ -2,7 +2,7 @@
 <div class="container shadow-sm card mt-2 ">
     <div class="container text-center g-5 card-body ">
         <h2 class="mt-2">Iscrizione anno accademico</h2>
-        <%if(typeof rows.rate_pagate == 'undefined') {%>
+        <%if(rows.anno === null) {%>
         <form action="<%= path %>" method="POST">
             <div class="row justify-content-center mt-3">
                 <div class="col-auto">
@@ -14,10 +14,11 @@
 
                 <div class="col-auto">
                     <div class="form-floating">
-                        <%if(typeof rows.anno == 'undefined') { %>
-                            <input type="number" class="form-control" id="anno" name="anno" value="1" required disabled>
+                        <%if(rows.anno === null) { %>
+                            <!-- <input type="number" class="form-control" id="anno" name="anno" required min="0"> -->
+                            <input type="number" class="form-control" id="anno" name="anno" value="1" required readonly>
                         <% } else { %>
-                            <input type="number" class="form-control" id="anno" name="anno" value="<%=rows.anno + 1%>" required disabled>
+                            <input type="number" class="form-control" id="anno" name="anno" value="<%=rows.anno + 1%>" required readonly>
                         <% } %>                        
                         <label for="anno">Anno</label>
                     </div>
@@ -32,7 +33,7 @@
                 <h2 class="mb-2">Dati di pagamento</h2>
                 <div class="col-2">
                     <div class="form-floating">
-                        <input type="number" class="form-control" id="tasse" name="tasse" value="" required disabled >
+                        <input type="number" class="form-control" id="tasse" name="tasse" value="" required readonly >
                         <label for="reddito">Tasse dovute</label>
                     </div>
                 </div>
@@ -76,22 +77,22 @@
     function paga_tasse() {
         var reddito = document.getElementById('reddito').value;
         if(reddito >= 0 && reddito <= 5000)
-            document.getElementById('tasse').value = 0;
+            document.getElementById('tasse').setAttribute("value", 0);
         
         if(reddito > 5000 && reddito <= 10000)
-            document.getElementById('tasse').value = 500;
+            document.getElementById('tasse').setAttribute("value", 500);
 
         if(reddito > 10000 && reddito <= 15000)
-            document.getElementById('tasse').value = 1000;
+            document.getElementById('tasse').setAttribute("value", 1000);
 
         if(reddito > 15000 && reddito <= 20000)
-            document.getElementById('tasse').value = 1500;
+            document.getElementById('tasse').setAttribute("value", 1500);
         
         if(reddito > 20000 && reddito <= 25000)
-            document.getElementById('tasse').value = 2000;
+            document.getElementById('tasse').setAttribute("value", 2000);
         
         if(reddito > 25000)
-            document.getElementById('tasse').value = 2500;
+            document.getElementById('tasse').setAttribute("value", 2500);
         
         document.getElementById('pagamento').style.visibility = 'visible';
     }

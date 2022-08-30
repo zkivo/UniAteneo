@@ -2106,7 +2106,7 @@ server.get("/studente/iscrizione_anno", (req,res) => {
     utente = req.session.utente.id;
 
     db.serialize(() => {
-        db.all(`SELECT * FROM Studente WHERE matricola = ${req.session.utente.id}`, (err, rows) => {
+        db.get(`SELECT * FROM Studente WHERE matricola = ${req.session.utente.id}`, (err, rows) => {
             if (err) {
                 console.log(err)
                 res.redirect('/' + get_error_parm("errore: 8667"))
@@ -2129,6 +2129,9 @@ server.post("/studente/iscrizione_anno", (req,res) => {
     console.log(utente);
     var reddito = req.body.reddito;
     var anno = req.body.anno;
+    console.log(reddito);
+    console.log(anno);
+    console.log(req.body.tasse);
     
     var sql = `UPDATE Studente SET reddito = ${reddito}, anno = ${anno}, rate_pagate = 1 WHERE matricola = ${utente};`
     db.exec(sql, (err,row) => {
