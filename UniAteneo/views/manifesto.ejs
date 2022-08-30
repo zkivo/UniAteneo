@@ -1,7 +1,7 @@
 <%- include('navbar.ejs') %>
-  <div class="container text-center pt-3">
+  <div id="manifesto" class="container text-center pt-3">
     <div class="shadow p-3 mb-5 bg-body rounded">
-      <button class="btn btn-primary mb-2" onclick="window.print()">Stampa Manifesto</button>
+      <button class="btn btn-primary mb-2" onclick="stampa_manifesto()">Stampa Manifesto</button>
       <h2>Insegnamenti primo anno</h2>
       <table class="table table-hover">
         <thead>
@@ -337,4 +337,11 @@
             <% } %>
     </div>
   </div>
+  <script>
+    function stampa_manifesto() {
+      var printwin = window.open("");
+      printwin.document.write(document.getElementById("manifesto").innerHTML);
+      printwin.print(); 
+    }  
+  </script>
   <%- include('footer.ejs') %>
