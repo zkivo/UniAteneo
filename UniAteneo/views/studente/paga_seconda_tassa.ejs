@@ -1,0 +1,18 @@
+<%- include('../navbar.ejs') %>
+<div class="container text-center">
+    <form action="<%= path %>" method="POST">
+        <h3>Paga seconda rata</h3>
+        <div class="row justify-content-center mt-3">
+            <div class="col-auto">
+                <select id="studente" type="text" class="form-select" name="studente" required>
+                    <%if (typeof studenti !=='undefined' ) { studenti.forEach(studente=> {%>
+                        <option>
+                            <%=studente.nome + " " + studente.cognome%>
+                        </option>
+                    <% })}%>
+                </select>
+            </div>
+        </div>
+    </form>
+</div>
+<%- include('../footer.ejs') %>
