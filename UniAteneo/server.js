@@ -124,19 +124,19 @@ function insert_all() {
         "Database ready.");
 }
 
+// -----------------------------------
+//        GET INDEX
+// -----------------------------------
+
 server.get('/', (req, res) => {
     db.serialize(() => {
         db.all("SELECT * FROM CDS", (err, rows) => {
             if (err)
                 console.log(err);
             else {
-                var utente = null
-                if (req.session.utente) {
-                    utente = req.session.utente
-                }
                 res.render('index', {
                     rows: rows,
-                    utente: utente,
+                    utente: req.session.utente,
                     path: '/',
                     depth: 0
                 });
@@ -1779,7 +1779,9 @@ server.post("/login", (req, res) => {
                         cognome : cognome
                     }
                 } else {
-                    console.log("Accesso Negato");
+                    console.log("Incorrect password for docente");
+                    res.redirect("/" + get_error_parm("Username o password non corretta."))
+                    return     
                 }
             }
             if (req.query.callback) {
@@ -1937,50 +1939,62 @@ server.post("/admin/orari_ricevimenti", (req, res) => {
     })
 });
 
+// -----------------------------------
+//        GET CREA STUDENTE
+// -----------------------------------
+
 server.get("/admin/crea_studente", (req, res) => {
     if (!assert_you_are_admin(req, res)) return
     db.serialize(() => {
         db.all(`SELECT MAX(matricola) FROM Studente`, (err, rows) => {
             if (err) {
                 console.log(err)
-                res.redirect('/' + get_error_parm("errore: 5432"))
-            } else {
-                if (rows[0]['MAX(matricola)'] === null) {
-                    console.log('Non esistono studenti');
-                }
-                db.all(`SELECT id, nome, tipo FROM CDS`, (err, cds) => {
-                    if (err) {
-                        console.log(err)
-                        res.redirect('/' + get_error_parm("errore: 5432"))
-                    }
-                    //console.log(rows);
-                    res.render('admin/crea_studente', {
-                        cds: cds,
-                        rows: rows,
-                        utente: req.session.utente,
-                        path: '/admin/crea_studente',
-                        depth : 2
-                    })
-                })
+                res.redirect('/' + get_error_parm("errore: 8667"))
+                return
             }
+            // if (rows[0]['MAX(matricola)'] === null) {
+            //     console.log('Non esistono studenti');
+            // }
+            db.all(`SELECT * FROM CDS`, (err, cds) => {
+                if (err) {
+                    console.log(err)
+                    res.redirect('/' + get_error_parm("errore: 5432"))
+                    return
+                }
+                //console.log(rows);
+                res.render('admin/crea_studente', {
+                    cds: cds,
+                    rows: rows,
+                    utente: req.session.utente,
+                    path: '/admin/crea_studente',
+                    depth : 2
+                })
+            })
         })
     })
 });
 
+// -----------------------------------
+//        POST CREA STUDENTE
+// -----------------------------------
 
 server.post("/admin/crea_studente", (req, res) => {
     if (!assert_you_are_admin(req, res)) return 
     var matricola = req.body.matricola;
     var nome = req.body.nome.trimStart().trimEnd();
     var cognome = req.body.cognome.trimStart().trimEnd();
-    // var reddito = req.body.reddito;
-    var password = req.body.password;
-    password2 = bcrypt.hashSync(password, 10)
+    var password1 = req.body.password1;
+    var password2 = req.body.password2;
+    if (password1 !== password2) {
+        res.redirect('/admin/crea_studente' + get_error_parm("Le password devono coincidere"))
+        return
+    }
+    var password = bcrypt.hashSync(password1, 10)
     var corso = req.body.corso.trimStart().trimEnd().split(' ');
-    var corso2 = corso[1].trimStart().trimEnd().split(' - ');
-    var id = corso2[0];
+    var id = corso[1].trimStart().trimEnd()//.split(' - ');
+    //var id = corso2[0];
 
-    var sql = `INSERT INTO Studente (matricola, nome, cognome, password, id_corso) VALUES (${matricola},  \"${nome}\", \"${cognome}\", \"${password2}\", ${id});`
+    var sql = `INSERT INTO Studente (matricola, nome, cognome, password, id_corso) VALUES (${matricola},  \"${nome}\", \"${cognome}\", \"${password}\", ${id});`
     db.exec(sql, (err,row) => {
         if (err) {
             console.log(err)
