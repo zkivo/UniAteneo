@@ -24,7 +24,8 @@
 				  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
-					<form action="/login?callback=<%= path %>" method="POST">
+					<!-- <form action="/login?callback=<%= path %>" method="POST"> -->
+          <form action="/login" method="POST">
 						<div class="mb-3">
 						  <label for="username" class="form-label">Username</label>
 						  <input type="username" class="form-control" id="username" name="username" aria-describedby="usernameHelp" required>
@@ -58,12 +59,14 @@
                 <button type="button" class="btn btn-primary" id="liveAlertBtn">Show live alert</button>
             </li> -->
           </ul>
-            <%if(utente) { %>
+            <%if(typeof utente !== 'undefined') { if (utente !== null) {%>
               <a class="nav-link" style="color: #e4c073;"href="/portale"><%= utente.nome + " " + utente.cognome %></a>
               <button onclick="location.href='/logout?callback=<%= path %>'" class="btn" style="background-color: #e4c073;">Logout</button> 
-            <%}else { %>
+            <%} else { %>
               <button class="btn" style="background-color: #e4c073;" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button> 
-            <%}%> 
+            <%} } else { %> 
+              <button class="btn" style="background-color: #e4c073;" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button> 
+            <% } %> 
         </div>
       </div>
     </nav>

@@ -134,6 +134,7 @@ server.get('/', (req, res) => {
             if (err)
                 console.log(err);
             else {
+                //console.log(req.session.utente)
                 res.render('index', {
                     rows: rows,
                     utente: req.session.utente,
@@ -1775,34 +1776,56 @@ server.post("/login", (req, res) => {
                 console.log(err);
             else {
                 if (typeof row === 'undefined') {
-                    console.log("Incorrect username2");
-                    res.redirect("/" + get_error_parm("Username o password non corretta."))
-                    return;                    
-                }
-                if (row.nome === nome &&
-                        row.cognome === cognome &&
-                        bcrypt.compareSync(password, row.password)) {
-                    console.log("Accesso verificato")
-                    req.session.utente = {
-                        tipo : 'docente',
-                        id : row.id,
-                        nome : nome,
-                        cognome : cognome
-                    }
+                    console.log("Non esiste docente con tale nome e cognome");
+                    db.get(`select * from Studente where nome = "${nome}" and cognome = "${cognome}"`, (err, studente) => {
+                        if (typeof studente === 'undefined') {
+                            console.log("Non esiste Studente con tale nome e cognome");
+                            res.redirect("/" + get_error_parm("Username o password non corretta."))
+                            return
+                        }
+                        if (studente.nome === nome &&
+                                studente.cognome === cognome &&
+                                bcrypt.compareSync(password, studente.password)) {
+                            console.log("Accesso studente verificato")
+                            req.session.utente = {
+                                tipo : 'studente',
+                                id : studente.id,
+                                nome : nome,
+                                cognome : cognome
+                            }
+                            res.redirect('/')
+                            return
+                        } else {
+                            console.log("Incorrect password for studente");
+                            res.redirect("/" + get_error_parm("Username o password non corretta."))
+                            return  
+                        }
+                    })
                 } else {
-                    console.log("Incorrect password for docente");
-                    res.redirect("/" + get_error_parm("Username o password non corretta."))
-                    return     
+                    if (row.nome === nome &&
+                            row.cognome === cognome &&
+                            bcrypt.compareSync(password, row.password)) {
+                        console.log("Accesso verificato")
+                        req.session.utente = {
+                            tipo : 'docente',
+                            id : row.id,
+                            nome : nome,
+                            cognome : cognome
+                        }
+                    } else {
+                        console.log("Incorrect password for docente");
+                        res.redirect("/" + get_error_parm("Username o password non corretta."))
+                        return     
+                    }
                 }
             }
-            if (req.query.callback) {
-                res.redirect(req.query.callback)
-            } else {
-                res.redirect('/' + get_error_parm("no callback param"))
-            }
+            // if (req.query.callback) {
+            //     res.redirect(req.query.callback)
+            // } else {
+            //     res.redirect('/' + get_error_parm("no callback param"))
+            // }
         });
     });
-
 })
 
 server.get('/manifesto/:id_cds', (req, res) => {
@@ -1992,8 +2015,8 @@ server.get("/admin/crea_studente", (req, res) => {
 server.post("/admin/crea_studente", (req, res) => {
     if (!assert_you_are_admin(req, res)) return 
     var matricola = req.body.matricola;
-    var nome = req.body.nome.trimStart().trimEnd();
-    var cognome = req.body.cognome.trimStart().trimEnd();
+    var nome = req.body.nome.trimStart().trimEnd().toUpperCase();
+    var cognome = req.body.cognome.trimStart().trimEnd().toUpperCase();
     var password1 = req.body.password1;
     var password2 = req.body.password2;
     if (password1 !== password2) {
