@@ -1,0 +1,75 @@
+<%- include('../navbar.ejs') %>
+<div class="container shadow-sm card mt-2 ">
+    <div class="container text-center g-5 card-body ">
+        <h2 class="mt-2">Iscrizione anno accademico</h2>
+        <form action="<%= path %>" method="POST">
+            <div class="row justify-content-center mt-3">
+                <div class="col-auto">
+                    <div class="form-floating">
+                        <input type="number" class="form-control" id="reddito" name="reddito" required min="0">
+                        <label for="reddito">Reddito</label>
+                    </div>
+                </div>
+
+                <div class="col-auto">
+                    <div class="form-floating">
+                        <%if(typeof rows.anno == 'undefined') %>
+                            <input type="number" class="form-control" id="anno" name="anno" value="1" required disabled>
+                        <% else { %>
+                            <input type="number" class="form-control" id="anno" name="anno" value="<%=rows.anno + 1%>" required disabled>
+                        <% } %>                        
+                        <label for="anno">Anno</label>
+                    </div>
+                </div>
+
+                <div class="col-auto">
+                    <button type="button" class="btn btn-primary" onclick="paga_tasse()">Calcola tasse</button>
+                </div>
+            </div>
+
+            <div class="row justify-content-center mt-3" style="display: none;">
+                <div class="col-auto">
+                    <div class="form-floating">
+                        <input type="number" class="form-control" id="tasse" name="tasse" value="" required disabled >
+                        <label for="reddito">Reddito</label>
+                    </div>
+                </div>
+
+                <div class="col-auto">
+                    <div class="form-floating">
+                        <%if(typeof rows.anno == 'undefined') %>
+                            <input type="number" class="form-control" id="anno" name="anno" value="1" required disabled>
+                        <% else { %>
+                            <input type="number" class="form-control" id="anno" name="anno" value="<%=rows.anno + 1%>" required disabled>
+                        <% } %>                        
+                        <label for="anno">Anno</label>
+                    </div>
+                </div>
+
+                <div class="col-auto">
+                    <button type="button" class="btn btn-primary" onclick="paga_tasse()">Calcola tasse</button>
+                </div>
+            </div>
+        
+        </form>
+    </div>
+</div>
+
+
+<%- include('../footer.ejs') %>
+<script>
+    function paga_tasse() {
+        var reddito = document.getElementById('reddito');
+        if(reddito >= 0 && reddito <= 5000)
+            document.getElementById.('tasse').value = 0;
+        
+        if(reddito > 5000 && reddito <= 10000)
+            document.getElementById.('tasse').value = 500;
+
+        if(reddito > 10000 && reddito <= 15000)
+            document.getElementById.('tasse').value = 1000;
+
+        if(reddito > 10000 && reddito <= 15000)
+            document.getElementById.('tasse').value = 1000;
+    }
+</script>

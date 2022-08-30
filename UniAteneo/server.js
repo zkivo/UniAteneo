@@ -210,6 +210,15 @@ function portale_docente(req, res) {
     })
 }
 
+function portale_studente(req, res) {
+    res.render('studente/studente_page', {
+        utente: req.session.utente,
+        path: '/studente/studente_page',
+        depth : 2
+        
+    })
+}
+
 server.get('/portale', (req, res) => {
     if (typeof req.session.utente === 'undefined') {
         res.redirect('/' + get_error_parm("Effettua prima il login"))
@@ -221,13 +230,15 @@ server.get('/portale', (req, res) => {
                 portale_docente(req, res)
                 break
             case 'studente':
-                res.render('studente', {
-                    rows: null,
-                    utente: req.session.utente,
-                    path: '/portale',
-                    depth: 1
-                });
-                break
+                portale_studente(req,res)
+                break;
+                // res.render('studente', {
+                //     rows: null,
+                //     utente: req.session.utente,
+                //     path: '/portale',
+                //     depth: 1
+                // });
+
             case 'admin':
                 res.redirect("admin/admin_page")
                 break
@@ -2025,12 +2036,25 @@ server.post("/crea_ricevimento", (req, res) => {
 
 })
 
-server.get("/studente", (req,res) => {
-    if(!assert_you_are_studente(req,res)) return;  
 
-    res.render('studente', {
-        path: 'studente',
-        depth : 1
+server.get("/iscrizione_anno", (req,res) => {
+    if(!assert_you_are_studente(req,res)) return; 
+    
+    db.serialize(() => {
+        db.all(`SELECT * FROM Studente WHERE matricola = ${req.session.utente.id}`, (err, rows) => {
+            if (err) {
+                console.log(err)
+                res.redirect('/' + get_error_parm("errore: 8667"))
+                return
+            }
+
+            res.render('studente/iscrizione_anno', {
+                rows: rows,
+                utente: req.session.utente,
+                path: '/studente/iscrizione_anno',
+                depth : 2
+            })
+        })
     })
 })
 
