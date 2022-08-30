@@ -2064,7 +2064,7 @@ server.get("/iscrizione_anno", (req,res) => {
     if(!assert_you_are_studente(req,res)) return; 
     
     db.serialize(() => {
-        db.all(`SELECT * FROM Studente WHERE matricola = ${req.session.utente.id}`, (err, rows) => {
+        db.all(`SELECT * FROM Studente WHERE matricola = ${req.session.utente.matricola}`, (err, rows) => {
             if (err) {
                 console.log(err)
                 res.redirect('/' + get_error_parm("errore: 8667"))

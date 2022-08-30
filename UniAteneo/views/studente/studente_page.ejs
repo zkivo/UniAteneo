@@ -1,8 +1,8 @@
-<%- include('navbar.ejs') %>
+<%- include('../navbar.ejs') %>
 <div class="container text-center pt-3">
     <div class="shadow p-3 mb-5 bg-body rounded">
         <div class="card-body">
-            <button onclick="location.href='/admin/crea_cds'" type="button" class="list-group-item list-group-item-action">Iscriviti ad un anno accademico</button>
+            <button onclick="location.href='/iscrizione_anno'" type="button" class="list-group-item list-group-item-action">Iscriviti ad un anno accademico</button>
             <button onclick="location.href='/admin/modifica_cds'" type="button" class="list-group-item list-group-item-action">Paga seconda tassa</button>
             <button onclick="location.href='/admin/elimina_cds'" type="button" class="list-group-item list-group-item-action">Iscrizione esami</button>
             <button onclick="location.href='/admin/crea_docente'" type="button" class="list-group-item list-group-item-action">Certificato carriera</button>
@@ -11,4 +11,4 @@
         </div>
     </div>
 </div>
-<%- include('footer.ejs') %>
+<%- include('../footer.ejs') %>
