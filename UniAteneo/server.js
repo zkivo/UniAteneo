@@ -50,7 +50,7 @@ function assert_you_are_studente(req, res) {
         return false
     }
     if (req.session.utente.tipo !== 'studente') {
-        res.redirect('/' + get_error_parm("Pagina riservata al docente"))
+        res.redirect('/' + get_error_parm("Pagina riservata allo studente"))
         return false
     }
     return true
@@ -164,7 +164,8 @@ server.get("/logout", (req, res) => {
 })
 
 function portale_docente(req, res) {
-    var id_docente = req.session.utente.id
+    var id_docente = req.session.utente.id;
+    // console.log(id_docente);
     db.serialize(() => {
         db.all(`SELECT DISTINCT P.id_insegnamento, P.anno, P.scelta, I.nome AS nome_insegnamento, I.cfu, I.scheda_trasparenza, I.ssd, I.id_docente, D.nome AS nome_docente, D.cognome AS cognome_docente, C.tipo AS tipo_cds FROM CDS as C, Programmi as P, Insegnamenti as I, ` +
                 `Docenti as D WHERE ` +
@@ -212,6 +213,8 @@ function portale_docente(req, res) {
 }
 
 function portale_studente(req, res) {
+    var id = req.session.utente.id;
+    console.log(id);
     res.render('studente/studente_page', {
         utente: req.session.utente,
         path: '/studente/studente_page',
@@ -225,6 +228,7 @@ server.get('/portale', (req, res) => {
         res.redirect('/' + get_error_parm("Effettua prima il login"))
         return
     }
+    console.log(req.session.utente)
     if (req.session.utente) {
         switch (req.session.utente.tipo) {
             case 'docente':
@@ -1789,7 +1793,7 @@ server.post("/login", (req, res) => {
                             console.log("Accesso studente verificato")
                             req.session.utente = {
                                 tipo : 'studente',
-                                id : studente.id,
+                                id : studente.matricola,
                                 nome : nome,
                                 cognome : cognome
                             }
@@ -2062,9 +2066,11 @@ server.post("/crea_ricevimento", (req, res) => {
 
 server.get("/iscrizione_anno", (req,res) => {
     if(!assert_you_are_studente(req,res)) return; 
-    
+    utente = req.session.utente.id;
+    console.log(utente);
+    console.log(typeof utente);
     db.serialize(() => {
-        db.all(`SELECT * FROM Studente WHERE matricola = ${req.session.utente.matricola}`, (err, rows) => {
+        db.all(`SELECT * FROM Studente WHERE matricola = ${req.session.utente.id}`, (err, rows) => {
             if (err) {
                 console.log(err)
                 res.redirect('/' + get_error_parm("errore: 8667"))
