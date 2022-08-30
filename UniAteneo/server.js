@@ -214,7 +214,6 @@ function portale_docente(req, res) {
 
 function portale_studente(req, res) {
     var id = req.session.utente.id;
-    console.log(id);
     res.render('studente/studente_page', {
         utente: req.session.utente,
         path: '/studente/studente_page',
@@ -228,7 +227,6 @@ server.get('/portale', (req, res) => {
         res.redirect('/' + get_error_parm("Effettua prima il login"))
         return
     }
-    console.log(req.session.utente)
     if (req.session.utente) {
         switch (req.session.utente.tipo) {
             case 'docente':
@@ -2110,11 +2108,10 @@ server.post("/crea_ricevimento", (req, res) => {
 })
 
 
-server.get("/iscrizione_anno", (req,res) => {
+server.get("/studente/iscrizione_anno", (req,res) => {
     if(!assert_you_are_studente(req,res)) return; 
     utente = req.session.utente.id;
-    console.log(utente);
-    console.log(typeof utente);
+
     db.serialize(() => {
         db.all(`SELECT * FROM Studente WHERE matricola = ${req.session.utente.id}`, (err, rows) => {
             if (err) {
@@ -2130,6 +2127,23 @@ server.get("/iscrizione_anno", (req,res) => {
                 depth : 2
             })
         })
+    })
+})
+
+server.post("/studente/iscrizione_anno", (req,res) => {
+    if(!assert_you_are_studente(req,res)) return; 
+    utente = req.session.utente.id;
+    console.log(utente);
+    var reddito = req.body.reddito;
+    var anno = req.body.anno;
+    
+    var sql = `UPDATE Studente SET reddito = ${reddito}, anno = ${anno}, rate_pagate = 1 WHERE matricola = ${utente};`
+    db.exec(sql, (err,row) => {
+        if (err) {
+            console.log(err)
+            return
+        }
+        res.redirect('/studente/iscrizione_anno' + get_text_parm("Iscrizione effettuata con successo"))
     })
 })
 
