@@ -189,8 +189,8 @@ function portale_docente(req, res) {
                             res.redirect('/' + get_error_parm(`Non esistono insegnamenti`))
                             return
                         }
-                        db.all(`SELECT I.matricola, I.id_esame, I.data_iscrizione, E.id_insegnamento, S.nome, S.cognome `+
-                                `FROM IscrizioniEsami as I, Esami as E, Studente as S WHERE I.matricola = S.matricola AND I.id_esame = E.id`, (err, esami) => {
+                        db.all(`SELECT E.matricola, E.id_insegnamento, S.nome, S.cognome `+
+                                `FROM Esami as E, Studente as S WHERE E.matricola = S.matricola AND E.sostenuto = false`, (err, esami) => {
                             if (err) {
                                 console.log(err)
                                 res.redirect('/' + get_error_parm("errore: 7567"))
@@ -2183,6 +2183,30 @@ server.post("/studente/iscrizione_esami", (req,res) => {
             return
         }
         res.redirect('/studente/iscrizione_esami' + get_text_parm("Iscrizione effettuata con successo"))
+    })
+})
+
+server.get("/convalida/:materia/:matricola", (req,res) => {
+    if(!assert_you_are_docente(req,res)) return; 
+    utente = req.session.utente.id;
+    materia = req.params.materia;
+    matricola = req.params.matricola;
+
+    db.serialize(() => {
+        db.get(`SELECT * FROM Esami WHERE matricola = ${matricola} AND id_insegnamento = ${materia} AND sostenuto = false`, (err, rows) => {
+            if (err) {
+                console.log(err)
+                res.redirect('/portale' + get_error_parm("errore: Id insegnamento o matricola errati."))
+                return
+            }
+
+            res.render('convalida', {
+                rows: rows,
+                utente: req.session.utente,
+                path: '/convalida/' + materia + '/' + matricola,
+                depth : 3
+            })
+        })
     })
 })
 

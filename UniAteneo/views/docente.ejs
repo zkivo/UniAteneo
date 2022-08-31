@@ -15,7 +15,6 @@
                           <tr>
                             <th scope="col">Matricola</th>
                             <th scope="col">Nome</th>
-                            <th scope="col">Data Iscrizione</th>
                             <th scope="col">Convalida</th>
                           </tr>
                         </thead>
@@ -30,10 +29,7 @@
                                   <%= e.nome + ' ' + e.cognome %>
                                 </td>
                                 <td>
-                                    <%= e.data_iscrizione %>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-primary">Vai</button>
+                                    <button type="button" onclick="location.href='/convalida/<%= e.id_insegnamento%>/<%= e.matricola %>'" class="btn btn-primary">Vai</button>
                                 </td>
                             </tr>
                 
