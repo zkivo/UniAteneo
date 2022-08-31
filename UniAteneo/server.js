@@ -2143,6 +2143,28 @@ server.post("/studente/iscrizione_anno", (req,res) => {
     })
 })
 
+server.get("/studente/iscrizione_esami", (req,res) => {
+    if(!assert_you_are_studente(req,res)) return; 
+    utente = req.session.utente.id;
+
+    db.serialize(() => {
+        db.get(`SELECT * FROM Esami WHERE matricola = ${req.session.utente.id}`, (err, rows) => {
+            if (err) {
+                console.log(err)
+                res.redirect('/' + get_error_parm("errore: 8667"))
+                return
+            }
+
+            res.render('studente/iscrizione_esami', {
+                rows: rows,
+                utente: req.session.utente,
+                path: '/studente/iscrizione_esami',
+                depth : 2
+            })
+        })
+    })
+})
+
 
 server.listen(web_port, () => {
     console.log(`web server is listeing to port: ${web_port}.`)

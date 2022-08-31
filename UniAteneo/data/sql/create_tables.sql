@@ -65,22 +65,15 @@ CREATE TABLE IF NOT EXISTS PianoDiStudi (
 );
 
 CREATE TABLE IF NOT EXISTS Esami (
-	id              INTEGER,
-	id_insegnamento INTEGER,
-	id_corso        INTEGER,
-	PRIMARY KEY (id),
-	FOREIGN KEY (id_insegnamento) REFERENCES Insegnamenti(id),
-	FOREIGN KEY (id_corso) 		  REFERENCES CDS(id)
-);
-
-CREATE TABLE IF NOT EXISTS IscrizioniEsami (
 	matricola       INTEGER,
-	id_esame        INTEGER,
-	data_iscrizione datetime,
+	id_insegnamento INTEGER,
 	sostenuto       boolean DEFAULT false,
-	PRIMARY KEY (matricola, id_esame),
+	voto            INTEGER,
+	lode            boolean DEFAULT false,
+	domande         TEXT,
+	PRIMARY KEY (matricola, id_insegnamento),
 	FOREIGN KEY (matricola) REFERENCES Studente(matricola),
-	FOREIGN KEY (id_esame)  REFERENCES Esami(id)
+	FOREIGN KEY (id_insegnamento)  REFERENCES Insegnamenti(id)
 );
 
 CREATE TABLE IF NOT EXISTS Ricevimenti (

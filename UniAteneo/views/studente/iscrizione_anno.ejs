@@ -2,7 +2,7 @@
 <div class="container shadow-sm card mt-2 ">
     <div class="container text-center g-5 card-body ">
         <h2 class="mt-2">Iscrizione anno accademico</h2>
-        <%if(rows.anno === null) {%>
+        <%if(rows.anno === null || (rows.anno !== null && rows.rate_pagate == 2)) {%>
         <form action="<%= path %>" method="POST">
             <div class="row justify-content-center mt-3">
                 <div class="col-auto">
@@ -14,12 +14,12 @@
 
                 <div class="col-auto">
                     <div class="form-floating">
-                        <%if(rows.anno === null) { %>
+                        <%// if(rows.anno === null) { %>
                             <!-- <input type="number" class="form-control" id="anno" name="anno" required min="0"> -->
-                            <input type="number" class="form-control" id="anno" name="anno" value="1" required readonly>
-                        <% } else { %>
-                            <input type="number" class="form-control" id="anno" name="anno" value="<%=rows.anno + 1%>" required readonly>
-                        <% } %>                        
+                            <input type="number" class="form-control" id="anno" name="anno" min="1" value="1" required >
+                        <%// } else { %>
+                            <!-- <input type="number" class="form-control" id="anno" name="anno" value="<%=rows.anno + 1%>" required readonly> -->
+                        <%// } %>                        
                         <label for="anno">Anno</label>
                     </div>
                 </div>
