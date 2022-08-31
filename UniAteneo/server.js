@@ -2249,6 +2249,32 @@ server.get("/convalida/:materia/:matricola", (req,res) => {
     })
 })
 
+server.post("/convalida/:materia/:matricola", (req,res) => {
+    if(!assert_you_are_docente(req,res)) return; 
+    utente = req.session.utente.id;
+    materia = req.params.materia;
+    matricola = req.params.matricola;
+    domande = req.body.domande;
+    voto = req.body.voto;
+    // lode = req.body.lode;
+    // console.log(lode);
+    // console.log(typeof lode);
+
+    if(voto == 31) {
+        var sql = `UPDATE Esami SET domande = \"${domande}\", voto = 30, lode = true, sostenuto = true WHERE matricola = ${matricola} AND id_insegnamento = ${materia};`
+    } else {
+        var sql = `UPDATE Esami SET domande = \"${domande}\", voto = ${voto}, lode = false, sostenuto = true WHERE matricola = ${matricola} AND id_insegnamento = ${materia};`
+    }
+    
+    db.exec(sql, (err,row) => {
+        if (err) {
+            console.log(err)
+            return
+        }
+        res.redirect('/portale' + get_text_parm("Esame convalidato!"))
+    })
+})
+
 
 
 server.listen(web_port, () => {

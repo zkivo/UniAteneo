@@ -1,4 +1,46 @@
 <%- include('navbar.ejs') %>
+<div class="container shadow-sm card mt-2 ">
+    <div class="container text-center g-5 card-body ">
+        <h2 class="mt-2">Inserisci i dati dell'esame</h2>
+        <form action="<%= path %>" method="POST">
 
+            <div class="row justify-content-center mt-3">
+
+                <div class="col-auto">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="domande" name="domande" placeholder="Domande" required>
+                        <label for="domande">Domande</label>
+                    </div>
+                </div>
+
+                <div class="col-auto">
+
+                    <div class="form-floating">
+                        <input type="number" class="form-control" id="voto" name="voto" placeholder="Voto" min="18" max="31" required>
+                        <label for="voto">Voto</label>
+                    </div>
+
+                </div>
+
+
+                
+                <!-- <div class="col-auto">
+                    <div class="mt-3">
+                        <input class="form-check-input" type="checkbox" value="" id="lode">
+                        <label class="form-check-label" for="lode">
+                            Lode
+                        </label>
+                    </div>                
+                </div>                     -->
+            </div>
+
+            <div class="row justify-content-center mt-3">
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary">Invia</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 
 <%- include('footer.ejs') %>
