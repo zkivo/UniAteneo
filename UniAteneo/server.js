@@ -61,6 +61,7 @@ function solo_unici(value, index, self) {
 }
 
 function get_lista_unica(lista) {
+    if (typeof lista === 'undefined') return lista
     strings = lista.map(e => {return JSON.stringify(e)}).filter(solo_unici)
     return strings.map(e => {return JSON.parse(e)})
 }
@@ -2042,6 +2043,7 @@ server.post("/admin/crea_studente", (req, res) => {
                 console.log(err)
                 return
             }
+            //req.session.utente.id_cds = corso
             res.redirect('/admin/crea_studente' + get_text_parm("Inserimento avvenuto con successo"))
         })
     })
@@ -2060,7 +2062,7 @@ server.post("/studente/paga_seconda_tassa", (req, res) => {
 })
 
 // -----------------------------------
-//        GET PAGA SECONDAD TASSA
+//        GET PAGA SECONDA TASSA
 // -----------------------------------
 
 server.get("/studente/paga_seconda_tassa", (req, res) => {
@@ -2077,6 +2079,43 @@ server.get("/studente/paga_seconda_tassa", (req, res) => {
             utente: req.session.utente,
             path: '/studente/paga_seconda_tassa',
             depth : 2
+        })
+    })
+})
+
+// -----------------------------------
+//        GET PAGA SECONDA TASSA
+// -----------------------------------
+
+server.get("/studente/certificato_carriera", (req, res) => {
+    if (!assert_you_are_studente(req, res)) return
+    nome = req.session.utente.nome.toUpperCase()
+    cognome = req.session.utente.cognome.toUpperCase()
+    matricola = req.session.utente.id
+    db.all(`select * from Studente as S, Insegnamenti as I, ` + 
+            `Esami as E where S.nome = \"${nome}\" and ` +
+            `S.cognome = \"${cognome}\" and E.matricola = ` +
+            `S.matricola and I.id = E.id_insegnamento ` +
+            `and E.sostenuto = true` , (err, materie_sostenute) => {
+        db.all(`select P.anno, I.nome, I.id, I.cfu from Insegnamenti as I, Programmi as P, CDS as C, Studente as S ` +
+                `where P.id_corso = C.id and S.id_corso = C.id and ` +
+                `S.matricola = ${matricola} and ` +
+                `I.id = P.id_insegnamento order by P.anno`, (err, lista_materie) => {
+            if (err) {
+                console.log(err)
+                return
+            }
+            materie_sostenute = get_lista_unica(materie_sostenute)
+            lista_materie = get_lista_unica(lista_materie)
+            // console.log(lista_materie)
+            //console.log(materie_sostenute)
+            res.render('studente/certificato_carriera', {
+                materie_sostenute,
+                lista_materie,
+                utente: req.session.utente,
+                path: '/studente/certificato_carriera',
+                depth : 2
+            })
         })
     })
 })
