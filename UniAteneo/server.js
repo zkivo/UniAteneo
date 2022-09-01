@@ -168,7 +168,7 @@ function portale_docente(req, res) {
     var id_docente = req.session.utente.id;
     // console.log(id_docente);
     db.serialize(() => {
-        db.all(`SELECT DISTINCT P.id_insegnamento, P.anno, P.scelta, I.nome AS nome_insegnamento, I.cfu, I.scheda_trasparenza, I.ssd, I.id_docente, D.nome AS nome_docente, D.cognome AS cognome_docente, C.tipo AS tipo_cds FROM CDS as C, Programmi as P, Insegnamenti as I, ` +
+        db.all(`SELECT DISTINCT P.id_insegnamento, I.nome AS nome_insegnamento, I.cfu, I.scheda_trasparenza, I.ssd, I.id_docente, D.nome AS nome_docente, D.cognome AS cognome_docente FROM CDS as C, Programmi as P, Insegnamenti as I, ` +
                 `Docenti as D WHERE ` +
                 `P.id_insegnamento = I.id AND ` +
                 `I.id_docente = D.id AND ` +
@@ -2180,6 +2180,56 @@ server.post("/studente/iscrizione_anno", (req,res) => {
             return
         }
         res.redirect('/studente/iscrizione_anno' + get_text_parm("Iscrizione effettuata con successo"))
+    })
+})
+
+// -----------------------------------
+//      POST ISCRIZIONE RICEVIMENTO
+// -----------------------------------
+
+server.get("/studente/iscrizione_ricevimento/:id_ricevimento", (req,res) => {
+    if(!assert_you_are_studente(req,res)) return;
+    id_ricevimento = req.params.id_ricevimento;
+    matricola = req.session.utente.id
+    db.run(`INSERT INTO IscrizioneRicevimenti values (` + 
+            `${id_ricevimento}, ${matricola})`, err => {
+        if (err) {
+            console.log(err)
+            return
+        }
+        res.redirect("/studente/iscrizione_ricevimento" + get_text_parm("Iscrizione avvenuta con successo!"))
+    })
+});
+
+// -----------------------------------
+//      GET ISCRIZIONE RICEVIMENTO
+// -----------------------------------
+
+server.get("/studente/iscrizione_ricevimento", (req,res) => {
+    if(!assert_you_are_studente(req,res)) return;
+    id_cds = req.session.utente.corso
+    matricola = req.session.utente.id
+    db.all(`select distinct R.id as id_ricevimento, I.id as id_insegnamento, I.nome as denominazione, ` +
+            `D.nome, D.cognome, R.giorno, R.ora, R.durata, R.numstudenti as max_studenti ` +
+            `from Ricevimenti as R , Insegnamenti as I, Docenti as D where ` + 
+            `R.id_materia in (select I.id from Insegnamenti as I, Programmi as P where ` +
+            `P.id_corso = ${id_cds}) ` +
+            `and I.id = R.id_materia and R.id_docente = D.id`, (err,ricevimenti) => {
+        db.all(`select id_ricevimento as id from IscrizioneRicevimenti where ` +
+                `matricola = ${matricola}`, (err, ric_iscritti) => {
+            if (err) {
+                console.log(err)
+                return
+            }
+            //console.log(ricevimenti)
+            res.render('studente/iscrizione_ricevimento', {
+                ric_iscritti,
+                ricevimenti,
+                utente: req.session.utente,
+                path: '/studente/iscrizione_ricevimento',
+                depth : 2
+            })  
+        })
     })
 })
 

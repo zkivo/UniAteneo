@@ -1,0 +1,63 @@
+<%- include('../navbar.ejs') %>
+<div class="container text-center">
+    <% if (ricevimenti.length > 0) {%>
+        <h2 class="mt-3">Iscrizione ricevimento</h2>
+        <table class="table table-hover mt-3">
+            <thead>
+                <tr>
+                    <th scope="col">Codice Insegnamento</th>
+                    <th scope="col">Denominazione Insegnamento</th>
+                    <th scope="col">Docente</th>
+                    <th scope="col">Giorno</th>
+                    <th scope="col">Orario</th>
+                    <th scope="col">Durata</th>
+                    <th scope="col">Numero studenti</th>
+                    <th scope="col">Iscriviti</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% ricevimenti.forEach(ricevimento => {%>
+                    <tr>
+                        <td>
+                            <%= ricevimento.id_insegnamento %>
+                        </td>
+                        <td>
+                            <%= ricevimento.denominazione %>
+                        </td>
+                        <td>
+                            <%= ricevimento.nome + " " + ricevimento.cognome %>
+                        </td>
+                        <td>
+                            <%= ricevimento.giorno %>
+                        </td>
+                        <td>
+                            <%= ricevimento.ora %>
+                        </td>
+                        <td>
+                            <%= ricevimento.durata %>
+                        </td>
+                        <td>
+                            <%= ricevimento.max_studenti %>
+                        </td>
+                        <td>
+                            <%if (!ric_iscritti.map(ric => {return ric.id}).includes(ricevimento.id_ricevimento)) {%>
+                                <button onclick="location.href='<%= path + "/" + ricevimento.id_ricevimento %>'" type="button" class="btn btn-primary">Iscriviti</button>
+                            <% } else { %>
+                                <button type="button" class="btn btn-primary" disabled>Già iscritto</button>
+                            <% } %>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    <% } else { %>
+        <h2 class="mt-3">Nessun ricevimento creato dai docenti</h2>
+    <%} %>
+</div>
+
+<!-- select distinct I.id as id_insegnamento, I.nome as denominazione, D.nome, D.cognome, R.giorno, R.numstudenti as max_studenti from Ricevimenti as R , Insegnamenti as I, Docenti as D where R.id_materia in (select I.id from Insegnamenti as I, Programmi as P where P.id_corso = 10000) and I.id = R.id_materia and R.id_docente = D.id -->
+
+<!-- R.id not in (select id_ricevimento from 
+    Ricevimenti where matricola = ${matricola})  -->
+
+<%- include('../footer.ejs') %>
