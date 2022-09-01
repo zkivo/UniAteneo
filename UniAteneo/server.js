@@ -2185,19 +2185,17 @@ server.post("/studente/iscrizione_anno", (req,res) => {
 
 server.get("/studente/iscrizione_esami", (req,res) => {
     if(!assert_you_are_studente(req,res)) return; 
-    utente = req.session.utente.id;
-
+    matricola = req.session.utente.id;
     db.serialize(() => {
         db.all(`SELECT DISTINCT I.id as id, I.nome as nome, I.cfu as cfu, I.ssd as ssd FROM Insegnamenti as I, Programmi as P `
                 + `WHERE P.id_insegnamento = I.id AND P.id_corso = ${req.session.utente.corso} `
-                + `AND I.id NOT IN ( SELECT id_insegnamento FROM Esami WHERE matricola = ${req.session.utente.id} `
-                + `AND sostenuto = false) `, (err, rows) => {
+                + `AND I.id NOT IN ( SELECT id_insegnamento FROM Esami WHERE matricola = ${matricola})`
+                , (err, rows) => {
             if (err) {
                 console.log(err)
                 res.redirect('/' + get_error_parm("errore: 8667"))
                 return
             }
-
             res.render('studente/iscrizione_esami', {
                 rows: rows,
                 utente: req.session.utente,
@@ -2212,8 +2210,8 @@ server.post("/studente/iscrizione_esami", (req,res) => {
     if(!assert_you_are_studente(req,res)) return; 
     utente = req.session.utente;
     var codice = req.body.codice;
-    console.log(utente);
-    console.log(codice);
+    // console.log(utente);
+    // console.log(codice);
     
     var sql = `INSERT INTO Esami (matricola, id_insegnamento) VALUES (${utente.id}, ${codice});`
     db.exec(sql, (err,row) => {
