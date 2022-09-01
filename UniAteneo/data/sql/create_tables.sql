@@ -84,7 +84,13 @@ CREATE TABLE IF NOT EXISTS Ricevimenti (
 	giorno         date,
 	ora            time,
 	durata         INTEGER,
-	numstudenti    INTEGER,
+	numstudenti    INTEGER,   -- numero massimo
 	FOREIGN KEY (id_docente) REFERENCES Docenti(id),
 	FOREIGN KEY (id_materia) REFERENCES Insegnamenti(id)
+);
+
+CREATE TABLE IF NOT EXISTS IscrizioneRicevimenti (
+	id_ricevimento int,
+	matricola      int,
+	PRIMARY KEY (id_ricevimento, matricola)
 );
