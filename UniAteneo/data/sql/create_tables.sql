@@ -71,6 +71,7 @@ CREATE TABLE IF NOT EXISTS Esami (
 	voto            INTEGER,
 	lode            boolean DEFAULT false,
 	domande         TEXT,
+	firma           boolean DEFAULT false,
 	PRIMARY KEY (matricola, id_insegnamento),
 	FOREIGN KEY (matricola) REFERENCES Studente(matricola),
 	FOREIGN KEY (id_insegnamento)  REFERENCES Insegnamenti(id)

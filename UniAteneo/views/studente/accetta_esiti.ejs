@@ -1,0 +1,45 @@
+<%- include('../navbar.ejs') %>
+<div class="container text-center pt-3">
+    <div class="shadow p-3 mb-5 bg-body rounded">
+        <%if (rows.length > 0) {%>
+            <div class="card-body">
+                <h2>Esiti degli esami per <%=utente.nome + " " + utente.cognome%></h2>
+                <table class="table table-hover mx-auto">
+                    <thead>
+                    <tr>
+                        <th scope="col">ID Materia</th>
+                        <th scope="col">SSD</th>
+                        <th scope="col" style="width: 25%">Denominazione</th>
+                        <th scope="col">Voto</th>
+                        <th scope="col">Accetta</th>                       
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% rows.forEach((row) => { %>
+                        <tr>
+                        <td name="<%= row.id %>"> <%= row.id %> </td>
+                        <td> <%= row.ssd %> </td>
+                        <td> <%= row.nome %> </td>
+                        <td> <%= row.voto %> </td>
+                        <td> 
+                            
+                                <button onclick="location.href='/studente/verbalizza/<%= row.id%>'" type="submit" class="btn btn-primary">Vai</button> 
+
+
+                        </tr>
+                        
+                    <% }) %>
+                    </tbody>
+                    <tfoot>
+                    <tr class="table-dark"></tr>
+                    </tfoot>
+                </table>
+            </div>
+        <% } else {%>
+            <h3>Non ci sono esiti da visualizzare.</h3>
+        <% } %>
+    </div>
+</div>
+
+
+<%- include('../footer.ejs') %>

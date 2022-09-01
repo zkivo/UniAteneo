@@ -2223,6 +2223,89 @@ server.post("/studente/iscrizione_esami", (req,res) => {
     })
 })
 
+server.get("/studente/accetta_esiti", (req,res) => {
+    if(!assert_you_are_studente(req,res)) return; 
+    matricola = req.session.utente.id;
+    db.serialize(() => {
+        db.all(`SELECT DISTINCT I.id as id, I.nome as nome, I.cfu as cfu, I.ssd as ssd, E.voto as voto FROM Insegnamenti as I, Programmi as P, Esami as E `
+                + `WHERE P.id_insegnamento = I.id AND P.id_corso = ${req.session.utente.corso} AND I.id = E.id_insegnamento AND E.matricola = ${matricola} `
+                + `AND I.id IN ( SELECT id_insegnamento FROM Esami WHERE matricola = ${matricola} AND sostenuto = true AND firma = false)`
+                , (err, rows) => {
+            if (err) {
+                console.log(err)
+                res.redirect('/' + get_error_parm("errore: 8667"))
+                return
+            }
+            res.render('studente/accetta_esiti', {
+                rows: rows,
+                utente: req.session.utente,
+                path: '/studente/accetta_esiti',
+                depth : 2
+            })
+        })
+    })
+})
+
+server.get("/studente/verbalizza/:materia", (req,res) => {
+    if(!assert_you_are_studente(req,res)) return; 
+    materia = req.params.materia;
+    res.render('studente/verbalizza', {
+                utente: req.session.utente,
+                path: '/studente/verbalizza/' + materia,
+                depth : 3
+            })
+})
+
+
+server.post("/studente/verbalizza/:materia", (req,res) => {
+    if(!assert_you_are_studente(req,res)) return; 
+    id = req.session.utente.id;
+    nome = req.session.utente.nome;
+    cognome = req.session.utente.cognome;
+    materia = req.params.materia;
+
+    username = req.body.username.trimStart().trimEnd().split('.');
+    nome2 = username[0].toUpperCase();
+    cognome2 = username[1].toUpperCase();
+    password = req.body.password.trimStart().trimEnd();
+
+    db.serialize(() => {
+        db.get(`SELECT password FROM Studente WHERE matricola = ${id}`, (err, pswStudente) => {
+            if (err) {
+                console.log(err)
+                res.redirect('/studente/verbalizza/:materia' + get_error_parm("errore: 8667"))
+                return
+            }
+            if (nome === nome2 && cognome === cognome2 && bcrypt.compareSync(password, pswStudente.password)) {
+                db.all(`SELECT * FROM Esami WHERE matricola = ${id} AND id_insegnamento = ${materia} AND sostenuto = true`, (err, esame) => {
+                    if (err) {
+                        console.log(err)
+                        res.redirect('/studente/accetta_esiti' + get_error_parm("errore: 8667"))
+                        return
+                    }
+                    if (esame.length == 0) {
+                        res.redirect('/studente/accetta_esiti' + get_error_parm(`Non hai sostenuto questo esame`))
+                        return
+                    } else {
+                        var sql = `UPDATE Esami SET firma = true WHERE matricola = ${id} AND id_insegnamento = ${materia};`
+                        db.exec(sql, (err,row) => {
+                            if (err) {
+                                console.log(err)
+                                return
+                            }
+                            res.redirect('/studente/accetta_esiti' + get_text_parm("Esame firmato con successo"))
+                        })
+                    }
+                })
+            } else {
+                res.redirect('/studente/verbalizza/' + materia + get_text_parm("Username o password errati."))
+                return
+            }
+
+        })
+    })
+})
+
 server.get("/convalida/:materia/:matricola", (req,res) => {
     if(!assert_you_are_docente(req,res)) return; 
     utente = req.session.utente.id;
