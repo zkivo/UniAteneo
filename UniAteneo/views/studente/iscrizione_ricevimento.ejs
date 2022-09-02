@@ -11,7 +11,7 @@
                     <th scope="col">Giorno</th>
                     <th scope="col">Orario</th>
                     <th scope="col">Durata</th>
-                    <th scope="col">Numero studenti</th>
+                    <th scope="col">Numero iscritti/Max studenti</th>
                     <th scope="col">Iscriviti</th>
                 </tr>
             </thead>
@@ -37,11 +37,17 @@
                             <%= ricevimento.durata %>
                         </td>
                         <td>
-                            <%= ricevimento.max_studenti %>
+                            <% var index = count_iscritti.map(ric => {return ric.id_ricevimento}).indexOf(ricevimento.id_ricevimento); %>
+                            <%if (index != -1) {%>
+                                <%= count_iscritti[index].num + "/" + ricevimento.max_studenti %>
+                            <% } else { %> 
+                                <%= "0/" + ricevimento.max_studenti %>
+                            <% } %>
                         </td>
                         <td>
                             <%if (!ric_iscritti.map(ric => {return ric.id}).includes(ricevimento.id_ricevimento)) {%>
-                                <button onclick="location.href='<%= path + "/" + ricevimento.id_ricevimento %>'" type="button" class="btn btn-primary">Iscriviti</button>
+                                <button onclick="location.href='<%= path + "/" + ricevimento.id_ricevimento %>'" type="button" class="btn btn-primary"
+                                    <% if (index != -1) { if (count_iscritti[index].num >= ricevimento.max_studenti) { %> disabled <%} } %>>Iscriviti</button>
                             <% } else { %>
                                 <button type="button" class="btn btn-primary" disabled>Già iscritto</button>
                             <% } %>

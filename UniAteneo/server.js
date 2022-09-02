@@ -2084,7 +2084,7 @@ server.get("/studente/paga_seconda_tassa", (req, res) => {
 })
 
 // -----------------------------------
-//        GET PAGA SECONDA TASSA
+//        GET PAGA CERTIFICATO CARRIERA
 // -----------------------------------
 
 server.get("/studente/certificato_carriera", (req, res) => {
@@ -2096,7 +2096,7 @@ server.get("/studente/certificato_carriera", (req, res) => {
             `Esami as E where S.nome = \"${nome}\" and ` +
             `S.cognome = \"${cognome}\" and E.matricola = ` +
             `S.matricola and I.id = E.id_insegnamento ` +
-            `and E.sostenuto = true` , (err, materie_sostenute) => {
+            `and E.firma = true` , (err, materie_sostenute) => {
         db.all(`select P.anno, I.nome, I.id, I.cfu from Insegnamenti as I, Programmi as P, CDS as C, Studente as S ` +
                 `where P.id_corso = C.id and S.id_corso = C.id and ` +
                 `S.matricola = ${matricola} and ` +
@@ -2217,18 +2217,22 @@ server.get("/studente/iscrizione_ricevimento", (req,res) => {
             `and I.id = R.id_materia and R.id_docente = D.id`, (err,ricevimenti) => {
         db.all(`select id_ricevimento as id from IscrizioneRicevimenti where ` +
                 `matricola = ${matricola}`, (err, ric_iscritti) => {
-            if (err) {
-                console.log(err)
-                return
-            }
-            //console.log(ricevimenti)
-            res.render('studente/iscrizione_ricevimento', {
-                ric_iscritti,
-                ricevimenti,
-                utente: req.session.utente,
-                path: '/studente/iscrizione_ricevimento',
-                depth : 2
-            })  
+            db.all("select id_ricevimento, count(*) as num from IscrizioneRicevimenti " +
+                    "group by id_ricevimento", (err, count_iscritti) => {
+                if (err) {
+                    console.log(err)
+                    return
+                }
+                //console.log(ricevimenti)
+                res.render('studente/iscrizione_ricevimento', {
+                    count_iscritti,
+                    ric_iscritti,
+                    ricevimenti,
+                    utente: req.session.utente,
+                    path: '/studente/iscrizione_ricevimento',
+                    depth : 2
+                })  
+            })
         })
     })
 })
@@ -2277,7 +2281,7 @@ server.get("/studente/accetta_esiti", (req,res) => {
     if(!assert_you_are_studente(req,res)) return; 
     matricola = req.session.utente.id;
     db.serialize(() => {
-        db.all(`SELECT DISTINCT I.id as id, I.nome as nome, I.cfu as cfu, I.ssd as ssd, E.voto as voto FROM Insegnamenti as I, Programmi as P, Esami as E `
+        db.all(`SELECT DISTINCT I.id as id, I.nome as nome, I.cfu as cfu, I.ssd as ssd, E.voto as voto, E.lode FROM Insegnamenti as I, Programmi as P, Esami as E `
                 + `WHERE P.id_insegnamento = I.id AND P.id_corso = ${req.session.utente.corso} AND I.id = E.id_insegnamento AND E.matricola = ${matricola} `
                 + `AND I.id IN ( SELECT id_insegnamento FROM Esami WHERE matricola = ${matricola} AND sostenuto = true AND firma = false)`
                 , (err, rows) => {

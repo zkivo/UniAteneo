@@ -20,10 +20,10 @@
                         <td name="<%= row.id %>"> <%= row.id %> </td>
                         <td> <%= row.ssd %> </td>
                         <td> <%= row.nome %> </td>
-                        <td> <%= row.voto %> </td>
+                        <td> <%= row.voto %><% if (row.lode == 1) { %>/L<%}%> </td>
                         <td> 
                             
-                                <button onclick="location.href='/studente/verbalizza/<%= row.id%>'" type="submit" class="btn btn-primary">Vai</button> 
+                                <button onclick="location.href='/studente/verbalizza/<%= row.id%>'" type="submit" class="btn btn-primary">Accetta</button> 
 
 
                         </tr>

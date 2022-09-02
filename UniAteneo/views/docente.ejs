@@ -73,12 +73,12 @@
                                     <div class="col-auto" >
                                         <input type="hidden" id="codice1<%=row.id_insegnamento%>" name="codice1" value="<%=row.id_insegnamento%>">
                                         <input type="date" class="form-control" id="data" name="data" value="<%=anno + mese + giorno%>" min="<%=anno + mese + giorno%>" required>
-                                        <input type="number" class="form-control mt-2" id="durata" name="durata" placeholder="Durata" required >
+                                        <input type="number" class="form-control mt-2" id="durata" name="durata" placeholder="Durata" min="1" required >
                                     </div>
                                     
                                     <div class="col-4" >
-                                        <input type="time" class="form-control" id="inizio" name="inizio"  required >
-                                        <input type="number" class="form-control mt-2" id="studenti" name="studenti" placeholder="Max. Studenti" required >
+                                        <input type="time" class="form-control" id="inizio" name="inizio" required >
+                                        <input type="number" class="form-control mt-2" id="studenti" name="studenti" placeholder="Max. Studenti" min="1" required >
                                         
                                     </div>
 
