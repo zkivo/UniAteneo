@@ -2249,12 +2249,21 @@ server.get("/studente/iscrizione_esami", (req,res) => {
                 console.log(err)
                 res.redirect('/' + get_error_parm("errore: 8667"))
                 return
-            }
-            res.render('studente/iscrizione_esami', {
-                rows: rows,
-                utente: req.session.utente,
-                path: '/studente/iscrizione_esami',
-                depth : 2
+            }        
+            db.get(`SELECT rate_pagate from Studente WHERE matricola = ${matricola} `, (err, rate) => {
+                if (err) {
+                console.log(err)
+                res.redirect('/' + get_error_parm("errore: 8667"))
+                return
+                }
+                console.log(rate);
+                res.render('studente/iscrizione_esami', {
+                    rows: rows,
+                    rate: rate,
+                    utente: req.session.utente,
+                    path: '/studente/iscrizione_esami',
+                    depth : 2
+                })
             })
         })
     })
