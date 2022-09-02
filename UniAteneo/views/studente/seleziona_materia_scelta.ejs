@@ -1,0 +1,128 @@
+<%- include('../navbar.ejs') %>
+<div class="container text-center">
+
+    <% if (!materie_scelta.every(materia => materia.blocco != 1)) { %>
+        <h2 class="mt-3">Selezionare insegnamento a scelta del primo blocco</h2>
+        <% if (materie_scelte.every(materia => materia.blocco != 1)) { %>
+            <table class="table table-hover mt-3">
+                <thead>
+                    <tr>
+                        <th scope="col">Codice</th>
+                        <th scope="col">Denominazione Insegnamento</th>
+                        <th scope="col">S.S.D.</th>
+                        <th scope="col">CFU</th>
+                        <th scope="col">Scegli</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% materie_scelta.forEach(materia => {%>
+                        <% if (materia.blocco == 1) { %>
+                        <tr>
+                            <td>
+                                <%= materia.id_insegnamento %>
+                            </td>
+                            <td>
+                                <%= materia.nome %>
+                            </td>
+                            <td>
+                                <%= materia.ssd %>
+                            </td>
+                            <td>
+                                <%= materia.cfu %>
+                            </td>
+                            <td>
+                                <button onclick="location.href='/studente/seleziona_insegnamenti_scelta/<%=materia.id_insegnamento%>/1'" type="button" class="btn btn-primary">Seleziona</button>
+                            </td>
+                        </tr>
+                    <% } }) %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p1>Insegnameto già scelto</p1>
+        <% } %>
+    <% } %>
+
+    <% if (!materie_scelta.every(materia => materia.blocco != 2)) { %>
+        <h2 class="mt-3">Selezionare insegnamento a scelta del secondo blocco</h2>
+        <% if (materie_scelte.every(materia => materia.blocco != 2)) { %>
+            <table class="table table-hover mt-3">
+                <thead>
+                    <tr>
+                        <th scope="col">Codice</th>
+                        <th scope="col">Denominazione Insegnamento</th>
+                        <th scope="col">S.S.D.</th>
+                        <th scope="col">CFU</th>
+                        <th scope="col">Scegli</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% materie_scelta.forEach(materia => {%>
+                        <% if (materia.blocco == 2) { %>
+                        <tr>
+                            <td>
+                                <%= materia.id_insegnamento %>
+                            </td>
+                            <td>
+                                <%= materia.nome %>
+                            </td>
+                            <td>
+                                <%= materia.ssd %>
+                            </td>
+                            <td>
+                                <%= materia.cfu %>
+                            </td>
+                            <td>
+                                <button onclick="location.href='/studente/seleziona_insegnamenti_scelta/<%=materia.id_insegnamento%>/2'" type="button" class="btn btn-primary">Seleziona</button>
+                            </td>
+                        </tr>
+                    <% } }) %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p1>Insegnameto già scelto</p1>
+        <% } %>
+    <% } %>
+
+    <% if (!materie_scelta.every(materia => materia.blocco != 3)) { %>
+        <h2 class="mt-3">Selezionare insegnamento a scelta del terzo blocco</h2>
+        <% if (materie_scelte.every(materia => materia.blocco != 3)) { %>
+            <table class="table table-hover mt-3">
+                <thead>
+                    <tr>
+                        <th scope="col">Codice</th>
+                        <th scope="col">Denominazione Insegnamento</th>
+                        <th scope="col">S.S.D.</th>
+                        <th scope="col">CFU</th>
+                        <th scope="col">Scegli</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% materie_scelta.forEach(materia => {%>
+                        <% if (materia.blocco == 3) { %>
+                        <tr>
+                            <td>
+                                <%= materia.id_insegnamento %>
+                            </td>
+                            <td>
+                                <%= materia.nome %>
+                            </td>
+                            <td>
+                                <%= materia.ssd %>
+                            </td>
+                            <td>
+                                <%= materia.cfu %>
+                            </td>
+                            <td>
+                                <button onclick="location.href='/studente/seleziona_insegnamenti_scelta/<%=materia.id_insegnamento%>/3'" type="button" class="btn btn-primary">Seleziona</button>
+                            </td>
+                        </tr>
+                    <% } }) %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p1>Insegnameto già scelto</p1>
+        <% } %>
+    <% } %>
+
+</div>
+<%- include('../footer.ejs') %>
