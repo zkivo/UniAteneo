@@ -2417,7 +2417,7 @@ server.get("/admin/convalida_tirocini", (req,res) => {
     db.serialize(() => {
         db.all(`SELECT DISTINCT I.id as id_tirocinio, C.id as id_corso, C.nome as nome_corso, E.voto as voto, S.matricola as matricola, S.nome as nome_studente, S.cognome as cognome_studente `
                 + `FROM Insegnamenti as I, Programmi as P, Esami as E, Studente as S, CDS as C `
-                + `WHERE P.id_insegnamento = I.id AND P.id_corso = C.id AND S.id_corso = C.id AND E.matricola = S.matricola AND E.id_insegnamento = I.id AND I.nome = \"Tirocinio\" `, (err, rows) => {
+                + `WHERE P.id_insegnamento = I.id AND P.id_corso = C.id AND S.id_corso = C.id AND E.matricola = S.matricola AND E.id_insegnamento = I.id AND I.nome = \"Tirocinio\" AND E.sostenuto = FALSE`, (err, rows) => {
                 //+ `AND I.id IN ( SELECT E.id_insegnamento FROM Esami,  WHERE matricola = ${matricola} AND sostenuto = true AND firma = false)`, (err, rows) => {
             if (err) {
                 console.log(err)
@@ -2435,7 +2435,61 @@ server.get("/admin/convalida_tirocini", (req,res) => {
     })
 })
 
+server.post("/admin/convalida_tirocini", (req,res) => {
+    if(!assert_you_are_admin(req,res)) return; 
+    matricola = req.body.matricola;
+    id_tirocinio = req.body.id_tirocinio;
 
+    var sql = `UPDATE Esami SET sostenuto = true, firma = true WHERE matricola = ${matricola} AND id_insegnamento = ${id_tirocinio};`    
+    db.exec(sql, (err,row) => {
+        if (err) {
+            console.log(err)
+            return
+        }
+        res.redirect('/admin/convalida_tirocini' + get_text_parm("Tirocinio convalidato!"))
+    })
+})
+
+server.get("/admin/convalida_prove_finali", (req,res) => {
+    if(!assert_you_are_admin(req,res)) return; 
+    utente = req.session.utente.id;
+
+    db.serialize(() => {
+        db.all(`SELECT DISTINCT I.id as id_prova, C.id as id_corso, C.nome as nome_corso, E.voto as voto, S.matricola as matricola, S.nome as nome_studente, S.cognome as cognome_studente `
+                + `FROM Insegnamenti as I, Programmi as P, Esami as E, Studente as S, CDS as C `
+                + `WHERE P.id_insegnamento = I.id AND P.id_corso = C.id AND S.id_corso = C.id AND E.matricola = S.matricola AND E.id_insegnamento = I.id AND (I.nome = \"Prova Finale\" OR I.nome = \"Tesi\") AND E.sostenuto = FALSE`, (err, rows) => {
+                //+ `AND I.id IN ( SELECT E.id_insegnamento FROM Esami,  WHERE matricola = ${matricola} AND sostenuto = true AND firma = false)`, (err, rows) => {
+            if (err) {
+                console.log(err)
+                res.redirect('/portale' + get_error_parm("errore: 23626"))
+                return
+            }
+
+            res.render('admin/convalida_prove_finali', {
+                rows: rows,
+                utente: req.session.utente,
+                path: '/admin/convalida_prove_finali',
+                depth : 2
+            })
+        })
+    })
+})
+
+server.post("/admin/convalida_prove_finali", (req,res) => {
+    if(!assert_you_are_admin(req,res)) return; 
+    matricola = req.body.matricola;
+    id_prova = req.body.id_prova;
+    voto = req.body.voto;
+
+    var sql = `UPDATE Esami SET sostenuto = true, firma = true, voto = ${voto} WHERE matricola = ${matricola} AND id_insegnamento = ${id_prova};`    
+    db.exec(sql, (err,row) => {
+        if (err) {
+            console.log(err)
+            return
+        }
+        res.redirect('/admin/convalida_tirocini' + get_text_parm("Prova finale/Tesi convalidata!"))
+    })
+})
 
 
 server.listen(web_port, () => {
