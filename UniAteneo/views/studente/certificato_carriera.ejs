@@ -31,13 +31,13 @@
             </tr>
             </thead>
             <tbody>
-                <% lista_materie.forEach(materia => {%>
+                <% materie.forEach(materia => {%>
                     <tr>
                         <td>
                             <%=materia.anno%>
                         </td>
                         <td>
-                            <%=materia.id%>
+                            <%=materia.id_insegnamento%>
                         </td>                        
                         <td>
                             <%=materia.nome%>
@@ -46,18 +46,18 @@
                             <%=materia.cfu%>
                         </td>
                         <td>
-                            <%if (typeof materie_sostenute !== 'undefined') {%>
-                                <% var index = materie_sostenute.map(mat => {return mat.id_insegnamento}).indexOf(materia.id)%>
+                            <%if (typeof materie_firmate !== 'undefined') {%>
+                                <% var index = materie_firmate.map(mat => {return mat.id_insegnamento}).indexOf(materia.id)%>
                                 <%if (index != -1) {%>
-                                    <%=materie_sostenute[index].voto%> 
-                                    <%if (materie_sostenute[index].lode == 1) {%>
+                                    <%=materie_firmate[index].voto%> 
+                                    <%if (materie_firmate[index].lode == 1) {%>
                                         /L
                                     <%}%>
                             <%} }%>
                         </td>
                         <td>
-                            <%if (typeof materie_sostenute !== 'undefined') {%>
-                                <% var index = materie_sostenute.map(mat => {return mat.id_insegnamento}).indexOf(materia.id)%>
+                            <%if (typeof materie_firmate !== 'undefined') {%>
+                                <% var index = materie_firmate.map(mat => {return mat.id_insegnamento}).indexOf(materia.id)%>
                                 <%if (index != -1) {%>
                                     Sostenuto
                             <%} }%>           

@@ -2084,37 +2084,110 @@ server.get("/studente/paga_seconda_tassa", (req, res) => {
 })
 
 // -----------------------------------
-//        GET PAGA CERTIFICATO CARRIERA
+//        GET SELEZIONA INSEGNAMENTI A SCELTA
+// -----------------------------------
+
+server.get("/studente/seleziona_insegnamenti_scelta/:insegnamento/:blocco", (req, res) => {
+    if (!assert_you_are_studente(req, res)) return
+    nome = req.session.utente.nome.toUpperCase()
+    cognome = req.session.utente.cognome.toUpperCase()
+    matricola = req.session.utente.id
+    id_cds = req.session.utente.corso
+    blocco = req.params.blocco
+    insegnamento = req.params.insegnamento
+    db.run(`INSERT into InsegnamentiScelti (matricola, id_insegnamento, ` + 
+            `blocco) values (${matricola}, ${insegnamento}, ${blocco})`, err => {
+        if (err) {
+            console.log(err)
+            return
+        }        
+        res.redirect("/studente/seleziona_insegnamenti_scelta" + get_text_parm("Insegnamento selezionato con successo"))
+    })
+})
+
+// -----------------------------------
+//        GET SELEZIONA INSEGNAMENTI A SCELTA
+// -----------------------------------
+
+server.get("/studente/seleziona_insegnamenti_scelta", (req, res) => {
+    if (!assert_you_are_studente(req, res)) return
+    nome = req.session.utente.nome.toUpperCase()
+    cognome = req.session.utente.cognome.toUpperCase()
+    matricola = req.session.utente.id
+    id_cds = req.session.utente.corso
+    db.all(`select DISTINCT * from Insegnamenti as I, Programmi as P ` +
+            `where P.id_corso = ${id_cds} and I.id = P.id_insegnamento and ` +
+            `P.scelta = true`, (err, materie_scelta) => {
+        db.all(`select distinct * from InsegnamentiScelti ` +
+                `where matricola = ${matricola}`, (err, materie_scelte) => {
+            if (err) {
+                console.log(err)
+                return
+            }
+            res.render('studente/seleziona_materia_scelta', {
+                materie_scelta,
+                materie_scelte,
+                utente: req.session.utente,
+                path: '/studente/seleziona_materia_scelta',
+                depth : 2
+            })
+        })
+    })
+})
+
+// -----------------------------------
+//        GET CERTIFICATO CARRIERA
 // -----------------------------------
 
 server.get("/studente/certificato_carriera", (req, res) => {
     if (!assert_you_are_studente(req, res)) return
     nome = req.session.utente.nome.toUpperCase()
     cognome = req.session.utente.cognome.toUpperCase()
+    id_cds = req.session.utente.corso
     matricola = req.session.utente.id
-    db.all(`select * from Studente as S, Insegnamenti as I, ` + 
+    db.all(`select DISTINCT * from Studente as S, Insegnamenti as I, ` + 
             `Esami as E where S.nome = \"${nome}\" and ` +
             `S.cognome = \"${cognome}\" and E.matricola = ` +
             `S.matricola and I.id = E.id_insegnamento ` +
-            `and E.firma = true` , (err, materie_sostenute) => {
-        db.all(`select P.anno, I.nome, I.id, I.cfu from Insegnamenti as I, Programmi as P, CDS as C, Studente as S ` +
-                `where P.id_corso = C.id and S.id_corso = C.id and ` +
-                `S.matricola = ${matricola} and ` +
-                `I.id = P.id_insegnamento order by P.anno`, (err, lista_materie) => {
-            if (err) {
-                console.log(err)
-                return
-            }
-            materie_sostenute = get_lista_unica(materie_sostenute)
-            lista_materie = get_lista_unica(lista_materie)
-            // console.log(lista_materie)
-            //console.log(materie_sostenute)
-            res.render('studente/certificato_carriera', {
-                materie_sostenute,
-                lista_materie,
-                utente: req.session.utente,
-                path: '/studente/certificato_carriera',
-                depth : 2
+            `and E.firma = true` , (err, materie_firmate) => {
+        db.all(`select DISTINCT * from Insegnamenti as I, Programmi as P ` +
+                `where P.id_corso = ${id_cds} and ` +
+                `I.id = P.id_insegnamento and ` +
+                `P.scelta = false order by P.anno`, (err, materie_cds_non_scelta) => {
+            db.all(`select DISTINCT P.anno, I.nome, I.id, I.cfu from Insegnamenti as I, Programmi as P, CDS as C, Studente as S ` +
+                    `where P.id_corso = C.id and S.id_corso = C.id and ` +
+                    `S.matricola = ${matricola} and ` +
+                    `I.id = P.id_insegnamento and ` +
+                    `P.scelta = false order by P.anno`, (err, materie_cds_scelta) => {
+                db.all(`select DISTINCT * from InsegnamentiScelti as scelta, Insegnamenti as I, ` +
+                        `Programmi as P where P.id_corso = ${id_cds} and P.id_insegnamento = I.id and ` +
+                        `scelta.matricola = ${matricola} and ` +
+                        `I.id = scelta.id_insegnamento`, (err, materie_scelte) => {
+                    if (err) {
+                        console.log(err)
+                        return
+                    }
+                    materie = materie_cds_non_scelta.concat(materie_scelte)
+                    materie.sort((a,b) => {
+                        if (a.anno > b.anno) return 1
+                        else if (a.anno < b.anno) return -1
+                        else 0
+                    })
+                    // materie_sostenute = get_lista_unica(materie_sostenute)
+                    // lista_materie = get_lista_unica(lista_materie)
+                    // console.log(lista_materie)
+                    //console.log(materie_sostenute)
+                    res.render('studente/certificato_carriera', {
+                        materie_firmate,
+                        materie,
+                        materie_scelte,
+                        materie_cds_non_scelta,
+                        materie_cds_scelta,
+                        utente: req.session.utente,
+                        path: '/studente/certificato_carriera',
+                        depth : 2
+                    })
+                })
             })
         })
     })
@@ -2240,21 +2313,29 @@ server.get("/studente/iscrizione_ricevimento", (req,res) => {
 server.get("/studente/iscrizione_esami", (req,res) => {
     if(!assert_you_are_studente(req,res)) return; 
     matricola = req.session.utente.id;
+    id_cds = req.session.utente.corso;
     db.serialize(() => {
-        db.all(`SELECT DISTINCT I.id as id, I.nome as nome, I.cfu as cfu, I.ssd as ssd FROM Insegnamenti as I, Programmi as P `
-                + `WHERE P.id_insegnamento = I.id AND P.id_corso = ${req.session.utente.corso} `
-                + `AND I.id NOT IN ( SELECT id_insegnamento FROM Esami WHERE matricola = ${matricola})`
-                , (err, rows) => {
-            if (err) {
-                console.log(err)
-                res.redirect('/' + get_error_parm("errore: 8667"))
-                return
-            }
-            res.render('studente/iscrizione_esami', {
-                rows: rows,
-                utente: req.session.utente,
-                path: '/studente/iscrizione_esami',
-                depth : 2
+        db.all(`SELECT DISTINCT I.id as id, I.nome as nome, I.cfu as cfu, I.ssd as ssd FROM Insegnamenti as I, Programmi as P ` +
+                `WHERE P.id_insegnamento = I.id AND P.id_corso = ${id_cds} and ` +
+                `I.id NOT IN ( SELECT id_insegnamento FROM Esami WHERE matricola = ${matricola}) and ` +
+                `P.scelta = false`, (err, rows) => {
+            db.all(`select DISTINCT * from InsegnamentiScelti as scelta, Insegnamenti as I, ` +
+                    `Programmi as P where P.id_corso = ${id_cds} and P.id_insegnamento = I.id and ` +
+                    `scelta.matricola = ${matricola} and ` +
+                    `I.id = scelta.id_insegnamento and ` +
+                    `I.id NOT IN ( SELECT id_insegnamento FROM Esami WHERE matricola = ${matricola})`, (err, materie_scelte) => {
+                if (err) {
+                    console.log(err)
+                    res.redirect('/' + get_error_parm("errore: 8667"))
+                    return
+                }
+                rows = rows.concat(materie_scelte)
+                res.render('studente/iscrizione_esami', {
+                    rows: rows,
+                    utente: req.session.utente,
+                    path: '/studente/iscrizione_esami',
+                    depth : 2
+                })
             })
         })
     })
