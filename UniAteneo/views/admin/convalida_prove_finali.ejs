@@ -3,12 +3,14 @@
 <div class="container text-center pt-3">
     <div class="shadow p-3 mb-5 bg-body rounded">
         <div class="card-body">
-            <h2>Prove finali da convalidare</h2>
-			<table class="table table-hover">
+            <h2>Prove finali e Tesi da convalidare</h2>
+            <%if(rows.length > 0) { %>
+                <table class="table table-hover">
                 <thead>
                 <tr>
                     <th scope="col">ID CDS</th>
                     <th scope="col">Nome CDS</th>
+                    <th scope="col">Tipo</th>
                     <th scope="col">Matricola</th>
                     <th scope="col">Nome</th>
                     <th scope="col">Voto</th>
@@ -20,11 +22,13 @@
                     <tr>
                         <td name="<%= row.id_corso %>"> <%= row.id_corso %> </td>
                         <td> <%= row.nome_corso %> </td>
+                        <td> <%= row.nome %> </td>
                         <td> <%= row.matricola %> </td>
                         <td> <%= row.nome_studente + ' ' + row.cognome_studente %> </td>
                         <td> 
                             <form action="<%= path%>" method="POST">
                                 <input type="number" name="voto" min="18" max="31" required>
+                                <label>(nota: 31 = 30/L)</label>
                         </td>
                         <td> 
                             
@@ -42,6 +46,10 @@
                 <tr class="table-dark"></tr>
                 </tfoot>
             </table>
+            <% } else { %>
+                <h5>Non esistono prove finali o tesi da convalidare al momento.</h5>
+            <% } %>
+			
 
 
         </div>

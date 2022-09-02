@@ -2455,9 +2455,9 @@ server.get("/admin/convalida_prove_finali", (req,res) => {
     utente = req.session.utente.id;
 
     db.serialize(() => {
-        db.all(`SELECT DISTINCT I.id as id_prova, C.id as id_corso, C.nome as nome_corso, E.voto as voto, S.matricola as matricola, S.nome as nome_studente, S.cognome as cognome_studente `
+        db.all(`SELECT DISTINCT I.id as id_prova, I.nome, C.id as id_corso, C.nome as nome_corso, E.voto as voto, S.matricola as matricola, S.nome as nome_studente, S.cognome as cognome_studente `
                 + `FROM Insegnamenti as I, Programmi as P, Esami as E, Studente as S, CDS as C `
-                + `WHERE P.id_insegnamento = I.id AND P.id_corso = C.id AND S.id_corso = C.id AND E.matricola = S.matricola AND E.id_insegnamento = I.id AND (I.nome = \"Prova Finale\" OR I.nome = \"Tesi\") AND E.sostenuto = FALSE`, (err, rows) => {
+                + `WHERE P.id_insegnamento = I.id AND P.id_corso = C.id AND S.id_corso = C.id AND E.matricola = S.matricola AND E.id_insegnamento = I.id AND (I.nome = \"Prova finale\" OR I.nome = \"Tesi\") AND E.sostenuto = FALSE`, (err, rows) => {
                 //+ `AND I.id IN ( SELECT E.id_insegnamento FROM Esami,  WHERE matricola = ${matricola} AND sostenuto = true AND firma = false)`, (err, rows) => {
             if (err) {
                 console.log(err)

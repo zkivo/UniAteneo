@@ -4,6 +4,7 @@
     <div class="shadow p-3 mb-5 bg-body rounded">
         <div class="card-body">
             <h2>Tirocini da convalidare</h2>
+            <%if(rows.length > 0) { %>
 			<table class="table table-hover">
                 <thead>
                 <tr>
@@ -37,6 +38,9 @@
                 <tr class="table-dark"></tr>
                 </tfoot>
             </table>
+            <% } else { %>
+                <h5>Non esistono tirocini da convalidare al momento.</h5>
+            <% } %>
 
 
         </div>
