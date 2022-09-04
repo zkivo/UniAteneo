@@ -50,9 +50,9 @@
                     list="datalist_ssd" placeholder="S.S.D." 
                     <% if (typeof pallina !== 'undefined') { %>
                     <%if (pallina.materie[0].ssd !== '') { %>value="<%= pallina.materie[0].ssd %>" <% } %>
-                    <% if (pallina.materie[0].nome === 'Tesi' || 
-                        pallina.materie[0].nome === 'Tirocinio'|| 
-                        pallina.materie[0].nome === 'Prova finale') { %>
+                    <% if (pallina.materie[0].nome.toUpperCase() === 'TESI' || 
+                        pallina.materie[0].nome.toUpperCase() === 'TIROCINIO'|| 
+                        pallina.materie[0].nome.toUpperCase() === 'PROVA FINALE') { %>
                           disabled
                 <%} }%> required>
                 <datalist id="datalist_ssd">
@@ -109,9 +109,9 @@
                   class="form-control" list="datalist_ssd" 
                   placeholder="S.S.D." required 
                   value="<%= materia.ssd %>"
-                  <%if (materia.nome === 'Tesi' || 
-                        materia.nome === 'Tirocinio'|| 
-                        materia.nome === 'Prova finale') {%>
+                  <%if (materia.nome.toUpperCase() === 'TESI' || 
+                        materia.nome.toUpperCase() === 'TIROCINIO'|| 
+                        materia.nome.toUpperCase() === 'PROVA FINALE') {%>
                           disabled
                   <%}%> >
               </td>
@@ -170,10 +170,10 @@
       var scelta = document.getElementById('scelta_' + this.id.split('_')[1])
       var cfu = document.getElementById('cfu_' + this.id.split('_')[1])
       var cfu_hidden = document.getElementById('cfu_hidden_' + this.id.split('_')[1])
-      switch(testo) {
-        case 'Tesi':
-        case 'Prova finale':
-        case 'Tirocinio':
+      switch(testo.toUpperCase()) {
+        case 'TESI':
+        case 'PROVA FINALE':
+        case 'TIROCINIO':
           ssd.disabled = true
           ssd.value = ""
           return

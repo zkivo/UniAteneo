@@ -72,8 +72,8 @@
                                         <input type="text" id="ssd_<%= index.toString() %>"
                                             name="ssd_<%= index.toString() %>" class="form-control" list="datalist_ssd"
                                             placeholder="S.S.D." required value="<%= materia.ssd %>" <%if
-                                            (materia.nome==='Tesi' || materia.nome==='Tirocinio' ||
-                                            materia.nome==='Prova finale' ) {%>
+                                            (materia.nome.toUpperCase() ==='TESI' || materia.nome.toUpperCase() ==='TIROCINIO' ||
+                                            materia.nome.toUpperCase() ==='PROVA FINALE' ) {%>
                                         disabled
                                         <%}%> >
                             </td>
@@ -160,10 +160,10 @@
                 var scelta = document.getElementById('scelta_' + this.id.split('_')[1])
                 var cfu = document.getElementById('cfu_' + this.id.split('_')[1])
                 var cfu_hidden = document.getElementById('cfu_hidden_' + this.id.split('_')[1])
-                switch (testo) {
-                    case 'Tesi':
-                    case 'Prova finale':
-                    case 'Tirocinio':
+                switch (testo.toUpperCase()) {
+                    case 'TESI':
+                    case 'PROVA FINALE':
+                    case 'TIROCINIO':
                         ssd.disabled = true
                         ssd.value = ""
                         return

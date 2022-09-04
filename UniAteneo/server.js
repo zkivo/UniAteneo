@@ -425,7 +425,7 @@ server.post("/admin/modifica_cds", (req, res) => {
                     return
                 }
                 flag = false
-                materie.forEach(mat => {
+                materie.forEach((mat, index) => {
                     if (flag) return
                     if (mat.nome.toUpperCase() === 'TIROCINIO') {
                         if (parseInt(mat.cfu,10) != 3 &&
@@ -442,6 +442,8 @@ server.post("/admin/modifica_cds", (req, res) => {
                                 lista_materie_ssd: lista_materie_ssd
                             })
                             return
+                        } else {
+                            materie[index].nome = 'Tirocinio'
                         }
                     }
                 })
@@ -461,7 +463,7 @@ server.post("/admin/modifica_cds", (req, res) => {
                         return
                     } else {
                         flag = false
-                        materie.forEach(mat => {
+                        materie.forEach((mat,index) => {
                             if (flag) return
                             if (mat.nome.toUpperCase() === 'PROVA FINALE') {
                                 if (parseInt(mat.cfu,10) != 9 &&
@@ -477,6 +479,8 @@ server.post("/admin/modifica_cds", (req, res) => {
                                         lista_materie_ssd: lista_materie_ssd
                                     })
                                     return
+                                } else {
+                                    materie[index].nome = 'Prova finale'
                                 }
                             }
                         })
@@ -497,7 +501,7 @@ server.post("/admin/modifica_cds", (req, res) => {
                         return
                     } else {
                         flag = false
-                        materie.forEach(mat => {
+                        materie.forEach((mat, index) => {
                             if (flag) return
                             if (mat.nome.toUpperCase() === 'TESI') {
                                 if (parseInt(mat.cfu,10) != 9 &&
@@ -513,6 +517,8 @@ server.post("/admin/modifica_cds", (req, res) => {
                                         lista_materie_ssd: lista_materie_ssd
                                     })
                                     return
+                                } else {
+                                    materie[index].nome = 'Tesi'
                                 }
                             }
                         })
@@ -947,7 +953,7 @@ server.post("/admin/crea_cds", (req, res) => {
         })
     }
     pallina.materie = materie
-    console.log(materie)
+    //console.log(materie)
  /* ****************************************** */
  /* ************* pallina filled ****************** */
  /* ****************************************** */
@@ -1049,7 +1055,7 @@ server.post("/admin/crea_cds", (req, res) => {
                     return
                 }
                 flag = false
-                materie.forEach(mat => {
+                materie.forEach((mat, index) => {
                     if (flag) return
                     if (mat.nome.toUpperCase() === 'TIROCINIO') {
                         if (parseInt(mat.cfu,10) != 3 &&
@@ -1064,6 +1070,8 @@ server.post("/admin/crea_cds", (req, res) => {
                                 lista_materie_ssd: lista_materie_ssd, materie_attive : materie_attive
                             })
                             return
+                        } else {
+                            materie[index].nome = 'Tirocinio'
                         }
                     }
                 })
@@ -1081,7 +1089,7 @@ server.post("/admin/crea_cds", (req, res) => {
                         return
                     } else {
                         flag = false
-                        materie.forEach(mat => {
+                        materie.forEach((mat, index) => {
                             if (flag) return
                             if (mat.nome.toUpperCase() === 'PROVA FINALE') {
                                 if (parseInt(mat.cfu,10) != 9 &&
@@ -1096,6 +1104,8 @@ server.post("/admin/crea_cds", (req, res) => {
                                         lista_materie_ssd: lista_materie_ssd, materie_attive : materie_attive
                                     })
                                     return
+                                } else {
+                                    materie[index].nome = 'Prova finale'
                                 }
                             }
                         })
@@ -1114,7 +1124,7 @@ server.post("/admin/crea_cds", (req, res) => {
                         return
                     } else {
                         flag = false
-                        materie.forEach(mat => {
+                        materie.forEach((mat, index) => {
                             if (flag) return
                             if (mat.nome.toUpperCase() === 'TESI') {
                                 if (parseInt(mat.cfu,10) != 9 &&
@@ -1129,6 +1139,8 @@ server.post("/admin/crea_cds", (req, res) => {
                                         lista_materie_ssd: lista_materie_ssd, materie_attive : materie_attive
                                     })
                                     return
+                                } else {
+                                    materie[index].nome = 'Tesi'
                                 }
                             }
                         })
