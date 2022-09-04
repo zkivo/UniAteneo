@@ -6,6 +6,8 @@ L'unico comado da inserire nel terminale è
 
 `node server.js`
 
+Quindi, il sito si raggiunge tramite la porta 1337.
+
 ### Come resettare il database
 
 Se dovesse essere necessario riavviare il database alle condizioni originali
