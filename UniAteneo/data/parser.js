@@ -23,7 +23,7 @@ function get_rand_name_cogn() {
 function rand(n) {
     return Math.floor(Math.random() * n)
 }
-var start_id_corsi = 4600
+var start_id_corsi = 4000
 function get_new_id_corso() {
     return start_id_corsi += 600
 }
@@ -31,7 +31,7 @@ var start_id_docenti = 6030
 function get_new_id_docenti() {
     return start_id_docenti += 30
 }
-var start_id_insegnamenti = 2020
+var start_id_insegnamenti = 2000
 function get_new_id_insegnamenti() {
     return start_id_insegnamenti += 25
 }
@@ -189,8 +189,12 @@ file_names = file_names.filter(e => {
     else return false
 })
 
+// --------------------------------------
+//              START HERE
+// --------------------------------------
+
 // CREA LISTA INFO CDS
-array = []
+// array = []
 lista_info_cds = []
 file_names.forEach(e => {
     var needed_cfu
@@ -219,22 +223,164 @@ file_names.forEach(e => {
         materie_scelta_da_attivare : [],
         materie_scelta : []
     })
-    array = array.concat(lista_info_cds[lista_info_cds.length - 1].possibili_materie.map(e => {
-        return { 
-            ssd : e.ssd,
-            nome : e.nome
-        }
-    }))
+    // array = array.concat(lista_info_cds[lista_info_cds.length - 1].possibili_materie.map(e => {
+    //     return { 
+    //         ssd : e.ssd,
+    //         nome : e.nome
+    //     }
+    // }))
 })
-array = get_lista_unica(array)
-array.forEach(e => {
-    e.nome = e.nome.replace('�', 'à');
-})
-fs.writeFileSync("per_zanchi.json", JSON.stringify(array, null, 4), {flag:'w'})
-return 
+// array = get_lista_unica(array)
+// array.forEach(e => {
+//     e.nome = e.nome.replace('�', 'à');
+// })
+//fs.writeFileSync("per_zanchi.json", JSON.stringify(array, null, 4), {flag:'w'})
 
 // CREA LAUREE MAGISTRALI A CICLO UNICO
 lista_info_cds = lista_info_cds.concat(get_lista_cds_lmc(lista_info_cds))
+
+//filla materie attive fino a needed cfu
+lista_info_cds.forEach(cds => {
+    // considerando i cfu del tirocinio
+    // e tesi/prova finale
+    // cds.needed_cfu -= (6 + 12)
+    // tot_cfu = 18
+    flag = false
+    tot_cfu = 0
+    cds.possibili_materie.forEach((materia,index) => {
+        if (tot_cfu >= cds.needed_cfu) {
+            flag = true
+            return
+        }
+        if (materia.nome.includes('Atelier') ||
+            materia.nome.includes('Laboratorio') ||
+            materia.nome.includes('�')) return
+        diff = cds.needed_cfu - tot_cfu
+        if (diff <= 12) {
+            materia.cfu = diff
+            tot_cfu += diff
+        } else {
+            r = rand(4)
+            if (r == 0) {
+                materia.cfu = 3
+                tot_cfu += 3
+            } else if (r == 1) {
+                materia.cfu = 6
+                tot_cfu += 6
+            } else if (r == 2) {
+                materia.cfu = 9
+                tot_cfu += 9
+            } else {
+                materia.cfu = 12
+                tot_cfu += 12
+            }
+        }
+        cds.materie_attive.push(materia)
+    })
+    if (!flag) {
+        console.log("error 3464")
+        process.exit(1)
+    }
+    var diff = tot_cfu - cds.needed_cfu
+    if (diff != 0) {
+        console.log("ma che")
+        process.exit(1)
+    }
+    id = get_new_id_insegnamenti()
+    nome = "Tirocinio"
+    ssd = ""
+    var cfu
+    r = rand(2)
+    if (r == 0) {
+        cfu = 3
+    } else {
+        cfu = 6
+    }
+    for (i = cds.materie_attive.length - 1; i >= 0; i--) {
+        if (cds.materie_attive[i].cfu == cfu) {
+            cds.materie_attive.splice(i,1)
+            cds.materie_attive.push({
+                id,
+                nome,
+                ssd,
+                cfu
+            })
+            break;
+        }
+    }
+    id = get_new_id_insegnamenti()
+    var nome
+    if (cds.needed_cfu != 180) {
+        nome = "Tesi"
+    } else {
+        nome = "Prova finale"
+    }
+    ssd = ""
+    var cfu
+    r = rand(2)
+    if (r == 0) {
+        cfu = 9
+    } else {
+        cfu = 12
+    }
+    for (i = cds.materie_attive.length - 1; i >= 0; i--) {
+        if (cds.materie_attive[i].cfu == cfu) {
+            cds.materie_attive.splice(i,1)
+            cds.materie_attive.push({
+                id,
+                nome,
+                ssd,
+                cfu
+            })
+            break;
+        }
+    }
+    tot_cfu = 0
+    cds.materie_attive.forEach(mat => {
+        tot_cfu += mat.cfu
+    })
+    //console.log(cds.materie_attive, tot_cfu)
+})
+
+//WRITE SQL
+var sql = ""
+lista_info_cds.forEach(cds => {
+    var tipo = ""
+    if (cds.needed_cfu == 180) {
+        tipo = 'LT'
+    } else if (cds.needed_cfu == 120) {
+        tipo = 'LM'
+    } else {
+        tipo = 'LMC'
+    }
+    sql += "-- -------------------------------\n"
+    sql += `--       ${cds.nome} - ${tipo}\n`
+    sql += "-- -------------------------------\n"
+    sql += `INSERT INTO CDS (id, nome, tipo) VALUES (${cds.id}, \"${cds.nome}\", \"${tipo}\");\n`
+    anni = 0;
+    if (cds.needed_cfu == 180) anni = 3 
+    else if (cds.needed_cfu == 120) anni = 2
+    else  anni = 5
+    i_anni = 0;
+    anno = 0;
+    mat_per_anno = Math.floor(cds.materie_attive.length / anni)
+    //sql += '\n\n-- ' + cds.nome + " - " + tipo + ' --\n\n';
+    cds.materie_attive.forEach(mat => {
+        if (i_anni % mat_per_anno == 0) {
+            if (anno < anni) anno++
+        }
+        mat.nome = mat.nome.replace('�', 'à');
+        sql +=  `INSERT INTO Insegnamenti (id, nome, cfu, ssd) VALUES (${mat.id},` +
+                ` \"${mat.nome}\", ${mat.cfu}, \"${mat.ssd}\");\n`;
+        sql +=  `INSERT INTO Programmi (id_corso, id_insegnamento, scelta, blocco, anno) VALUES ` +
+                `(${cds.id}, ${mat.id}, FALSE, 0, ${anno});\n`;
+        i_anni++
+    })
+})
+
+fs.writeFileSync("insert_all2.sql", sql, { flag: 'w' })
+
+return 
 
 // metti casualmente materie possibili in
 // materie a scelta da attivare

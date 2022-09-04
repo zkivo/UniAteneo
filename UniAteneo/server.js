@@ -16,6 +16,10 @@ const path_insert_all = "./data/sql/insert_all.sql";
 
 const web_port = process.env.PORT || 1337;
 
+if (process.argv.includes("reset") || !fs.existsSync(path_db)) {
+    fs.copyFileSync("./data/backup/db.sqlite", "./data/db.sqlite")
+}
+
 const db = new sqlite3.Database(path_db, initiate_db);
 const lista_materie_ssd = JSON.parse(fs.readFileSync("./data/materie_ssd.json"))
 lista_materie_ssd.sort((a,b) => {
@@ -96,7 +100,7 @@ function initiate_db() {
             }
         }
         console.log("The SQLite database created the tables.");
-        insert_ssd();
+        //insert_ssd();
     });
 }
 
@@ -2623,7 +2627,7 @@ const readline = require('readline').createInterface({
     output: process.stdout
 });
 
-readline.question('>>', str => {
+readline.question('', str => {
     print_query(str)
     readline.close();
 });
