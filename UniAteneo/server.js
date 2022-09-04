@@ -2147,6 +2147,10 @@ server.get("/studente/seleziona_insegnamenti_scelta", (req, res) => {
                 console.log(err)
                 return
             }
+            if (materie_scelta.length == 0) {
+                res.redirect("/portale" + get_text_parm("Non ci sono materie a scelta nel corso di studi."))
+                return
+            }
             res.render('studente/seleziona_materia_scelta', {
                 materie_scelta,
                 materie_scelte,

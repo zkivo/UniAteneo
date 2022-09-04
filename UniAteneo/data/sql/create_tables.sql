@@ -92,7 +92,9 @@ CREATE TABLE IF NOT EXISTS Ricevimenti (
 CREATE TABLE IF NOT EXISTS IscrizioneRicevimenti (
 	id_ricevimento int,
 	matricola      int,
-	PRIMARY KEY (id_ricevimento, matricola)
+	PRIMARY KEY (id_ricevimento, matricola),
+	FOREIGN KEY (id_ricevimento) REFERENCES Ricevimenti(id),
+	FOREIGN KEY (matricola) 	 REFERENCES Studente(matricola)
 );
 
 -- materie scelte dalle materie a scelta del cds
@@ -100,5 +102,7 @@ CREATE TABLE IF NOT EXISTS InsegnamentiScelti (
 	matricola       int,
 	id_insegnamento int,
 	blocco          int,
-	PRIMARY KEY (matricola, id_insegnamento)
+	PRIMARY KEY (matricola, id_insegnamento),
+	FOREIGN KEY (matricola) 	  REFERENCES Studente(matricola),
+	FOREIGN KEY (id_insegnamento) REFERENCES Insegnamenti(id)
 );

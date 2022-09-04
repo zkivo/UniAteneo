@@ -1,0 +1,141 @@
+Table "SSD" {
+  "code" tinytext [pk]
+  "name" tinytext
+}
+
+Table "CDS" {
+  "id" INTEGER [pk]
+  "nome" tinytext
+  "tipo" CHAR(3)
+}
+
+Table "Docenti" {
+  "id" INTEGER [pk]
+  "nome" tinytext
+  "cognome" tinytext
+  "ssd" tinytext
+  "inizio_ricevimento" time
+  "fine_ricevimento" time
+  "password" text
+
+Indexes {
+  (nome, cognome) [unique]
+}
+}
+
+Table "Insegnamenti" {
+  "id" INTEGER [pk]
+  "nome" tinytext
+  "cfu" tinyINTEGER
+  "scheda_trasparenza" bool
+  "ssd" tinytext
+  "id_docente" INTEGER
+}
+
+Table "Programmi" {
+  "id_corso" INTEGER
+  "id_insegnamento" INTEGER
+  "scelta" bool
+  "blocco" tinyINTEGER
+  "anno" tinyINTEGER
+
+Indexes {
+  (id_corso, id_insegnamento, blocco) [pk]
+}
+}
+
+Table "Studente" {
+  "matricola" INTEGER [pk]
+  "nome" tinytext
+  "cognome" tinytext
+  "password" text
+  "reddito" INTEGER
+  "anno" tinyINTEGER
+  "rate_pagate" tinyINTEGER
+  "id_corso" INTEGER
+}
+
+Table "PianoDiStudi" {
+  "matricola" INTEGER
+  "id_insegnamento" INTEGER
+  "voto" tinytext [default: "0"]
+
+Indexes {
+  (matricola, id_insegnamento) [pk]
+}
+}
+
+Table "Esami" {
+  "matricola" INTEGER
+  "id_insegnamento" INTEGER
+  "sostenuto" boolean [default: false]
+  "voto" INTEGER
+  "lode" boolean [default: false]
+  "domande" TEXT
+  "firma" boolean [default: false]
+
+Indexes {
+  (matricola, id_insegnamento) [pk]
+}
+}
+
+Table "Ricevimenti" {
+  "id" INTEGER [pk]
+  "id_docente" INTEGER
+  "id_materia" INTEGER
+  "giorno" date
+  "ora" time
+  "durata" INTEGER
+  "numstudenti" INTEGER
+}
+
+Table "IscrizioneRicevimenti" {
+  "id_ricevimento" int
+  "matricola" int
+
+Indexes {
+  (id_ricevimento, matricola) [pk]
+}
+}
+
+Table "InsegnamentiScelti" {
+  "matricola" int
+  "id_insegnamento" int
+  "blocco" int
+
+Indexes {
+  (matricola, id_insegnamento) [pk]
+}
+}
+
+Ref:"Docenti"."id" < "Insegnamenti"."id_docente"
+
+Ref:"CDS"."id" < "Programmi"."id_corso"
+
+Ref:"Insegnamenti"."id" < "Programmi"."id_insegnamento"
+
+Ref:"CDS"."id" < "Studente"."id_corso"
+
+Ref:"Studente"."matricola" < "PianoDiStudi"."matricola"
+
+Ref:"Insegnamenti"."id" < "PianoDiStudi"."id_insegnamento"
+
+Ref:"Studente"."matricola" < "Esami"."matricola"
+
+Ref:"Insegnamenti"."id" < "Esami"."id_insegnamento"
+
+Ref:"Docenti"."id" < "Ricevimenti"."id_docente"
+
+Ref:"Insegnamenti"."id" < "Ricevimenti"."id_materia"
+
+Ref:"Studente"."matricola" < "InsegnamentiScelti"."matricola"
+
+Ref:"Insegnamenti"."id" < "InsegnamentiScelti"."id_insegnamento"
+
+Ref:"Studente"."matricola" < "IscrizioneRicevimenti"."matricola"
+
+Ref:"Ricevimenti".id < IscrizioneRicevimenti.id_ricevimento
+
+Ref: "Docenti"."ssd" < "SSD"."code"
+
+Ref: "Insegnamenti"."ssd" < "SSD"."code"
