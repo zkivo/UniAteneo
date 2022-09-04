@@ -12,41 +12,59 @@
                 <label for="cognome">Cognome</label>
             </div> -->
             <div class="col-auto">
-                <label for="nome" class="form-label">Nome</label>
-                <input type="text" class="form-control" id="nome" name="nome" required>
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" required>
+                    <label for="nome">Nome</label>
+                </div>
+                <!-- <label for="nome" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="nome" name="nome" required> -->
             </div>
             <div class="col-auto">
-                <label for="cognome" class="form-label">Cognome</label>
-                <input type="text" class="form-control" id="cognome" name="cognome" required>
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="cognome" name="cognome" placeholder="Cognome" required>
+                    <label for="cognome">Cognome</label>
+                </div>
+                <!-- <label for="cognome" class="form-label">Cognome</label>
+                <input type="text" class="form-control" id="cognome" name="cognome" required> -->
             </div>
         </div>
         <div class="row m-3 justify-content-center">
-            <div class="col-2">
+            <div class="col-auto">
                 <label for="ssd" class="form-label" list="datalist_ssd">S.S.D.</label>
             </div>
             <div class="col-auto">
-                <input type="text" class="form-control" list="datalist_ssd" id="ssd" name="ssd" required>
-                <datalist id="datalist_ssd">
-                    <% lista_materie_ssd.forEach(e => { %> <option value="<%= e.ssd %>"> <% }) %>
-                </datalist>
+                <select class="form-select" id="ssd" name="ssd" required>
+                    <% lista_ssd.forEach(e => { %> 
+                        <% if (e !== '') {%> <option>%><%= e %> </option> <% } %>
+                    <% }) %>
+                </select>
             </div>
         </div>
         <div class="row m-3 justify-content-center">
-            <div class="col-2">
+            <!-- <div class="col-2">
                 <label for="password_1" class="form-label">Password</label>
+            </div> -->
+            <div class="col-auto">
+                <div class="form-floating">
+                    <input type="password" class="form-control" id="password_1" name="password_1" placeholder="Password" required>
+                    <label for="password_1">Password</label>
+                </div>
+                <!-- <input type="password" class="form-control" id="password_1" name="password_1" required> -->
             </div>
             <div class="col-auto">
-                <input type="password" class="form-control" id="password_1" name="password_1" required>
+                <div class="form-floating">
+                    <input type="password" class="form-control" id="password_2" name="password_2" placeholder="Conferma Password" required>
+                    <label for="password_2">Conferma Password</label>
+                </div>
+                <!-- <input type="password" class="form-control" id="password_2" name="password_2" required> -->
             </div>
         </div>
-        <div class="row m-3 justify-content-center">
+        <!-- <div class="row m-3 justify-content-center">
             <div class="col-2">
                 <label for="password_2" class="form-label">Conferma password</label>
             </div>
-            <div class="col-auto">
-                <input type="password" class="form-control" id="password_2" name="password_2" required>
-            </div>
-        </div>
+
+        </div> -->
         <!-- <div class="form-text">La password deve contenerer almeno 8 caratteri</div> -->
         <button type="submit" class="btn btn-primary mt-3">Crea docente</button>
         <!-- <div class="mb-3">

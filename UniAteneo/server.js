@@ -18,6 +18,11 @@ const web_port = process.env.PORT || 1337;
 
 const db = new sqlite3.Database(path_db, initiate_db);
 const lista_materie_ssd = JSON.parse(fs.readFileSync("./data/materie_ssd.json"))
+lista_materie_ssd.sort((a,b) => {
+    if (a.ssd > b.ssd) return 1
+    else if (a.ssd < b.ssd) return -1
+    else return 0
+})
 const server = express();
 
 function assert_you_are_admin(req, res) {
@@ -65,6 +70,8 @@ function get_lista_unica(lista) {
     strings = lista.map(e => {return JSON.stringify(e)}).filter(solo_unici)
     return strings.map(e => {return JSON.parse(e)})
 }
+
+const lista_ssd = get_lista_unica(lista_materie_ssd.map(e => e.ssd))
 
 server.use(express.static('public'))
 server.set('view engine', 'ejs');
@@ -1643,7 +1650,7 @@ server.get("/admin/crea_docente", (req, res) => {
         utente: req.session.utente,
         path: '/admin/crea_docente',
         depth: 2,
-        lista_materie_ssd: lista_materie_ssd
+        lista_ssd
     })
 })
 
@@ -1946,7 +1953,7 @@ server.get("/admin/orari_ricevimenti", (req, res) => {
                 res.redirect('/' + get_error_parm("errore: 5432"))
             } else {
                 if (rows.length == 0) {
-                    res.redirect('/admin/orari_ricevimenti' + get_error_parm(`Non esistono docenti`))
+                    res.redirect('/admin/admin_page' + get_error_parm(`Non esistono docenti`))
                     return
                 }
                 //console.log(rows);
