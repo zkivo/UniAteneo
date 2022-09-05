@@ -31,9 +31,7 @@ Attenzione: questo comando cancellerà tutte le modifiche effettuate sino al mom
 
 ## I moduli utilizzati
 
-I moduli sono già installati nella cartella node_modules. Tuttavia potrebbe essere necessario reinstallare i pacchetti e ciò è possibile attraverso i comandi
-
-`npm uninstall`
+I moduli sono già installati nella cartella node_modules. Tuttavia potrebbe essere necessario reinstallare i pacchetti e ciò è possibile rimuovendo la cartella node_modules e far partire il comando:
 
 `npm install`
 
