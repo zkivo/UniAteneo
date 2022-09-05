@@ -163,6 +163,7 @@
     console.log("unique_index:", unique_index)
 
     var materie_attive = JSON.parse('<% if (typeof materie_attive !== 'undefined') {%><%-JSON.stringify(materie_attive).split("'").join("\\'")%><%}%>')    
+    var lista_materie_ssd = JSON.parse('<% if (typeof lista_materie_ssd !== 'undefined') {%><%-JSON.stringify(lista_materie_ssd).split("'").join("\\'")%><%}%>')    
     
     function nome_onchange() {
       var testo = this.value.trimEnd().trimStart()
@@ -180,9 +181,9 @@
         default:
           ssd.disabled = false
       }
-      var index = materie_attive.map(e => {return e.nome}).indexOf(testo)
+      var index = lista_materie_ssd.map(e => {return e.nome}).indexOf(testo)
       if (index != -1) {
-        ssd.value = materie_attive[index].ssd
+        ssd.value = lista_materie_ssd[index].ssd
         return
       }
       num = parseInt(testo)

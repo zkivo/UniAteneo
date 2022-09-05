@@ -179,7 +179,7 @@ function portale_docente(req, res) {
     var id_docente = req.session.utente.id;
     // console.log(id_docente);
     db.serialize(() => {
-        db.all(`SELECT DISTINCT P.id_insegnamento, I.nome AS nome_insegnamento, I.cfu, I.scheda_trasparenza, I.ssd, I.id_docente, D.nome AS nome_docente, D.cognome AS cognome_docente FROM CDS as C, Programmi as P, Insegnamenti as I, ` +
+        db.all(`SELECT DISTINCT P.id_insegnamento, I.nome AS nome_insegnamento, I.cfu, I.scheda_trasparenza, I.ssd, I.id_docente, D.nome AS nome_docente, D.cognome AS cognome_docente, D.inizio_ricevimento, D.fine_ricevimento FROM CDS as C, Programmi as P, Insegnamenti as I, ` +
                 `Docenti as D WHERE ` +
                 `P.id_insegnamento = I.id AND ` +
                 `I.id_docente = D.id AND ` +
@@ -1354,40 +1354,40 @@ server.post("/admin/crea_cds", (req, res) => {
                     return
                 }
                 // ultimo controllo è sulla totalità dei cfu
-                // var tot_cfu = 0
-                // var scelta_1 = false
-                // var scelta_2 = false
-                // var scelta_3 = false
-                // materie.forEach(materia => {
-                //     if (materia.scelta === 'No') {
-                //         tot_cfu += parseInt(materia.cfu, 10)
-                //         return
-                //     }
-                //     if (materia.scelta === 'Primo blocco' &&
-                //             scelta_1 == false) {
-                //         tot_cfu += parseInt(materia.cfu, 10)
-                //         scelta_1 = true
-                //     } else if (materia.scelta === 'Secondo blocco' &&
-                //             scelta_2 == false) {
-                //         tot_cfu += parseInt(materia.cfu, 10)
-                //         scelta_2 = true
-                //     } else if (materia.scelta === 'Terzo blocco' &&
-                //             scelta_3 == false) {
-                //         tot_cfu += parseInt(materia.cfu, 10)
-                //         scelta_3 = true
-                //     }
-                // })
-                // if (tot_cfu != needed_cfu) {
-                //     pallina.error = "I cfu totali devono essere: " + needed_cfu + "\\nInvece sono stati inseriti: " + tot_cfu + " cfu"
-                //     res.render('admin/crea_cds', {
-                //         pallina : pallina,
-                //         utente: req.session.utente,
-                //         path: '/admin/crea_cds',
-                //         depth: 2,
-                //         lista_materie_ssd: lista_materie_ssd, materie_attive : materie_attive
-                //     })
-                //     return
-                // }
+                var tot_cfu = 0
+                var scelta_1 = false
+                var scelta_2 = false
+                var scelta_3 = false
+                materie.forEach(materia => {
+                    if (materia.scelta === 'No') {
+                        tot_cfu += parseInt(materia.cfu, 10)
+                        return
+                    }
+                    if (materia.scelta === 'Primo blocco' &&
+                            scelta_1 == false) {
+                        tot_cfu += parseInt(materia.cfu, 10)
+                        scelta_1 = true
+                    } else if (materia.scelta === 'Secondo blocco' &&
+                            scelta_2 == false) {
+                        tot_cfu += parseInt(materia.cfu, 10)
+                        scelta_2 = true
+                    } else if (materia.scelta === 'Terzo blocco' &&
+                            scelta_3 == false) {
+                        tot_cfu += parseInt(materia.cfu, 10)
+                        scelta_3 = true
+                    }
+                })
+                if (tot_cfu != needed_cfu) {
+                    pallina.error = "I cfu totali devono essere: " + needed_cfu + "\\nInvece sono stati inseriti: " + tot_cfu + " cfu"
+                    res.render('admin/crea_cds', {
+                        pallina : pallina,
+                        utente: req.session.utente,
+                        path: '/admin/crea_cds',
+                        depth: 2,
+                        lista_materie_ssd: lista_materie_ssd, materie_attive : materie_attive
+                    })
+                    return
+                }
                 //sql to db
                 db.get('select MAX(id) from Insegnamenti', (err, row) => {
                     if (err) {
@@ -1458,8 +1458,7 @@ server.get("/admin/modifica_cds", (req, res) => {
                     utente: req.session.utente,
                     path: '/admin/modifica_cds',
                     depth: 2,
-                    lista_materie_ssd: lista_materie_ssd, 
-                    materie_attive : materie_attive
+                    lista_materie_ssd: lista_materie_ssd
                 })
             })
         });
@@ -1675,11 +1674,11 @@ server.get("/admin/crea_cds", (req, res) => {
                 return
             }
             res.render('admin/crea_cds', {
-                materie_attive: materie_attive,
+                materie_attive,
                 utente: req.session.utente,
                 path: '/admin/crea_cds',
                 depth: 2,
-                lista_materie_ssd: lista_materie_ssd, materie_attive : materie_attive
+                lista_materie_ssd: lista_materie_ssd
             })
         });
     })

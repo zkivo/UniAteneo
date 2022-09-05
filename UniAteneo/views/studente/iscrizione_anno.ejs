@@ -40,21 +40,21 @@
 
                 <div class="col-auto">
                     <div class="form-floating">
-                        <input type="text" class="form-control" id="carta" name="carta" required>                      
+                        <input type="number" class="form-control" id="carta" min="0" name="carta" required>                      
                         <label for="carta">Numero Carta</label>
                     </div>
                 </div>
 
                 <div class="col-auto">
                     <div class="form-floating">
-                        <input type="date" class="form-control" id="scadenza" name="scadenza" min="" required>                      
+                        <input type="date" class="form-control" id="scadenza" name="scadenza" required>                      
                         <label for="scadenza">Scadenza</label>
                     </div>
                 </div>
 
                 <div class="col-2">
                     <div class="form-floating">
-                        <input type="text" class="form-control" id="cvv" name="cvv" min="0" required>                      
+                        <input type="number" class="form-control" id="cvv" name="cvv" min="0" required>                      
                         <label for="cvv">CVV</label>
                     </div>
                 </div>
@@ -74,6 +74,7 @@
 
 <%- include('../footer.ejs') %>
 <script>
+    document.getElementById('scadenza').min = new Date().toLocaleDateString('en-ca')
     function paga_tasse() {
         var reddito = document.getElementById('reddito').value;
         if(reddito >= 0 && reddito <= 5000)
