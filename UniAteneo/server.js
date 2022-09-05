@@ -17,7 +17,7 @@ const path_insert_all = "./data/sql/insert_all.sql";
 const web_port = process.env.PORT || 1337;
 
 if (process.argv.includes("reset") || !fs.existsSync(path_db)) {
-    fs.copyFileSync("./data/backup/db.sqlite", "./data/db.sqlite")
+    fs.copyFileSync("./data/backup/db_backup.sqlite", "./data/db.sqlite")
 }
 
 const db = new sqlite3.Database(path_db, initiate_db);
