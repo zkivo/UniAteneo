@@ -17,8 +17,8 @@ L'username e la password dell'admin sono rispettivamente:
 
 Una volta creato lo studente o il docente dalla pagina dell'amministratore inserire nell'username e password rispettivamente:
 
-* <nome>.<cognome>
-* <password>
+* nome.cognome
+* password
 
 ## Come resettare il database
 
