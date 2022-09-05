@@ -16,7 +16,7 @@
                     <div class="form-floating">
                         <%// if(rows.anno === null) { %>
                             <!-- <input type="number" class="form-control" id="anno" name="anno" required min="0"> -->
-                            <input type="number" class="form-control" id="anno" name="anno" min="1" value="1" required >
+                            <input type="number" class="form-control" id="anno" name="anno" min="1" value="<% if (typeof utente.anno !== 'undefined') {%><%=parseInt(utente.anno)+1%><%} else {%>1<%}%>" required readonly>
                         <%// } else { %>
                             <!-- <input type="number" class="form-control" id="anno" name="anno" value="<%=rows.anno + 1%>" required readonly> -->
                         <%// } %>                        
@@ -24,16 +24,16 @@
                     </div>
                 </div>
 
-                <div class="col-auto">
+                <!-- <div class="col-auto">
                     <button type="button" class="btn btn-primary" onclick="paga_tasse()">Calcola tasse</button>
-                </div>
+                </div> -->
             </div>
 
-            <div id="pagamento" class="row justify-content-center mt-3" style="visibility: hidden;">
+            <div id="pagamento" class="row justify-content-center mt-3" >
                 <h2 class="mb-2">Dati di pagamento</h2>
                 <div class="col-2">
                     <div class="form-floating">
-                        <input type="number" class="form-control" id="tasse" name="tasse" value="" required readonly >
+                        <input type="number" class="form-control" id="tasse" name="tasse" value="0" required readonly >
                         <label for="reddito">Tasse dovute</label>
                     </div>
                 </div>
@@ -75,8 +75,9 @@
 <%- include('../footer.ejs') %>
 <script>
     document.getElementById('scadenza').min = new Date().toLocaleDateString('en-ca')
+    document.getElementById('reddito').onchange = paga_tasse
     function paga_tasse() {
-        var reddito = document.getElementById('reddito').value;
+        var reddito = this.value;
         if(reddito >= 0 && reddito <= 5000)
             document.getElementById('tasse').setAttribute("value", 0);
         
@@ -94,7 +95,5 @@
         
         if(reddito > 25000)
             document.getElementById('tasse').setAttribute("value", 2500);
-        
-        document.getElementById('pagamento').style.visibility = 'visible';
     }
 </script>

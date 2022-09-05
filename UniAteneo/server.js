@@ -230,7 +230,6 @@ function portale_studente(req, res) {
         utente: req.session.utente,
         path: '/studente/studente_page',
         depth : 2
-        
     })
 }
 
@@ -1810,7 +1809,9 @@ server.post("/login", (req, res) => {
                                 id : studente.matricola,
                                 corso: studente.id_corso,
                                 nome : nome,
-                                cognome : cognome
+                                cognome : cognome,
+                                anno : (studente.anno === null? undefined : studente.anno),
+                                seconda_tassa : (studente.rate_pagate == 2 ? true : false)
                             }
                             res.redirect('/')
                             return
@@ -2079,6 +2080,7 @@ server.post("/studente/paga_seconda_tassa", (req, res) => {
     if (!assert_you_are_studente(req, res)) return
     db.run(`update Studente set rate_pagate = 2 where ` + 
             `nome = \"${nome}\" and cognome = \"${cognome}\"`, err => {
+        req.session.utente.seconda_tassa = true
         res.redirect("/portale")
     })
 })
@@ -2265,12 +2267,12 @@ server.get("/studente/iscrizione_anno", (req,res) => {
 server.post("/studente/iscrizione_anno", (req,res) => {
     if(!assert_you_are_studente(req,res)) return; 
     utente = req.session.utente.id;
-    console.log(utente);
+    //console.log(utente);
     var reddito = req.body.reddito;
     var anno = req.body.anno;
-    console.log(reddito);
-    console.log(anno);
-    console.log(req.body.tasse);
+    // console.log(reddito);
+    // console.log(anno);
+    // console.log(req.body.tasse);
     
     var sql = `UPDATE Studente SET reddito = ${reddito}, anno = ${anno}, rate_pagate = 1 WHERE matricola = ${utente};`
     db.exec(sql, (err,row) => {
@@ -2278,6 +2280,8 @@ server.post("/studente/iscrizione_anno", (req,res) => {
             console.log(err)
             return
         }
+        req.session.utente.anno = anno
+        req.session.utente.seconda_tassa = false
         res.redirect('/studente/iscrizione_anno' + get_text_parm("Iscrizione effettuata con successo"))
     })
 })
@@ -2341,10 +2345,10 @@ server.get("/studente/iscrizione_esami", (req,res) => {
     matricola = req.session.utente.id;
     id_cds = req.session.utente.corso;
     db.serialize(() => {
-        db.all(`SELECT DISTINCT I.id as id, I.nome as nome, I.cfu as cfu, I.ssd as ssd FROM Insegnamenti as I, Programmi as P ` +
+        db.all(`SELECT DISTINCT P.anno, I.id as id, I.nome as nome, I.cfu as cfu, I.ssd as ssd FROM Insegnamenti as I, Programmi as P ` +
                 `WHERE P.id_insegnamento = I.id AND P.id_corso = ${id_cds} and ` +
                 `I.id NOT IN ( SELECT id_insegnamento FROM Esami WHERE matricola = ${matricola}) and ` +
-                `P.scelta = false`, (err, rows) => {
+                `P.scelta = false order by P.anno`, (err, rows) => {
             db.all(`select DISTINCT * from InsegnamentiScelti as scelta, Insegnamenti as I, ` +
                     `Programmi as P where P.id_corso = ${id_cds} and P.id_insegnamento = I.id and ` +
                     `scelta.matricola = ${matricola} and ` +
