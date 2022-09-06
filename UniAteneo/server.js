@@ -459,6 +459,19 @@ server.post("/admin/modifica_cds", (req, res) => {
                 })
                 if (flag) return
                 if (tipo_cds === 'LT') {
+                    if (nome_materie.includes('TESI')) {
+                        pallina.error = "La Triennale non prevede la Tesi."
+                        res.render('admin/modifica_cds', {
+                            pallina : pallina,
+                            materie_attive: materie_attive,
+                            lista_cds : lista_cds,
+                            utente: req.session.utente,
+                            path: '/admin/modifica_cds',
+                            depth: 2,
+                            lista_materie_ssd: lista_materie_ssd
+                        })
+                        return
+                    }
                     if (!nome_materie.includes('PROVA FINALE')) {
                         pallina.error = "La Triennale deve prevedere la Prova Finale"
                         res.render('admin/modifica_cds', {
@@ -497,6 +510,19 @@ server.post("/admin/modifica_cds", (req, res) => {
                         if (flag) return
                     }
                 } else {
+                    if (nome_materie.includes('PROVA FINALE')) {
+                        pallina.error = "Le lauree magistrali non prevedono la prova finale."
+                        res.render('admin/modifica_cds', {
+                            pallina : pallina,
+                            materie_attive: materie_attive,
+                            lista_cds : lista_cds,
+                            utente: req.session.utente,
+                            path: '/admin/modifica_cds',
+                            depth: 2,
+                            lista_materie_ssd: lista_materie_ssd
+                        })
+                        return
+                    }
                     if (!nome_materie.includes('TESI')) {
                         pallina.error = "I corsi Magistrali prevedono la Tesi"
                         res.render('admin/modifica_cds', {
@@ -1087,6 +1113,17 @@ server.post("/admin/crea_cds", (req, res) => {
                 })
                 if (flag) return
                 if (tipo_cds === 'LT') {
+                    if (nome_materie.includes('TESI')) {
+                        pallina.error = "La Triennale non prevede la Tesi."
+                        res.render('admin/crea_cds', {
+                            pallina : pallina,
+                            utente: req.session.utente,
+                            path: '/admin/crea_cds',
+                            depth: 2,
+                            lista_materie_ssd: lista_materie_ssd, materie_attive : materie_attive
+                        })
+                        return
+                    }
                     if (!nome_materie.includes('PROVA FINALE')) {
                         pallina.error = "La Triennale deve prevedere la Prova Finale"
                         res.render('admin/crea_cds', {
@@ -1122,6 +1159,17 @@ server.post("/admin/crea_cds", (req, res) => {
                         if (flag) return
                     }
                 } else {
+                    if (nome_materie.includes('PROVA FINALE')) {
+                        pallina.error = "Le lauree magistrali non prevedono la prova finale."
+                        res.render('admin/crea_cds', {
+                            pallina : pallina,
+                            utente: req.session.utente,
+                            path: '/admin/crea_cds',
+                            depth: 2,
+                            lista_materie_ssd: lista_materie_ssd, materie_attive : materie_attive
+                        })
+                        return
+                    }
                     if (!nome_materie.includes('TESI')) {
                         pallina.error = "I corsi Magistrali prevedono la Tesi"
                         res.render('admin/crea_cds', {
