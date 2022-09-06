@@ -366,7 +366,6 @@ FodyWeavers.xsd
 
 # database
 UniAteneo/data/db.sqlite
-example_sqlite3_chaining.js
 
 UniAteneo/public/uploads/
 todo.txt
