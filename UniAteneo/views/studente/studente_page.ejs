@@ -1,6 +1,38 @@
 <%- include('../navbar.ejs') %>
-<div class="container text-center pt-3">
-    <div class="shadow p-3 mb-5 bg-body rounded">
+<div class="container pt-3">
+    <div class="row mt-3 mx-5">
+        <div class="col-2">
+            <h5>Matricola:</h5>
+        </div>
+        <div class="col-auto">
+            <h5><%= utente.id %></h5>
+        </div>
+    </div>
+    <!-- <h5 class="mx-5">Matricola: <%= utente.id %></h5> -->
+    <% if (typeof utente.anno !== 'undefined') {%>
+        <div class="row mt-3 mx-5">
+            <div class="col-2">
+                <h5>Anno iscrizione:</h5>
+            </div>
+            <div class="col-auto">
+                <h5><%= utente.anno %></h5>
+            </div>
+        </div>
+        <!-- <h5 class="mx-5">Anno iscrizione: <%= utente.anno %></h5> -->
+        <div class="row mt-3 mx-5">
+            <div class="col-2">
+                <h5>Rate pagate:</h5>
+            </div>
+            <div class="col-auto">
+                <% if (utente.seconda_tassa) {%>
+                    <h5>2</h5>
+                <% } else {%>
+                    <h5>1</h5>
+                <% } %>
+            </div>
+        </div>
+    <% } %>
+    <div class="shadow text-center p-3 mb-5 bg-body rounded">
         <div class="card-body">
             <button onclick="location.href='/studente/iscrizione_anno'" type="button" class="list-group-item list-group-item-action">Iscriviti ad un anno accademico</button>
             <button onclick="location.href='/studente/paga_seconda_tassa'" type="button" class="list-group-item list-group-item-action">Paga seconda tassa</button>

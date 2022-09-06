@@ -179,7 +179,7 @@ function portale_docente(req, res) {
     var id_docente = req.session.utente.id;
     // console.log(id_docente);
     db.serialize(() => {
-        db.all(`SELECT DISTINCT P.id_insegnamento, I.nome AS nome_insegnamento, I.cfu, I.scheda_trasparenza, I.ssd, I.id_docente, D.nome AS nome_docente, D.cognome AS cognome_docente FROM CDS as C, Programmi as P, Insegnamenti as I, ` +
+        db.all(`SELECT DISTINCT P.id_insegnamento, I.nome AS nome_insegnamento, I.cfu, I.scheda_trasparenza, I.ssd, I.id_docente, D.nome AS nome_docente, D.cognome AS cognome_docente, D.inizio_ricevimento, D.fine_ricevimento FROM CDS as C, Programmi as P, Insegnamenti as I, ` +
                 `Docenti as D WHERE ` +
                 `P.id_insegnamento = I.id AND ` +
                 `I.id_docente = D.id AND ` +
@@ -230,7 +230,6 @@ function portale_studente(req, res) {
         utente: req.session.utente,
         path: '/studente/studente_page',
         depth : 2
-        
     })
 }
 
@@ -460,6 +459,19 @@ server.post("/admin/modifica_cds", (req, res) => {
                 })
                 if (flag) return
                 if (tipo_cds === 'LT') {
+                    if (nome_materie.includes('TESI')) {
+                        pallina.error = "La Triennale non prevede la Tesi."
+                        res.render('admin/modifica_cds', {
+                            pallina : pallina,
+                            materie_attive: materie_attive,
+                            lista_cds : lista_cds,
+                            utente: req.session.utente,
+                            path: '/admin/modifica_cds',
+                            depth: 2,
+                            lista_materie_ssd: lista_materie_ssd
+                        })
+                        return
+                    }
                     if (!nome_materie.includes('PROVA FINALE')) {
                         pallina.error = "La Triennale deve prevedere la Prova Finale"
                         res.render('admin/modifica_cds', {
@@ -498,6 +510,19 @@ server.post("/admin/modifica_cds", (req, res) => {
                         if (flag) return
                     }
                 } else {
+                    if (nome_materie.includes('PROVA FINALE')) {
+                        pallina.error = "Le lauree magistrali non prevedono la prova finale."
+                        res.render('admin/modifica_cds', {
+                            pallina : pallina,
+                            materie_attive: materie_attive,
+                            lista_cds : lista_cds,
+                            utente: req.session.utente,
+                            path: '/admin/modifica_cds',
+                            depth: 2,
+                            lista_materie_ssd: lista_materie_ssd
+                        })
+                        return
+                    }
                     if (!nome_materie.includes('TESI')) {
                         pallina.error = "I corsi Magistrali prevedono la Tesi"
                         res.render('admin/modifica_cds', {
@@ -1088,6 +1113,17 @@ server.post("/admin/crea_cds", (req, res) => {
                 })
                 if (flag) return
                 if (tipo_cds === 'LT') {
+                    if (nome_materie.includes('TESI')) {
+                        pallina.error = "La Triennale non prevede la Tesi."
+                        res.render('admin/crea_cds', {
+                            pallina : pallina,
+                            utente: req.session.utente,
+                            path: '/admin/crea_cds',
+                            depth: 2,
+                            lista_materie_ssd: lista_materie_ssd, materie_attive : materie_attive
+                        })
+                        return
+                    }
                     if (!nome_materie.includes('PROVA FINALE')) {
                         pallina.error = "La Triennale deve prevedere la Prova Finale"
                         res.render('admin/crea_cds', {
@@ -1123,6 +1159,17 @@ server.post("/admin/crea_cds", (req, res) => {
                         if (flag) return
                     }
                 } else {
+                    if (nome_materie.includes('PROVA FINALE')) {
+                        pallina.error = "Le lauree magistrali non prevedono la prova finale."
+                        res.render('admin/crea_cds', {
+                            pallina : pallina,
+                            utente: req.session.utente,
+                            path: '/admin/crea_cds',
+                            depth: 2,
+                            lista_materie_ssd: lista_materie_ssd, materie_attive : materie_attive
+                        })
+                        return
+                    }
                     if (!nome_materie.includes('TESI')) {
                         pallina.error = "I corsi Magistrali prevedono la Tesi"
                         res.render('admin/crea_cds', {
@@ -1354,40 +1401,40 @@ server.post("/admin/crea_cds", (req, res) => {
                     return
                 }
                 // ultimo controllo è sulla totalità dei cfu
-                // var tot_cfu = 0
-                // var scelta_1 = false
-                // var scelta_2 = false
-                // var scelta_3 = false
-                // materie.forEach(materia => {
-                //     if (materia.scelta === 'No') {
-                //         tot_cfu += parseInt(materia.cfu, 10)
-                //         return
-                //     }
-                //     if (materia.scelta === 'Primo blocco' &&
-                //             scelta_1 == false) {
-                //         tot_cfu += parseInt(materia.cfu, 10)
-                //         scelta_1 = true
-                //     } else if (materia.scelta === 'Secondo blocco' &&
-                //             scelta_2 == false) {
-                //         tot_cfu += parseInt(materia.cfu, 10)
-                //         scelta_2 = true
-                //     } else if (materia.scelta === 'Terzo blocco' &&
-                //             scelta_3 == false) {
-                //         tot_cfu += parseInt(materia.cfu, 10)
-                //         scelta_3 = true
-                //     }
-                // })
-                // if (tot_cfu != needed_cfu) {
-                //     pallina.error = "I cfu totali devono essere: " + needed_cfu + "\\nInvece sono stati inseriti: " + tot_cfu + " cfu"
-                //     res.render('admin/crea_cds', {
-                //         pallina : pallina,
-                //         utente: req.session.utente,
-                //         path: '/admin/crea_cds',
-                //         depth: 2,
-                //         lista_materie_ssd: lista_materie_ssd, materie_attive : materie_attive
-                //     })
-                //     return
-                // }
+                var tot_cfu = 0
+                var scelta_1 = false
+                var scelta_2 = false
+                var scelta_3 = false
+                materie.forEach(materia => {
+                    if (materia.scelta === 'No') {
+                        tot_cfu += parseInt(materia.cfu, 10)
+                        return
+                    }
+                    if (materia.scelta === 'Primo blocco' &&
+                            scelta_1 == false) {
+                        tot_cfu += parseInt(materia.cfu, 10)
+                        scelta_1 = true
+                    } else if (materia.scelta === 'Secondo blocco' &&
+                            scelta_2 == false) {
+                        tot_cfu += parseInt(materia.cfu, 10)
+                        scelta_2 = true
+                    } else if (materia.scelta === 'Terzo blocco' &&
+                            scelta_3 == false) {
+                        tot_cfu += parseInt(materia.cfu, 10)
+                        scelta_3 = true
+                    }
+                })
+                if (tot_cfu != needed_cfu) {
+                    pallina.error = "I cfu totali devono essere: " + needed_cfu + "\\nInvece sono stati inseriti: " + tot_cfu + " cfu"
+                    res.render('admin/crea_cds', {
+                        pallina : pallina,
+                        utente: req.session.utente,
+                        path: '/admin/crea_cds',
+                        depth: 2,
+                        lista_materie_ssd: lista_materie_ssd, materie_attive : materie_attive
+                    })
+                    return
+                }
                 //sql to db
                 db.get('select MAX(id) from Insegnamenti', (err, row) => {
                     if (err) {
@@ -1458,8 +1505,7 @@ server.get("/admin/modifica_cds", (req, res) => {
                     utente: req.session.utente,
                     path: '/admin/modifica_cds',
                     depth: 2,
-                    lista_materie_ssd: lista_materie_ssd, 
-                    materie_attive : materie_attive
+                    lista_materie_ssd: lista_materie_ssd
                 })
             })
         });
@@ -1675,11 +1721,11 @@ server.get("/admin/crea_cds", (req, res) => {
                 return
             }
             res.render('admin/crea_cds', {
-                materie_attive: materie_attive,
+                materie_attive,
                 utente: req.session.utente,
                 path: '/admin/crea_cds',
                 depth: 2,
-                lista_materie_ssd: lista_materie_ssd, materie_attive : materie_attive
+                lista_materie_ssd: lista_materie_ssd
             })
         });
     })
@@ -1811,7 +1857,9 @@ server.post("/login", (req, res) => {
                                 id : studente.matricola,
                                 corso: studente.id_corso,
                                 nome : nome,
-                                cognome : cognome
+                                cognome : cognome,
+                                anno : (studente.anno === null? undefined : studente.anno),
+                                seconda_tassa : (studente.rate_pagate == 2 ? true : false)
                             }
                             res.redirect('/')
                             return
@@ -2080,6 +2128,7 @@ server.post("/studente/paga_seconda_tassa", (req, res) => {
     if (!assert_you_are_studente(req, res)) return
     db.run(`update Studente set rate_pagate = 2 where ` + 
             `nome = \"${nome}\" and cognome = \"${cognome}\"`, err => {
+        req.session.utente.seconda_tassa = true
         res.redirect("/portale")
     })
 })
@@ -2145,6 +2194,10 @@ server.get("/studente/seleziona_insegnamenti_scelta", (req, res) => {
                 `where matricola = ${matricola}`, (err, materie_scelte) => {
             if (err) {
                 console.log(err)
+                return
+            }
+            if (materie_scelta.length == 0) {
+                res.redirect("/portale" + get_text_parm("Non ci sono materie a scelta nel corso di studi."))
                 return
             }
             res.render('studente/seleziona_materia_scelta', {
@@ -2262,12 +2315,12 @@ server.get("/studente/iscrizione_anno", (req,res) => {
 server.post("/studente/iscrizione_anno", (req,res) => {
     if(!assert_you_are_studente(req,res)) return; 
     utente = req.session.utente.id;
-    console.log(utente);
+    //console.log(utente);
     var reddito = req.body.reddito;
     var anno = req.body.anno;
-    console.log(reddito);
-    console.log(anno);
-    console.log(req.body.tasse);
+    // console.log(reddito);
+    // console.log(anno);
+    // console.log(req.body.tasse);
     
     var sql = `UPDATE Studente SET reddito = ${reddito}, anno = ${anno}, rate_pagate = 1 WHERE matricola = ${utente};`
     db.exec(sql, (err,row) => {
@@ -2275,6 +2328,8 @@ server.post("/studente/iscrizione_anno", (req,res) => {
             console.log(err)
             return
         }
+        req.session.utente.anno = anno
+        req.session.utente.seconda_tassa = false
         res.redirect('/studente/iscrizione_anno' + get_text_parm("Iscrizione effettuata con successo"))
     })
 })
@@ -2338,10 +2393,10 @@ server.get("/studente/iscrizione_esami", (req,res) => {
     matricola = req.session.utente.id;
     id_cds = req.session.utente.corso;
     db.serialize(() => {
-        db.all(`SELECT DISTINCT I.id as id, I.nome as nome, I.cfu as cfu, I.ssd as ssd FROM Insegnamenti as I, Programmi as P ` +
+        db.all(`SELECT DISTINCT P.anno, I.id as id, I.nome as nome, I.cfu as cfu, I.ssd as ssd FROM Insegnamenti as I, Programmi as P ` +
                 `WHERE P.id_insegnamento = I.id AND P.id_corso = ${id_cds} and ` +
                 `I.id NOT IN ( SELECT id_insegnamento FROM Esami WHERE matricola = ${matricola}) and ` +
-                `P.scelta = false`, (err, rows) => {
+                `P.scelta = false order by P.anno`, (err, rows) => {
             db.all(`select DISTINCT * from InsegnamentiScelti as scelta, Insegnamenti as I, ` +
                     `Programmi as P where P.id_corso = ${id_cds} and P.id_insegnamento = I.id and ` +
                     `scelta.matricola = ${matricola} and ` +

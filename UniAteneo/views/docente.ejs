@@ -72,18 +72,21 @@
                                 <div class="row justify-content-center">
                                     <div class="col-auto" >
                                         <input type="hidden" id="codice1<%=row.id_insegnamento%>" name="codice1" value="<%=row.id_insegnamento%>">
-                                        <input type="date" class="form-control" id="data" name="data" value="<%=anno + mese + giorno%>" min="<%=anno + mese + giorno%>" required>
+                                        <input type="date" class="form-control" id="data" name="data" required>
                                         <input type="number" class="form-control mt-2" id="durata" name="durata" placeholder="Durata" min="1" required >
                                     </div>
                                     
                                     <div class="col-4" >
-                                        <input type="time" class="form-control" id="inizio" name="inizio" required >
+                                        <% if (row.inizio_ricevimento !== null)  {%>
+                                            <input type="time" class="form-control" id="inizio" min="<%=row.inizio_ricevimento%>" max="<%=row.fine_ricevimento%>" name="inizio" required >
+                                        <% } else { %>
+                                            <input type="time" class="form-control" id="inizio" name="inizio" required disabled>
+                                        <% } %>
                                         <input type="number" class="form-control mt-2" id="studenti" name="studenti" placeholder="Max. Studenti" min="1" required >
-                                        
                                     </div>
 
                                     <div class="col-auto" >
-                                        <button type="submit" class="btn btn-primary">Invia</button>
+                                        <button type="submit" class="btn btn-primary" <% if (row.inizio_ricevimento === null)  {%> disabled <% } %>>Invia</button>
                                     </div>
                                 </div>                                          
                             </div>
@@ -217,6 +220,7 @@
 
 <%- include('footer.ejs') %>
 <script>
+    document.getElementById('data').min = new Date().toLocaleDateString('en-ca')
     function modalChange(cod, modal) {
         if (modal == '#schedaModal') {
             document.getElementById('codice').setAttribute("value", cod)

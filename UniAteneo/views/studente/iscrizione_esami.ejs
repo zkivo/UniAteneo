@@ -9,6 +9,7 @@
                         <thead>
                         <tr>
                             <th scope="col">ID Materia</th>
+                            <th scope="col">Anno</th>
                             <th scope="col">SSD</th>
                             <th scope="col" style="width: 25%">Denominazione</th>
                             <th scope="col">CFU</th>
@@ -17,11 +18,13 @@
                         </thead>
                         <tbody>
                         <% rows.forEach((row) => { %>
+                            <% if (row.anno > parseInt(utente.anno)) return; %>
                             <tr>
                             <td name="<%= row.id %>"> <%= row.id %> </td>
-                            <td> <%= row.ssd %> </td>
+                            <td> <%= row.anno %> </td>
+                            <td> <%= row.ssd %>  </td>
                             <td> <%= row.nome %> </td>
-                            <td> <%= row.cfu %> </td>
+                            <td> <%= row.cfu %>  </td>
                             <td> 
                                 <form action="/studente/iscrizione_esami" method="POST">
                                     <input name="codice" type="number" value="<%= row.id %>" hidden readonly>

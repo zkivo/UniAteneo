@@ -139,6 +139,7 @@
 
             var materie_attive = JSON.parse('<% if (typeof materie_attive !== 'undefined') {%><%-JSON.stringify(materie_attive).split("'").join("\\'")%><%}%>')
             var lista_cds = JSON.parse('<% if (typeof lista_cds !== 'undefined') {%><%-JSON.stringify(lista_cds).split("'").join("\\'")%><%}%>')
+            var lista_materie_ssd = JSON.parse('<% if (typeof lista_materie_ssd !== 'undefined') {%><%-JSON.stringify(lista_materie_ssd).split("'").join("\\'")%><%}%>')
 
             document.getElementById('id_cds').onchange = id_cds_onchange
             id_cds_onchange()
@@ -170,9 +171,9 @@
                     default:
                         ssd.disabled = false
                 }
-                var index = materie_attive.map(e => { return e.nome }).indexOf(testo)
+                var index = lista_materie_ssd.map(e => { return e.nome }).indexOf(testo)
                 if (index != -1) {
-                    ssd.value = materie_attive[index].ssd
+                    ssd.value = lista_materie_ssd[index].ssd
                     return
                 }
                 num = parseInt(testo)
