@@ -6,7 +6,7 @@
                 <div class="col-1">
                     <label class="col-form-label">Codice</label>
                 </div>
-                <div class="col-1">
+                <div class="col-auto">
                     <select class="form-select" id="id_cds" required autofocus <% if (typeof pallina
                         !=='undefined' ) {%>disabled<%} else {%>name="id_cds"<%}%>>
                             <% lista_cds.forEach(cds=> { %>
