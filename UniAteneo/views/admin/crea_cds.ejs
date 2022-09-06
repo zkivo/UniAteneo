@@ -7,7 +7,7 @@
             <label class="col-form-label">Codice</label>
           </div>
           <div class="col-1">
-            <input type="number" class="form-control" name="id_cds" required autofocus value="<% if (typeof pallina !== 'undefined') {%><%= pallina.id_cds %><%} %>">
+            <input type="number" class="form-control" name="id_cds" min="0" required autofocus value="<% if (typeof pallina !== 'undefined') {%><%= pallina.id_cds %><%} %>">
           </div>
           <div class="col-auto">
             <label class="col-form-label" >Denominazione</label>

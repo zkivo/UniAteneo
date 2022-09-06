@@ -2424,10 +2424,17 @@ server.post("/studente/verbalizza/:materia", (req,res) => {
     cognome = req.session.utente.cognome;
     materia = req.params.materia;
 
-    username = req.body.username.trimStart().trimEnd().split('.');
-    nome2 = username[0].toUpperCase();
-    cognome2 = username[1].toUpperCase();
-    password = req.body.password.trimStart().trimEnd();
+    try {
+        username = req.body.username.trimStart().trimEnd().split('.');
+        nome2 = username[0].toUpperCase();
+        cognome2 = username[1].toUpperCase();
+        password = req.body.password.trimStart().trimEnd();
+
+    } catch {
+        console.log("Incorrect username");
+        res.redirect("/studente/verbalizza/" + materia + get_error_parm("Username o password non corretta."))
+        return;
+    }
 
     db.serialize(() => {
         db.get(`SELECT password FROM Studente WHERE matricola = ${id}`, (err, pswStudente) => {
