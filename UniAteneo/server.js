@@ -75,7 +75,9 @@ function get_lista_unica(lista) {
     return strings.map(e => {return JSON.parse(e)})
 }
 
-const lista_ssd = get_lista_unica(lista_materie_ssd.map(e => e.ssd))
+
+//const lista_ssd = get_lista_unica(lista_materie_ssd.map(e => e.ssd))
+const lista_ssd = JSON.parse(fs.readFileSync("./data/ssd.json")).map(e => e.code)
 
 server.use(express.static('public'))
 server.set('view engine', 'ejs');
@@ -1543,6 +1545,92 @@ server.post("/admin/crea_docente", (req, res) => {
             return
         }
         password = bcrypt.hashSync(password_1, 10)
+        // controllo sulle materie inserite e ssd
+        var materia_0 = null
+        var materia_1 = null
+        var materia_2 = null
+        var materia_3 = null
+        var tot_cfu = 0
+        if (req.body.materia_0 !== 'Campo vuoto') {
+            materia_0 = req.body.materia_0.split("_")
+            cfu_0 = parseInt(req.body.materia_0.split(":")[req.body.materia_0.split(":").length - 1].trimStart().trimEnd())
+            tot_cfu += cfu_0
+            if (ssd !== materia_0[1].trimEnd().trimStart()) {
+                res.redirect("/admin/crea_docente" + get_error_parm("Gli SSD degli insegnamenti devono essere uguali a quelli scelti per il docente."))
+                return
+            }
+        }
+        if (req.body.materia_1 !== 'Campo vuoto') {
+            materia_1 = req.body.materia_1.split("_")
+            cfu_1 = parseInt(req.body.materia_1.split(":")[req.body.materia_1.split(":").length - 1].trimStart().trimEnd())
+            tot_cfu += cfu_1
+            if (ssd !== materia_1[1].trimEnd().trimStart()) {
+                res.redirect("/admin/crea_docente" + get_error_parm("Gli SSD degli insegnamenti devono essere uguali a quelli scelti per il docente."))
+                return
+            }
+            if (materia_0) {
+                if (materia_1[0].trimEnd().trimStart() === materia_0[0].trimEnd().trimStart()) {
+                    res.redirect("/admin/crea_docente" + get_error_parm("Bisogna inserire insegnamenti diversi"))
+                    return
+                }
+            }
+        }
+        if (req.body.materia_2 !== 'Campo vuoto') {
+            materia_2 = req.body.materia_2.split("_")
+            cfu_2 = parseInt(req.body.materia_2.split(":")[req.body.materia_2.split(":").length - 1].trimStart().trimEnd())
+            tot_cfu += cfu_2
+            if (ssd !== materia_2[1].trimEnd().trimStart()) {
+                res.redirect("/admin/crea_docente" + get_error_parm("Gli SSD degli insegnamenti devono essere uguali a quelli scelti per il docente."))
+                return
+            }
+            if (materia_0) {
+                if (materia_2[0].trimEnd().trimStart() === materia_0[0].trimEnd().trimStart()) {
+                    res.redirect("/admin/crea_docente" + get_error_parm("Bisogna inserire insegnamenti diversi"))
+                    return
+                }
+            }
+            if (materia_1) {
+                if (materia_2[0].trimEnd().trimStart() === materia_1[0].trimEnd().trimStart()) {
+                    res.redirect("/admin/crea_docente" + get_error_parm("Bisogna inserire insegnamenti diversi"))
+                    return
+                }
+            }
+        }
+        if (req.body.materia_3 !== 'Campo vuoto') {
+            materia_3 = req.body.materia_3.split("_")
+            cfu_3 = parseInt(req.body.materia_3.split(":")[req.body.materia_3.split(":").length - 1].trimStart().trimEnd())
+            tot_cfu += cfu_3
+            if (ssd !== materia_3[1].trimEnd().trimStart()) {
+                res.redirect("/admin/crea_docente" + get_error_parm("Gli SSD degli insegnamenti devono essere uguali a quelli scelti per il docente."))
+                return
+            }
+            if (materia_0) {
+                if (materia_3[0].trimEnd().trimStart() === materia_0[0].trimEnd().trimStart()) {
+                    res.redirect("/admin/crea_docente" + get_error_parm("Bisogna inserire insegnamenti diversi"))
+                    return
+                }
+            }
+            if (materia_1) {
+                if (materia_3[0].trimEnd().trimStart() === materia_1[0].trimEnd().trimStart()) {
+                    res.redirect("/admin/crea_docente" + get_error_parm("Bisogna inserire insegnamenti diversi"))
+                    return
+                }
+            }
+            if (materia_2) {
+                if (materia_3[0].trimEnd().trimStart() === materia_2[0].trimEnd().trimStart()) {
+                    res.redirect("/admin/crea_docente" + get_error_parm("Bisogna inserire insegnamenti diversi"))
+                    return
+                }
+            }
+        }
+        if (tot_cfu == 0) {
+            res.redirect("/admin/crea_docente" + get_error_parm("Selezionare qualche insegnamento"))
+            return
+        }
+        if (tot_cfu < 12 || tot_cfu > 21) {
+            res.redirect("/admin/crea_docente" + get_error_parm("Il totale dei cfu deve essere compreso tra 12 e 21"))
+            return
+        }
         db.get('select MAX(id) from Docenti', (err, row) => {
             if (err) {
                 console.log(err)
@@ -1555,11 +1643,26 @@ server.post("/admin/crea_docente", (req, res) => {
             }
             db.run("INSERT INTO Docenti (id, nome, cognome, ssd, password)" +
                    ` VALUES (${id}, \"${nome}\", \"${cognome}\", \"${ssd}\", \"${password}\")`, (err) => {
-                if (err) {
-                    console.log(err)
-                    return
+                var sql = ""
+                if (materia_0) {
+                    sql += `update Insegnamenti set id_docente = ${id} where id = ${materia_0[0].trimEnd().trimStart()}\n;`
                 }
-                res.redirect("/admin/admin_page" + get_text_parm("Docente creato correttamente"))
+                if (materia_1) {
+                    sql += `update Insegnamenti set id_docente = ${id} where id = ${materia_1[0].trimEnd().trimStart()}\n;`
+                }
+                if (materia_2) {
+                    sql += `update Insegnamenti set id_docente = ${id} where id = ${materia_2[0].trimEnd().trimStart()}\n;`
+                }
+                if (materia_3) {
+                    sql += `update Insegnamenti set id_docente = ${id} where id = ${materia_3[0].trimEnd().trimStart()}\n;`
+                }
+                db.exec(sql, err => {
+                    if (err) {
+                        console.log(err)
+                        return
+                    }
+                    res.redirect("/admin/admin_page" + get_text_parm("Docente creato correttamente"))
+                })
             })
         })
 
@@ -1696,11 +1799,20 @@ server.get("/admin/elimina_docente", (req, res) => {
 
 server.get("/admin/crea_docente", (req, res) => {
     if (!assert_you_are_admin(req, res)) return
-    res.render('admin/crea_docente', {
-        utente: req.session.utente,
-        path: '/admin/crea_docente',
-        depth: 2,
-        lista_ssd
+    db.all("select * from Insegnamenti where id_docente is null and " +
+            "nome <> \"Tesi\" and nome <> \"Tirocinio\" and " +
+            "nome <> \"Prova finale\" order by ssd", (err, materie)=> {
+        if (err) {
+            console.log(err)
+            return
+        }
+        res.render('admin/crea_docente', {
+            materie,
+            utente: req.session.utente,
+            path: '/admin/crea_docente',
+            depth: 2,
+            lista_ssd
+        })
     })
 })
 
@@ -2005,7 +2117,7 @@ server.get("/admin/orari_ricevimenti", (req, res) => {
                 res.redirect('/' + get_error_parm("errore: 5432"))
             } else {
                 if (rows.length == 0) {
-                    res.redirect('/admin/admin_page' + get_error_parm(`Non esistono docenti`))
+                    res.redirect('/admin/admin_page' + get_error_parm(`Non esistono docenti senza orario di ricevimento assegnato`))
                     return
                 }
                 //console.log(rows);

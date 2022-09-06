@@ -55,6 +55,7 @@
                 </div>
                 <form method="POST" action="/crea_ricevimento">
                     <div class="modal-body text-center">
+                        <% if (row.inizio_ricevimento !== null)  {%>
                         <p1>Inserisci data, orario, durata e numero massimo di studenti ammessi</p1>
                             <%var data = new Date().toLocaleDateString().split('/'); %>
                             <%var anno = data[2] + '-';%>
@@ -77,11 +78,7 @@
                                     </div>
                                     
                                     <div class="col-4" >
-                                        <% if (row.inizio_ricevimento !== null)  {%>
                                             <input type="time" class="form-control" id="inizio" min="<%=row.inizio_ricevimento%>" max="<%=row.fine_ricevimento%>" name="inizio" required >
-                                        <% } else { %>
-                                            <input type="time" class="form-control" id="inizio" name="inizio" required disabled>
-                                        <% } %>
                                         <input type="number" class="form-control mt-2" id="studenti" name="studenti" placeholder="Max. Studenti" min="1" required >
                                     </div>
 
@@ -128,6 +125,9 @@
                                     </tfoot>
                                 </table>
                             </div>
+                        <% } else {%>
+                            <h4>L'amministratore deve prima inserire la fascia di orari in cui si ricevono i studenti.</h4>
+                        <% } %>
                     </div>
     <!-- 
                     <div class="modal-footer" >

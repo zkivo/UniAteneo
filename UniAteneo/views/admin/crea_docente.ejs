@@ -59,12 +59,23 @@
                 <!-- <input type="password" class="form-control" id="password_2" name="password_2" required> -->
             </div>
         </div>
-        <!-- <div class="row m-3 justify-content-center">
-            <div class="col-2">
-                <label for="password_2" class="form-label">Conferma password</label>
+        <h4 class="mt-4">Associa insegnamenti</h4>
+        <% for (var i = 0; i < 4; i++) { %>
+            <div class="row m-3 justify-content-center">
+                <div class="col-auto">
+                    <select id="materia_<%=i%>" type="text" class="form-select" name="materia_<%=i%>" required>
+                        <option>
+                            Campo vuoto
+                        </option>
+                        <%if (typeof materie !=='undefined' ) { materie.forEach(materia=> {%>
+                            <option>
+                                <%=materia.id + " _ " + materia.ssd + " _ "+ materia.nome + " _  CFU: " + materia.cfu %>
+                            </option>
+                        <% })}%>
+                    </select>
+                </div>
             </div>
-
-        </div> -->
+        <% } %>
         <!-- <div class="form-text">La password deve contenerer almeno 8 caratteri</div> -->
         <button type="submit" class="btn btn-primary mt-3">Crea docente</button>
         <!-- <div class="mb-3">
