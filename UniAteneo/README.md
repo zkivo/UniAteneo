@@ -27,7 +27,7 @@ basterebbe utilizzare l'argomento reset come:
 
 `node server.js reset`
 
-Attenzione: questo comando cancellerà tutte le modifiche effettuate sino al momento del reset poiché il software sovrascriverà il file db.sqlite nella cartella ./data. Infatti si consiglia di non eliminare il file ./data/backup/db.sqlite che contine i dati di ripristino.
+Attenzione: questo comando cancellerà tutte le modifiche effettuate sino al momento del reset poiché il software sovrascriverà il file db.sqlite nella cartella ./data. Infatti si consiglia di non eliminare il file ./data/_backup/db.sqlite che contine i dati di ripristino.
 
 ## I moduli utilizzati
 
