@@ -20,6 +20,16 @@ Una volta creato lo studente o il docente dalla pagina dell'amministratore inser
 * nome.cognome
 * password
 
+Sono stati inseriti come esempio un Docente e uno Studente appartenenti alla triennale di Ingegneria Informatica, di seguito le credenziali per accedere ai rispettivi portali:
+
+~ Docente ~
+username: giovanni.pisano
+password: Pisano1234
+
+~ Studente ~
+username: giulia.pace
+password: Pace1234
+
 ## Come resettare il database
 
 Se dovesse essere necessario riavviare il database alle condizioni originali

@@ -2476,7 +2476,7 @@ server.get("/studente/iscrizione_ricevimento", (req,res) => {
             `D.nome, D.cognome, R.giorno, R.ora, R.durata, R.numstudenti as max_studenti ` +
             `from Ricevimenti as R , Insegnamenti as I, Docenti as D where ` + 
             `R.id_materia in (select I.id from Insegnamenti as I, Programmi as P where ` +
-            `P.id_corso = ${id_cds}) ` +
+            `P.id_corso = ${id_cds} and I.id = P.id_insegnamento) ` +
             `and I.id = R.id_materia and R.id_docente = D.id`, (err,ricevimenti) => {
         db.all(`select id_ricevimento as id from IscrizioneRicevimenti where ` +
                 `matricola = ${matricola}`, (err, ric_iscritti) => {
