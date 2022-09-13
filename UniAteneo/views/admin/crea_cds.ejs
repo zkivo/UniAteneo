@@ -33,7 +33,7 @@
     <table id="myTable" class="table mt-2" data-toggle="table" data-mobile-responsive="true" data-pagination="true" data-height="460">
         <thead>
         </thead>
-        <tbody>
+        <tbody id="tbody">
           <tr>
             <td>
                 <label for="nome_0" class="form-label">Denominazione</label>
@@ -91,7 +91,7 @@
                 </select>
             </td>
             <td>
-              <a href="#" id="addrow" style="color: #FFFFFF;"><button  type="button" class="btn btn-secondary">Aggiungi</button></a>
+              <button id="addrow" type="button" class="btn btn-secondary">Aggiungi</button>
             </td>
           </tr>
           <% if (typeof pallina !== 'undefined') { pallina.materie.forEach((materia,index) => { if (index == 0) { return } %>
@@ -232,8 +232,8 @@
       //Try to get tbody first with jquery children. works faster!
       var tbody = $('#myTable').children('tbody');
 
-      //Then if no tbody just select your table 
-      var table = tbody.length ? tbody : $('#myTable');
+    document.getElementById('addrow').onclick = add_riga;
+    document.getElementById('delrow').onclick = del_riga;
 
       $('#addrow').click(function() {
         //Add row
@@ -255,7 +255,4 @@
         // var prova = document.getElementById('tot_righe')
         // console.log(prova.value)
       });
-
-    });
-
 </script>
