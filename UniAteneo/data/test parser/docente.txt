@@ -1,0 +1,12 @@
+docente:
+- accedere lista insegnamenti
+- caricare scheda trasparenza
+- richiedere lista studenti iscritti ad un esame
+- creare ricevimento (ma le finestre temparali sono decise 
+  dall'admin) con data,ora durata, numero massimo di studenti
+- verbalizzazione esami con domande,voto e validazione (sia
+  studente che docente)
+- eroga 12 <= CFU <= 21
+- ogni suo insegnamento non può essere insegnato più di due
+  volte e non aumenta il carico di cfu
+  

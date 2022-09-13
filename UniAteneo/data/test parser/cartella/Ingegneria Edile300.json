@@ -1,0 +1,264 @@
+[
+    {
+        "id": 22420,
+        "ssd": "ICAR/06",
+        "nome": "Conoscenza del patrimonio costruito nell'epoca dei cambiamenti climatici",
+        "cfu": 12
+    },
+    {
+        "id": 22445,
+        "ssd": "ICAR/08",
+        "nome": "Teoria delle strutture",
+        "cfu": 9
+    },
+    {
+        "id": 22470,
+        "ssd": "ICAR/09",
+        "nome": "Ingegneria sismica e resilienza dei sistemi urbani",
+        "cfu": 9
+    },
+    {
+        "id": 22495,
+        "ssd": "ICAR/10",
+        "nome": "Progettazione integrale nella resilienza del costruito",
+        "cfu": 6
+    },
+    {
+        "id": 22520,
+        "ssd": "ICAR/11",
+        "nome": "Gestione del cantiere e del progetto",
+        "cfu": 3
+    },
+    {
+        "id": 22545,
+        "ssd": "ICAR/07",
+        "nome": "Progettazione geotecnica per la resilienza del costruito",
+        "cfu": 3
+    },
+    {
+        "id": 22570,
+        "ssd": "ICAR/22",
+        "nome": "Valutazione degli investimenti per le trasformazioni urbane",
+        "cfu": 12
+    },
+    {
+        "id": 22595,
+        "ssd": "ICAR/17",
+        "nome": "Il disegno per il rilievo e progettazione della resilienza urbana",
+        "cfu": 9
+    },
+    {
+        "id": 22620,
+        "ssd": "ICAR/01",
+        "nome": "L'acqua nei sistemi edilizi e urbani",
+        "cfu": 3
+    },
+    {
+        "id": 22645,
+        "ssd": "ICAR/10",
+        "nome": "Prevenzione per la sicurezza antincendio",
+        "cfu": 3
+    },
+    {
+        "id": 22670,
+        "ssd": "ING-IND/11",
+        "nome": "Progettazione dell'ambiente costruito resiliente ai cambiamenti climatici",
+        "cfu": 12
+    },
+    {
+        "id": 22695,
+        "ssd": "ING-IND/33",
+        "nome": "Electrical Systems for Buildings",
+        "cfu": 6
+    },
+    {
+        "id": 22720,
+        "ssd": "ICAR/06",
+        "nome": "GIS modeling for City and Land",
+        "cfu": 3
+    },
+    {
+        "id": 22745,
+        "ssd": "ICAR/08",
+        "nome": "Mechanics of innovative materials",
+        "cfu": 9
+    },
+    {
+        "id": 22770,
+        "ssd": "ICAR/09",
+        "nome": "Structural Design",
+        "cfu": 12
+    },
+    {
+        "id": 22820,
+        "ssd": "ICAR/17",
+        "nome": "InfraBIM, Design, Construction and Management",
+        "cfu": 9
+    },
+    {
+        "id": 22845,
+        "ssd": "ICAR/22",
+        "nome": "Investments analysis",
+        "cfu": 9
+    },
+    {
+        "id": 22870,
+        "ssd": "ICAR/10",
+        "nome": "Progettazione tecnologica di nuovi sistemi costruttivi industrializzati",
+        "cfu": 6
+    },
+    {
+        "id": 22895,
+        "ssd": "ING-IND/17",
+        "nome": "Project management",
+        "cfu": 9
+    },
+    {
+        "id": 22920,
+        "ssd": "ICAR/17",
+        "nome": "Survey and drawing design for urban refurbishment at sustainable transition",
+        "cfu": 12
+    },
+    {
+        "id": 22945,
+        "ssd": "ICAR/10",
+        "nome": "Sustainable Design for Building Refurbishment",
+        "cfu": 3
+    },
+    {
+        "id": 22970,
+        "ssd": "ICAR/08",
+        "nome": "Design of wood and glass structures",
+        "cfu": 3
+    },
+    {
+        "id": 22995,
+        "ssd": "ICAR/09",
+        "nome": "Earthquake engineering and Seismic Retrofit",
+        "cfu": 12
+    },
+    {
+        "id": 23020,
+        "ssd": "ING-IND/11",
+        "nome": "Energy Audit and certification of buildings",
+        "cfu": 3
+    },
+    {
+        "id": 23045,
+        "ssd": "ICAR/10",
+        "nome": "Fire safety engineering (FSE)",
+        "cfu": 3
+    },
+    {
+        "id": 23070,
+        "ssd": "ING-IND/28",
+        "nome": "Sicurezza nei cantieri",
+        "cfu": 12
+    },
+    {
+        "id": 23095,
+        "ssd": "MAT/05",
+        "nome": "Analisi matematica I",
+        "cfu": 9
+    },
+    {
+        "id": 23120,
+        "ssd": "CHIM/07",
+        "nome": "Chimica",
+        "cfu": 3
+    },
+    {
+        "id": 23145,
+        "ssd": "ING-INF/05",
+        "nome": "Informatica",
+        "cfu": 12
+    },
+    {
+        "id": 23170,
+        "ssd": "L-LIN/12",
+        "nome": "Lingua inglese I livello",
+        "cfu": 3
+    },
+    {
+        "id": 23195,
+        "ssd": "MAT/08",
+        "nome": "Algebra lineare e geometria",
+        "cfu": 6
+    },
+    {
+        "id": 23220,
+        "ssd": "ICAR/17",
+        "nome": "Disegno edile",
+        "cfu": 3
+    },
+    {
+        "id": 23245,
+        "ssd": "FIS/01",
+        "nome": "Fisica I",
+        "cfu": 9
+    },
+    {
+        "id": 23270,
+        "ssd": "MAT/05",
+        "nome": "Analisi matematica II",
+        "cfu": 6
+    },
+    {
+        "id": 23295,
+        "ssd": "FIS/01",
+        "nome": "Fisica II",
+        "cfu": 12
+    },
+    {
+        "id": 9245,
+        "ssd": "ICAR/08",
+        "nome": "Teoria delle strutture",
+        "cfu": 3
+    },
+    {
+        "id": 30670,
+        "ssd": "ING-INF/05",
+        "nome": "Tecnologie per IoT",
+        "cfu": 3
+    },
+    {
+        "id": 6820,
+        "ssd": "ICAR/17",
+        "nome": "Tecniche della rappresentazione digitale",
+        "cfu": 3
+    },
+    {
+        "id": 9020,
+        "ssd": "ING-IND/03",
+        "nome": "Meccanica del volo",
+        "cfu": 3
+    },
+    {
+        "id": 8345,
+        "ssd": "ING-IND/03",
+        "nome": "Meccanica del volo",
+        "cfu": 3
+    },
+    {
+        "id": 8795,
+        "ssd": "ING-IND/03",
+        "nome": "Meccanica del volo",
+        "cfu": 3
+    },
+    {
+        "id": 15970,
+        "ssd": "ING-INF/05",
+        "nome": "Big data processing and analytics",
+        "cfu": 3
+    },
+    {
+        "id": 31120,
+        "nome": "Tirocinio",
+        "cfu": 6
+    },
+    {
+        "id": 31145,
+        "nome": "Tesi",
+        "cfu": 12
+    }
+]

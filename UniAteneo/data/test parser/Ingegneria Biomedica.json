@@ -1,0 +1,92 @@
+[
+    {
+        "nome": "Biomeccanica dei solidi/Biomeccanica dei fluidi",
+        "ssd": "ING-IND/34",
+        "id": 3000,
+        "cfu": 9
+    },
+    {
+        "nome": "Biomeccanica multiscala",
+        "ssd": "ING-IND/34",
+        "id": 3015,
+        "cfu": 9
+    },
+    {
+        "nome": "Meccanica applicata ai sistemi biomedici",
+        "ssd": "ING-IND/13",
+        "id": 3030,
+        "cfu": 9
+    },
+    {
+        "nome": "Bionanotecnologie",
+        "ssd": "ING-IND/34",
+        "id": 3045,
+        "cfu": 3
+    },
+    {
+        "nome": "Elaborazione di segnali biomedici",
+        "ssd": "ING-INF/06",
+        "id": 3060,
+        "cfu": 6
+    },
+    {
+        "nome": "Intelligenza artificiale in medicina",
+        "ssd": "ING-INF/06",
+        "id": 3075,
+        "cfu": 12
+    },
+    {
+        "nome": "Progettazione di protesi e organi artificiali",
+        "ssd": "ING-IND/34",
+        "id": 3090,
+        "cfu": 12
+    },
+    {
+        "nome": "Biomeccanica e biodinamica sperimentale/Biomeccanica del sistema cardiovascolare",
+        "ssd": "ING-IND/34",
+        "id": 3105,
+        "cfu": 12
+    },
+    {
+        "nome": "Biomechanical design",
+        "ssd": "ING-IND/34",
+        "id": 3120,
+        "cfu": 3
+    },
+    {
+        "nome": "Materiali per la bioingegneria",
+        "ssd": "ING-IND/22",
+        "id": 3135,
+        "cfu": 6
+    },
+    {
+        "nome": "Bioreattori",
+        "ssd": "ING-IND/34",
+        "id": 3150,
+        "cfu": 9
+    },
+    {
+        "nome": "Fondamenti di Normativa per Dispositivi Medici",
+        "ssd": "ING-IND/34",
+        "id": 3165,
+        "cfu": 6
+    },
+    {
+        "nome": "Frontiers in Bioengineering enabling nanotechnologies",
+        "ssd": "ING-IND/34",
+        "id": 3180,
+        "cfu": 3
+    },
+    {
+        "nome": "Rational Drug Design: Principles and Applications",
+        "ssd": "ING-IND/34",
+        "id": 3195,
+        "cfu": 9
+    },
+    {
+        "nome": "Elaborazione di immagini mediche",
+        "ssd": "ING-INF/06",
+        "id": 3210,
+        "cfu": 12
+    }
+]

@@ -1,0 +1,1482 @@
+[
+    {
+        "code": "MAT/01",
+        "name": "LOGICA MATEMATICA"
+    },
+    {
+        "code": "MAT/02",
+        "name": "ALGEBRA"
+    },
+    {
+        "code": "MAT/03",
+        "name": "GEOMETRIA"
+    },
+    {
+        "code": "MAT/04",
+        "name": "MATEMATICHE COMPLEMENTARI"
+    },
+    {
+        "code": "MAT/05",
+        "name": "ANALISI MATEMATICA"
+    },
+    {
+        "code": "MAT/06",
+        "name": "PROBABILITÀ E STATISTICA MATEMATICA"
+    },
+    {
+        "code": "MAT/07",
+        "name": "FISICA MATEMATICA"
+    },
+    {
+        "code": "MAT/08",
+        "name": "ANALISI NUMERICA"
+    },
+    {
+        "code": "MAT/09",
+        "name": "RICERCA OPERATIVA"
+    },
+    {
+        "code": "INF/01",
+        "name": "INFORMATICA"
+    },
+    {
+        "code": "FIS/01",
+        "name": "FISICA SPERIMENTALE"
+    },
+    {
+        "code": "FIS/02",
+        "name": "FISICA TEORICA, MODELLI E METODI MATEMATICI"
+    },
+    {
+        "code": "FIS/03",
+        "name": "FISICA DELLA MATERIA"
+    },
+    {
+        "code": "FIS/04",
+        "name": "FISICA NUCLEARE E SUBNUCLEARE"
+    },
+    {
+        "code": "FIS/05",
+        "name": "ASTRONOMIA E ASTROFISICA"
+    },
+    {
+        "code": "FIS/06",
+        "name": "FISICA PER IL SISTEMA TERRA E IL MEZZO CIRCUMTERRESTRE"
+    },
+    {
+        "code": "FIS/07",
+        "name": "FISICA APPLICATA (A BENI CULTURALI, AMBIENTALI, BIOLOGIA E MEDICINA)"
+    },
+    {
+        "code": "FIS/08",
+        "name": "DIDATTICA E STORIA DELLA FISICA"
+    },
+    {
+        "code": "CHIM/01",
+        "name": "CHIMICA ANALITICA"
+    },
+    {
+        "code": "CHIM/02",
+        "name": "CHIMICA FISICA"
+    },
+    {
+        "code": "CHIM/03",
+        "name": "CHIMICA GENERALE E INORGANICA"
+    },
+    {
+        "code": "CHIM/04",
+        "name": "CHIMICA INDUSTRIALE"
+    },
+    {
+        "code": "CHIM/05",
+        "name": "SCIENZA E TECNOLOGIA DEI MATERIALI POLIMERICI"
+    },
+    {
+        "code": "CHIM/06",
+        "name": "CHIMICA ORGANICA"
+    },
+    {
+        "code": "CHIM/07",
+        "name": "FONDAMENTI CHIMICI DELLE TECNOLOGIE"
+    },
+    {
+        "code": "CHIM/08",
+        "name": "CHIMICA FARMACEUTICA"
+    },
+    {
+        "code": "CHIM/09",
+        "name": "FARMACEUTICO TECNOLOGICO APPLICATIVO"
+    },
+    {
+        "code": "CHIM/10",
+        "name": "CHIMICA DEGLI ALIMENTI"
+    },
+    {
+        "code": "CHIM/11",
+        "name": "CHIMICA E BIOTECNOLOGIA DELLE FERMENTAZIONI"
+    },
+    {
+        "code": "CHIM/12",
+        "name": "CHIMICA DELL'AMBIENTE E DEI BENI CULTURALI"
+    },
+    {
+        "code": "GEO/01",
+        "name": "PALEONTOLOGIA E PALEOECOLOGIA"
+    },
+    {
+        "code": "GEO/02",
+        "name": "GEOLOGIA STRATIGRAFICA E SEDIMENTOLOGICA"
+    },
+    {
+        "code": "GEO/03",
+        "name": "GEOLOGIA STRUTTURALE"
+    },
+    {
+        "code": "GEO/04",
+        "name": "GEOGRAFIA FISICA E GEOMORFOLOGIA"
+    },
+    {
+        "code": "GEO/05",
+        "name": "GEOLOGIA APPLICATA"
+    },
+    {
+        "code": "GEO/06",
+        "name": "MINERALOGIA"
+    },
+    {
+        "code": "GEO/07",
+        "name": "PETROLOGIA E PETROGRAFIA"
+    },
+    {
+        "code": "GEO/08",
+        "name": "GEOCHIMICA E VULCANOLOGIA"
+    },
+    {
+        "code": "GEO/09",
+        "name": "GEORISORSE MINERARIE E APPLICAZIONI MINERALOGICO- PETROGRAFICHE PER L'AMBIENTE ED I BENI CULTURALI"
+    },
+    {
+        "code": "GEO/10",
+        "name": "GEOFISICA DELLA TERRA SOLIDA"
+    },
+    {
+        "code": "GEO/11",
+        "name": "GEOFISICA APPLICATA"
+    },
+    {
+        "code": "GEO/12",
+        "name": "OCEANOGRAFIA E FISICA DELL'ATMOSFERA"
+    },
+    {
+        "code": "BIO/01",
+        "name": "BOTANICA GENERALE"
+    },
+    {
+        "code": "BIO/02",
+        "name": "BOTANICA SISTEMATICA"
+    },
+    {
+        "code": "BIO/03",
+        "name": "BOTANICA AMBIENTALE E APPLICATA"
+    },
+    {
+        "code": "BIO/04",
+        "name": "FISIOLOGIA VEGETALE"
+    },
+    {
+        "code": "BIO/05",
+        "name": "ZOOLOGIA"
+    },
+    {
+        "code": "BIO/06",
+        "name": "ANATOMIA COMPARATA E CITOLOGIA"
+    },
+    {
+        "code": "BIO/07",
+        "name": "ECOLOGIA"
+    },
+    {
+        "code": "BIO/08",
+        "name": "ANTROPOLOGIA"
+    },
+    {
+        "code": "BIO/09",
+        "name": "FISIOLOGIA"
+    },
+    {
+        "code": "BIO/10",
+        "name": "BIOCHIMICA"
+    },
+    {
+        "code": "BIO/11",
+        "name": "BIOLOGIA MOLECOLARE"
+    },
+    {
+        "code": "BIO/12",
+        "name": "BIOCHIMICA CLINICA E BIOLOGIA MOLECOLARE CLINICA"
+    },
+    {
+        "code": "BIO/13",
+        "name": "BIOLOGIA APPLICATA"
+    },
+    {
+        "code": "BIO/14",
+        "name": "FARMACOLOGIA"
+    },
+    {
+        "code": "BIO/15",
+        "name": "BIOLOGIA FARMACEUTICA"
+    },
+    {
+        "code": "BIO/16",
+        "name": "ANATOMIA UMANA"
+    },
+    {
+        "code": "BIO/17",
+        "name": "ISTOLOGIA"
+    },
+    {
+        "code": "BIO/18",
+        "name": "GENETICA"
+    },
+    {
+        "code": "BIO/19",
+        "name": "MICROBIOLOGIA GENERALE"
+    },
+    {
+        "code": "MED/01",
+        "name": "STATISTICA MEDICA"
+    },
+    {
+        "code": "MED/02",
+        "name": "STORIA DELLA MEDICINA"
+    },
+    {
+        "code": "MED/03",
+        "name": "GENETICA MEDICA"
+    },
+    {
+        "code": "MED/04",
+        "name": "PATOLOGIA GENERALE"
+    },
+    {
+        "code": "MED/05",
+        "name": "PATOLOGIA CLINICA"
+    },
+    {
+        "code": "MED/06",
+        "name": "ONCOLOGIA MEDICA"
+    },
+    {
+        "code": "MED/07",
+        "name": "MICROBIOLOGIA E MICROBIOLOGIA CLINICA"
+    },
+    {
+        "code": "MED/08",
+        "name": "ANATOMIA PATOLOGICA"
+    },
+    {
+        "code": "MED/09",
+        "name": "MEDICINA INTERNA"
+    },
+    {
+        "code": "MED/10",
+        "name": "MALATTIE DELL'APPARATO RESPIRATORIO"
+    },
+    {
+        "code": "MED/11",
+        "name": "MALATTIE DELL'APPARATO CARDIOVASCOLARE"
+    },
+    {
+        "code": "MED/12",
+        "name": "GASTROENTEROLOGIA"
+    },
+    {
+        "code": "MED/13",
+        "name": "ENDOCRINOLOGIA"
+    },
+    {
+        "code": "MED/14",
+        "name": "NEFROLOGIA"
+    },
+    {
+        "code": "MED/15",
+        "name": "MALATTIE DEL SANGUE"
+    },
+    {
+        "code": "MED/16",
+        "name": "REUMATOLOGIA"
+    },
+    {
+        "code": "MED/17",
+        "name": "MALATTIE INFETTIVE"
+    },
+    {
+        "code": "MED/18",
+        "name": "CHIRURGIA GENERALE"
+    },
+    {
+        "code": "MED/19",
+        "name": "CHIRURGIA PLASTICA"
+    },
+    {
+        "code": "MED/20",
+        "name": "CHIRURGIA PEDIATRICA E INFANTILE"
+    },
+    {
+        "code": "MED/21",
+        "name": "CHIRURGIA TORACICA"
+    },
+    {
+        "code": "MED/22",
+        "name": "CHIRURGIA VASCOLARE"
+    },
+    {
+        "code": "MED/23",
+        "name": "CHIRURGIA CARDIACA"
+    },
+    {
+        "code": "MED/24",
+        "name": "UROLOGIA"
+    },
+    {
+        "code": "MED/25",
+        "name": "PSCHIATRIA"
+    },
+    {
+        "code": "MED/26",
+        "name": "NEUROLOGIA"
+    },
+    {
+        "code": "MED/27",
+        "name": "NEUROCHIRURGIA"
+    },
+    {
+        "code": "MED/28",
+        "name": "MALATTIE ODONTOSTOMATOLOGICHE"
+    },
+    {
+        "code": "MED/29",
+        "name": "CHIRURGIA MAXILLOFACCIALE"
+    },
+    {
+        "code": "MED/30",
+        "name": "MALATTIE APPARATO VISIVO"
+    },
+    {
+        "code": "MED/31",
+        "name": "OTORINOLARINGOIATRIA"
+    },
+    {
+        "code": "MED/32",
+        "name": "AUDIOLOGIA"
+    },
+    {
+        "code": "MED/33",
+        "name": "MALATTIE APPARATO LOCOMOTORE"
+    },
+    {
+        "code": "MED/34",
+        "name": "MEDICINA FISICA E RIABILITATIVA"
+    },
+    {
+        "code": "MED/35",
+        "name": "MALATTIE CUTANEE E VENEREE"
+    },
+    {
+        "code": "MED/36",
+        "name": "DIAGNOSTICA PER IMMAGINI E RADIOTERAPIA"
+    },
+    {
+        "code": "MED/37",
+        "name": "NEURORADIOLOGIA"
+    },
+    {
+        "code": "MED/38",
+        "name": "PEDIATRIA GENERALE E SPECIALISTICA"
+    },
+    {
+        "code": "MED/39",
+        "name": "NEUROPSICHIATRIA INFANTILE"
+    },
+    {
+        "code": "MED/40",
+        "name": "GINECOLOGIA E OSTETRICIA"
+    },
+    {
+        "code": "MED/41",
+        "name": "ANESTESIOLOGIA"
+    },
+    {
+        "code": "MED/42",
+        "name": "IGIENE GENERALE E APPLICATA"
+    },
+    {
+        "code": "MED/43",
+        "name": "MEDICINA LEGALE"
+    },
+    {
+        "code": "MED/44",
+        "name": "MEDICINA DEL LAVORO"
+    },
+    {
+        "code": "MED/45",
+        "name": "SCIENZE INFERMIERISTICHE GENERALI, CLINICHE E PEDIATRICHE"
+    },
+    {
+        "code": "MED/46",
+        "name": "SCIENZE TECNICHE DI MEDICINA DI LABORATORIO"
+    },
+    {
+        "code": "MED/47",
+        "name": "SCIENZE INFERMIERISTICHE OSTETRICO-GINECOLOGICHE"
+    },
+    {
+        "code": "MED/48",
+        "name": "SCIENZE INFERMIERISTICHE E TECNICHE NEURO-PSICHIATRICHE E RIABILITATIVE"
+    },
+    {
+        "code": "MED/49",
+        "name": "SCIENZE TECNICHE DIETETICHE APPLICATE"
+    },
+    {
+        "code": "MED/50",
+        "name": "SCIENZE TECNICHE MEDICHE APPLICATE"
+    },
+    {
+        "code": "AGR/01",
+        "name": "ECONOMIA ED ESTIMO RURALE"
+    },
+    {
+        "code": "AGR/02",
+        "name": "AGRONOMIA E COLTIVAZIONI ERBACEE"
+    },
+    {
+        "code": "AGR/03",
+        "name": "ARBORICOLTURA GENERALE E COLTIVAZIONI ARBOREE"
+    },
+    {
+        "code": "AGR/04",
+        "name": "ORTICOLTURA E FLORICOLTURA"
+    },
+    {
+        "code": "AGR/05",
+        "name": "ASSESTAMENTO FORESTALE E SELVICOLTURA"
+    },
+    {
+        "code": "AGR/06",
+        "name": "TECNOLOGIA DEL LEGNO E UTILIZZAZIONI FORESTALI"
+    },
+    {
+        "code": "AGR/07",
+        "name": "GENETICA AGRARIA"
+    },
+    {
+        "code": "AGR/08",
+        "name": "IDRAULICA AGRARIA E SISTEMAZIONI IDRAULICO-FORESTALI"
+    },
+    {
+        "code": "AGR/09",
+        "name": "MECCANICA AGRARIA"
+    },
+    {
+        "code": "AGR/10",
+        "name": "COSTRUZIONI RURALI E TERRITORIO AGROFORESTALE"
+    },
+    {
+        "code": "AGR/11",
+        "name": "ENTOMOLOGIA GENERALE E APPLICATA"
+    },
+    {
+        "code": "AGR/12",
+        "name": "PATOLOGIA VEGETALE"
+    },
+    {
+        "code": "AGR/13",
+        "name": "CHIMICA AGRARIA"
+    },
+    {
+        "code": "AGR/14",
+        "name": "PEDOLOGIA"
+    },
+    {
+        "code": "AGR/15",
+        "name": "SCIENZE E TECNOLOGIE ALIMENTARI"
+    },
+    {
+        "code": "AGR/16",
+        "name": "MICROBIOLOGIA AGRARIA"
+    },
+    {
+        "code": "AGR/17",
+        "name": "ZOOTECNICA GENERALE E MIGLIORAMENTO GENETICO"
+    },
+    {
+        "code": "AGR/18",
+        "name": "NUTRIZIONE E ALIMENTAZIONE ANIMALE"
+    },
+    {
+        "code": "AGR/19",
+        "name": "ZOOTECNICA SPECIALE"
+    },
+    {
+        "code": "AGR/20",
+        "name": "ZOOCOLTURE"
+    },
+    {
+        "code": "VET/01",
+        "name": "ANATOMIA DEGLI ANIMALI DOMESTICI"
+    },
+    {
+        "code": "VET/02",
+        "name": "FISIOLOGIA VETERINARIA"
+    },
+    {
+        "code": "VET/03",
+        "name": "PATOLOGIA GENERALE E ANATOMIA PATOLOGICA VETERINARIA"
+    },
+    {
+        "code": "VET/04",
+        "name": "ISPEZIONE DEGLI ALIMENTI DI ORIGINE ANIMALE"
+    },
+    {
+        "code": "VET/05",
+        "name": "MALATTIE INFETTIVE DEGLI ANIMALI DOMESTICI"
+    },
+    {
+        "code": "VET/06",
+        "name": "PARASSITOLOGIA E MALATTIE PARASSITARIE DEGLI ANIMALI"
+    },
+    {
+        "code": "VET/07",
+        "name": "FARMACOLOGIA E TOSSICOLOGIA VETERINARIA"
+    },
+    {
+        "code": "VET/08",
+        "name": "CLINICA MEDICA VETERINARIA"
+    },
+    {
+        "code": "VET/09",
+        "name": "CLINICA CHIRURGICA VETERINARIA"
+    },
+    {
+        "code": "VET/10",
+        "name": "CLINICA OSTETRICA E GINECOLOGIA VETERINARIA"
+    },
+    {
+        "code": "ICAR/01",
+        "name": "IDRAULICA"
+    },
+    {
+        "code": "ICAR/02",
+        "name": "COSTRUZIONI IDRAULICHE E MARITTIME E IDROLOGIA"
+    },
+    {
+        "code": "ICAR/03",
+        "name": "INGEGNERIA SANITARIA-AMBIENTALE"
+    },
+    {
+        "code": "ICAR/04",
+        "name": "STRADE, FERROVIE ED AEROPORTI"
+    },
+    {
+        "code": "ICAR/05",
+        "name": "TRASPORTI"
+    },
+    {
+        "code": "ICAR/06",
+        "name": "TOPOGRAFIA E CARTOGRAFIA"
+    },
+    {
+        "code": "ICAR/07",
+        "name": "GEOTECNICA"
+    },
+    {
+        "code": "ICAR/08",
+        "name": "SCIENZA DELLE COSTRUZIONI"
+    },
+    {
+        "code": "ICAR/09",
+        "name": "TECNICA DELLE COSTRUZIONI"
+    },
+    {
+        "code": "ICAR/10",
+        "name": "ARCHITETTURA TECNICA"
+    },
+    {
+        "code": "ICAR/11",
+        "name": "PRODUZIONE EDILIZIA"
+    },
+    {
+        "code": "ICAR/12",
+        "name": "TECNOLOGIA DELL'ARCHITETTURA"
+    },
+    {
+        "code": "ICAR/13",
+        "name": "DISEGNO INDUSTRIALE"
+    },
+    {
+        "code": "ICAR/14",
+        "name": "COMPOSIZIONE ARCHITETTONICA E URBANA"
+    },
+    {
+        "code": "ICAR/15",
+        "name": "ARCHITETTURA DEL PAESAGGIO"
+    },
+    {
+        "code": "ICAR/16",
+        "name": "ARCHITETTURA DEGLI INTERNI E ALLESTIMENTO"
+    },
+    {
+        "code": "ICAR/17",
+        "name": "DISEGNO"
+    },
+    {
+        "code": "ICAR/18",
+        "name": "STORIA DELL'ARCHITETTURA"
+    },
+    {
+        "code": "ICAR/19",
+        "name": "RESTAURO"
+    },
+    {
+        "code": "ICAR/20",
+        "name": "TECNICA E PIANIFICAZIONE URBANISTICA"
+    },
+    {
+        "code": "ICAR/21",
+        "name": "URBANISTICA"
+    },
+    {
+        "code": "ICAR/22",
+        "name": "ESTIMO"
+    },
+    {
+        "code": "ING-IND/01",
+        "name": "ARCHITETTURA NAVALE"
+    },
+    {
+        "code": "ING-IND/02",
+        "name": "COSTRUZIONI E IMPIANTI NAVALI E MARINI"
+    },
+    {
+        "code": "ING-IND/03",
+        "name": "MECCANICA DEL VOLO"
+    },
+    {
+        "code": "ING-IND/04",
+        "name": "COSTRUZIONI E STRUTTURE AEROSPAZIALI"
+    },
+    {
+        "code": "ING-IND/05",
+        "name": "IMPIANTI E SISTEMI AEROSPAZIALI"
+    },
+    {
+        "code": "ING-IND/06",
+        "name": "FLUIDODINAMICA"
+    },
+    {
+        "code": "ING-IND/07",
+        "name": "PROPULSIONE AEROSPAZIALE"
+    },
+    {
+        "code": "ING-IND/08",
+        "name": "MACCHINE A FLUIDO"
+    },
+    {
+        "code": "ING-IND/09",
+        "name": "SISTEMI PER L'ENERGIA E L'AMBIENTE"
+    },
+    {
+        "code": "ING-IND/10",
+        "name": "FISICA TECNICA INDUSTRIALE"
+    },
+    {
+        "code": "ING-IND/11",
+        "name": "FISICA TECNICA AMBIENTALE"
+    },
+    {
+        "code": "ING-IND/12",
+        "name": "MISURE MECCANICHE E TERMICHE"
+    },
+    {
+        "code": "ING-IND/13",
+        "name": "MECCANICA APPLICATA ALLE MACCHINE"
+    },
+    {
+        "code": "ING-IND/14",
+        "name": "PROGETTAZIONE MECCANICA E COSTRUZIONE DI MACCHINE"
+    },
+    {
+        "code": "ING-IND/15",
+        "name": "DISEGNO E METODI DELL'INGEGNERIA INDUSTRIALE"
+    },
+    {
+        "code": "ING-IND/16",
+        "name": "TECNOLOGIE E SISTEMI DI LAVORAZIONE"
+    },
+    {
+        "code": "ING-IND/17",
+        "name": "IMPIANTI INDUSTRIALI MECCANICI"
+    },
+    {
+        "code": "ING-IND/18",
+        "name": "FISICA DEI REATTORI NUCLEARI"
+    },
+    {
+        "code": "ING-IND/19",
+        "name": "IMPIANTI NUCLEARI"
+    },
+    {
+        "code": "ING-IND/20",
+        "name": "MISURE E STRUMENTAZIONE NUCLEARI"
+    },
+    {
+        "code": "ING-IND/21",
+        "name": "METALLURGIA"
+    },
+    {
+        "code": "ING-IND/22",
+        "name": "SCIENZA E TECNOLOGIA DEI MATERIALI"
+    },
+    {
+        "code": "ING-IND/23",
+        "name": "CHIMICA FISICA APPLICATA"
+    },
+    {
+        "code": "ING-IND/24",
+        "name": "PRINCIPI DI INGEGNERIA CHIMICA"
+    },
+    {
+        "code": "ING-IND/25",
+        "name": "IMPIANTI CHIMICI"
+    },
+    {
+        "code": "ING-IND/26",
+        "name": "TEORIA DELLO SVILUPPO DEI PROCESSI CHIMICI"
+    },
+    {
+        "code": "ING-IND/27",
+        "name": "CHIMICA INDUSTRIALE E TECNOLOGICA"
+    },
+    {
+        "code": "ING-IND/28",
+        "name": "INGEGNERIA E SICUREZZA DEGLI SCAVI"
+    },
+    {
+        "code": "ING-IND/29",
+        "name": "INGEGNERIA DELLE MATERIE PRIME"
+    },
+    {
+        "code": "ING-IND/30",
+        "name": "IDROCARBURI E FLUIDI DEL SOTTOSUOLO"
+    },
+    {
+        "code": "ING-IND/31",
+        "name": "ELETTROTECNICA"
+    },
+    {
+        "code": "ING-IND/32",
+        "name": "CONVERTITORI, MACCHINE E AZIONAMENTI ELETTRICI"
+    },
+    {
+        "code": "ING-IND/33",
+        "name": "SISTEMI ELETTRICI PER L'ENERGIA"
+    },
+    {
+        "code": "ING-IND/34",
+        "name": "BIOINGEGNERIA INDUSTRIALE"
+    },
+    {
+        "code": "ING-IND/35",
+        "name": "INGEGNERIA ECONOMICO-GESTIONALE"
+    },
+    {
+        "code": "ING-INF/01",
+        "name": "ELETTRONICA"
+    },
+    {
+        "code": "ING-INF/02",
+        "name": "CAMPI ELETTROMAGNETICI"
+    },
+    {
+        "code": "ING-INF/03",
+        "name": "TELECOMUNICAZIONI"
+    },
+    {
+        "code": "ING-INF/04",
+        "name": "AUTOMATICA"
+    },
+    {
+        "code": "ING-INF/05",
+        "name": "SISTEMI DI ELABORAZIONE DELLE INFORMAZIONI"
+    },
+    {
+        "code": "ING-INF/06",
+        "name": "BIOINGEGNERIA ELETTRONICA E INFORMATICA"
+    },
+    {
+        "code": "ING-INF/07",
+        "name": "MISURE ELETTRICHE E ELETTRONICHE"
+    },
+    {
+        "code": "L-ANT/01",
+        "name": "PREISTORIA E PROTOSTORIA"
+    },
+    {
+        "code": "L-ANT/02",
+        "name": "STORIA GRECA"
+    },
+    {
+        "code": "L-ANT/03",
+        "name": "STORIA ROMANA"
+    },
+    {
+        "code": "L-ANT/04",
+        "name": "NUMISMATICA"
+    },
+    {
+        "code": "L-ANT/05",
+        "name": "PAPIROLOGIA"
+    },
+    {
+        "code": "L-ANT/06",
+        "name": "ETRUSCOLOGIA E ANTICHITÀ ITALICHE"
+    },
+    {
+        "code": "L-ANT/07",
+        "name": "ARCHEOLOGIA CLASSICA"
+    },
+    {
+        "code": "L-ANT/08",
+        "name": "ARCHEOLOGIA CRISTIANA E MEDIEVALE"
+    },
+    {
+        "code": "L-ANT/09",
+        "name": "TOPOGRAFIA ANTICA"
+    },
+    {
+        "code": "L-ANT/10",
+        "name": "METODOLOGIE DELLA RICERCA ARCHEOLOGICA"
+    },
+    {
+        "code": "L-ART/01",
+        "name": "STORIA DELL'ARTE MEDIEVALE"
+    },
+    {
+        "code": "L-ART/02",
+        "name": "STORIA DELL'ARTE MODERNA"
+    },
+    {
+        "code": "L-ART/03",
+        "name": "STORIA DELL'ARTE CONTEMPORANEA"
+    },
+    {
+        "code": "L-ART/04",
+        "name": "MUSEOLOGIA E CRITICA ARTISTICA E DEL RESTAURO"
+    },
+    {
+        "code": "L-ART/05",
+        "name": "DISCIPLINE DELLO SPETTACOLO"
+    },
+    {
+        "code": "L-ART/06",
+        "name": "CINEMA, FOTOGRAFIA E TELEVISIONE"
+    },
+    {
+        "code": "L-ART/07",
+        "name": "MUSICOLOGIA E STORIA DELLA MUSICA"
+    },
+    {
+        "code": "L-ART/08",
+        "name": "ETNOMUSICOLOGIA"
+    },
+    {
+        "code": "L-FIL-LET/01",
+        "name": "CIVILTÀ EGEE"
+    },
+    {
+        "code": "L-FIL-LET/02",
+        "name": "LINGUA E LETTERATURA GRECA"
+    },
+    {
+        "code": "L-FIL-LET/03",
+        "name": "FILOLOGIA ITALICA, ILLIRICA, CELTICA"
+    },
+    {
+        "code": "L-FIL-LET/04",
+        "name": "LINGUA E LETTERATURA LATINA"
+    },
+    {
+        "code": "L-FIL-LET/05",
+        "name": "FILOLOGIA CLASSICA"
+    },
+    {
+        "code": "L-FIL-LET/06",
+        "name": "LETTERATURA CRISTIANA ANTICA"
+    },
+    {
+        "code": "L-FIL-LET/07",
+        "name": "CIVILTÀ BIZANTINA"
+    },
+    {
+        "code": "L-FIL-LET/08",
+        "name": "LETTERATURA LATINA MEDIEVALE E UMANISTICA"
+    },
+    {
+        "code": "L-FIL-LET/09",
+        "name": "FILOLOGIA E LINGUISTICA ROMANZA"
+    },
+    {
+        "code": "L-FIL-LET/10",
+        "name": "LETTERATURA ITALIANA"
+    },
+    {
+        "code": "L-FIL-LET/11",
+        "name": "LETTERATURA ITALIANA CONTEMPORANEA"
+    },
+    {
+        "code": "L-FIL-LET/12",
+        "name": "LINGUISTICA ITALIANA"
+    },
+    {
+        "code": "L-FIL-LET/13",
+        "name": "FILOLOGIA DELLA LETTERATURA ITALIANA"
+    },
+    {
+        "code": "L-FIL-LET/14",
+        "name": "CRITICA LETTERARIA E LETTERATURE COMPARATE"
+    },
+    {
+        "code": "L-FIL-LET/15",
+        "name": "FILOLOGIA GERMANICA"
+    },
+    {
+        "code": "L-LIN/01",
+        "name": "GLOTTOLOGIA E LINGUISTICA"
+    },
+    {
+        "code": "L-LIN/02",
+        "name": "DIDATTICA DELLE LINGUE MODERNE"
+    },
+    {
+        "code": "L-LIN/03",
+        "name": "LETTERATURA FRANCESE"
+    },
+    {
+        "code": "L-LIN/04",
+        "name": "LINGUA E TRADUZIONE - LINGUA FRANCESE"
+    },
+    {
+        "code": "L-LIN/05",
+        "name": "LETTERATURA SPAGNOLA"
+    },
+    {
+        "code": "L-LIN/06",
+        "name": "LINGUA E LETTERATURE ISPANO-AMERICANE"
+    },
+    {
+        "code": "L-LIN/07",
+        "name": "LINGUA E TRADUZIONE - LINGUA SPAGNOLA"
+    },
+    {
+        "code": "L-LIN/08",
+        "name": "LETTERATURA PORTOGHESE E BRASILIANA"
+    },
+    {
+        "code": "L-LIN/09",
+        "name": "LINGUA E TRADUZIONE - LINGUE PORTOGHESE E BRASILIANA"
+    },
+    {
+        "code": "L-LIN/10",
+        "name": "LETTERATURA INGLESE"
+    },
+    {
+        "code": "L-LIN/11",
+        "name": "LINGUE E LETTERATURE ANGLO-AMERICANE"
+    },
+    {
+        "code": "L-LIN/12",
+        "name": "LINGUA E TRADUZIONE - LINGUA INGLESE"
+    },
+    {
+        "code": "L-LIN/13",
+        "name": "LETTERATURA TEDESCA"
+    },
+    {
+        "code": "L-LIN/14",
+        "name": "LINGUA E TRADUZIONE - LINGUA TEDESCA"
+    },
+    {
+        "code": "L-LIN/15",
+        "name": "LINGUE E LETTERATURE NORDICHE"
+    },
+    {
+        "code": "L-LIN/16",
+        "name": "LINGUA E LETTERATURA NEDERLANDESE"
+    },
+    {
+        "code": "L-LIN/17",
+        "name": "LINGUA E LETTERATURA ROMENA"
+    },
+    {
+        "code": "L-LIN/18",
+        "name": "LINGUA E LETTERATURA ALBANESE"
+    },
+    {
+        "code": "L-LIN/19",
+        "name": "FILOLOGIA UGRO-FINNICA"
+    },
+    {
+        "code": "L-LIN/20",
+        "name": "LINGUA E LETTERATURA NEOGRECA"
+    },
+    {
+        "code": "L-LIN/21",
+        "name": "SLAVISTICA"
+    },
+    {
+        "code": "L-OR/01",
+        "name": "STORIA DEL VICINO ORIENTE ANTICO"
+    },
+    {
+        "code": "L-OR/02",
+        "name": "EGITTOLOGIA E CIVILTÀ COPTA"
+    },
+    {
+        "code": "L-OR/03",
+        "name": "ASSIRIOLOGIA"
+    },
+    {
+        "code": "L-OR/04",
+        "name": "ANATOLISTICA"
+    },
+    {
+        "code": "L-OR/05",
+        "name": "ARCHEOLOGIA E STORIA DELL'ARTE DEL VICINO ORIENTE ANTICO"
+    },
+    {
+        "code": "L-OR/06",
+        "name": "ARCHEOLOGIA FENICIO-PUNICA"
+    },
+    {
+        "code": "L-OR/07",
+        "name": "SEMITISTICA - LINGUE E LETTERATURE DELL'ETIOPIA"
+    },
+    {
+        "code": "L-OR/08",
+        "name": "EBRAICO"
+    },
+    {
+        "code": "L-OR/09",
+        "name": "LINGUE E LETTERATURE DELL'AFRICA"
+    },
+    {
+        "code": "L-OR/10",
+        "name": "STORIA DEI PAESI ISLAMICI"
+    },
+    {
+        "code": "L-OR/11",
+        "name": "ARCHEOLOGIA E STORIA DELL'ARTE MUSULMANA"
+    },
+    {
+        "code": "L-OR/12",
+        "name": "LINGUA E LETTERATURA ARABA"
+    },
+    {
+        "code": "L-OR/13",
+        "name": "ARMENISTICA, CAUCASOLOGIA, MONGOLISTICA E TURCOLOGIA"
+    },
+    {
+        "code": "L-OR/14",
+        "name": "FILOLOGIA, RELIGIONI E STORIA DELL'IRAN"
+    },
+    {
+        "code": "L-OR/15",
+        "name": "LINGUA E LETTERATURA PERSIANA"
+    },
+    {
+        "code": "L-OR/16",
+        "name": "ARCHEOLOGIA E STORIA DELL'ARTE DELL'INDIA E DELL'ASIA CENTRALE"
+    },
+    {
+        "code": "L-OR/17",
+        "name": "FILOSOFIE, RELIGIONI E STORIA DELL'INDIA E DELL'ASIA CENTRALE"
+    },
+    {
+        "code": "L-OR/18",
+        "name": "INDOLOGIA E TIBETOLOGIA"
+    },
+    {
+        "code": "L-OR/19",
+        "name": "LINGUE E LETTERATURE MODERNE DEL SUBCONTINENTE INDIANO"
+    },
+    {
+        "code": "L-OR/20",
+        "name": "ARCHEOLOGIA, STORIA DELL'ARTE E FILOSOFIE DELL'ASIA ORIENTALE"
+    },
+    {
+        "code": "L-OR/21",
+        "name": "LINGUE E LETTERATURE DELLA CINA E DELL'ASIA SUD-ORIENTALE"
+    },
+    {
+        "code": "L-OR/22",
+        "name": "LINGUE E LETTERATURE DEL GIAPPONE E DELLA COREA"
+    },
+    {
+        "code": "L-OR/23",
+        "name": "STORIA DELL'ASIA ORIENTALE E SUD-ORIENTALE"
+    },
+    {
+        "code": "M-STO/01",
+        "name": "STORIA MEDIEVALE"
+    },
+    {
+        "code": "M-STO/02",
+        "name": "STORIA MODERNA"
+    },
+    {
+        "code": "M-STO/03",
+        "name": "STORIA DELL'EUROPA ORIENTALE"
+    },
+    {
+        "code": "M-STO/04",
+        "name": "STORIA CONTEMPORANEA"
+    },
+    {
+        "code": "M-STO/05",
+        "name": "STORIA DELLA SCIENZA E DELLE TECNICHE"
+    },
+    {
+        "code": "M-STO/06",
+        "name": "STORIA DELLE RELIGIONI"
+    },
+    {
+        "code": "M-STO/07",
+        "name": "STORIA DEL CRISTIANESIMO E DELLE CHIESE"
+    },
+    {
+        "code": "M-STO/08",
+        "name": "ARCHIVISTICA, BIBLIOGRAFIA E BIBLIOTECONOMIA"
+    },
+    {
+        "code": "M-STO/09",
+        "name": "PALEOGRAFIA"
+    },
+    {
+        "code": "M-DEA/01",
+        "name": "DISCIPLINE DEMOETNOANTROPOLOGICHE"
+    },
+    {
+        "code": "M-GGR/01",
+        "name": "GEOGRAFIA"
+    },
+    {
+        "code": "M-GGR/02",
+        "name": "GEOGRAFIA ECONOMICO-POLITICA"
+    },
+    {
+        "code": "M-FIL/01",
+        "name": "FILOSOFIA TEORETICA"
+    },
+    {
+        "code": "M-FIL/02",
+        "name": "LOGICA E FILOSOFIA DELLA SCIENZA"
+    },
+    {
+        "code": "M-FIL/03",
+        "name": "FILOSOFIA MORALE"
+    },
+    {
+        "code": "M-FIL/04",
+        "name": "ESTETICA"
+    },
+    {
+        "code": "M-FIL/05",
+        "name": "FILOSOFIA E TEORIA DEI LINGUAGGI"
+    },
+    {
+        "code": "M-FIL/06",
+        "name": "STORIA DELLA FILOSOFIA"
+    },
+    {
+        "code": "M-FIL/07",
+        "name": "STORIA DELLA FILOSOFIA ANTICA"
+    },
+    {
+        "code": "M-FIL/08",
+        "name": "STORIA DELLA FILOSOFIA MEDIEVALE"
+    },
+    {
+        "code": "M-PED/01",
+        "name": "PEDAGOGIA GENERALE E SOCIALE"
+    },
+    {
+        "code": "M-PED/02",
+        "name": "STORIA DELLA PEDAGOGIA"
+    },
+    {
+        "code": "M-PED/03",
+        "name": "DIDATTICA E PEDAGOGIA SPECIALE"
+    },
+    {
+        "code": "M-PED/04",
+        "name": "PEDAGOGIA SPERIMENTALE"
+    },
+    {
+        "code": "M-PSI/01",
+        "name": "PSICOLOGIA GENERALE"
+    },
+    {
+        "code": "M-PSI/02",
+        "name": "PSICOBIOLOGIA E PSICOLOGIA FISIOLOGICA"
+    },
+    {
+        "code": "M-PSI/03",
+        "name": "PSICOMETRIA"
+    },
+    {
+        "code": "M-PSI/04",
+        "name": "PSICOLOGIA DELLO SVILUPPO E PSICOLOGIA DELL'EDUCAZIONE"
+    },
+    {
+        "code": "M-PSI/05",
+        "name": "PSICOLOGIA SOCIALE"
+    },
+    {
+        "code": "M-PSI/06",
+        "name": "PSICOLOGIA DEL LAVORO E DELLE ORGANIZZAZIONI"
+    },
+    {
+        "code": "M-PSI/07",
+        "name": "PSICOLOGIA DINAMICA"
+    },
+    {
+        "code": "M-PSI/08",
+        "name": "PSICOLOGIA CLINICA"
+    },
+    {
+        "code": "M-EDF/01",
+        "name": "METODI E DIDATTICHE DELLE ATTIVITÀ MOTORIE"
+    },
+    {
+        "code": "M-EDF/02",
+        "name": "METODI E DIDATTICHE DELLE ATTIVITÀ SPORTIVE"
+    },
+    {
+        "code": "IUS/01",
+        "name": "DIRITTO PRIVATO"
+    },
+    {
+        "code": "IUS/02",
+        "name": "DIRITTO PRIVATO COMPARATO"
+    },
+    {
+        "code": "IUS/03",
+        "name": "DIRITTO AGRARIO"
+    },
+    {
+        "code": "IUS/04",
+        "name": "DIRITTO COMMERCIALE"
+    },
+    {
+        "code": "IUS/05",
+        "name": "DIRITTO DELL'ECONOMIA"
+    },
+    {
+        "code": "IUS/06",
+        "name": "DIRITTO DELLA NAVIGAZIONE"
+    },
+    {
+        "code": "IUS/07",
+        "name": "DIRITTO DEL LAVORO"
+    },
+    {
+        "code": "IUS/08",
+        "name": "DIRITTO COSTITUZIONALE"
+    },
+    {
+        "code": "IUS/09",
+        "name": "ISTITUZIONI DI DIRITTO PUBBLICO"
+    },
+    {
+        "code": "IUS/10",
+        "name": "DIRITTO AMMINISTRATIVO"
+    },
+    {
+        "code": "IUS/11",
+        "name": "DIRITTO CANONICO E DIRITTO ECCLESIASTICO"
+    },
+    {
+        "code": "IUS/12",
+        "name": "DIRITTO TRIBUTARIO"
+    },
+    {
+        "code": "IUS/13",
+        "name": "DIRITTO INTERNAZIONALE"
+    },
+    {
+        "code": "IUS/14",
+        "name": "DIRITTO DELL'UNIONE EUROPEA"
+    },
+    {
+        "code": "IUS/15",
+        "name": "DIRITTO PROCESSUALE CIVILE"
+    },
+    {
+        "code": "IUS/16",
+        "name": "DIRITTO PROCESSUALE PENALE"
+    },
+    {
+        "code": "IUS/17",
+        "name": "DIRITTO PENALE"
+    },
+    {
+        "code": "IUS/18",
+        "name": "DIRITTO ROMANO E DIRITTI DELL'ANTICHITÀ"
+    },
+    {
+        "code": "IUS/19",
+        "name": "STORIA DEL DIRITTO MEDIEVALE E MODERNO"
+    },
+    {
+        "code": "IUS/20",
+        "name": "FILOSOFIA DEL DIRITTO"
+    },
+    {
+        "code": "IUS/21",
+        "name": "DIRITTO PUBBLICO COMPARATO"
+    },
+    {
+        "code": "SECS-P/01",
+        "name": "ECONOMIA POLITICA"
+    },
+    {
+        "code": "SECS",
+        "name": "P/02 POLITICA ECONOMICA"
+    },
+    {
+        "code": "SECS-P/03",
+        "name": "SCIENZA DELLE FINANZE"
+    },
+    {
+        "code": "SECS-P/04",
+        "name": "STORIA DEL PENSIERO ECONOMICO"
+    },
+    {
+        "code": "SECS-P/05",
+        "name": "ECONOMETRIA"
+    },
+    {
+        "code": "SECS-P/06",
+        "name": "ECONOMIA APPLICATA"
+    },
+    {
+        "code": "SECS-P/07",
+        "name": "ECONOMIA AZIENDALE"
+    },
+    {
+        "code": "SECS-P/08",
+        "name": "ECONOMIA E GESTIONE DELLE IMPRESE"
+    },
+    {
+        "code": "SECS-P/09",
+        "name": "FINANZA AZIENDALE"
+    },
+    {
+        "code": "SECS-P/10",
+        "name": "ORGANIZZAZIONE AZIENDALE"
+    },
+    {
+        "code": "SECS-P/11",
+        "name": "ECONOMIA DEGLI INTERMEDIARI FINANZIARI"
+    },
+    {
+        "code": "SECS-P/12",
+        "name": "STORIA ECONOMICA"
+    },
+    {
+        "code": "SECS-P/13",
+        "name": "SCIENZE MERCEOLOGICHE"
+    },
+    {
+        "code": "SECS-S/01",
+        "name": "STATISTICA"
+    },
+    {
+        "code": "SECS-S/02",
+        "name": "STATISTICA PER LA RICERCA SPERIMENTALE E TECNOLOGICA"
+    },
+    {
+        "code": "SECS-S/03",
+        "name": "STATISTICA ECONOMICA"
+    },
+    {
+        "code": "SECS-S/04",
+        "name": "DEMOGRAFIA"
+    },
+    {
+        "code": "SECS-S/05",
+        "name": "STATISTICA SOCIALE"
+    },
+    {
+        "code": "SECS-S/06",
+        "name": "METODI MATEMATICI DELL'ECONOMIA E DELLE SCIENZE ATTUARIALI E FINANZIARIE"
+    },
+    {
+        "code": "SPS/01",
+        "name": "FILOSOFIA POLITICA"
+    },
+    {
+        "code": "SPS/02",
+        "name": "STORIA DELLE DOTTRINE POLITICHE"
+    },
+    {
+        "code": "SPS/03",
+        "name": "STORIA DELLE ISTITUZIONI POLITICHE"
+    },
+    {
+        "code": "SPS/04",
+        "name": "SCIENZA POLITICA"
+    },
+    {
+        "code": "SPS/05",
+        "name": "STORIA E ISTITUZIONI DELLE AMERICHE"
+    },
+    {
+        "code": "SPS/06",
+        "name": "STORIA DELLE RELAZIONI INTERNAZIONALI"
+    },
+    {
+        "code": "SPS/07",
+        "name": "SOCIOLOGIA GENERALE"
+    },
+    {
+        "code": "SPS/08",
+        "name": "SOCIOLOGIA DEI PROCESSI CULTURALI E COMUNICATIVI"
+    },
+    {
+        "code": "SPS/09",
+        "name": "SOCIOLOGIA DEI PROCESSI ECONOMICI E DEL LAVORO"
+    },
+    {
+        "code": "SPS/10",
+        "name": "SOCIOLOGIA DELL'AMBIENTE E DEL TERRITORIO"
+    },
+    {
+        "code": "SPS/11",
+        "name": "SOCIOLOGIA DEI FENOMENI POLITICI"
+    },
+    {
+        "code": "SPS/12",
+        "name": "SOCIOLOGIA GIURIDICA, DELLA DEVIANZA E MUTAMENTO SOCIALE"
+    },
+    {
+        "code": "SPS/13",
+        "name": "STORIA E ISTITUZIONI DELL'AFRICA"
+    },
+    {
+        "code": "SPS/14",
+        "name": "STORIA E ISTITUZIONI DELL'ASIA"
+    }
+]

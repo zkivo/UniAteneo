@@ -1,0 +1,1253 @@
+
+/* didattica.css */
+
+/* varie classi ad uso e consumo portale/sito*/
+
+.openul {list-style-image: url(/image/punto_didattica.gif); font-family: open sans, verdana, helvetica, sans-serif; FONT-SIZE: 20px; COLOR: #000000; text-decoration: none;}
+.openlink {font-family: open sans, verdana, helvetica, sans-serif; font-weight: normal; FONT-SIZE: 20px; color:#646464; text-decoration: none;}
+.openlink:hover {color:#0084c9; TEXT-DECORATION: underline}
+.opentitolo {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 24px; font-weight: bold; text-decoration: none; color: #0084c9;}
+.opentitoletto {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 16px; font-weight: bold; text-decoration: none; color: #666666;}
+.bottone_nav_liber {
+FONT-SIZE: 10px;
+COLOR: #000000;
+font-family: open sans, Verdana;
+BACKGROUND-COLOR: #FECD32;
+font-style : normal;
+font-weight : bold;
+}
+
+.borderless td, .borderless th {
+    border: none!important;
+}
+
+/* bottone trasparente per il disco condiviso */
+
+.pinolo {
+  font-size: 10px;
+  color: #0084c9;
+  font-family: open sans, Verdana;
+  background-color: #ffffff;
+  font-style: normal;
+  font-weight: bold;
+}
+
+/* la classe seguente serve per i portlet del portale della didattica */
+.portlet{font: 16px Arial, Helvetica, sans-serif; color: #f89a4b; font-weight: bold}
+
+.RegionBorderMao {
+  border: #fff 0px solid;
+  background-color: #FFF;
+  margin: 10px;
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,0.4);
+}
+
+.selectUnicode {font-family: open sans, Courier, sans-serif; font-size: 13px; font-weight: normal; text-decoration: none; color: #ff0000;}
+.selectUnicodeBlack {font-family: open sans, Courier, sans-serif; font-size: 13px; font-weight: normal; text-decoration: none; color: #000000;}
+
+/*---classe importante che permette all'header didattica di linkare alla home page di didattica---*/
+#div_link_top a{display:block;width:auto;height:135px;/*border: 2px orange dotted ;*/}
+/* --- fine --- */
+
+/* background */
+.sfondodida {background-image: url(/image/bg_dida.gif); background-position: bottom; background-repeat:no-repeat; background-position: right}
+.sfondohome {background-image: url(/image/bg_home.gif); background-position: bottom; background-repeat:no-repeat;}
+.sfondonews {background-image: url(/image/sfondonews.gif); background-position: bottom; background-repeat:no-repeat; background-position: right}
+.sfondopoli {background-image: url(/image/bg_sezioni.gif); background-position: bottom; background-repeat:no-repeat; background-position: right; padding:0px;}
+
+/* caselle di ricerca/intranet */
+.policasella {font-family: open sans, Helvetica, sans-serif; font-size: 10px; font-weight: normal; text-decoration: none; color: #000000;}
+.policasella2 {font-family: open sans, Helvetica, sans-serif; font-size: 10px; font-weight: normal; text-decoration: none; color: #000000;}
+.policasella:hover {color:#0084c9;}
+.poliform {font-family: open sans, Helvetica, sans-serif; font-size: 13px; font-weight: normal; text-decoration: none; color: #000000;}
+.polilogin {font-family: open sans, Helvetica, sans-serif; font-size: 10px; font-weight: normal; text-decoration: none; color: #575757;}
+
+/* Colonne */
+.policoldx {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 11px; text-decoration: none; color: #464646;}
+.policoldx:hover {color: #0084c9; text-decoration: underline;}
+.policolsx {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 11px; font-weight: bold; text-decoration: none; color: #464646;}
+/*.policolsx:hover {color: #0084c9; text-decoration: underline;}*/
+.policolsxw {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 11px; font-weight: bold; text-decoration: none; color: #ffffff;}
+.policolsxw:hover {color: #575757; text-decoration: underline;}
+.policoltit {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 11px; font-weight: bold; text-decoration: none; color: #575757;}
+.policoltit:hover {color:#0084c9;}
+.policoltitw {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 11px; font-weight: bold; text-decoration: none; color: #ffffff;}
+.polihomelink {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 11px; font-weight: normal; text-decoration: none; color: #000000;}
+.polihomelink:hover {font-weight: bold;}
+.polisedi {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 11px; font-weight: normal; text-decoration: none; color: #000000;}
+/*.polisedi:hover {font-weight: bold;}*/
+
+/* Corpo pagine */
+.policorpo {font-family: open sans, verdana, helvetica, sans-serif; FONT-SIZE: 11px; COLOR: #000000; TEXT-DECORATION: none;font-weight: normal;}
+.policorpor {font-family: open sans, verdana, helvetica, sans-serif;FONT-SIZE: 11px;COLOR: Red;	TEXT-DECORATION: none;}
+.policorpow {font-family: open sans, verdana, helvetica, sans-serif;FONT-SIZE: 11px;COLOR: #FFFFFF;	TEXT-DECORATION: none;}
+.policorpog {font-family: open sans, verdana, helvetica, sans-serif;FONT-SIZE: 11px;COLOR: #009900;	TEXT-DECORATION: none;}
+.policorpob {font-family: open sans, verdana, helvetica, sans-serif;FONT-SIZE: 11px;COLOR: #0077aa;	TEXT-DECORATION: none;}
+.policorprBig {font-family: open sans, verdana, helvetica, sans-serif;FONT-SIZE: 14px;COLOR: Red; font-weight: bold; TEXT-DECORATION: none;}
+.policorpogBig {font-family: open sans, verdana, helvetica, sans-serif;FONT-SIZE: 14px;COLOR: #009900; font-weight: bold; TEXT-DECORATION: none;}
+.policorpbBig {font-family: open sans, verdana, helvetica, sans-serif;FONT-SIZE: 14px;COLOR: #000000; font-weight: bold; TEXT-DECORATION: none;}
+.policorpBlueBig {font-family: open sans, verdana, helvetica, sans-serif;FONT-SIZE: 14px;COLOR: #0540A0; font-weight: bold; TEXT-DECORATION: none;}
+.policorpolink {font-family: open sans, verdana, helvetica, sans-serif; font-weight: normal; FONT-SIZE: 11px; COLOR: #000000; TEXT-DECORATION: underline;}
+.policorpolink:hover {color: #0084C9;}
+.policorpoBiglink {font-family: open sans, verdana, helvetica, sans-serif; font-weight: normal; FONT-SIZE: 14px; COLOR: #000000; TEXT-DECORATION: underline;}
+.policorpoBiglink:hover {color: #0084C9;}
+.policorpomail {font-family: open sans, verdana, helvetica, sans-serif; font-weight: normal; FONT-SIZE: 11px; COLOR: #000000;}
+.policorpomail:hover {color: #0084C9;  TEXT-DECORATION: underline;}
+.polienglish {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 11px; font-weight: bold; text-decoration: none; color: #575757;}
+.polienglish:hover {color: #0084C9;}
+.polifoto {font-family: open sans, Arial, helvetica, sans-serif; font-weight: bold; FONT-SIZE: 11px; COLOR: #FD8427; TEXT-DECORATION: none;}
+.polimenuoriz {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 11px; font-weight: normal; text-decoration: none; color: #000000;}
+.polimenuoriz:hover {color: #0084c9; text-decoration: underline;}
+.polimenusched {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 11px; font-weight: bold; text-decoration: none; color: #575757;}
+.polimenusched:hover {color: #0084c9; text-decoration: underline;}
+.polinota {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 11px; font-weight: normal; text-decoration: none; color: #575757;}
+.polinotalink {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 11px; font-weight: normal; text-decoration: underline; color: #575757;}
+.polinotalink:hover {text-decoration: none;}
+.polinotab {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 11px; font-weight: bold; text-decoration: none; color: #575757;}
+.polipercorso {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 11px; font-weight: bold; text-decoration: none; color: #575757;}
+.polipercorso:hover {color: #0084C9;}
+.polith {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 12px; text-decoration: none; COLOR: #ffffff;}
+
+/* didattica */
+.policoltdida {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 11px; font-weight: bold; text-decoration: none; color: #ffffff;}
+.polididatticat {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 14px; font-weight: BOLD; text-decoration: none; color: #FE9900;}
+.poliuldid {list-style-image: url(/image/didattica/punto.gif); font-family: open sans, verdana, helvetica, sans-serif; FONT-SIZE: 11px; COLOR: #000000; TEXT-DECORATION: none;}
+
+/* elenco */
+.poliul {list-style-image: url(/image/punto_didattica.gif); font-family: open sans, verdana, helvetica, sans-serif; FONT-SIZE: 11px; COLOR: #000000; TEXT-DECORATION: none;}
+.poliul1 {list-style-type: square; list-style-position: inside; font-family: open sans, verdana, helvetica, sans-serif; font-size: 10px; color:#575757; font-weight: normal;}
+.poliul2 {list-style-type: decimal; list-style-position: inside; font-family: open sans, verdana, helvetica, sans-serif; font-size: 11px; color:#646464; font-weight: normal;}
+.poliul3 {list-style-type: square; list-style-position: inside; font-family: open sans, verdana, helvetica, sans-serif; font-size: 10px; color:#646464; font-weight: normal; line-height: 1}
+
+/* Footer standard */
+.polifooter {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: normal; text-decoration: none; color: #575757;}
+.polimail {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 12px; font-weight: normal; text-decoration: none; color: #575757;}
+.polimail:hover {color:#0084c9;}
+.politext {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: normal; text-decoration: none; color: #575757;}
+.politext:hover {color:#0084c9;}
+
+.polimagnif {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: normal; text-decoration: none; color: #575757;}
+.polimagnif:hover {font-size: 16px; color:#0084c9;}
+
+/* header */
+.titoloheader {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 37px; color: #FFFFFF;text-decoration:none;}
+.sottotitoloheader {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 16px; color: #FFFFFF;text-decoration:none;}
+.polimenusez {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 11px; font-weight: bold; text-decoration: none; color: #FFFFFF;}
+.polinavenglish {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 11px; font-weight: bold; text-decoration: none; color: #575757;}
+.polinavenglish:hover {color:#0084c9;}
+.polinavoriz {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 11px; font-weight: bold; text-decoration: none; color: #575757;}
+.polinavoriz:hover {color:#0084c9;}
+
+/* link */
+.polilink {font-family: open sans, verdana, helvetica, sans-serif; font-weight: normal; FONT-SIZE: 11px; color:#646464; text-decoration: none;}
+.polilink:hover {color:#0084c9}
+
+/* menu dinamici */
+.polimenudin {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 10px; font-weight:normal; text-decoration: none; color: #575757;}
+.polimenudint {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 11px; font-weight: bold; text-decoration: none; color: #ffffff; line-height: 1}
+.polimenudint:hover {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 11px; font-weight: bold; text-decoration: none; color: #575757; line-height: 1}
+
+/* News */
+.polievento {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 12px; font-weight: normal; text-decoration: none; color: #575757;}
+.polievento:hover {color: #0084c9;}
+.polieventodata {font-family: open sans, arial, helvetica, sans-serif; font-size: 12px; font-weight: bold; text-decoration: none; COLOR: #575757;}
+.polieventolink {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 11px; font-weight: normal; text-decoration: none; color: #000000;}
+.polieventolink:hover {color: #0084c9; text-decoration: underline;}
+.polieventotit {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 16px; font-weight: bold; text-decoration: none; color: #0084c9;}
+.polieventotit:hover {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 16px; font-weight: bold; text-decoration: underline; color: #0084c9;}
+.polieventotit2 {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 16px; font-weight: bold; text-decoration: none; color: #0084c9;}
+.polinews {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 10px; text-decoration: none; color: #000000;}
+.polinews:hover {color: #0084c9;}
+.polinewsdata {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: normal; text-decoration: none; color: #575757;}
+.polinewsdata1 {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; text-decoration: none; color: #575757;}
+.polinewsdatalink {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: normal; text-decoration: underline; color: #000000;}
+.polinewsdatalink:hover {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: normal; text-decoration: underline; color: #0084c9;}
+.polinewsspec {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 11px; font-weight: bold; text-decoration: none; color: #575757;}
+.polinewsspec:hover {color:#0084c9;}
+.polinewstitolo {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 11px; font-weight: bold; text-decoration: none; color: #0084c9;}
+.polinewstitolo1 {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 16px; font-weight: bold; text-decoration: none; color: #0084c9;}
+.polinewstitolo2 {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; text-decoration: none; color: #0084c9;}
+/*.polinewstitolo:hover {text-decoration: underline;}*/
+
+/* polifoto */
+.poliparametri {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 11px; font-weight: bold; text-decoration: none; color: #575757;}
+
+/* polimail */
+.polimenumail {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: normal; text-decoration: none; color: #ffffff;}
+.polimenumail:hover {color:#FF9933;}
+
+/* sezioni */
+.politable {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 11px; font-weight:bold; text-decoration: none; COLOR: #575757; line-height: 110%}
+/*.politable:hover {color: #0084c9; text-decoration: underline;}*/
+.polititsez {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 18px; font-weight: normal; text-decoration: none; color: #ffffff;}
+.poliallerta_small {font-family: open sans, Geneva,"Myriad Pro", Arial, Helvetica, sans-serif;font-size: 12px;letter-spacing: -1px;color: #ffffff;}
+.poliallerta {font-family: open sans, Geneva,"Myriad Pro", Arial, Helvetica, sans-serif;font-size: 18px;letter-spacing: 0;color: #ffffff;font-weight: bold;}
+
+/* spazio */
+.spc2 {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 2px;}
+.spc4 {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 8px;}
+
+/* Titolo e Capoverso pagine */
+.polididat {font-family: open sans, arial, helvetica, sans-serif; font-size: 14px; font-weight: bold; text-decoration: none; COLOR: #FB7907;}
+.polididatw {font-family: open sans, arial, helvetica, sans-serif; font-size: 14px; font-weight: bold; text-decoration: none; color: #ffffff;}
+.polit3didattica {font-family: open sans, arial, helvetica, sans-serif; font-size: 12px; font-weight: bold; text-decoration: none; COLOR: #FB7907;}
+.polit3didattica1 {font-family: open sans, arial, helvetica, sans-serif; font-size: 12px; font-weight: bold; text-decoration: none; COLOR: #FF9900;}
+.polititolo {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 14px; font-weight: bold; text-decoration: none; color: #ffffff;}
+.polititolo1 {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 20px; font-weight: bold; text-decoration: none; color: #575757;}
+.polititolo2 {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 16px; font-weight: BOLD; text-decoration: none; color: #575757;}
+.polititolo3 {font-family: open sans, arial, helvetica, sans-serif; font-size: 12px; font-weight: bold; text-decoration: none; COLOR: #575757;}
+.polititolo3:hover {color: #0084C9;}
+.polititolo4 {font-family: open sans, arial, helvetica, sans-serif; font-size: 11px; font-weight: bold; text-decoration: none; COLOR: #575757;}
+.polititolo4:hover {color: #0084C9;}
+
+.poligreen {font-family: open sans, arial, helvetica, sans-serif; font-size: 11px; font-weight: bold; text-decoration: none; color: #006400;}
+.poligreen:hover {text-decoration: underline;}
+
+.polired {font-family: open sans, arial, helvetica, sans-serif; font-size: 11px; font-weight: bold; text-decoration: none; color: #ff0000;}
+.polired:hover {text-decoration: underline;}
+
+.polired_big {font-family: open sans, arial, helvetica, sans-serif; font-size: 14px; font-weight: bold; text-decoration: none; color: #ff0000;}
+
+/* Pagine Guida dello Studente */
+
+.guideTitoloM {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 18px; font-weight: normal; text-decoration: none; color: #FB7907;}
+.guideTitolo0 {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 16px; font-weight: bold; text-decoration: none; color: #FB7907;}
+.guideTitoloA {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 15px; font-weight: bold; text-decoration: none; color: #0084c9;}
+.guideTitolo1 {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 15px; font-weight: bold; text-decoration: none; color: #014B96;}
+.guideTitoloS {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 16px; font-weight: bold; text-decoration: none; color: #014B96;}
+.guideTitolo2 {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 13px; font-weight: bold; text-decoration: none; color: #0084c9;}
+.guideTitolo3 {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; text-decoration: none; color: #575757;}
+
+
+.asp_studentname {
+	font-family: open sans, arial, helvetica, sans-serif; 
+	font-size: 12px; 
+	font-weight: bold; 
+	text-decoration: none;
+	color: #e4cdb8;
+}
+
+.nuovo {font-size: 13px; color: #575757;}
+.vecchio {font-size: 13px; color: #ff0000;}
+
+/* Pagine Guida dello Studente */
+
+/* Pagine scuola interpolitecnica*/
+.titolo1
+{
+  color: #466074;
+  font-family: open sans, Verdana, Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  text-decoration: none;
+  text-align: right;
+  margin: 0px 0px 15px 0px;
+  font-weight: normal;
+  padding: 2px 50px 0px 0px;
+  border-width: 1px 0px 0px 0px;
+  border-style: solid;
+  border-color: #FF9900;
+  background-color: #FFFFFF;
+}
+
+.titolo2
+{
+  color: #466074;
+  font-family: open sans, Verdana, Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  text-align: left;
+  font-weight: normal;
+  background-color: #FFFFFF;
+}
+
+.titolo3
+{
+  color : #466074;
+  font-family: open sans, Verdana, Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  text-align: left;
+  font-weight : bold;
+  background-color : #FFFFFF;
+}
+
+.titolo4
+{
+  color : #466074;
+  font-family: open sans, Verdana, Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  text-align : left;
+  font-weight : bold;
+  background-color : #FFFFFF;
+}
+/* Pagine scuola interpolitecnica*/
+
+/*orientamento */
+
+.ulorienta {list-style-type: square; color: #ffffff; margin-left: 60px;} 
+.liorienta {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 18px; font-weight: bold; text-decoration: none; color: #fff; text-transform: uppercase; margin-top: 25px;}
+.liorienta:hover {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 18px; font-weight: bold; text-decoration: underline; color: #fff; text-transform: uppercase;}
+#boxnews {BORDER: 1px dashed ; MARGIN: 10px 10px 10px 10px; PADDING: 10px; BACKGROUND: #fff; FLOAT: RIGHT; WIDTH: 200px;}
+.bg {background: #FB7907;}
+.titolo {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 60px; font-weight: bold; text-decoration: none; color: #ffffff; margin-left: 33px; margin-bottom: 0px; padding: 0px;}
+.contatti {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 14px; font-weight: bold; text-decoration: none; color: #000000; margin-right: 5px; margin-top: 0px;}
+.contatti:hover {color: #ffffff; text-decoration: underline;}
+.titolorienta {font-family: open sans, Arial, Helvetica, sans-serif; font-size: 30px; font-weight: bold; text-decoration: none; color: #ffffff; margin-top: 0px; margin-left: 33px; vertical-align: bottom; text-transform: uppercase }
+
+/*------------------------------------------------ archiuno -----------------------------------------*/
+
+.archititolo4{font: 12px Arial, Helvetica, sans-serif; color: #575757; text-decoration: none}
+.archititolo4:hover{font: 12px Arial, Helvetica, sans-serif; color: #575757; text-decoration: underline}
+.archititolo3:hover{font: 14px Arial, Helvetica, sans-serif; color: #575757; text-decoration: underline}
+.archititolo3{font: 14px Arial, Helvetica, sans-serif; color: #575757; text-decoration: none}
+/* header*/
+#header
+ {margin: 0px;
+ height: 103px;
+ /*POSITION: absolute;*/
+ }
+#header1
+ {margin: 0px;
+ height: 103px;
+ width: 100%;
+ background-image: url(http://www2.polito.it/didattica/archiuno/image/sfondo.gif);
+ POSITION: absolute;
+ display:block;
+ }
+ /*
+ #logopoli{
+ background-image: url(Http://www2.polito.it/didattica/archiuno/image/logo_poli.gif);
+ WIDTH: 103px; 
+ POSITION: absolute;  
+ HEIGHT: 80px;
+ margin: 0px;
+ padding: 0px; 
+ display: block;
+ }
+ */
+/*
+#banner{
+ background-image: url(Http://www2.polito.it/didattica/archiuno/image/banner.gif);
+ WIDTH: 665px;
+ POSITION: absolute; 
+ HEIGHT: 80px; 
+ margin-top: 0px; 
+ margin-right:0px; 
+ margin-bottom:0px;
+ margin-left: 103px	
+ }
+ */
+/* #header1
+ {margin: 0px;
+ height: 103px;
+ POSITION: absolute;
+ display:block;
+ background: #cccccc}*/
+#menu { 
+			wIDTH: 665px; 
+ 			HEIGHT: 23px;
+			/*background-image: url(menu.gif)*/;
+  		POSITION: absolute; 
+	  	margin-left: 103px; 
+			margin-top: 80px;
+			padding: 0px;
+			}
+#menu1 { 
+			wIDTH: 665px; 
+ 			HEIGHT: 23px;
+  		POSITION: absolute; 
+	  	margin-left: 103px; 
+			margin-top: 103px;
+			padding: 0px;
+			}
+.home{ 
+			wIDTH: 103px; 
+ 			HEIGHT: 23px;
+  		POSITION: absolute; 
+	  	margin-left: 0px; 
+			margin-top: 80px;
+			padding: 0px;
+			}
+#banner H1 {
+	FONT: bolder 18px Arial, Helvetica, sans-serif; color: #000; margin-top: 3px; margin-bottom: 0px; padding: 0px;
+}
+#banner H2 {
+	FONT: bolder 18px Arial, Helvetica, sans-serif; color: #000; margin: 0px; padding: 0px;
+}
+#banner a {
+	FONT: bolder 16px Arial, Helvetica, sans-serif; color: #000; text-decoration: none;
+}
+#banner a:hover {
+	FONT: bolder 16px Arial, Helvetica, sans-serif; color: #fff; text-decoration: underline;
+}
+#testo
+{
+ visibility: hidden;
+ FONT: 12px Arial, Helvetica, sans-serif; color: #000;
+ position: absolute;
+ margin-top: 5px;
+ margin-left: 13px; 
+ }
+ #testo1
+{
+ visibility: hidden;
+ FONT: 12px Arial, Helvetica, sans-serif; color: #000;
+position: absolute;
+ margin-left: 139px;
+ margin-top: 5px;
+ }
+  #testo2
+{
+ visibility: hidden;
+ FONT: 12px Arial, Helvetica, sans-serif; color: #000;
+ position: absolute;
+ margin-left: 274px;
+ margin-top: 5px;
+ }
+  #testo3
+{
+ visibility: hidden;
+ FONT: 12px Arial, Helvetica, sans-serif; color: #000;
+ position: absolute;
+ margin-left: 305px;
+ margin-top: 5px;}
+  #testo4
+{
+ visibility: hidden;
+ FONT: 12px Arial, Helvetica, sans-serif; color: #000;
+ position: absolute;
+ margin-left: 396px;
+ margin-top: 5px;}
+ #testo5
+{
+ visibility: hidden;
+ font: 12px Arial, Helvetica, sans-serif; color: #000;
+  position: absolute;
+ margin-left: 518px;
+ margin-top: 5px;}
+/* fine header*/
+
+/*------------------------------------------- fine archiuno -----------------------------------------*/
+
+/*------------------------------------------- PREIMMA LAYOUT -----------------------------------------*/
+.tsx {
+	background: url(/img/preimma/css/bg_top.gif);
+	background-repeat: repeat-x;
+	background-position: left top;
+	height:41px;
+	white-space:nowrap;
+}	
+.tdx {
+	background: url(/img/preimma/css/tdx.gif);
+	background-repeat: repeat-x;
+	background-position: left top;
+	width: 17px;
+	height:41px;
+}		
+.sx {
+	background: url(/img/preimma/css/sx.gif);
+	background-repeat: repeat-y;
+	background-position: left top;
+}
+.dx {
+	background: url(/img/preimma/css/dx.gif);
+	background-repeat: repeat-y;
+	background-position: left top;
+	width:17px;
+}
+.bottom {
+	background: url(/img/preimma/css/bg_bottom.gif);
+	background-repeat: repeat-x;
+	background-position: left top;
+	height:17px;
+}
+
+.form_label {
+	font-size: 11px;
+	font-weight: normal;
+	color: #444444;
+	border: 1px solid #c3c3c3;
+	
+	/*height: 21px;*/
+	/*height: 20px;*/
+	background-repeat: repeat-x;
+	padding:3px;
+	background:transparent url(/img/preimma/css/bg_label.gif);
+	background-position: left top;
+	width: 250px;
+}
+.form_label_cb {
+	width: 250px;
+        font-size: 11px;
+        font-weight: normal;
+        color: #444444;
+        border: 1px solid #c3c3c3;
+        height:20px;
+        padding:1px;
+} 
+.form_label_cb_big {
+        width: 350px;
+        font-size: 11px;
+        font-weight: normal;
+        color: #444444;
+        border: 1px solid #c3c3c3;
+        height:20px;
+        padding:1px;
+} 
+
+.form_label_cb_no_w {
+				width: 400px;
+        font-size: 11px;
+        font-weight: normal;
+        color: #444444;
+        border: 1px solid #c3c3c3;
+        height:20px;
+        padding:1px;
+} 
+.form_label_no_w {
+        font-size: 11px;
+        font-weight: normal;
+        color: #444444;
+        border: 1px solid #c3c3c3;
+	/*height: 21px;*/
+/*height: 20px;   */
+        background-repeat: repeat-x;
+        padding:3px;
+        background:transparent url(/img/preimma/css/bg_label.gif);
+        background-position: left top;
+}
+.form_label_textarea {
+        font-size: 13px;
+        font-weight: normal;
+        color: #444444;
+        border: 1px solid #c3c3c3;
+        background-repeat: repeat-x;
+        padding:0px;
+        line-height: 147%;
+        background:transparent url(/img/preimma/css/bg_label.gif);
+        background-position: left top;
+}
+/*------------------------------------------- FINE PREIMMA LAYOUT -----------------------------------------*/
+/*------------------------------------------- INIZIO CPDLAYOUT -----------------------------------------*/
+.form_cpd_textarea {
+        font-size: 13px;
+        font-weight: normal;
+        color: #444444;
+        border: 1px solid #c3c3c3;
+        background-repeat: repeat-x;
+        padding:0px;
+        line-height: 147%;
+        background:transparent url(/img/cpd/css/bg_label_cpd.gif);
+        background-position: left top;
+}
+/*------------------------------------------- FINE CPD LAYOUT -----------------------------------------*/
+/*------------------------------------------- IOL LAYOUT -----------------------------------------*/
+.tsx_i {
+	background: url(/img/preimma/css/bg_top_i.gif);
+	background-repeat: repeat-x;
+	background-position: left top;
+	height:41px;
+	white-space:nowrap;
+}	
+.tdx_i {
+	background: url(/img/preimma/css/tdx_i.gif);
+	background-repeat: repeat-x;
+	background-position: left top;
+	width: 17px;
+	height:41px;
+}		
+.sx_i {
+	background: url(/img/preimma/css/sx_i.gif);
+	background-repeat: repeat-y;
+	background-position: left top;
+}
+.dx_i {
+	background: url(/img/preimma/css/dx_i.gif);
+	background-repeat: repeat-y;
+	background-position: left top;
+	width:17px;
+}
+.bottom_i {
+	background: url(/img/preimma/css/bg_bottom_i.gif);
+	background-repeat: repeat-x;
+	background-position: left top;
+	height:17px;
+}
+
+/*------------------------------------------- FINE IOL LAYOUT -----------------------------------------*/
+.new_home_td {
+	width:180px;
+	height:80px;
+	background-image:url(https://didattica.polito.it/img/sfondo_palluottoli_180.gif);
+	background-repeat:no-repeat;
+	background-position: center;
+	vertical-align: top;
+	text-align: left;
+	padding-left: 10pt;
+	padding-right: 5pt;
+}
+.new_home_text {
+	text-align: left;
+	font-family: open sans, arial, verdana; 
+	font-size: 13pt; 
+	font-weight: bold;
+	color: #ffffff;
+	letter-spacing: 0pt;
+}
+.new_home_text_small {
+	text-align: left;
+	font-family: open sans, arial, verdana; 
+	font-size: 7pt;
+	color: #ffffff;
+}
+
+
+/*----------------------------------- css dei div per lingue e login... primo uso su a_mds... piano di studio e guide ai programmi --------------*/
+
+#utility{
+	position: relative;
+	/*
+  width: 200px;
+	top: 200px;
+	right: 0px;
+	left: 750px;
+	border: 2px orange dotted ;
+	*/
+	}
+
+	#utility p.lang{
+	background: url(/img/bg-chooseLang.gif) no-repeat left center;
+	font-size: 10px;
+	width: 107px;
+	display: inline;
+	text-transform: uppercase;
+	padding: 5px 10px;
+	}
+	#utility p.lang a.ita{
+	background: url(/img/ita-flag.gif) no-repeat left center;
+	padding-left: 22px;
+	color: #333333;
+	font: .75em/1.4em "Trebuchet MS", Geneva, sans-serif;
+	}
+	#utility p.lang a.ita:hover, #utility p.lang a.eng:hover{
+	color: #ff3300;
+	}
+	#utility p.lang a.eng{
+	background: url(/img/eng-flag.gif) no-repeat left center;
+	padding-left: 22px;
+	color: #333333;
+	font: .75em/1.4em "Trebuchet MS", Geneva, sans-serif;
+	}
+	
+	#utility p.login{
+	background: url(/img/bg-login.gif) no-repeat left center;
+	font-size: 10px;
+	width: 67px;
+	display: inline;
+	text-transform: uppercase;
+	padding: 5px 15px 5px 25px;
+	}
+	#utility p.login a{
+	font: .75em/1.4em "Trebuchet MS", Geneva, sans-serif;
+	color: #333333;
+	}
+	#utility p.login a:hover{
+	color: #ff3300;
+	}
+
+
+.tr_grigio {
+background: #f1f1f1;
+}
+.tr_bianco {
+background: #ffffff;
+}
+
+/*----------------------------------- fine css dei div per lingue e login... --------------*/
+.portlethome {font-family: open sans, Arial, Helvetica, sans-serif; 
+						  font-size: 11px; 
+						  line-height: 17px;
+						  padding-left: 3mm;
+							font-weight: normal; 
+							text-decoration: none; 
+							text-align: left;
+							color: #575757;}
+
+.comment_button {
+	font-size: 11px;
+	font-weight: normal;
+	color: #444444;
+	border: 1px solid #c3c3c3;
+	height: 21px;
+	background-repeat: repeat-x;
+	padding:3px;
+	background:transparent url(/img/preimma/css/bg_label.gif);
+	background-position: left top;
+	}
+	
+.policv {font-family: open sans, Arial, Helvetica, sans-serif; 
+				 font-size: 11px; 
+			   text-decoration: none; 
+			   COLOR: #575757; 
+			   line-height: 20px;
+			   border-color: #cdcdcd;
+			   border-width: 1px}
+
+.leziOnline {
+	font-family: open sans, arial, helvetica, sans-serif;
+	font-weight: bold; 
+	font-size: 11px; 
+	color: #fd8427; 
+	text-decoration: none;
+}
+.leziOnline:hover {
+	text-decoration: underline;
+}
+
+/* tabelsorter */
+/* tables */
+table.tablesorter {
+	font-family:open sans, Arial, Helvetica, sans-serif;
+	/*background-color: #CDCDCD;*/
+	margin:10px 0pt 15px;
+	padding:2px;
+	/*font-size: 8pt;*/
+	width: 100%;
+	text-align: center;
+}
+table.tablesorter td {
+	font-family:open sans, Arial, Helvetica, sans-serif;
+	text-align: left;
+}
+table.tablesorter thead tr th, table.tablesorter tfoot tr th {
+	background-color: #CCE6FF; /*azzurro*/
+	border: 1px solid #FFF;
+	font-size: 13px;
+	padding: 4px;
+	font-weight: bold;
+}
+table.tablesorter thead tr .header {
+	background-image: url(/jquery/1.3.2/bg.gif);
+	background-repeat: no-repeat;
+	background-position: bottom center;
+	cursor: pointer;
+}
+table.tablesorter tbody td {
+	padding: 4px;
+	vertical-align: top;
+}
+table.tablesorter tbody tr.odd td {
+	background-color:#F0F0F6;
+}
+table.tablesorter thead tr .headerSortUp {
+	background-image: url(/jquery/1.3.2/asc.gif);
+}
+table.tablesorter thead tr .headerSortDown {
+	background-image: url(/jquery/1.3.2/desc.gif);
+}
+table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+background-color: #99cdff; /*blu scuro*/
+}
+
+table.tablesorter2 {
+	font-family:arial;
+	background-color: #CDCDCD;
+	margin:10px 0pt 15px;
+	font-size: 8pt;
+	width: 100%;
+	text-align: left;
+}
+table.tablesorter2 td {
+	text-align: left;
+}
+table.tablesorter2 thead tr th, table.tablesorter2 tfoot tr th {
+	background-color: #CCE6FF;
+	border: 1px solid #FFF;
+	font-size: 8pt;
+	padding: 4px;
+}
+table.tablesorter2 thead tr .header {
+	background-image: url(/jquery/1.3.2/bg.gif);
+	background-repeat: no-repeat;
+	background-position: bottom right;
+	cursor: pointer;
+}
+table.tablesorter2 tbody td {
+	color: #3D3D3D;
+	padding: 4px;
+	background-color: #eaeaea;
+	vertical-align: top;
+}
+table.tablesorter2 tbody tr.odd td {
+	background-color:#F0F0F6;
+}
+table.tablesorter2 thead tr .headerSortUp {
+	background-image: url(/jquery/1.3.2/asc.gif);
+}
+table.tablesorter2 thead tr .headerSortDown {
+	background-image: url(/jquery/1.3.2/desc.gif);
+}
+table.tablesorter2 thead tr .headerSortDown, table.tablesorter2 thead tr .headerSortUp {
+background-color: #8dbdd8;
+}
+/* fine tabelsorter */
+
+/* ROBA DI MAOOOOOOOOOOOOOOOOO*/
+
+body {
+   background-color: #FAFAFA!important;
+   font-family: open sans, Arial, Helvetica, sans-serif; 
+   font-size: 13px;
+ }
+#rg281 {
+  margin: -4px;
+}
+
+@media print{ *::after { display:none !important; } }
+
+pre {
+	word-break: break-word;
+	white-space: pre-wrap;       /* CSS 3 */
+  white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+  white-space: -pre-wrap;      /* Opera 4-6 */
+  white-space: -o-pre-wrap;    /* Opera 7 */
+  border-radius: 0px;
+}
+ .policorpo {
+   font-family: open sans, Arial, Helvetica, sans-serif;
+   font-size: 13px;
+ }
+ .policorpow {
+   font-family: open sans, Arial, Helvetica, sans-serif;
+   font-size: 13px;
+ }
+ .policorpor {
+   font-family: open sans, Arial, Helvetica, sans-serif;
+   font-size: 13px;
+ }
+ .policorpog {
+   font-family: open sans, Arial, Helvetica, sans-serif;
+   font-size: 13px;
+ }
+ .policorpolink {
+   font-family: open sans, Arial, Helvetica, sans-serif;
+   font-size: 13px;
+   /*color: #337ab7;*/
+   text-decoration: none;
+   color: #003576;
+ }
+ .policorpolink:hover {
+   color: #000;
+   text-decoration: underline;
+ }
+ .polinotalink {
+   /*color: #337ab7;*/
+   text-decoration: none;
+   color: #003576;
+ }
+ .polinotalink:hover {
+   color: #000;
+   text-decoration: underline;
+ }
+ .navbar {
+     border-radius: 0px;
+     border: 0px;
+     min-height: 39px;
+ }
+ .navbar-default .navbar-nav>li>a {
+   background-color: rgb(252, 122, 8);
+   font-family: open sans, Arial, Helvetica, sans-serif;
+   font-size: 14px;
+   text-decoration: none;
+   color: #FAFAFA;
+ }
+ .navbar-default .navbar-nav>li>a {
+   text-decoration: none;
+   color: #FAFAFA;
+ }
+ .navbar-nav>li>a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+ }
+ .nav>li>a {
+ 	  padding: 10px 12px;
+ }
+ .navbar-default .navbar-nav>li>a:hover {
+   background-color:#FAFAFA;
+   text-decoration: none;
+   color: rgb(252, 122, 8);
+ }
+ .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+     color: rgb(252, 122, 8);
+     background-color: #fafafa;
+     font-weight: bold;
+     font-family: open sans, Arial, Helvetica, sans-serif;
+ }
+ #nav_menu{
+  	background-color: rgb(252, 122, 8);
+ }
+	.bottone_lingua {
+		background-color: rgb(252, 122, 8);
+	}
+	.bottone_lingua:hover {
+		background-color: rgb(252, 122, 8);
+	}
+	
+ .RegionBorderMao {
+    border: #FC7A08 0px solid !important;
+    background-color: #FFF !important;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    /*margin: 5px;*/
+    padding: 5px !important;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.4) !important;
+ }
+ .testo_img {
+   color: #fafafa;
+   font-size: 13px;
+   float: right;
+   text-align:right;
+   margin-right:10px;
+   background-color: rgb(252, 122, 8);
+   font-weight: bold;
+   line-height: 11px;
+ }
+ .testo_img:hover {
+   background-color: rgb(252, 122, 8);
+ }
+ .link_img {
+   color: #fafafa;
+   text-decoration: none;
+   background-color: transparent;
+ }
+ .link_img:hover {
+   color: #fafafa;
+   text-decoration: underline;
+   background-color: rgb(252, 122, 8);
+ }
+ .nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
+   background-color: transparent;
+ }
+ .img_flipH {
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+        filter: FlipH;
+        -ms-filter: "FlipH";
+}
+ .img_flipV {
+        -moz-transform: scaleY(-1);
+        -o-transform: scaleY(-1);
+        -webkit-transform: scaleY(-1);
+        transform: scaleY(-1);
+        filter: FlipV;
+        -ms-filter: "FlipV";
+}
+.menu_pag_corso{
+   font-family: open sans, Arial, Helvetica, sans-serif;
+   font-size: 13px;
+   background-color: #FAFAFA;
+   width:150px;
+}
+.menu_pag_corso :hover {
+   background-color: #FF7C11;
+}
+ .menu_pag_corso_sel{
+   font-family: open sans, Arial, Helvetica, sans-serif;
+   font-size: 13px;
+   color: #FFF;
+   background-color: #FF7C11;
+   width:150px;
+}
+ .navbar-toggle {
+    float:left;
+}
+ .fotina_toggle {
+ 		display:none;
+}
+ .navbar-nav.fotina_toggle {
+ 		float: right!important;
+}
+ .navbar-nav.fotina_toggle>li {
+ 		float: left;
+}
+ .fotina_toggle_2 {
+ 		display:block;
+}
+.dropdown-menu {
+    border-radius: 0px;
+    background-color: #FFF;
+}
+ul.dropdown-menu {
+    background-color: #FFF!important;
+}
+.glyphicons-big{
+  font-size:18px;
+  vertical-align: top;
+}
+
+.danger{
+    color:#d9534f;
+}
+.success{
+    color:#449d44;
+}
+.warning{
+    color:#ec971f;
+}
+.beta2 {
+	display:none;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    background: #fff;
+}
+/*
+#d_contenitoreIcone{
+	bottom: 10px; 
+	left: 140px; 
+}
+*/
+ /*
+ da reinserire quando verrà inserito un tab in più su pag_stud
+ @media (max-width: 1066px) { 
+ */
+
+
+ 
+ @media (max-width: 992px) {
+ 	.beta2 {
+ 		display:block;
+  }
+ 	.fotina_toggle {
+ 		display:block;
+  }
+  .fotina_toggle_2 {
+ 		display:none;
+  }
+  .navbar-header {
+    float: none;
+  }
+  .navbar-toggle {
+    display: block;
+    margin-left: 15px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+  .navbar-collapse {
+    border-top: 1px solid transparent;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+  }
+  .navbar-collapse.collapse {
+    display: none!important;
+  }
+  .navbar-nav {
+    float: none!important;
+    margin: 0px;
+    margin-right: -15px;
+  }
+  .navbar-nav>li {
+    float: none;
+  }
+  .navbar-nav>li>a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .navbar-text {
+    float: none;
+    margin: 15px 0;
+  }
+  .navbar-collapse.collapse.in { 
+    display: block!important;
+  }
+  .collapsing {
+    overflow: hidden!important;
+  }
+
+}
+
+@media (max-width: 768px) {
+	.navbar-toggle {
+    margin-left: 30px;
+  }
+  .navbar-nav {
+    margin-right: 0px;
+  }
+  .navbar-nav .open .dropdown-menu {
+  	border: 1px solid rgba(0,0,0,.15);
+  	box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    position: absolute;
+    left: -114px;
+    top: 40px;
+  }
+/*
+	#d_contenitoreIcone{
+		bottom: 50px; 
+	}
+*/
+}
+
+ 
+.ui-corner-all, .ui-corner-bottom, .ui-corner-left, .ui-corner-bl, .ui-corner-top, .ui-corner-tl{
+  border-radius: 0px;
+  font-family: Open Sans;
+  font-size: 12px;
+}
+.ui-accordion .ui-accordion-header {
+  font-size: 12px;
+}
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
+  border: 1px solid #FF7C11;
+  background: #FF7C11;
+}
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    padding: 2px;
+}
+.portlet_colsx {
+	padding:0px;
+}
+
+/* ROBA DI ARGIOLASSSSSSSSSSSSSSSSSS */
+
+/* Tipography */
+h1{
+	font-size:20px;
+}
+h2{
+	font-size:18px;
+}
+h3{
+	font-size:16px;
+}
+h4{
+	font-size:14px;
+}
+/*********************/
+/* FIX su righe, di default bootstrap ha margin-right e margin-left = -15px */
+.row {
+    margin: 0;
+}
+/*********************/
+
+/* FIX PANEL */
+
+.panel, .row {
+	margin-bottom:10px;
+    border-radius: 0px;
+}
+.panel-primary{
+	border-color:#003576;
+    border-radius: 0px;
+}
+.panel>.panel-heading {
+	padding: 3px 15px;
+    border-radius: 0px;
+	font-weight: bold;
+	font-size:14px;
+}
+.panel-primary>.panel-heading {
+    color: #fff;
+    background-color: #003576;
+    border-color: #003576;
+}
+
+/*********************/
+
+/* Pannello principale TITOLO applicazioni */
+/* da utilizzare all'interno di -- <div id="mainpanel" class="panel panel-primary"> --
+	<div class="panel-heading-polito">
+		<div class="image"><img src="img/certificati_q.png"></div>
+		<div class="title">Certificati online</div>
+		<div class="line">&nbsp;</div>
+	</div>
+*/
+#mainpanel {
+    min-height: 400px;
+    border: 0px;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.4);
+}
+
+.panel>.panel-heading-polito {
+	padding: 15px 15px;
+    border-radius: 0px;
+	font-weight: bold;
+	font-size:18px;
+	min-height:100px
+}
+.panel>.panel-heading-polito div.image{
+	display: inline-block;
+	vertical-align:top;
+	float:left;
+	margin-right:10px;
+}
+.panel>.panel-heading-polito div.title{
+	display: inline-block;
+	vertical-align:top;
+}
+.panel>.panel-heading-polito div.line{
+	background-color: #999;
+    height: 1px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.panel>.panel-heading-polito img{
+	max-width:80px;
+}
+
+/*********************/
+
+/* FIX ALERT */
+.alert{
+	border-radius:0px;
+}
+/*********************/
+
+/* FORM & BUTTON FIX */
+.form-control, .btn{
+	border-radius: 0px;
+}
+
+/* LIST GROUP */
+.list-group{
+	border-radius:0px;
+}
+.list-group-item:first-child {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+.list-group-item:last-child {
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+/*********************/
+
+/* FIX Contextual backgrounds */
+p.bg-warning,p.bg-danger,p.bg-success,p.bg-success,p.bg-info{
+    padding: 15px;
+}
+/*********************/
+
+/* TABLE SCROLL */
+/* Per utilizzare, racchiudere la tabella in un div con questa classe */
+.table-scroll {
+    position: relative;
+    overflow: auto;
+    width: 100%;
+}
+
+#portlet_container{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+#portlet_container>#container>div{
+    padding: 0px 0px 5px 5px;
+}
+
+#portlet_container>#container>div>.RegionBorderMao {
+    margin:0px;
+    padding: 10px !important
+}
+.portlet_segr {
+    min-height: 230px !important;
+}

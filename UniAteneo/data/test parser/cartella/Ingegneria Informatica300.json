@@ -1,0 +1,234 @@
+[
+    {
+        "id": 26695,
+        "ssd": "ING-INF/05",
+        "nome": "Big data processing and analytics",
+        "cfu": 3
+    },
+    {
+        "id": 26720,
+        "ssd": "ING-INF/05",
+        "nome": "Architetture dei sistemi di elaborazione",
+        "cfu": 12
+    },
+    {
+        "id": 26745,
+        "ssd": "ING-INF/05",
+        "nome": "Computer architectures",
+        "cfu": 3
+    },
+    {
+        "id": 26770,
+        "ssd": "ING-INF/05",
+        "nome": "Data Science and Database Technology",
+        "cfu": 6
+    },
+    {
+        "id": 26795,
+        "ssd": "ING-INF/05",
+        "nome": "Data Science e Tecnologie per le Basi di Dati",
+        "cfu": 6
+    },
+    {
+        "id": 26820,
+        "ssd": "ING-INF/05",
+        "nome": "Computer network technologies and services",
+        "cfu": 9
+    },
+    {
+        "id": 26845,
+        "ssd": "ING-INF/05",
+        "nome": "Tecnologie e servizi di rete",
+        "cfu": 6
+    },
+    {
+        "id": 26870,
+        "ssd": "ING-INF/05",
+        "nome": "Ingegneria del software",
+        "cfu": 9
+    },
+    {
+        "id": 26895,
+        "ssd": "ING-INF/05",
+        "nome": "Software engineering",
+        "cfu": 12
+    },
+    {
+        "id": 26920,
+        "ssd": "ING-INF/05",
+        "nome": "Applicazioni Web I",
+        "cfu": 6
+    },
+    {
+        "id": 26945,
+        "ssd": "ING-INF/05",
+        "nome": "Web Applications I",
+        "cfu": 12
+    },
+    {
+        "id": 26970,
+        "ssd": "ING-INF/05",
+        "nome": "Programmazione di sistema",
+        "cfu": 3
+    },
+    {
+        "id": 26995,
+        "ssd": "ING-INF/05",
+        "nome": "System and device programming",
+        "cfu": 3
+    },
+    {
+        "id": 27020,
+        "ssd": "ING-INF/05",
+        "nome": "Machine learning and pattern recognition",
+        "cfu": 9
+    },
+    {
+        "id": 27045,
+        "ssd": "ING-INF/05",
+        "nome": "Advanced Machine Learning",
+        "cfu": 9
+    },
+    {
+        "id": 27070,
+        "ssd": "ING-INF/05",
+        "nome": "Information systems security",
+        "cfu": 9
+    },
+    {
+        "id": 27095,
+        "ssd": "ING-INF/05",
+        "nome": "Sicurezza dei sistemi informativi",
+        "cfu": 6
+    },
+    {
+        "id": 27120,
+        "ssd": "ING-INF/05",
+        "nome": "Cloud Computing",
+        "cfu": 12
+    },
+    {
+        "id": 27145,
+        "ssd": "ING-INF/05",
+        "nome": "Computational intelligence",
+        "cfu": 12
+    },
+    {
+        "id": 27195,
+        "ssd": "ING-INF/05",
+        "nome": "Human Computer Interaction",
+        "cfu": 3
+    },
+    {
+        "id": 27220,
+        "ssd": "MAT/09",
+        "nome": "Optimization methods and algorithms",
+        "cfu": 3
+    },
+    {
+        "id": 27245,
+        "ssd": "ING-INF/05",
+        "nome": "Software Engineering II",
+        "cfu": 9
+    },
+    {
+        "id": 27270,
+        "ssd": "ING-INF/05",
+        "nome": "Bioinformatics",
+        "cfu": 12
+    },
+    {
+        "id": 27295,
+        "ssd": "ING-INF/05",
+        "nome": "Cloud Computing",
+        "cfu": 9
+    },
+    {
+        "id": 27320,
+        "ssd": "ING-INF/05",
+        "nome": "Computational intelligence",
+        "cfu": 9
+    },
+    {
+        "id": 27345,
+        "ssd": "ING-INF/04",
+        "nome": "Convex optimization and engineering applications",
+        "cfu": 12
+    },
+    {
+        "id": 27370,
+        "ssd": "ING-INF/04",
+        "nome": "Digital control technologies and architectures",
+        "cfu": 6
+    },
+    {
+        "id": 27395,
+        "ssd": "ING-INF/05",
+        "nome": "Distributed systems programming",
+        "cfu": 9
+    },
+    {
+        "id": 27420,
+        "ssd": "ING-INF/01",
+        "nome": "Edge Computing Systems for AI and ML",
+        "cfu": 6
+    },
+    {
+        "id": 27445,
+        "ssd": "ING-INF/05",
+        "nome": "Elaborazione dell'audio digitale",
+        "cfu": 9
+    },
+    {
+        "id": 27470,
+        "ssd": "ING-INF/05",
+        "nome": "Energy management for IoT",
+        "cfu": 9
+    },
+    {
+        "id": 27495,
+        "ssd": "ING-INF/05",
+        "nome": "GPU programming",
+        "cfu": 12
+    },
+    {
+        "id": 27520,
+        "ssd": "ING-INF/05",
+        "nome": "Human Computer Interaction",
+        "cfu": 3
+    },
+    {
+        "id": 27545,
+        "ssd": "ING-INF/04",
+        "nome": "Modern design of control systems",
+        "cfu": 3
+    },
+    {
+        "id": 27570,
+        "ssd": "ING-INF/03",
+        "nome": "Network measurement laboratory",
+        "cfu": 6
+    },
+    {
+        "id": 27595,
+        "ssd": "ING-INF/03",
+        "nome": "Open Optical Networks",
+        "cfu": 9
+    },
+    {
+        "id": 19070,
+        "ssd": "ICAR/07",
+        "nome": "Modellazione digitale di impianti",
+        "cfu": 3
+    },
+    {
+        "id": 31170,
+        "nome": "Tirocinio",
+        "cfu": 3
+    },
+    {
+        "id": 31195,
+        "nome": "Tesi",
+        "cfu": 12
+    }
+]

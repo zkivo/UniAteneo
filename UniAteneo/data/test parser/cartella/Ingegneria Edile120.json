@@ -1,0 +1,102 @@
+[
+    {
+        "id": 9220,
+        "ssd": "ICAR/06",
+        "nome": "Conoscenza del patrimonio costruito nell'epoca dei cambiamenti climatici",
+        "cfu": 3
+    },
+    {
+        "id": 9270,
+        "ssd": "ICAR/09",
+        "nome": "Ingegneria sismica e resilienza dei sistemi urbani",
+        "cfu": 3
+    },
+    {
+        "id": 9295,
+        "ssd": "ICAR/10",
+        "nome": "Progettazione integrale nella resilienza del costruito",
+        "cfu": 9
+    },
+    {
+        "id": 9320,
+        "ssd": "ICAR/11",
+        "nome": "Gestione del cantiere e del progetto",
+        "cfu": 9
+    },
+    {
+        "id": 9345,
+        "ssd": "ICAR/07",
+        "nome": "Progettazione geotecnica per la resilienza del costruito",
+        "cfu": 12
+    },
+    {
+        "id": 9370,
+        "ssd": "ICAR/22",
+        "nome": "Valutazione degli investimenti per le trasformazioni urbane",
+        "cfu": 9
+    },
+    {
+        "id": 9395,
+        "ssd": "ICAR/17",
+        "nome": "Il disegno per il rilievo e progettazione della resilienza urbana",
+        "cfu": 6
+    },
+    {
+        "id": 9420,
+        "ssd": "ICAR/01",
+        "nome": "L'acqua nei sistemi edilizi e urbani",
+        "cfu": 6
+    },
+    {
+        "id": 9445,
+        "ssd": "ICAR/10",
+        "nome": "Prevenzione per la sicurezza antincendio",
+        "cfu": 6
+    },
+    {
+        "id": 9470,
+        "ssd": "ING-IND/11",
+        "nome": "Progettazione dell'ambiente costruito resiliente ai cambiamenti climatici",
+        "cfu": 6
+    },
+    {
+        "id": 9495,
+        "ssd": "ING-IND/33",
+        "nome": "Electrical Systems for Buildings",
+        "cfu": 3
+    },
+    {
+        "id": 9520,
+        "ssd": "ICAR/06",
+        "nome": "GIS modeling for City and Land",
+        "cfu": 9
+    },
+    {
+        "id": 9570,
+        "ssd": "ICAR/09",
+        "nome": "Structural Design",
+        "cfu": 3
+    },
+    {
+        "id": 9595,
+        "ssd": "ICAR/07",
+        "nome": "Geotechnical Engineering for the Sustainability of Buildings",
+        "cfu": 6
+    },
+    {
+        "id": 9620,
+        "ssd": "ICAR/17",
+        "nome": "InfraBIM, Design, Construction and Management",
+        "cfu": 9
+    },
+    {
+        "id": 30820,
+        "nome": "Tirocinio",
+        "cfu": 6
+    },
+    {
+        "id": 30845,
+        "nome": "Tesi",
+        "cfu": 9
+    }
+]

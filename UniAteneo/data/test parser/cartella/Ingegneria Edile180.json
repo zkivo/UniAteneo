@@ -1,0 +1,144 @@
+[
+    {
+        "id": 9895,
+        "ssd": "MAT/05",
+        "nome": "Analisi matematica I",
+        "cfu": 12
+    },
+    {
+        "id": 9920,
+        "ssd": "CHIM/07",
+        "nome": "Chimica",
+        "cfu": 6
+    },
+    {
+        "id": 9945,
+        "ssd": "ING-INF/05",
+        "nome": "Informatica",
+        "cfu": 6
+    },
+    {
+        "id": 9970,
+        "ssd": "L-LIN/12",
+        "nome": "Lingua inglese I livello",
+        "cfu": 12
+    },
+    {
+        "id": 9995,
+        "ssd": "MAT/08",
+        "nome": "Algebra lineare e geometria",
+        "cfu": 9
+    },
+    {
+        "id": 10020,
+        "ssd": "ICAR/17",
+        "nome": "Disegno edile",
+        "cfu": 9
+    },
+    {
+        "id": 10045,
+        "ssd": "FIS/01",
+        "nome": "Fisica I",
+        "cfu": 9
+    },
+    {
+        "id": 10070,
+        "ssd": "MAT/05",
+        "nome": "Analisi matematica II",
+        "cfu": 3
+    },
+    {
+        "id": 10095,
+        "ssd": "FIS/01",
+        "nome": "Fisica II",
+        "cfu": 6
+    },
+    {
+        "id": 10120,
+        "ssd": "ING-IND/11",
+        "nome": "Fisica tecnica per le costruzioni edili",
+        "cfu": 3
+    },
+    {
+        "id": 10145,
+        "ssd": "ICAR/10",
+        "nome": "Storia/Architettura tecnica",
+        "cfu": 6
+    },
+    {
+        "id": 10170,
+        "ssd": "ICAR/08",
+        "nome": "Scienza delle costruzioni",
+        "cfu": 3
+    },
+    {
+        "id": 10195,
+        "ssd": "ING-IND/22",
+        "nome": "Scienza e tecnologia dei materiali per l'edilizia",
+        "cfu": 6
+    },
+    {
+        "id": 10220,
+        "ssd": "ICAR/06",
+        "nome": "Topografia",
+        "cfu": 9
+    },
+    {
+        "id": 10245,
+        "ssd": "ICAR/01",
+        "nome": "Idraulica tecnica per l'ingegneria edile",
+        "cfu": 12
+    },
+    {
+        "id": 10270,
+        "ssd": "ICAR/07",
+        "nome": "Meccanica delle terre e principi di opere geotecniche",
+        "cfu": 12
+    },
+    {
+        "id": 10295,
+        "ssd": "ICAR/10",
+        "nome": "Progettazione edile",
+        "cfu": 9
+    },
+    {
+        "id": 10320,
+        "ssd": "ICAR/11",
+        "nome": "BIM e Construction Management",
+        "cfu": 9
+    },
+    {
+        "id": 10345,
+        "ssd": "ICAR/22",
+        "nome": "Estimo ed esercizio professionale",
+        "cfu": 12
+    },
+    {
+        "id": 19845,
+        "ssd": "ICAR/07",
+        "nome": "Rischio sismico",
+        "cfu": 3
+    },
+    {
+        "id": 18445,
+        "ssd": "ICAR/07",
+        "nome": "Citt�, infrastrutture e cambiamento climatico (Grandi Sfide - Clima)",
+        "cfu": 3
+    },
+    {
+        "id": 17595,
+        "ssd": "ING-INF/05",
+        "nome": "Web Applications II",
+        "cfu": 3
+    },
+    {
+        "id": 30870,
+        "nome": "Tirocinio",
+        "cfu": 3
+    },
+    {
+        "id": 30895,
+        "nome": "Prova finale",
+        "cfu": 9
+    }
+]

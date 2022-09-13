@@ -1,0 +1,10 @@
+{
+    "Architettura - lt.htm"            : "/html/body/div[7]/main/div/div/div/div[3]/div[2]/div[2]/div/div[2]/table/tbody/tr[2]",
+    "Ingegneria Aerospaziale - lm.htm" : "/html/body/div[7]/main/div/div/div/div[3]/div[2]/div[2]/div[1]/div[2]/table/tbody/tr[2]",
+    "Ingegneria Edile - lm.htm"        : "/html/body/div[7]/main/div/div/div/div[3]/div[2]/div[2]/div/div[2]/table/tbody/tr[2]",
+    "Ingegneria Edile - lt.htm"        : "/html/body/div[7]/main/div/div/div/div[3]/div[2]/div[2]/div/div[2]/table/tbody/tr[2]",
+    "Ingegneria Elettronica - lt.htm"  : "/html/body/div[7]/main/div/div/div/div[3]/div[2]/div[2]/div/div[2]/table/tbody/tr[2]",
+    "Ingegneria Informatica - lm.htm"  : "/html/body/div[7]/main/div/div/div/div[3]/div[2]/div[2]/div/div[2]/table/tbody/tr[2]",
+    "Ingegneria Informatica - lt.htm"  : "/html/body/div[7]/main/div/div/div/div[3]/div[2]/div[2]/div/div[2]/table/tbody/tr[2]",
+    "Ingegneria Meccanica - lt.htm"    : "/html/body/div[7]/main/div/div/div/div[3]/div[2]/div[2]/div/div[2]/table/tbody/tr[2]"
+}

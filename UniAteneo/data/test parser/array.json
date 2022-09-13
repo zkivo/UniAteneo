@@ -1,0 +1,146 @@
+[
+    {
+        "nome": "Analisi matematica I",
+        "ssd": "MAT/05",
+        "id": 1000,
+        "cfu": 9
+    },
+    {
+        "nome": "Chimica",
+        "ssd": "CHIM/07",
+        "id": 1015,
+        "cfu": 3
+    },
+    {
+        "nome": "Informatica",
+        "ssd": "ING-INF/05",
+        "id": 1030,
+        "cfu": 9
+    },
+    {
+        "nome": "Lingua inglese I livello",
+        "ssd": "L-LIN/12",
+        "id": 1045,
+        "cfu": 3
+    },
+    {
+        "nome": "Algebra lineare e geometria",
+        "ssd": "MAT/03",
+        "id": 1060,
+        "cfu": 12
+    },
+    {
+        "nome": "Fisica I",
+        "ssd": "FIS/01",
+        "id": 1075,
+        "cfu": 9
+    },
+    {
+        "nome": "Tecniche di programmazione",
+        "ssd": "ING-INF/05",
+        "id": 1090,
+        "cfu": 3
+    },
+    {
+        "nome": "Algoritmi e strutture dati",
+        "ssd": "ING-INF/05",
+        "id": 1105,
+        "cfu": 6
+    },
+    {
+        "nome": "Analisi matematica II",
+        "ssd": "MAT/05",
+        "id": 1120,
+        "cfu": 9
+    },
+    {
+        "nome": "Elettromagnetismo e Teoria dei circuiti",
+        "ssd": "ING-IND/31",
+        "id": 1135,
+        "cfu": 9
+    },
+    {
+        "nome": "Calcolatori elettronici",
+        "ssd": "ING-INF/05",
+        "id": 1150,
+        "cfu": 3
+    },
+    {
+        "nome": "Computer architecture",
+        "ssd": "ING-INF/05",
+        "id": 1165,
+        "cfu": 3
+    },
+    {
+        "nome": "Basi di dati",
+        "ssd": "ING-INF/05",
+        "id": 1180,
+        "cfu": 9
+    },
+    {
+        "nome": "Introduction to databases",
+        "ssd": "ING-INF/05",
+        "id": 1195,
+        "cfu": 9
+    },
+    {
+        "nome": "Metodi matematici per l'ingegneria",
+        "ssd": "MAT/06",
+        "id": 1210,
+        "cfu": 12
+    },
+    {
+        "nome": "Operating systems",
+        "ssd": "ING-INF/05",
+        "id": 1225,
+        "cfu": 6
+    },
+    {
+        "nome": "Sistemi operativi",
+        "ssd": "ING-INF/05",
+        "id": 1240,
+        "cfu": 9
+    },
+    {
+        "nome": "Electronic systems, technologies and measurements",
+        "ssd": "ING-INF/01",
+        "id": 1255,
+        "cfu": 9
+    },
+    {
+        "nome": "Sistemi elettronici, tecnologie e misure",
+        "ssd": "ING-INF/01",
+        "id": 1270,
+        "cfu": 3
+    },
+    {
+        "nome": "Computer networks",
+        "ssd": "ING-INF/05",
+        "id": 1285,
+        "cfu": 12
+    },
+    {
+        "nome": "Reti di calcolatori",
+        "ssd": "ING-INF/03",
+        "id": 1300,
+        "cfu": 3
+    },
+    {
+        "nome": "Signal analysis and processing",
+        "ssd": "ING-INF/03",
+        "id": 1315,
+        "cfu": 9
+    },
+    {
+        "nome": "Teoria ed elaborazione dei segnali",
+        "ssd": "ING-INF/03",
+        "id": 1330,
+        "cfu": 9
+    },
+    {
+        "nome": "Automatic control",
+        "ssd": "ING-INF/04",
+        "id": 1345,
+        "cfu": 12
+    }
+]

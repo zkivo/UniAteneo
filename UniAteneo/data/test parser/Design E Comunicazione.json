@@ -1,0 +1,152 @@
+[
+    {
+        "nome": "Design",
+        "ssd": "ICAR/13",
+        "id": 1000,
+        "cfu": 9
+    },
+    {
+        "nome": "Storia e Teoria del Progetto",
+        "ssd": "ICAR/18",
+        "id": 1015,
+        "cfu": 12
+    },
+    {
+        "nome": "Principi di statica per il design",
+        "ssd": "ICAR/08",
+        "id": 1030,
+        "cfu": 9
+    },
+    {
+        "nome": "Teorie e Pratica del modello per il design",
+        "ssd": "ICAR/13",
+        "id": 1045,
+        "cfu": 6
+    },
+    {
+        "nome": "Disegno per il design",
+        "ssd": "ING-IND/15",
+        "id": 1060,
+        "cfu": 9
+    },
+    {
+        "nome": "Rendering per il design",
+        "ssd": "ING-INF/05",
+        "id": 1075,
+        "cfu": 9
+    },
+    {
+        "nome": "Tecniche della fotografia",
+        "ssd": "L-ART/06",
+        "id": 1090,
+        "cfu": 9
+    },
+    {
+        "nome": "Geometria descrittiva e rappresentazione digitale",
+        "ssd": "ICAR/17",
+        "id": 1105,
+        "cfu": 9
+    },
+    {
+        "nome": "Modelli digitali e geometria delle forme",
+        "ssd": "ING-INF/05",
+        "id": 1120,
+        "cfu": 12
+    },
+    {
+        "nome": "Strumenti di elaborazione grafica e digital media",
+        "ssd": "ICAR/13",
+        "id": 1135,
+        "cfu": 9
+    },
+    {
+        "nome": "Design I",
+        "ssd": "ICAR/13",
+        "id": 1150,
+        "cfu": 6
+    },
+    {
+        "nome": "Cultura tecnologica della progettazione",
+        "ssd": "ICAR/12",
+        "id": 1165,
+        "cfu": 3
+    },
+    {
+        "nome": "Sostenibilità chimica di processi e materiali",
+        "ssd": "CHIM/07",
+        "id": 1180,
+        "cfu": 3
+    },
+    {
+        "nome": "Requisiti ambientali del prodotto",
+        "ssd": "ICAR/13",
+        "id": 1195,
+        "cfu": 9
+    },
+    {
+        "nome": "Design II",
+        "ssd": "ICAR/13",
+        "id": 1210,
+        "cfu": 9
+    },
+    {
+        "nome": "Antropologia ed Ergonomia applicate al design",
+        "ssd": "M-DEA/01",
+        "id": 1225,
+        "cfu": 9
+    },
+    {
+        "nome": "Design per la comunicazione",
+        "ssd": "ICAR/13",
+        "id": 1240,
+        "cfu": 3
+    },
+    {
+        "nome": "Sistemi di produzione in campo grafico",
+        "ssd": "ING-IND/16",
+        "id": 1255,
+        "cfu": 3
+    },
+    {
+        "nome": "Teoria dei linguaggi",
+        "ssd": "M-FIL/05",
+        "id": 1270,
+        "cfu": 3
+    },
+    {
+        "nome": "Design per la comunicazione II",
+        "ssd": "ICAR/13",
+        "id": 1285,
+        "cfu": 3
+    },
+    {
+        "nome": "Ipermedia e sviluppo web",
+        "ssd": "ING-INF/05",
+        "id": 1300,
+        "cfu": 6
+    },
+    {
+        "nome": "UX Design _ Social Media e comunicazione",
+        "ssd": "SPS/08",
+        "id": 1315,
+        "cfu": 9
+    },
+    {
+        "nome": "Interior Design per i luoghi del cibo",
+        "ssd": "ICAR/16",
+        "id": 1330,
+        "cfu": 3
+    },
+    {
+        "nome": "Luce, suono, clima per i luoghi del cibo",
+        "ssd": "ING-IND/11",
+        "id": 1345,
+        "cfu": 12
+    },
+    {
+        "nome": "Art Direction",
+        "ssd": "ICAR/13",
+        "id": 1360,
+        "cfu": 6
+    }
+]

@@ -1,0 +1,7 @@
+scarta se:
+- c'è la parola 'crediti'
+- non c'è l'ssd
+quando non scarti:
+- prendi il primo ssd
+- il nome della materia è compreso tra 
+  le parentesi dell'ultimo ssd e un numero

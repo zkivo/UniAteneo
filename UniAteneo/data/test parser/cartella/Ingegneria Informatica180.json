@@ -1,0 +1,144 @@
+[
+    {
+        "id": 17620,
+        "ssd": "MAT/05",
+        "nome": "Analisi matematica I",
+        "cfu": 6
+    },
+    {
+        "id": 17645,
+        "ssd": "CHIM/07",
+        "nome": "Chimica",
+        "cfu": 6
+    },
+    {
+        "id": 17670,
+        "ssd": "ING-INF/05",
+        "nome": "Informatica",
+        "cfu": 3
+    },
+    {
+        "id": 17695,
+        "ssd": "L-LIN/12",
+        "nome": "Lingua inglese I livello",
+        "cfu": 6
+    },
+    {
+        "id": 17720,
+        "ssd": "MAT/03",
+        "nome": "Algebra lineare e geometria",
+        "cfu": 6
+    },
+    {
+        "id": 17745,
+        "ssd": "FIS/01",
+        "nome": "Fisica I",
+        "cfu": 3
+    },
+    {
+        "id": 17770,
+        "ssd": "ING-INF/05",
+        "nome": "Tecniche di programmazione",
+        "cfu": 12
+    },
+    {
+        "id": 17795,
+        "ssd": "ING-INF/05",
+        "nome": "Algoritmi e strutture dati",
+        "cfu": 9
+    },
+    {
+        "id": 17820,
+        "ssd": "MAT/05",
+        "nome": "Analisi matematica II",
+        "cfu": 6
+    },
+    {
+        "id": 17845,
+        "ssd": "ING-IND/31",
+        "nome": "Elettromagnetismo e Teoria dei circuiti",
+        "cfu": 9
+    },
+    {
+        "id": 17870,
+        "ssd": "ING-INF/05",
+        "nome": "Calcolatori elettronici",
+        "cfu": 9
+    },
+    {
+        "id": 17895,
+        "ssd": "ING-INF/05",
+        "nome": "Computer architecture",
+        "cfu": 6
+    },
+    {
+        "id": 17920,
+        "ssd": "ING-INF/05",
+        "nome": "Basi di dati",
+        "cfu": 3
+    },
+    {
+        "id": 17945,
+        "ssd": "ING-INF/05",
+        "nome": "Introduction to databases",
+        "cfu": 9
+    },
+    {
+        "id": 17970,
+        "ssd": "MAT/06",
+        "nome": "Metodi matematici per l'ingegneria",
+        "cfu": 6
+    },
+    {
+        "id": 17995,
+        "ssd": "ING-INF/05",
+        "nome": "Operating systems",
+        "cfu": 12
+    },
+    {
+        "id": 18020,
+        "ssd": "ING-INF/05",
+        "nome": "Sistemi operativi",
+        "cfu": 9
+    },
+    {
+        "id": 18045,
+        "ssd": "ING-INF/01",
+        "nome": "Electronic systems, technologies and measurements",
+        "cfu": 12
+    },
+    {
+        "id": 18070,
+        "ssd": "ING-INF/01",
+        "nome": "Sistemi elettronici, tecnologie e misure",
+        "cfu": 3
+    },
+    {
+        "id": 18095,
+        "ssd": "ING-INF/05",
+        "nome": "Computer networks",
+        "cfu": 6
+    },
+    {
+        "id": 18120,
+        "ssd": "ING-INF/03",
+        "nome": "Reti di calcolatori",
+        "cfu": 12
+    },
+    {
+        "id": 17545,
+        "ssd": "ING-INF/05",
+        "nome": "Responsible Artificial Intelligence",
+        "cfu": 3
+    },
+    {
+        "id": 31020,
+        "nome": "Tirocinio",
+        "cfu": 6
+    },
+    {
+        "id": 31045,
+        "nome": "Prova finale",
+        "cfu": 12
+    }
+]

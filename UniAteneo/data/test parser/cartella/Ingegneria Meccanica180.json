@@ -1,0 +1,156 @@
+[
+    {
+        "id": 19995,
+        "ssd": "MAT/05",
+        "nome": "Analisi matematica I",
+        "cfu": 3
+    },
+    {
+        "id": 20020,
+        "ssd": "CHIM/07",
+        "nome": "Chimica",
+        "cfu": 3
+    },
+    {
+        "id": 20045,
+        "ssd": "ING-INF/05",
+        "nome": "Informatica",
+        "cfu": 3
+    },
+    {
+        "id": 20070,
+        "ssd": "L-LIN/12",
+        "nome": "Lingua inglese I livello",
+        "cfu": 9
+    },
+    {
+        "id": 20095,
+        "ssd": "MAT/03",
+        "nome": "Algebra lineare e geometria",
+        "cfu": 9
+    },
+    {
+        "id": 20120,
+        "ssd": "ING-IND/15",
+        "nome": "Disegno tecnico industriale",
+        "cfu": 3
+    },
+    {
+        "id": 20145,
+        "ssd": "FIS/01",
+        "nome": "Fisica I",
+        "cfu": 6
+    },
+    {
+        "id": 20170,
+        "ssd": "MAT/05",
+        "nome": "Analisi matematica II",
+        "cfu": 6
+    },
+    {
+        "id": 20195,
+        "ssd": "FIS/03",
+        "nome": "Fisica II",
+        "cfu": 9
+    },
+    {
+        "id": 20220,
+        "ssd": "ING-IND/14",
+        "nome": "Fondamenti di meccanica strutturale",
+        "cfu": 6
+    },
+    {
+        "id": 20245,
+        "ssd": "ING-IND/21",
+        "nome": "Scienza e tecnologia dei materiali/Tecnologia dei materiali metallici",
+        "cfu": 12
+    },
+    {
+        "id": 20270,
+        "ssd": "ING-IND/13",
+        "nome": "Meccanica applicata alle macchine",
+        "cfu": 9
+    },
+    {
+        "id": 20295,
+        "ssd": "ING-IND/16",
+        "nome": "Statistica sperimentale e misure meccaniche",
+        "cfu": 3
+    },
+    {
+        "id": 20320,
+        "ssd": "ING-IND/10",
+        "nome": "Termodinamica applicata e trasmissione del calore",
+        "cfu": 12
+    },
+    {
+        "id": 20345,
+        "ssd": "ING-IND/14",
+        "nome": "Elementi di costruzione di macchine",
+        "cfu": 3
+    },
+    {
+        "id": 20370,
+        "ssd": "ING-IND/32",
+        "nome": "Elettrotecnica/Macchine elettriche",
+        "cfu": 6
+    },
+    {
+        "id": 20395,
+        "ssd": "ICAR/01",
+        "nome": "Meccanica dei fluidi",
+        "cfu": 6
+    },
+    {
+        "id": 20420,
+        "ssd": "ING-IND/08",
+        "nome": "Fondamenti di macchine e di oleodinamica",
+        "cfu": 9
+    },
+    {
+        "id": 20445,
+        "ssd": "ING-IND/17",
+        "nome": "Impianti industriali e sicurezza sul lavoro",
+        "cfu": 9
+    },
+    {
+        "id": 20470,
+        "ssd": "ING-IND/16",
+        "nome": "Tecnologia meccanica",
+        "cfu": 3
+    },
+    {
+        "id": 20495,
+        "ssd": "ING-INF/05",
+        "nome": "Algoritmi e democrazia (Grandi Sfide - Digitale)",
+        "cfu": 12
+    },
+    {
+        "id": 20520,
+        "ssd": "ING-INF/06",
+        "nome": "Assistenza sanitaria e intelligenza artificiale (Grandi Sfide - Salute)",
+        "cfu": 12
+    },
+    {
+        "id": 27170,
+        "ssd": "ING-INF/05",
+        "nome": "Distributed systems programming",
+        "cfu": 3
+    },
+    {
+        "id": 7845,
+        "ssd": "ICAR/17",
+        "nome": "Realt� virtuale e fragilit� (Grandi Sfide - Salute)",
+        "cfu": 3
+    },
+    {
+        "id": 31070,
+        "nome": "Tirocinio",
+        "cfu": 6
+    },
+    {
+        "id": 31095,
+        "nome": "Prova finale",
+        "cfu": 9
+    }
+]

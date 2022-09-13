@@ -1,0 +1,3954 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="it"><input type="hidden" id="__yoroi_connector_api_injected_type" value="prod"><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+<title>Portale della Didattica</title>
+<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="theme-color" content="#FF7C11">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#FF7C11">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <link rel="stylesheet" type="text/css" href="Ingegneria%20Edile%20-%20lm_files/css.css">
+    
+
+      <!-- Bootstrap core CSS -->
+      <link href="Ingegneria%20Edile%20-%20lm_files/bootstrap.min.css" rel="stylesheet">
+
+      <link href="Ingegneria%20Edile%20-%20lm_files/font-awesome.min.css" rel="stylesheet">
+
+      
+      <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+      <link href="Ingegneria%20Edile%20-%20lm_files/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+      <script async="" src="Ingegneria%20Edile%20-%20lm_files/google-analytics_analytics.js"></script><script src="Ingegneria%20Edile%20-%20lm_files/jquery-1.11.3.min.js"></script>
+
+      <!-- Bootstrap core JavaScript
+      ================================================== -->
+      <!-- Placed at the end of the document so the pages load faster -->
+      <script src="Ingegneria%20Edile%20-%20lm_files/bootstrap.min.js"></script>
+      <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+      <script src="Ingegneria%20Edile%20-%20lm_files/ie10-viewport-bug-workaround.js"></script>
+
+      <script type="text/javascript">
+          var btooltip = $.fn.tooltip.noConflict();
+          $.fn.btooltip = btooltip;
+
+          $(document).ready(function(){
+            $("#logoPoli").click(function(event) {
+              window.location = "http://www.polito.it/";    
+            });
+            $("#titoloPagina").click(function(event) {
+              window.location = "https://didattica.polito.it/";    
+            });
+          });
+
+      </script>
+      
+    
+
+    <script src="Ingegneria%20Edile%20-%20lm_files/bootstrap-confirmation.min.js"></script>     
+    <script src="Ingegneria%20Edile%20-%20lm_files/alertify.min.js"></script>
+    <link rel="stylesheet" href="Ingegneria%20Edile%20-%20lm_files/alertify.core.css">
+    <link rel="stylesheet" href="Ingegneria%20Edile%20-%20lm_files/alertify.default.css">
+<!--     <link rel="stylesheet" href="/jscript/alertify/themes/alertify.bootstrap.css" /> -->
+
+
+
+      <script src="Ingegneria%20Edile%20-%20lm_files/jquery.blockUI.js" type="text/javascript"></script>
+
+      
+<script src="Ingegneria%20Edile%20-%20lm_files/jquery-ui.js"></script>
+<script type="text/javascript" src="Ingegneria%20Edile%20-%20lm_files/bootstrap-datepicker.min.js"></script>
+           <script type="text/javascript" src="Ingegneria%20Edile%20-%20lm_files/bootstrap-datepicker.it.min.js"></script>
+<script type="text/javascript" src="Ingegneria%20Edile%20-%20lm_files/bootstrap-datetimepicker.js"></script>
+
+      <!-- smoothness -->
+      <link rel="stylesheet" href="Ingegneria%20Edile%20-%20lm_files/jquery-ui.css">
+      <link rel="stylesheet" href="Ingegneria%20Edile%20-%20lm_files/jquery-ui.structure.css">
+      <link rel="stylesheet" href="Ingegneria%20Edile%20-%20lm_files/jquery-ui.theme.css">
+<link rel="stylesheet" type="text/css" href="Ingegneria%20Edile%20-%20lm_files/bootstrap-datepicker3.min.css">
+<link rel="stylesheet" href="Ingegneria%20Edile%20-%20lm_files/bootstrap-datetimepicker.css">
+
+      <style>
+          span.blink_span{
+            animation: blink 1s linear infinite;
+          }
+          @keyframes blink{
+            0%{opacity: 0;}
+            50%{opacity: .5;}
+            100%{opacity: 1;}
+          }
+      </style>
+
+      <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+      <!--[if lt IE 9]>
+        <script src="https://didattica.polito.it/jquery/bootstrap-3.3.6/js/html5shiv.min.js"></script>
+        <script src="https://didattica.polito.it/jquery/bootstrap-3.3.6/js/respond.min.js"></script>
+      <![endif]-->
+<script type="text/javascript" src="Ingegneria%20Edile%20-%20lm_files/datatables.min.js"></script>
+<script type="text/javascript" src="Ingegneria%20Edile%20-%20lm_files/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="Ingegneria%20Edile%20-%20lm_files/dataTables.responsive.min.js"></script>
+<script type="text/javascript" src="Ingegneria%20Edile%20-%20lm_files/moment.min.js"></script>
+<script type="text/javascript" src="Ingegneria%20Edile%20-%20lm_files/datetime-moment.js"></script>
+<script type="text/javascript" language="javascript" src="Ingegneria%20Edile%20-%20lm_files/dataTables.scroller.min.js"></script>
+<script type="text/javascript" language="javascript" src="Ingegneria%20Edile%20-%20lm_files/dataTables.fixedColumns.min.js"></script>
+<script src="Ingegneria%20Edile%20-%20lm_files/replace_anchor_links.min.js"></script>
+<link rel="stylesheet" type="text/css" href="Ingegneria%20Edile%20-%20lm_files/dataTables.bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="Ingegneria%20Edile%20-%20lm_files/responsive.bootstrap.min.css">
+<link href="https://didattica.polito.it/favicon.ico" rel="shortcut icon">
+           <link href="Ingegneria%20Edile%20-%20lm_files/didattica.css" rel="stylesheet" type="text/css">
+           <link href="Ingegneria%20Edile%20-%20lm_files/global.css" rel="stylesheet" type="text/css">
+           <link href="Ingegneria%20Edile%20-%20lm_files/header_fluid.css" rel="stylesheet" type="text/css">
+           <link href="Ingegneria%20Edile%20-%20lm_files/cookiebar.min.css" rel="stylesheet" type="text/css">
+           <link href="Ingegneria%20Edile%20-%20lm_files/flags.min.css" rel="stylesheet" type="text/css">
+
+    <link href="Ingegneria%20Edile%20-%20lm_files/bootstrap-toggle.css" rel="stylesheet">
+    <script src="Ingegneria%20Edile%20-%20lm_files/bootstrap-toggle.js"></script>
+    
+</head>
+          <body>
+<!--
+                          header
+-->
+    <!-- barra del titolo -->
+    <div class="c_titleBar">
+      <div class="clearfix" style="height: 100%;padding-left:10px;padding-right:10px;"><!--tolta class gridContainer -->
+        <div class="c_relative">
+          <div class="c_logoPoli2"></div>
+<div class="row">
+<div class="col-sm-12 col-xs-6 logo_header" style="padding-top:4px;"><a href="http://www.polito.it/"><img src="Ingegneria%20Edile%20-%20lm_files/logo_poli_bianco_260.png" class="img-responsive"></a></div>
+</div>
+<div class="c_titoliPagina">
+            <div id="titoloPagina" class="c_titoloPagina buttonMode">Piano degli studi e programmi dei corsi</div>
+<div id="sottotitoloPagina" class="c_sottotitoloPagina">PORTALE DELLA DIDATTICA</div>
+</div>
+        </div>
+      </div>
+    </div>
+    <div class="c_strisciaArancione"></div>
+    <!-- fine header -->
+<script>
+   $(document).ready(function() {
+
+
+     function changeLang(lang){
+          localStorage.NG_TRANSLATE_LANG_KEY = lang;
+          $.post("https://didattica.polito.it/pls/portal30/sviluppo.set_language", {p_lang: lang},
+          function(data, status){
+         location.reload();
+
+          });
+      };
+
+       $('.langIT').click(function() {
+         changeLang('it')
+
+      });
+       $('.langEN').click(function() {
+         changeLang('en');
+         });
+   });
+ </script>
+
+           <li class="dropdown" style="list-style-type: none; background-color: transparent; float: right; margin-right: 60px;"><div class="row">
+             <button class="btn btn-default dropdown-toggle" style="box-shadow: 0 0px 0px 0 !important; border: 0px; background-color: #FAFAFA!important;" type="button" data-toggle="dropdown"><b>
+          
+<img src="Ingegneria%20Edile%20-%20lm_files/it.jpg" height="12"><span class="hidden-xs" style="font-size: 13px;"></span>
+</b>
+    <span class="caret"></span></button>
+    <ul style="min-width: 110px; padding: 5px 0px 0px; margin: 2px 0 0; " class="dropdown-menu " role="menu" aria-labelledby="language">
+      <li role="presentation"><a role="menuitem" tabindex="-1" class="langIT" style="cursor: pointer;"><img src="Ingegneria%20Edile%20-%20lm_files/it.jpg" height="12"> Italiano</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" class="langEN" style="cursor: pointer;"><img src="Ingegneria%20Edile%20-%20lm_files/en.jpg" height="12"> English</a></li>
+    </ul></div></li>
+<script src="Ingegneria%20Edile%20-%20lm_files/jquery-ui.js"></script>
+<link rel="stylesheet" type="text/css" href="Ingegneria%20Edile%20-%20lm_files/dataTables.bootstrap.min.css">
+<script src="Ingegneria%20Edile%20-%20lm_files/dataTables.bootstrap.min.js"></script>
+
+<script type="text/javascript" src="Ingegneria%20Edile%20-%20lm_files/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src="Ingegneria%20Edile%20-%20lm_files/bootstrap-datepicker.it.min.js"></script>
+
+
+<link rel="stylesheet" href="Ingegneria%20Edile%20-%20lm_files/bootstrap-select.css">
+<script src="Ingegneria%20Edile%20-%20lm_files/bootstrap-select.js"></script>
+
+
+<script>
+function validatePage(selector)
+{
+ if ( selector == undefined ) selector=".required";
+ $(".validatePage").remove();
+ var errMsg = '<div class="alert alert-warning alert-dismissible fade in validatePage"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Attenzione!</strong> Compilare il campo obbligatorio.</div>';
+  var errCount = 0;
+  $(selector).each(function(){
+       if ( $(this).val() == "" && this.nodeName != "DIV") 
+       {
+         $(this).after(errMsg); 
+         errCount++;
+       }
+  })
+  if  ( errCount > 0) return false
+          
+  return true;
+}
+
+function printRes(res, selector, textOk, textKo)
+{
+  var resKo = " Errore durante il salvataggio";
+  var resOk = " Salvataggio completato con successo";  
+  if (textOk != undefined) resOk = textOk;
+  if (textKo != undefined) resKo = textKo;  
+  
+
+  if ( selector == undefined ) selector=".res";
+  $(".actionRes").remove();
+  if (res == 0) 
+    var errMsg = '<div class="alert alert-warning alert-dismissible fade in validatePage"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Attenzione!</strong>'+resKo+'</div>';  
+  else
+    var errMsg = '<div class="alert alert-success alert-dismissible fade in validatePage"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Attenzione!</strong> '+resOk+'</div>';  
+
+  $(selector).append(errMsg);   
+}
+
+// compara due date in formato dd/mm/yyyy
+function compareDates(d1, d2){
+  var parts =d1.split('/');
+  var d1 = Number(parts[2] + parts[1] + parts[0]);
+  parts = d2.split('/');
+  var d2 = Number(parts[2] + parts[1] + parts[0]);
+  return d1 >= d2;
+}
+
+// incrementa una data dd/mm/yyyy di N giorni, restituisce la nuova data in formato dd/mm/yyyy
+function incrementDate(d1,days)
+{
+  var parts =d1.split('/');
+  date = new Date(parts[2], parts[1]-1, parts[0]);
+  date.setDate(date.getDate()+days);
+//  console.log(date);
+  function pad(s) { return (s < 10) ? '0' + s : s; }
+  return [pad(date.getDate()), pad(date.getMonth()+1), date.getFullYear()].join('/');
+
+}
+
+ function setDateAttributes()
+ {
+  $(".datepicker").each(function( index ) {
+       // startDate: data-start-date
+       // valore o selector?: data-start-date-value
+       var valMod = $(this).attr("data-start-date-value");
+       var val;
+       if ( valMod == "value") 
+         val = $(this).attr("data-start-date");
+       else
+       { var temp = $(this).attr("data-start-date");
+         val = $(temp).val();
+       }
+       if (val != undefined && ID == undefined)  $(this).datepicker("setStartDate",val);
+  });
+  }
+
+function printWarning(selector, msg)
+{
+ $(selector).empty();
+ var errMsg = '<div class="alert alert-warning alert-dismissible fade in validatePage"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Attenzione!</strong>'+msg+'</div>';
+ $(selector).append(errMsg);  
+}  
+
+ function base64ToBlob(base64, mime) 
+  {
+      mime = mime || '';
+      var sliceSize = 1024;
+      var byteChars = window.atob(base64);
+      var byteArrays = [];
+
+      for (var offset = 0, len = byteChars.length; offset < len; offset += sliceSize) {
+          var slice = byteChars.slice(offset, offset + sliceSize);
+
+          var byteNumbers = new Array(slice.length);
+          for (var i = 0; i < slice.length; i++) {
+              byteNumbers[i] = slice.charCodeAt(i);
+          }
+
+          var byteArray = new Uint8Array(byteNumbers);
+
+          byteArrays.push(byteArray);
+      }
+
+      return new Blob(byteArrays, {type: mime});
+  }
+
+
+
+</script>
+
+<style>
+
+/* CSS used here will be applied after bootstrap.css */
+/*
+ * Slidebar (add to your bootstrap)
+ */
+
+
+
+body{
+  overflow-x: hidden;
+  background-color: #dddddd;
+
+}
+
+.slidebar-form {
+  padding: 7px 15px 13px 15px;
+}
+.slidebar-nav {
+  left: 250px;
+  list-style: none;
+  min-height: 300px;
+  margin: 0;
+  margin-left: -250px;  
+  overflow-y: auto;
+  padding: 0;
+  position: absolute;
+  top: 224px;
+  width: 0;
+  z-index: 1000;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+} 
+
+#wrapper.toggled .slidebar-nav {
+    width: 250px;
+}
+
+
+.slidebar-nav .navbar-collapse {
+  padding: 0;
+  max-height: none;
+}
+.slidebar-nav ul {
+  float: none;
+  width: 100%;
+}
+.slidebar-nav ul:not {
+  display: block;
+}
+.slidebar-nav li {
+  float: none;
+  display: block;
+}
+.slidebar-nav li a {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+.slidebar-nav .open .dropdown-menu {
+  position: static;
+  float: none;
+  width: auto;
+  margin: 0;
+  padding: 5px 0;
+  background-color: transparent;
+  border: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.slidebar-nav .open .dropdown-menu > li > a {
+  padding: 5px 15px 5px 25px;
+}
+.slidebar-nav .navbar-brand {
+  width: 100%;
+}
+.slidebar-nav .open > a > b.caret {
+  border-top: none;
+  border-bottom: 4px solid;
+}
+.slidebar-nav .navbar-nav {
+  margin: 0;
+}
+
+#wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+#wrapper.toggled {
+    padding-left: 250px;
+}
+#page-wrapper6 {
+    width: 100%;
+    position: relative;
+    top: 0px;
+}
+#wrapper.toggled #page-wrapper6 {
+    position: relative;
+    margin-right: -250px;
+}
+@media(min-width:768px) 
+{
+    #wrapper {
+        padding-left: 250px;
+    }
+    #wrapper.toggled {
+        padding-left: 0;
+    }
+    #page-wrapper6 {
+        position: relative;
+    }
+    #wrapper.toggled #page-wrapper6 {
+        position: relative;
+        margin-right: 0;
+    }
+  .slidebar-nav {
+    width: 250px;;
+  }
+  #wrapper.toggled .slidebar-nav {
+    width: 0;
+    }
+}
+@media (max-width: 767px)
+{
+  .slidebar-nav {
+   width: 99%;
+  }
+  #wrapper.toggled .slidebar-nav {
+    width: 0;
+    
+  }
+  
+  #wrapper.toggled {
+        padding-left: 0;
+    }
+}
+
+  
+.slidebar-toggle {
+  position: relative;
+  float: left;
+  padding: 9px 10px;
+  margin-top: 8px;
+  margin-left: 15px;
+  margin-bottom: 8px;
+  background-color: transparent;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+.slidebar-toggle:focus {
+  outline: 0;
+}
+.slidebar-toggle .icon-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  border-radius: 1px;
+}
+.slidebar-toggle .icon-bar + .icon-bar {
+  margin-top: 4px;
+}
+.navbar-default .slidebar-toggle {
+  border-color: #ddd;
+}
+.navbar-default .slidebar-toggle:hover,
+.navbar-default .slidebar-toggle:focus {
+  background-color: #ddd;
+}
+.navbar-default .slidebar-toggle .icon-bar {
+  background-color: #888;
+}
+
+.navbar-fixed-top {
+position: relative !important;
+width: 50px !important;
+}
+.navbar-default .navbar-nav>li>a {
+
+background-color: #FAFAFA !important;
+}
+
+/*
+ * White navbar style
+ */
+
+#navbar-white.navbar-default { /* #efffff - #ffffff */
+    font-size: 14px;
+    background-color: #FAFAFA!important
+    border: 0px;
+  border-radius: 0;
+}
+#navbar-white.navbar-default .navbar-nav>li>a:hover,
+#navbar-white.navbar-default .navbar-nav>li>a:focus,
+#navbar-white.navbar-default .navbar-nav>li>ul>li>a:hover, 
+#navbar-white.navbar-default .navbar-nav>li>ul>li>a:focus, 
+#navbar-white.navbar-default .navbar-nav>.active>a,
+#navbar-white.navbar-default .navbar-nav>.active>a:hover,
+#navbar-white.navbar-default .navbar-nav>.active>a:focus {  
+  color: rgba(51, 51, 51, 1);
+    background-color: rgba(250, 250, 250, 1);
+}
+#sidebar-white, #column-white, #dashboard-white, #slidebar-white {
+  background-color: #efffff;
+}
+#navbar-white.navbar-default .navbar-toggle,
+#navbar-white.navbar-default .slidebar-toggle {
+    border-color: #ccffff;
+}
+#navbar-white.navbar-default .navbar-toggle:hover,
+#navbar-white.navbar-default .navbar-toggle:focus,
+#navbar-white.navbar-default .slidebar-toggle:hover,
+#navbar-white.navbar-default .slidebar-toggle:focus {
+    background-color: #ccffff;
+}
+#navbar-white.navbar-default .navbar-nav>li>a,
+#navbar-white.navbar-default .navbar-nav>li>ul>li>a, 
+#navbar-white.navbar-default .navbar-brand {
+    color: #999999; 
+}
+#navbar-white.navbar-default .navbar-toggle .icon-bar,
+#navbar-white.navbar-default .navbar-toggle:hover .icon-bar,
+#navbar-white.navbar-default .navbar-toggle:focus .icon-bar,
+#navbar-white.navbar-default .slidebar-toggle .icon-bar,
+#navbar-white.navbar-default .slidebar-toggle:hover .icon-bar,
+#navbar-white.navbar-default .slidebar-toggle:focus .icon-bar {
+    background-color: #CCC;
+}
+
+#loaderPanel {
+z-index: 10000;
+position:absolute;
+height: 120%;
+background-color: #FFFFFF;
+
+}
+
+@media only screen and (min-width: 769px) {
+  .back-to-top {
+      cursor: pointer;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display:none;
+  }
+}
+@media only screen and (max-width: 769px) {
+  .back-to-top {
+      cursor: pointer;
+      position: fixed;
+      bottom: 20px;
+      right: 380px;
+      display:none;
+    }
+}
+
+.collapse.in {
+      height: auto !important;
+}
+
+
+.accordion-heading {
+
+    color: #0084C;
+    background-color: #f5f5f5;
+    padding: 0px 15px 0px 15px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    font-weight: bold;
+}
+
+
+.accordion-inner {
+ margin-top: 10px;                                  
+}
+
+
+
+.table {
+   font-size:12px !important;
+}
+
+.grassetto {
+font-weight: bold;
+}
+
+.centrato {
+text-align: center;
+}
+
+.glyphicon {
+    font-size: 14px;
+}
+
+.gi-standard {
+  font-size: 12px;
+}
+
+.hr-compact {
+margin-top: 0px !important;
+margin-bottom: 0px !important;
+}
+
+.alert {
+margin-bottom: 5px !important; 
+}
+
+td span{
+padding-left: 5px;
+padding-right: 5px;
+}
+td span.polinota{
+padding-left: 0px;
+padding-right: 0px;
+}
+
+.links {
+ display: block;
+}
+
+.links:before {
+    /*Using a Bootstrap glyphicon as the bullet point*/
+    content: "\e080";
+    font-family: 'Glyphicons Halflings';
+    font-size: 9px;
+    float: left;
+    margin-top: 4px;
+    margin-left: -17px;
+    color: #CCCCCC;
+}
+
+</style>
+
+
+<!-- Modal -->
+<div class="modal fade" id="noData" tabindex="-1" role="dialog" aria-labelledby="loadMeLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-body text-center">
+         <div class="bg-danger" style="padding:20px;margin-top:40px;text-align:center;margin-bottom:60px;">
+            <p><span class="glyphicon glyphicon-remove-circle danger" style="font-size:40px;" aria-hidden="true"></span></p>
+            <p style="font-weight:bold;">Nessun Orientamento disponibile per il corso e l'anno selezionato</p>
+         </div>
+       <button type="button" class="btn btn-default " data-dismiss="modal">Chiudi</button>       
+      </div>
+    </div>
+  </div>
+</div>
+
+   <div class="col-xs-12 loader-center-container asyncLoader" id="loaderPanel" style="display: none;">
+        <div class="col-xs-12 loader-centered" style="text-align:center;"><img src="Ingegneria%20Edile%20-%20lm_files/loaderCircleBlu.gif" style="height:100px" alt="loading"><br>Caricamento in corso...</div>
+   </div>
+   
+   <div class="col-sm-12">
+       <div class="col-lg-1 col-md-2 col-sm-6">
+        <button style="width: 150px;" href="#menu-toggle" class="slidebar-toggle RegionBorderMao" id="menu-toggle" alt="Mostra/Nascondi legenda">
+       <span class="glyphicon glyphicon-chevron-right"></span><span class="legendaCaption"> Legenda</span>
+      </button>
+       </div>
+      <div class="col-lg-1 col-md-2 col-sm-6">
+       <button style="width: 150px;" href="#filtri-toggle" class="slidebar-toggle RegionBorderMao" id="filtri-toggle" alt="Mostra/Nascondi legenda">
+       <span class="glyphicon glyphicon-chevron-right"></span><span class="filtriCaption"> Filtri</span>
+      </button>
+      </div>
+      
+
+   </div>
+
+   <div class="clearfix"></div>
+
+  
+
+  <div id="wrapper" class="toggled">    
+      <!-- Panello Intestazione-->
+      <div id="intestazione">
+  <div class="col-sm-12" id="filterPanel" style="display:none">
+   <div class="RegionBorderMao" style="overflow:hidden; height:1%;">
+<br>
+<div class="col-sm-2">
+Anno Accademico di immatricolazione (coorte)
+</div>
+<div class="col-sm-4">
+<select class="form-control" name="p_a_acc" id="p_a_acc">
+<option value="2019">2018/19</option>
+<option value="2020">2019/20</option>
+<option value="2021">2020/21</option>
+<option value="2022">2021/22</option>
+<option value="2023" selected="selected">2022/23</option>
+
+</select>
+</div>
+<div class="col-sm-2">Tipo di laurea</div>
+<div class="col-sm-4">
+<!-- la combo dell'area non la butto via, non si sa mai-->
+<!-- se da rimettere, va ristudiata e messa in join per prendere solo le aree che hanno un cds all'interno-->
+<select class="form-control" name="p_area" id="p_area" style="display:none">
+
+<option value="11">Territorial Sciences</option>
+<option value="12" selected="selected">Building, Environment and Territory</option>
+<option value="13">Management</option>
+<option value="14">Applied Mathematics</option>
+<option value="1">Architecture</option>
+<option value="2">Design</option>
+<option value="3">Construction and the Environment</option>
+<option value="4">Management and Mathematics</option>
+<option value="5">Chemistry &nbsp;and Materials Engineering</option>
+<option value="6">Energy Engineering</option>
+<option value="7">Mechanical and Aerospace Engineering</option>
+<option value="8">ICT</option>
+<option value="9">Biomedical Engineering</option>
+<option value="10">Architecture and Planning</option>
+
+</select>
+<select class="form-control" name="p_tipo" id="p_tipo">
+<option value="1">Corso di laurea di 1°livello</option>
+<option value="Z" selected="selected">Corso di laurea magistrale</option>
+<option value="R">Dottorato di ricerca</option>
+<option value="M">Master di I livello</option>
+<option value="N">Master di II livello</option>
+</select>
+
+</div>
+
+
+<div class="clearfix"></div>
+<div class="col-sm-2">Corso di studi</div>
+<div class="col-sm-4">
+<select class="form-control" name="p_corso_studi" id="p_corso_studi">
+<optgroup label="Design">
+<option value="81_4">Design Sistemico</option>
+</optgroup>
+<optgroup label="Costruttori e ambiente">
+<option value="32_10">Petroleum And Mining Engineering (Ingegneria Del Petrolio E Mineraria)</option>
+</optgroup>
+<optgroup label="Chimica Materiali">
+<option value="32_29">Ingegneria Chimica E Dei Processi Sostenibili</option>
+<option value="32_32">Ingegneria Dei Materiali</option>
+<option value="32_932">Ingegneria Dei Materiali Per L'Industria 4.0</option>
+</optgroup>
+<optgroup label="Energia">
+<option value="32_35">Ingegneria Elettrica</option>
+<option value="32_36">Ingegneria Energetica E Nucleare</option>
+</optgroup>
+<optgroup label="Meccanica Aerospaziale">
+<option value="32_2">Automotive Engineering (Ingegneria Dell'Autoveicolo)</option>
+<option value="32_26">Ingegneria Aerospaziale</option>
+<option value="32_37">Ingegneria Meccanica</option>
+<option value="32_53">Ingegneria Meccanica (Mechanical Engineering)</option>
+</optgroup>
+<optgroup label="ICT">
+<option value="37_30">Communications And Computer Networks Engineering (Ingegneria Telematica E Delle Comunicazioni)</option>
+<option value="37_930">Communications Engineering</option>
+<option value="37_320">Data Science And Engineering</option>
+<option value="37_20">Ict For Smart Societies (Ict Per La Societa' Del Futuro)</option>
+<option value="37_22">Ingegneria Del Cinema E Dei Mezzi Di Comunicazione</option>
+<option value="37_13">Ingegneria Elettronica (Electronic Engineering)</option>
+<option value="37_18">Ingegneria Informatica (Computer Engineering)</option>
+<option value="37_55">Mechatronic Engineering (Ingegneria Meccatronica)</option>
+<option value="37_23">Nanotechnologies For Icts (Nanotecnologie Per Le Ict) - TORINO/GRENOBLE/LOSANNA</option>
+<option value="37_24">Physics Of Complex Systems (Fisica Dei Sistemi Complessi) - TORINO/TRIESTE/PARIGI</option>
+</optgroup>
+<optgroup label="Biomedica">
+<option value="32_28">Ingegneria Biomedica</option>
+</optgroup>
+<optgroup label="Architettura e Pianificazione">
+<option value="81_5">Architettura Costruzione Citta'</option>
+<option value="82_4">Architettura Per Il Patrimonio</option>
+<option value="82_6">Architettura Per La Sostenibilita'</option>
+<option value="82_9">Pianificazione Territoriale, Urbanistica E Paesaggistico-Ambientale</option>
+<option value="82_8">Progettazione Delle Aree Verdi E Del Paesaggio - TORINO/GENOVA/MILANO</option>
+</optgroup>
+<optgroup label="Scienze territoriali">
+<option value="81_83">Digital Skills For Sustainable Societal Transitions</option>
+<option value="82_73">Economia Dell'Ambiente, Della Cultura E Del Territorio</option>
+<option value="81_81">Geografia E Scienze Territoriali</option>
+</optgroup>
+<optgroup label="Costruzioni, Ambiente e Territorio">
+<option value="32_283">Georesources And Geoenergy Engineering</option>
+<option value="32_30">Ingegneria Civile</option>
+<option value="32_34" selected="selected">Ingegneria Edile</option>
+<option value="32_38">Ingegneria Per L'Ambiente E Il Territorio</option>
+</optgroup>
+<optgroup label="Gestionale">
+<option value="32_27">Ingegneria Della Produzione Industriale E Dell'Innovazione Tecnologica</option>
+<option value="38_1">Ingegneria Gestionale</option>
+<option value="38_10">Ingegneria Gestionale (Engineering And Management)</option>
+</optgroup>
+<optgroup label="Matematica applicata">
+<option value="32_39">Ingegneria Matematica</option>
+</optgroup></select>
+</div>
+
+<div class="col-sm-2">Orientamento</div>
+<div class="col-sm-4">
+<select class="form-control" name="p_orientamento" id="p_orientamento">
+<script>
+         console.log(" 323412915")</script>
+<option value="12915" selected="selected">Resilienza del costruito</option>
+<script>
+         console.log(" 323412918")</script>
+<option value="12918">Green Building</option>
+</select>
+</div>
+
+<div class="col-sm-12" style="text-align:right">
+<button class="btn btn-primary" id="refreshBtn"><span class=" glyphicon glyphicon-filter"></span>Aggiorna</button>
+</div>
+
+</div>
+</div>
+ <div class="col-sm-12">
+   <div class="RegionBorderMao">
+
+
+    
+  <div class="clearfix"></div>     
+  <div class="col-xs-12" align="center">
+    <h1>Corso  di Laurea Magistrale in Ingegneria  edile (Torino)</h1> <!-- intestazione -->
+<span class="polinota">
+<a href="http://www.diseg.polito.it/index.php">Dipartimento di Ingegneria Strutturale, Edile e Geotecnica</a>
+ - <a href="https://didattica.polito.it/pls/portal30/sviluppo.scheda_collegio.html?c=CL013" "="">Collegio di Ingegneria Edile</a>
+<h3>Visualizzazione per coorte 2022/2023</h3>
+  
+  
+  </span></div> 
+  
+  
+
+     <div class="clearfix"></div>
+      <hr>
+      <div class="col-md-6">
+
+
+    <ul>
+    <li class="links"><a target="_blank" href="https://didattica.polito.it/pls/portal30/sviluppo.offerta_formativa.corsi?p_sdu_cds=32:34&amp;p_lang=&amp;p_a_acc=2023">Scheda istituzionale</a></li>
+    <li class="links"><a target="_blank" href="https://didattica.polito.it/pls/portal30/sviluppo.vis_aiq_2013.visualizza?sducds=3234&amp;tab=0&amp;p_a_acc=2023">SUA-CdS</a></li>
+    <li class="links"><a target="_blank" href="https://didattica.polito.it/guida/2023/it/homepage?cds=34&amp;sdu=32">Guida dello studente</a></li>
+    </ul>
+</div>  
+    <div class="col-md-6" style="text-align: center;">
+        <table class="table borderless">
+        <tbody><tr>
+        <td><span class="text-primary">LINGUA DEL CORSO</span></td>
+        </tr>
+    
+
+                  <tr>
+                  <td>
+                  <img src="Ingegneria%20Edile%20-%20lm_files/en.png" title=" Lingua inglese" width="15">  Lingua inglese
+                  </td>
+                  </tr>
+<tr>
+                <td>
+<img src="Ingegneria%20Edile%20-%20lm_files/it.png" title="Corso parzialmente erogato  Lingua italiana" width="15">
+<img src="Ingegneria%20Edile%20-%20lm_files/en.png" title="Corso parzialmente erogato  Lingua inglese" width="15">
+ Multilingua</td>
+                </tr>
+
+   </tbody></table>
+   </div><div class="clearfix"></div>
+   <hr>
+   <div class="row" style="text-align:center;">
+</div>
+   <div class="col-md-6">
+<span class="polinota">Nella <b>visualizzazione per anno accademico</b> 
+vengono mostrati gli insegnamenti previsti per il dato anno accademico
+(esempio gli insegnamenti del 2 anno dell'anno 2019/2020 sono quelli 
+previsti per gli studenti immatricolati nell'anno accademico 2018/2019)</span><p>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.offerta_formativa_2019.vis?p_a_acc=2023&amp;p_sdu=32&amp;p_cds=34" class="btn btn-default btn-xs col-xs-12"><span class="glyphicon glyphicon-share-alt"></span>  Visualizza l'offerta dell'anno accademico</a>
+</p></div>
+     <div class="col-md-6">
+<span class="polinota">Nella <b>visualizzazione per coorte</b> vengono mostrati gli insegnamenti previsti
+        per gli immatricolati nell'anno accademico di riferimento <br>(ad. esempio al 2 anno della coorte  2022/2023
+         sono mostrati gli insegnamenti erogati nell'anno accademico  2023/2024)</span><p>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.offerta_formativa_2019.vis?p_coorte=2023&amp;p_sdu=32&amp;p_cds=34" class="btn btn-default active btn-xs col-xs-12" style="white-space: normal; "><span class="glyphicon glyphicon-share-alt"></span>  Visualizza l'offerta per l'anno accademico di immatricolazione (coorte)</a>
+</p></div>
+    <div class="clearfix"></div>
+    <hr>
+
+   <div class="clearfix"></div>
+<div class="col-md-12">
+</div>
+<div>
+</div>
+<br>
+<div class="clearfix"></div>
+
+      <div class="clearfix"></div>
+   </div>
+</div> 
+      
+      </div>
+  <div class="clearfix"></div>
+  <!-- Sidebar -->
+  <div id="slidebar-white" style="" class="slidebar-nav RegionBorderMao">
+      <nav id="navbar-white" class="navbar navbar-default" role="navigation">
+        <ul class="nav navbar-nav">
+        <li><a class="navbar-brand" href="#">Legenda</a></li>
+        
+
+        </ul>
+
+<div style=" width: 100%; background-color: white; padding-left: 5px;">
+  <table class="table table-condensed">
+  <tbody><tr>
+     <td class="grassetto centrato" colspan="2">Periodo</td>
+  </tr>
+  <tr>
+     <td>1</td><td>Primo periodo didattico</td>
+  </tr>
+   <tr>
+     <td>2</td><td>Secondo periodo didattico</td>
+  </tr>
+  <tr>
+     <td class="grassetto centrato" colspan="2">SSD</td>
+  </tr>
+  <tr>
+     <td colspan="2">Settore scientifico-disciplinare</td>
+  </tr>
+    <tr>
+     <td class="grassetto centrato" colspan="2">Coorte</td>
+  </tr>
+  <tr>
+     <td colspan="2">il termina indica l'anno accademico di iscrizione 
+(ad. esempio al 2 anno della coorte 2019/2020 sono mostrati gli 
+insegnamenti erogati nell'anno accademico 2020/2021). Questo riferimento
+ è importante perché le regole didattiche relative alle coorti possono 
+cambiare nel tempo e il singolo studente resta, invece, sottoposto per 
+tutta la sua carriera alle regole vigenti all'atto della sua 
+immatricolazione. </td>
+  </tr>
+
+  <tr>
+     <td class="grassetto centrato" colspan="2">Insegnamento</td>
+  </tr>
+  
+
+   <tr>
+    <td>(****)</td><td>Insegnamento disattivato nell'anno in corso</td>
+  </tr>
+<tr>
+     <td class="grassetto centrato" colspan="2">Lingua</td>
+  </tr>
+   <tr>
+     <td><img src="Ingegneria%20Edile%20-%20lm_files/it.png" width="15" border="0"></td><td>Insegnamento offerto in lingua italiana</td>
+  </tr>
+  <tr>
+     <td><img src="Ingegneria%20Edile%20-%20lm_files/en.png" width="15" border="0"></td><td>Insegnamento offerto in lingua inglese</td>
+  </tr>
+
+  <tr>
+     <td class="grassetto centrato" colspan="2">Note</td>
+  </tr>
+   <tr>
+     <td><span class="  glyphicon glyphicon-time"></span><sp< td=""></sp<></td><td>Orario delle lezioni</td>
+  </tr>
+   <tr>
+     <td><span class="  glyphicon glyphicon-list-alt"></span></td><td>Sono presenti annotazioni</td>
+  </tr>
+   <tr>
+     <td><span class="  glyphicon glyphicon-star"></span></td><td>Insegnamento consigliato dal Corso di Studi</td>
+  </tr>
+   <tr>
+     <td><span class="  glyphicon glyphicon-link"></span></td><td>Insegnamento presenta vincoli di precedenza, eslcusione o coesistenza</td>
+  </tr>
+    
+  <tr>
+    <td><span class=" glyphicon glyphicon-facetime-video" style="color: green"></span></td><td>La
+ videoregistrazione è stata effettuata in aa.aa. precedenti 
+(disponibilità immediata delle videolezioni) e l’esame può essere 
+sostenuto prima dell’effettiva erogazione dell’insegnamento</td>
+  </tr>
+    <tr>
+    <td><span class=" glyphicon glyphicon-facetime-video" style="color: red"></span></td><td>La
+ videoregistrazione è stata effettuata in aa.aa. precedenti 
+(disponibilità immediata delle videolezioni), ma NON è concesso 
+sostenere l’esame prima dell’effettiva erogazione dell’insegnamento</td>
+  </tr>
+
+  <tr>
+   <!-- <td><span class=" glyphicon glyphicon-facetime-video" style="color: orange"></span></td><td>La videoregistrazione è stata effettuata in aa.aa. precedenti (disponibilità immediata delle videolezioni) e l’esame può essere sostenuto prima dell’effettiva erogazione dell’insegnamento</td> -->
+   <td><span class=" glyphicon glyphicon-facetime-video" style="color: orange"></span></td><td>La
+ videoregistrazione sarà effettuata nell'a.a. in corso e pertanto NON 
+sarà possibile sostenere l’esame prima dell'effettiva erogazione 
+dell'insegnamento; le videolezioni saranno disponibili nel corso 
+dell'anno</td>
+  </tr>
+ 
+  </tbody></table>
+<div>
+ </div></div></nav><!--/.navbar -->
+    </div><!--/.sidebar-nav -->  
+
+
+   
+    <!-- Page Content -->
+    <main id="page-wrapper6"> 
+   <!-- <div class="row">
+     <div id="filter" class=" col-sm-12">
+      <div class="RegionBorderMao">
+         PANNELLO FILTRI
+      </div>
+    </div>
+    </div> --> 
+
+       
+       <div class="row">
+         <div class="col-sm-12 col-sm-offset-0">
+          <div class="RegionBorderMao" style="overflow:hidden; ">
+           <div class="col-sm-6">
+<!--            <h3 class="text-primary">Orientamenti</h3>-->
+           </div>
+           <div class="col-sm-6" style="text-align:right;">
+             <h3 class="text-primary apriTutto"><a id="expandAllId" href="javascript:void(0)"><span id="expandAllIcon" class=" glyphicon glyphicon-menu-right"></span> Espandi tutti i percorsi</a></h3>
+             <h3 class="text-primary chiudiTutto" style="display:none"><a id="closeAllId" href="javascript:void(0)"><span id="closeAllIcon" class=" glyphicon glyphicon-menu-down"></span> Chiudi tutti i percorsi</a></h3>         
+           </div>       
+             <div class="accordion " id="accordion3234">
+          
+
+               <!-- intestazione elemento accordion -->
+              <div class="clearfix"></div>
+               <div class="accordion-group">
+                 <div class="alert alert-info">
+                   <span class="glyphicon glyphicon-menu-right collapse13679" aria-hidden="true"></span>
+                    <span style="font-weight:bold;">
+                   <a name="32342076" class="accordion-toggle" data-toggle="collapse" href="#collapse13679">
+                     Resilienza del costruito
+                   </a>
+                   </span>
+
+                 </div> <!--fine accordion-heading-->
+                
+               <!-- contenuto della sezione blu --> 
+                <div id="collapse13679" class=" panel-collapse collapse accordion-body collapse collapseOrienta  ">
+                    <div class="accordion-inner col-sm-12"> 
+
+                <!-- contenitore guida -->
+                <div align="left">
+</div>
+ <hr class="hr-compact">
+         <span id="collapseInternoX1Icon" class="glyphicon glyphicon-menu-down  collapseInternoX1" aria-hidden="true"></span>  
+         <span style="font-weight: bold;" data-toggle="collapse" data-target="#collapseInternoX1">1° anno 2022/2023</span>
+         <hr class="hr-compact">
+
+               
+                 <div class="table-responsive collapse in" id="collapseInternoX1">
+                    <table class="table table-bordered table-striped table-condensed ">
+                          <tbody><tr>
+                             <th style="width: 5%" class="centrato">Periodo</th>
+                             <th style="width: 5%" class="centrato">Codice</th>
+                             <th style="width: 9%" class="centrato">SSD</th>                             
+                             <th class="centrato">Insegnamento</th>
+                             <th style="width: 5%" class="centrato">Lingua</th>
+                                                                        
+                                                                       
+                             <th style="width: 5%" class="centrato">Crediti</th> 
+                             <th style="width: 15%" class="centrato">Docente</th>    
+                             <th style="width: 10%" class="centrato">Note</th>  
+                             <th style="width: 5%" class="centrato">Orario</th>                                        
+                          </tr>
+                        
+<tr>
+<td class="centrato">1</td>
+<td class="grassetto">
+01UUNNB
+</td>
+<td>
+<span class="polinota">
+ICAR/06 (4);<br> ICAR/17 (8);<br> ING-IND/11 (2);<br> ING-INF/05 (4)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=01UUNNB&amp;p_a_acc=2023&amp;p_lang=" class="policorpolink">Conoscenza del patrimonio costruito nell'epoca dei cambiamenti climatici</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/it.png" "="" width="15" border="0"></td>
+
+<td class="centrato">18</td>
+<td>
+<div id="184938_preview" class="docPreview">
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.scheda_pers_swas.show?m=2532" class="policorpolink" target="_new">A. Osello</a> 
+</div>
+  <div id="184938_full" class="docFull" style="display: none">
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.scheda_pers_swas.show?m=2532" class="policorpolink" target="_new">A. Osello</a> 
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2021/22)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/visualizzazioneStudente.aspx?idImtNumcor=191859-0&amp;annoAccademico=2023&amp;pd=1&amp;datarif=26/09/2022&amp;xml=N&amp;Culture_Language=it-IT" target="_blank"><span class=" glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">1</td>
+<td class="grassetto">
+02CUGNB
+</td>
+<td>
+<span class="polinota">
+ICAR/08 (6)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=02CUGNB&amp;p_a_acc=2023&amp;p_lang=" class="policorpolink">Teoria delle strutture</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/it.png" "="" width="15" border="0"></td>
+
+<td class="centrato">6</td>
+<td>
+<div id="184928_preview" class="docPreview">
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.scheda_pers_swas.show?m=2145" class="policorpolink" target="_new">M. Borri Brunetto</a> 
+</div>
+  <div id="184928_full" class="docFull" style="display: none">
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.scheda_pers_swas.show?m=2145" class="policorpolink" target="_new">M. Borri Brunetto</a> 
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2022/23)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/visualizzazioneStudente.aspx?idImtNumcor=191849-0&amp;annoAccademico=2023&amp;pd=1&amp;datarif=26/09/2022&amp;xml=N&amp;Culture_Language=it-IT" target="_blank"><span class=" glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">1,2</td>
+<td class="grassetto">
+01UUONB
+</td>
+<td>
+<span class="polinota">
+ICAR/09 (8)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=01UUONB&amp;p_a_acc=2023&amp;p_lang=" class="policorpolink">Ingegneria sismica e resilienza dei sistemi urbani</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/it.png" "="" width="15" border="0"></td>
+
+<td class="centrato">8</td>
+<td>
+<div id="184927_preview" class="docPreview">
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.scheda_pers_swas.show?m=43280" class="policorpolink" target="_new">M. Domaneschi</a> 
+</div>
+  <div id="184927_full" class="docFull" style="display: none">
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.scheda_pers_swas.show?m=43280" class="policorpolink" target="_new">M. Domaneschi</a> 
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2021/22)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/visualizzazioneStudente.aspx?idImtNumcor=191848-0&amp;annoAccademico=2023&amp;pd=1&amp;datarif=26/09/2022&amp;xml=N&amp;Culture_Language=it-IT" target="_blank"><span class=" glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">1,2</td>
+<td class="grassetto">
+01UUPNB
+</td>
+<td>
+<span class="polinota">
+ICAR/10 (8)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=01UUPNB&amp;p_a_acc=2023&amp;p_lang=" class="policorpolink">Progettazione integrale nella resilienza del costruito</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/it.png" "="" width="15" border="0"></td>
+
+<td class="centrato">8</td>
+<td>
+<div id="184929_preview" class="docPreview">
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.scheda_pers_swas.show?m=3332" class="policorpolink" target="_new">P. Piantanida</a> 
+</div>
+  <div id="184929_full" class="docFull" style="display: none">
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.scheda_pers_swas.show?m=3332" class="policorpolink" target="_new">P. Piantanida</a> 
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2021/22)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/visualizzazioneStudente.aspx?idImtNumcor=191850-0&amp;annoAccademico=2023&amp;pd=1&amp;datarif=26/09/2022&amp;xml=N&amp;Culture_Language=it-IT" target="_blank"><span class=" glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">2</td>
+<td class="grassetto">
+01UUSNB
+</td>
+<td>
+<span class="polinota">
+ICAR/11 (8)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=01UUSNB&amp;p_a_acc=2023&amp;p_lang=" class="policorpolink">Gestione del cantiere e del progetto</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/it.png" "="" width="15" border="0"></td>
+
+<td class="centrato">8</td>
+<td>
+<div id="184932_preview" class="docPreview">
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.scheda_pers_swas.show?m=27001" class="policorpolink" target="_new">V. Villa</a> 
+</div>
+  <div id="184932_full" class="docFull" style="display: none">
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.scheda_pers_swas.show?m=27001" class="policorpolink" target="_new">V. Villa</a> 
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2022/23)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/visualizzazioneStudente.aspx?idImtNumcor=191853-0&amp;annoAccademico=2023&amp;pd=1&amp;datarif=26/09/2022&amp;xml=N&amp;Culture_Language=it-IT" target="_blank"><span class=" glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">2</td>
+<td class="grassetto">
+01UUQNB
+</td>
+<td>
+<span class="polinota">
+ICAR/07 (6)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=01UUQNB&amp;p_a_acc=2023&amp;p_lang=" class="policorpolink">Progettazione geotecnica per la resilienza del costruito</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/it.png" "="" width="15" border="0"></td>
+
+<td class="centrato">6</td>
+<td>
+<div id="184930_preview" class="docPreview">
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.scheda_pers_swas.show?m=3774" class="policorpolink" target="_new">M. Castelli</a> 
+</div>
+  <div id="184930_full" class="docFull" style="display: none">
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.scheda_pers_swas.show?m=3774" class="policorpolink" target="_new">M. Castelli</a> 
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2022/23)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/visualizzazioneStudente.aspx?idImtNumcor=191851-0&amp;annoAccademico=2023&amp;pd=1&amp;datarif=26/09/2022&amp;xml=N&amp;Culture_Language=it-IT" target="_blank"><span class=" glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">2</td>
+<td class="grassetto">
+01UURNB
+</td>
+<td>
+<span class="polinota">
+ICAR/22 (6)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=01UURNB&amp;p_a_acc=2023&amp;p_lang=" class="policorpolink">Valutazione degli investimenti per le trasformazioni urbane</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/it.png" "="" width="15" border="0"></td>
+
+<td class="centrato">6</td>
+<td>
+<div id="184931_preview" class="docPreview">
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.scheda_pers_swas.show?m=13775" class="policorpolink" target="_new">M. Rebaudengo</a> 
+</div>
+  <div id="184931_full" class="docFull" style="display: none">
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.scheda_pers_swas.show?m=13775" class="policorpolink" target="_new">M. Rebaudengo</a> 
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2022/23)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/visualizzazioneStudente.aspx?idImtNumcor=191852-0&amp;annoAccademico=2023&amp;pd=1&amp;datarif=26/09/2022&amp;xml=N&amp;Culture_Language=it-IT" target="_blank"><span class=" glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+ </tbody></table>                       
+            </div> <!-- div class table-responsive-->
+ <hr class="hr-compact">
+         <span id="collapseInternoX8Icon" class="glyphicon glyphicon-menu-down  collapseInternoX8" aria-hidden="true"></span>  
+         <span style="font-weight: bold;" data-toggle="collapse" data-target="#collapseInternoX8">2° anno 2023/2024</span>
+         <hr class="hr-compact">
+
+               
+                 <div class="table-responsive collapse in" id="collapseInternoX8">
+                    <table class="table table-bordered table-striped table-condensed ">
+                          <tbody><tr>
+                             <th style="width: 5%" class="centrato">Periodo</th>
+                             <th style="width: 5%" class="centrato">Codice</th>
+                             <th style="width: 9%" class="centrato">SSD</th>                             
+                             <th class="centrato">Insegnamento</th>
+                             <th style="width: 5%" class="centrato">Lingua</th>
+                                                                        
+                                                                       
+                             <th style="width: 5%" class="centrato">Crediti</th> 
+                             <th style="width: 15%" class="centrato">Docente</th>    
+                             <th style="width: 10%" class="centrato">Note</th>  
+                             <th style="width: 5%" class="centrato">Orario</th>                                        
+                          </tr>
+                        
+<tr>
+<td class="centrato">1,2</td>
+<td class="grassetto">
+
+</td>
+<td>
+<span class="polinota">
+
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.offerta_formativa_2019.vis?p_coorte=2023&amp;p_sdu=32&amp;p_cds=34#2076-245515" class="policorpolink">Corsi di ingegneria edile/Building Engineering Courses</a>
+ </td>
+<td class="centrato">
+</td>
+
+<td class="centrato">24</td>
+<td>
+<div id="187236_preview" class="docPreview">
+
+</div>
+  <div id="187236_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-danger" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda non presente" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">1,2</td>
+<td class="grassetto">
+
+</td>
+<td>
+<span class="polinota">
+
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.offerta_formativa_2019.vis?p_coorte=2023&amp;p_sdu=32&amp;p_cds=34#2076-245529" class="policorpolink">Crediti liberi</a>
+ </td>
+<td class="centrato">
+</td>
+
+<td class="centrato">18</td>
+<td>
+<div id="187249_preview" class="docPreview">
+
+</div>
+  <div id="187249_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-danger" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda non presente" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">1,2</td>
+<td class="grassetto">
+24EBHNB
+</td>
+<td>
+<span class="polinota">
+
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=24EBHNB&amp;p_a_acc=2024&amp;p_lang=" class="policorpolink">Tesi</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/it.png" "="" width="15" border="0"></td>
+
+<td class="centrato">18</td>
+<td>
+<div id="187251_preview" class="docPreview">
+
+</div>
+  <div id="187251_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-danger" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda non presente" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/StampaOrario.aspx" target="_blank"><span class="  glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+</tbody></table>
+      </div>
+    
+<a name="2076-245515"></a>
+ <hr class="hr-compact">
+         <span class="glyphicon glyphicon-menu-down collapseInternofiglio12076245515187243" aria-hidden="true"></span>  
+         <span style="font-weight: bold;" data-toggle="collapse" data-target="#collapseInternofiglio12076245515187243">Corsi di ingegneria edile/Building Engineering Courses</span>
+         <hr class="hr-compact">
+<div style="margin-bottom:5px;margin-top:5px;margin-left:20px;clear:both;text-align:left;" class="polinota">
+           <br><br>
+          </div>
+
+               
+                 <div class="table-responsive collapse in" id="collapseInternofiglio12076245515187243">
+                    <table class="table table-bordered table-striped table-condensed ">
+                          <tbody><tr>
+                             <th style="width: 5%" class="centrato">Periodo</th>
+                             <th style="width: 5%" class="centrato">Codice</th>
+                             <th style="width: 9%" class="centrato">SSD</th>                             
+                             <th class="centrato">Insegnamento</th>
+                             <th style="width: 5%" class="centrato">Lingua</th>
+                                                                        
+                                                                       
+                             <th style="width: 5%" class="centrato">Crediti</th> 
+                             <th style="width: 15%" class="centrato">Docente</th>    
+                             <th style="width: 10%" class="centrato">Note</th>  
+                             <th style="width: 5%" class="centrato">Orario</th>                                        
+                          </tr>
+                        
+<tr>
+<td class="centrato">1</td>
+<td class="grassetto">
+01UVFNB
+</td>
+<td>
+<span class="polinota">
+ICAR/17 (6)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=01UVFNB&amp;p_a_acc=2024&amp;p_lang=" class="policorpolink">Il disegno per il rilievo e progettazione della resilienza urbana</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/it.png" "="" width="15" border="0"></td>
+
+<td class="centrato">6</td>
+<td>
+<div id="187243_preview" class="docPreview">
+
+</div>
+  <div id="187243_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2021/22)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/StampaOrario.aspx" target="_blank"><span class="  glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">1</td>
+<td class="grassetto">
+01UVGNB
+</td>
+<td>
+<span class="polinota">
+ICAR/01 (6)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=01UVGNB&amp;p_a_acc=2024&amp;p_lang=" class="policorpolink">L'acqua nei sistemi edilizi e urbani</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/it.png" "="" width="15" border="0"></td>
+
+<td class="centrato">6</td>
+<td>
+<div id="187244_preview" class="docPreview">
+
+</div>
+  <div id="187244_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2022/23)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/StampaOrario.aspx" target="_blank"><span class="  glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">1</td>
+<td class="grassetto">
+01UZFNB
+</td>
+<td>
+<span class="polinota">
+ICAR/10 (6)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=01UZFNB&amp;p_a_acc=2024&amp;p_lang=" class="policorpolink">Prevenzione per la sicurezza antincendio</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/it.png" "="" width="15" border="0"></td>
+
+<td class="centrato">6</td>
+<td>
+<div id="187287_preview" class="docPreview">
+
+</div>
+  <div id="187287_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2022/23)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/StampaOrario.aspx" target="_blank"><span class="  glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">1</td>
+<td class="grassetto">
+01UVBNB
+</td>
+<td>
+<span class="polinota">
+ING-IND/11 (6)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=01UVBNB&amp;p_a_acc=2024&amp;p_lang=" class="policorpolink">Progettazione dell'ambiente costruito resiliente ai cambiamenti climatici</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/it.png" "="" width="15" border="0"></td>
+
+<td class="centrato">6</td>
+<td>
+<div id="187238_preview" class="docPreview">
+
+</div>
+  <div id="187238_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2022/23)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/StampaOrario.aspx" target="_blank"><span class="  glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">2</td>
+<td class="grassetto">
+01UVDNB
+</td>
+<td>
+<span class="polinota">
+ING-IND/33 (6)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=01UVDNB&amp;p_a_acc=2024&amp;p_lang=" class="policorpolink">Electrical Systems for Buildings</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/en.png" "="" width="15" border="0"></td>
+
+<td class="centrato">6</td>
+<td>
+<div id="187241_preview" class="docPreview">
+
+</div>
+  <div id="187241_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2022/23)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/StampaOrario.aspx" target="_blank"><span class="  glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">2</td>
+<td class="grassetto">
+01UVCNB
+</td>
+<td>
+<span class="polinota">
+ICAR/06 (6)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=01UVCNB&amp;p_a_acc=2024&amp;p_lang=" class="policorpolink">GIS modeling for City and Land</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/en.png" "="" width="15" border="0"></td>
+
+<td class="centrato">6</td>
+<td>
+<div id="187240_preview" class="docPreview">
+
+</div>
+  <div id="187240_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2022/23)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/StampaOrario.aspx" target="_blank"><span class="  glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">2</td>
+<td class="grassetto">
+01FXENB
+</td>
+<td>
+<span class="polinota">
+ICAR/08 (6)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=01FXENB&amp;p_a_acc=2024&amp;p_lang=" class="policorpolink">Mechanics of innovative materials</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/en.png" "="" width="15" border="0"></td>
+
+<td class="centrato">6</td>
+<td>
+<div id="191044_preview" class="docPreview">
+
+</div>
+  <div id="191044_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2022/23)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/StampaOrario.aspx" target="_blank"><span class="  glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">2</td>
+<td class="grassetto">
+01UUXNB
+</td>
+<td>
+<span class="polinota">
+ICAR/09 (6)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=01UUXNB&amp;p_a_acc=2024&amp;p_lang=" class="policorpolink">Structural Design</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/en.png" "="" width="15" border="0"></td>
+
+<td class="centrato">6</td>
+<td>
+<div id="187239_preview" class="docPreview">
+
+</div>
+  <div id="187239_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2022/23)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/StampaOrario.aspx" target="_blank"><span class="  glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+</tbody></table></div>
+<a name="2076-245529"></a>
+ <hr class="hr-compact">
+         <span class="glyphicon glyphicon-menu-down collapseInternofiglio12076245529187248" aria-hidden="true"></span>  
+         <span style="font-weight: bold;" data-toggle="collapse" data-target="#collapseInternofiglio12076245529187248">Crediti liberi</span>
+         <hr class="hr-compact">
+<div style="margin-bottom:5px;margin-top:5px;margin-left:20px;clear:both;text-align:left;" class="polinota">
+           <br><br>
+          </div>
+
+               
+                 <div class="table-responsive collapse in" id="collapseInternofiglio12076245529187248">
+                    <table class="table table-bordered table-striped table-condensed ">
+                          <tbody><tr>
+                             <th style="width: 5%" class="centrato">Periodo</th>
+                             <th style="width: 5%" class="centrato">Codice</th>
+                             <th style="width: 9%" class="centrato">SSD</th>                             
+                             <th class="centrato">Insegnamento</th>
+                             <th style="width: 5%" class="centrato">Lingua</th>
+                                                                        
+                                                                       
+                             <th style="width: 5%" class="centrato">Crediti</th> 
+                             <th style="width: 15%" class="centrato">Docente</th>    
+                             <th style="width: 10%" class="centrato">Note</th>  
+                             <th style="width: 5%" class="centrato">Orario</th>                                        
+                          </tr>
+                        
+<tr>
+<td class="centrato">1</td>
+<td class="grassetto">
+01UVKNB
+</td>
+<td>
+<span class="polinota">
+ICAR/07 (6)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=01UVKNB&amp;p_a_acc=2024&amp;p_lang=" class="policorpolink">Geotechnical Engineering for the Sustainability of Buildings</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/en.png" "="" width="15" border="0"></td>
+
+<td class="centrato">6</td>
+<td>
+<div id="187248_preview" class="docPreview">
+
+</div>
+  <div id="187248_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2022/23)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/StampaOrario.aspx" target="_blank"><span class="  glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">1</td>
+<td class="grassetto">
+01VKQNB
+</td>
+<td>
+<span class="polinota">
+ICAR/17 (4);<br> ICAR/09 (1);<br> ICAR/07 (1)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=01VKQNB&amp;p_a_acc=2024&amp;p_lang=" class="policorpolink">InfraBIM, Design, Construction and Management</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/en.png" "="" width="15" border="0"></td>
+
+<td class="centrato">6</td>
+<td>
+<div id="187586_preview" class="docPreview">
+
+</div>
+  <div id="187586_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2022/23)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/StampaOrario.aspx" target="_blank"><span class="  glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">1</td>
+<td class="grassetto">
+01UVHNB
+</td>
+<td>
+<span class="polinota">
+ICAR/22 (6)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=01UVHNB&amp;p_a_acc=2024&amp;p_lang=" class="policorpolink">Investments analysis</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/en.png" "="" width="15" border="0"></td>
+
+<td class="centrato">6</td>
+<td>
+<div id="187245_preview" class="docPreview">
+
+</div>
+  <div id="187245_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2022/23)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/StampaOrario.aspx" target="_blank"><span class="  glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">1</td>
+<td class="grassetto">
+01DTVNB
+</td>
+<td>
+<span class="polinota">
+ICAR/10 (8)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=01DTVNB&amp;p_a_acc=2024&amp;p_lang=" class="policorpolink">Progettazione tecnologica di nuovi sistemi costruttivi industrializzati</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/it.png" "="" width="15" border="0"></td>
+
+<td class="centrato">8</td>
+<td>
+<div id="189596_preview" class="docPreview">
+
+</div>
+  <div id="189596_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2022/23)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/StampaOrario.aspx" target="_blank"><span class="  glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">1</td>
+<td class="grassetto">
+04IXTNB
+</td>
+<td>
+<span class="polinota">
+ING-IND/17 (8)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=04IXTNB&amp;p_a_acc=2024&amp;p_lang=" class="policorpolink">Project management</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/en.png" "="" width="15" border="0"></td>
+
+<td class="centrato">8</td>
+<td>
+<div id="186279_preview" class="docPreview">
+
+</div>
+  <div id="186279_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2021/22)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/StampaOrario.aspx" target="_blank"><span class="  glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">1</td>
+<td class="grassetto">
+01DTWNB
+</td>
+<td>
+<span class="polinota">
+ICAR/17 (6)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=01DTWNB&amp;p_a_acc=2024&amp;p_lang=" class="policorpolink">Survey and drawing design for urban refurbishment at sustainable transition</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/en.png" "="" width="15" border="0"></td>
+
+<td class="centrato">6</td>
+<td>
+<div id="189597_preview" class="docPreview">
+
+</div>
+  <div id="189597_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2022/23)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/StampaOrario.aspx" target="_blank"><span class="  glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">1</td>
+<td class="grassetto">
+01UVJNB
+</td>
+<td>
+<span class="polinota">
+ICAR/10 (6)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=01UVJNB&amp;p_a_acc=2024&amp;p_lang=" class="policorpolink">Sustainable Design for Building Refurbishment</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/en.png" "="" width="15" border="0"></td>
+
+<td class="centrato">6</td>
+<td>
+<div id="187247_preview" class="docPreview">
+
+</div>
+  <div id="187247_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2022/23)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/StampaOrario.aspx" target="_blank"><span class="  glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">1,2</td>
+<td class="grassetto">
+02UEWNB
+</td>
+<td>
+<span class="polinota">
+
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=02UEWNB&amp;p_a_acc=2024&amp;p_lang=" class="policorpolink">Challenge</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/it.png" "="" width="15" border="0"></td>
+
+<td class="centrato">8</td>
+<td>
+<div id="187254_preview" class="docPreview">
+
+</div>
+  <div id="187254_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-danger" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda non presente" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/StampaOrario.aspx" target="_blank"><span class="  glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">1,2</td>
+<td class="grassetto">
+11CWHNB
+</td>
+<td>
+<span class="polinota">
+
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=11CWHNB&amp;p_a_acc=2024&amp;p_lang=" class="policorpolink">Tirocinio</a>
+ </td>
+<td class="centrato">
+</td>
+
+<td class="centrato">12</td>
+<td>
+<div id="186677_preview" class="docPreview">
+
+</div>
+  <div id="186677_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2020/21)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/StampaOrario.aspx" target="_blank"><span class="  glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">1,2</td>
+<td class="grassetto">
+23CWHNB
+</td>
+<td>
+<span class="polinota">
+
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=23CWHNB&amp;p_a_acc=2024&amp;p_lang=" class="policorpolink">Tirocinio</a>
+ </td>
+<td class="centrato">
+</td>
+
+<td class="centrato">6</td>
+<td>
+<div id="186779_preview" class="docPreview">
+
+</div>
+  <div id="186779_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2020/21)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/StampaOrario.aspx" target="_blank"><span class="  glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">2</td>
+<td class="grassetto">
+01UWDNB
+</td>
+<td>
+<span class="polinota">
+ICAR/08 (3);<br> ICAR/09 (3)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=01UWDNB&amp;p_a_acc=2024&amp;p_lang=" class="policorpolink">Design of wood and glass structures</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/en.png" "="" width="15" border="0"></td>
+
+<td class="centrato">6</td>
+<td>
+<div id="187259_preview" class="docPreview">
+
+</div>
+  <div id="187259_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2021/22)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/StampaOrario.aspx" target="_blank"><span class="  glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">2</td>
+<td class="grassetto">
+01DTXNB
+</td>
+<td>
+<span class="polinota">
+ICAR/09 (6)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=01DTXNB&amp;p_a_acc=2024&amp;p_lang=" class="policorpolink">Earthquake engineering and Seismic Retrofit</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/en.png" "="" width="15" border="0"></td>
+
+<td class="centrato">6</td>
+<td>
+<div id="189598_preview" class="docPreview">
+
+</div>
+  <div id="189598_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2022/23)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/StampaOrario.aspx" target="_blank"><span class="  glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">2</td>
+<td class="grassetto">
+01RXGNB
+</td>
+<td>
+<span class="polinota">
+ING-IND/11 (6)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=01RXGNB&amp;p_a_acc=2024&amp;p_lang=" class="policorpolink">Energy Audit and certification of buildings</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/en.png" "="" width="15" border="0"></td>
+
+<td class="centrato">6</td>
+<td>
+<div id="186466_preview" class="docPreview">
+
+</div>
+  <div id="186466_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2022/23)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/StampaOrario.aspx" target="_blank"><span class="  glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">2</td>
+<td class="grassetto">
+02NUKNB
+</td>
+<td>
+<span class="polinota">
+ICAR/10 (6)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=02NUKNB&amp;p_a_acc=2024&amp;p_lang=" class="policorpolink">Fire safety engineering (FSE)</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/it.png" "="" width="15" border="0"></td>
+
+<td class="centrato">6</td>
+<td>
+<div id="187257_preview" class="docPreview">
+
+</div>
+  <div id="187257_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2022/23)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/StampaOrario.aspx" target="_blank"><span class="  glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">2</td>
+<td class="grassetto">
+07INBNB
+</td>
+<td>
+<span class="polinota">
+ING-IND/28 (1);<br> ICAR/11 (7);<br> ICAR/04 (4)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=07INBNB&amp;p_a_acc=2024&amp;p_lang=" class="policorpolink">Sicurezza nei cantieri</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/it.png" "="" width="15" border="0"></td>
+
+<td class="centrato">12</td>
+<td>
+<div id="186777_preview" class="docPreview">
+
+</div>
+  <div id="186777_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2021/22)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/StampaOrario.aspx" target="_blank"><span class="  glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+</tbody></table></div>
+
+                   </div> <!--body-->
+                 </div> <!--group-->
+
+               <!-- intestazione elemento accordion -->
+              <div class="clearfix"></div>
+               <div class="accordion-group">
+                 <div class="alert alert-info">
+                   <span class="glyphicon glyphicon-menu-right collapse13680" aria-hidden="true"></span>
+                    <span style="font-weight:bold;">
+                   <a name="32342077" class="accordion-toggle" data-toggle="collapse" href="#collapse13680">
+                     Green Building
+                   </a>
+                   </span>
+
+                 </div> <!--fine accordion-heading-->
+                
+               <!-- contenuto della sezione blu --> 
+                <div id="collapse13680" class=" panel-collapse collapse accordion-body collapse collapseOrienta  ">
+                    <div class="accordion-inner col-sm-12"> 
+
+                <!-- contenitore guida -->
+                <div align="left">
+</div>
+ <hr class="hr-compact">
+         <span id="collapseInternoX1Icon" class="glyphicon glyphicon-menu-down  collapseInternoX1" aria-hidden="true"></span>  
+         <span style="font-weight: bold;" data-toggle="collapse" data-target="#collapseInternoX1">1° anno 2022/2023</span>
+         <hr class="hr-compact">
+
+               
+                 <div class="table-responsive collapse in" id="collapseInternoX1">
+                    <table class="table table-bordered table-striped table-condensed ">
+                          <tbody><tr>
+                             <th style="width: 5%" class="centrato">Periodo</th>
+                             <th style="width: 5%" class="centrato">Codice</th>
+                             <th style="width: 9%" class="centrato">SSD</th>                             
+                             <th class="centrato">Insegnamento</th>
+                             <th style="width: 5%" class="centrato">Lingua</th>
+                                                                        
+                                                                       
+                             <th style="width: 5%" class="centrato">Crediti</th> 
+                             <th style="width: 15%" class="centrato">Docente</th>    
+                             <th style="width: 10%" class="centrato">Note</th>  
+                             <th style="width: 5%" class="centrato">Orario</th>                                        
+                          </tr>
+                        
+<tr>
+<td class="centrato">1</td>
+<td class="grassetto">
+01UWENB
+</td>
+<td>
+<span class="polinota">
+ICAR/06 (4);<br> ICAR/17 (8);<br> ING-IND/11 (2);<br> ING-INF/05 (4)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=01UWENB&amp;p_a_acc=2023&amp;p_lang=" class="policorpolink">Knowledge of the built heritage in the era of the climate changes</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/en.png" "="" width="15" border="0"></td>
+
+<td class="centrato">18</td>
+<td>
+<div id="184939_preview" class="docPreview">
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.scheda_pers_swas.show?m=2532" class="policorpolink" target="_new">A. Osello</a> 
+</div>
+  <div id="184939_full" class="docFull" style="display: none">
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.scheda_pers_swas.show?m=2532" class="policorpolink" target="_new">A. Osello</a> 
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2021/22)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/visualizzazioneStudente.aspx?idImtNumcor=191860-0&amp;annoAccademico=2023&amp;pd=1&amp;datarif=26/09/2022&amp;xml=N&amp;Culture_Language=it-IT" target="_blank"><span class=" glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">1</td>
+<td class="grassetto">
+01FXFNB
+</td>
+<td>
+<span class="polinota">
+ICAR/08 (6)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=01FXFNB&amp;p_a_acc=2023&amp;p_lang=" class="policorpolink">Theory of Structures</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/en.png" "="" width="15" border="0"></td>
+
+<td class="centrato">6</td>
+<td>
+<div id="191045_preview" class="docPreview">
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.scheda_pers_swas.show?m=11914" class="policorpolink" target="_new">P. Antonaci</a> 
+</div>
+  <div id="191045_full" class="docFull" style="display: none">
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.scheda_pers_swas.show?m=11914" class="policorpolink" target="_new">P. Antonaci</a> 
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2022/23)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/visualizzazioneStudente.aspx?idImtNumcor=198469-0&amp;annoAccademico=2023&amp;pd=1&amp;datarif=26/09/2022&amp;xml=N&amp;Culture_Language=it-IT" target="_blank"><span class=" glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">1,2</td>
+<td class="grassetto">
+01UUVNB
+</td>
+<td>
+<span class="polinota">
+ING-IND/11 (8)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=01UUVNB&amp;p_a_acc=2023&amp;p_lang=" class="policorpolink">Energy performance design and indoor environmental quality</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/en.png" "="" width="15" border="0"></td>
+
+<td class="centrato">8</td>
+<td>
+<div id="184935_preview" class="docPreview">
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.scheda_pers_swas.show?m=1996" class="policorpolink" target="_new">V. Corrado</a> 
+</div>
+  <div id="184935_full" class="docFull" style="display: none">
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.scheda_pers_swas.show?m=1996" class="policorpolink" target="_new">V. Corrado</a> 
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2022/23)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/visualizzazioneStudente.aspx?idImtNumcor=191856-0&amp;annoAccademico=2023&amp;pd=1&amp;datarif=26/09/2022&amp;xml=N&amp;Culture_Language=it-IT" target="_blank"><span class=" glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">1,2</td>
+<td class="grassetto">
+01UUUNB
+</td>
+<td>
+<span class="polinota">
+ICAR/10 (8)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=01UUUNB&amp;p_a_acc=2023&amp;p_lang=" class="policorpolink">Integrated Design for Sustainable Building</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/en.png" "="" width="15" border="0"></td>
+
+<td class="centrato">8</td>
+<td>
+<div id="184934_preview" class="docPreview">
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.scheda_pers_swas.show?m=3672" class="policorpolink" target="_new">M. Mangosio</a> 
+</div>
+  <div id="184934_full" class="docFull" style="display: none">
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.scheda_pers_swas.show?m=3672" class="policorpolink" target="_new">M. Mangosio</a> 
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2022/23)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/visualizzazioneStudente.aspx?idImtNumcor=191855-0&amp;annoAccademico=2023&amp;pd=1&amp;datarif=26/09/2022&amp;xml=N&amp;Culture_Language=it-IT" target="_blank"><span class=" glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">2</td>
+<td class="grassetto">
+01UUWNB
+</td>
+<td>
+<span class="polinota">
+ICAR/01 (6)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=01UUWNB&amp;p_a_acc=2023&amp;p_lang=" class="policorpolink">Green water for sustainable building</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/en.png" "="" width="15" border="0"></td>
+
+<td class="centrato">6</td>
+<td>
+<div id="184936_preview" class="docPreview">
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.scheda_pers_swas.show?m=11297" class="policorpolink" target="_new">I. Butera</a> 
+</div>
+  <div id="184936_full" class="docFull" style="display: none">
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.scheda_pers_swas.show?m=11297" class="policorpolink" target="_new">I. Butera</a> 
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2022/23)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/visualizzazioneStudente.aspx?idImtNumcor=191857-0&amp;annoAccademico=2023&amp;pd=1&amp;datarif=26/09/2022&amp;xml=N&amp;Culture_Language=it-IT" target="_blank"><span class=" glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">2</td>
+<td class="grassetto">
+01UUYNB
+</td>
+<td>
+<span class="polinota">
+ICAR/11 (8)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=01UUYNB&amp;p_a_acc=2023&amp;p_lang=" class="policorpolink">Project and site management</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/en.png" "="" width="15" border="0"></td>
+
+<td class="centrato">8</td>
+<td>
+<div id="184937_preview" class="docPreview">
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.scheda_pers_swas.show?m=27001" class="policorpolink" target="_new">V. Villa</a> 
+</div>
+  <div id="184937_full" class="docFull" style="display: none">
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.scheda_pers_swas.show?m=27001" class="policorpolink" target="_new">V. Villa</a> 
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2022/23)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/visualizzazioneStudente.aspx?idImtNumcor=191858-0&amp;annoAccademico=2023&amp;pd=1&amp;datarif=26/09/2022&amp;xml=N&amp;Culture_Language=it-IT" target="_blank"><span class=" glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">2</td>
+<td class="grassetto">
+01UUXNB
+</td>
+<td>
+<span class="polinota">
+ICAR/09 (6)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=01UUXNB&amp;p_a_acc=2023&amp;p_lang=" class="policorpolink">Structural Design</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/en.png" "="" width="15" border="0"></td>
+
+<td class="centrato">6</td>
+<td>
+<div id="177022_preview" class="docPreview">
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.scheda_pers_swas.show?m=39577" class="policorpolink" target="_new">D. Gino</a> 
+</div>
+  <div id="177022_full" class="docFull" style="display: none">
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.scheda_pers_swas.show?m=39577" class="policorpolink" target="_new">D. Gino</a> 
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2022/23)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/visualizzazioneStudente.aspx?idImtNumcor=183550-0&amp;annoAccademico=2023&amp;pd=1&amp;datarif=26/09/2022&amp;xml=N&amp;Culture_Language=it-IT" target="_blank"><span class=" glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+ </tbody></table>                       
+            </div> <!-- div class table-responsive-->
+ <hr class="hr-compact">
+         <span id="collapseInternoX8Icon" class="glyphicon glyphicon-menu-down  collapseInternoX8" aria-hidden="true"></span>  
+         <span style="font-weight: bold;" data-toggle="collapse" data-target="#collapseInternoX8">2° anno 2023/2024</span>
+         <hr class="hr-compact">
+
+               
+                 <div class="table-responsive collapse in" id="collapseInternoX8">
+                    <table class="table table-bordered table-striped table-condensed ">
+                          <tbody><tr>
+                             <th style="width: 5%" class="centrato">Periodo</th>
+                             <th style="width: 5%" class="centrato">Codice</th>
+                             <th style="width: 9%" class="centrato">SSD</th>                             
+                             <th class="centrato">Insegnamento</th>
+                             <th style="width: 5%" class="centrato">Lingua</th>
+                                                                        
+                                                                       
+                             <th style="width: 5%" class="centrato">Crediti</th> 
+                             <th style="width: 15%" class="centrato">Docente</th>    
+                             <th style="width: 10%" class="centrato">Note</th>  
+                             <th style="width: 5%" class="centrato">Orario</th>                                        
+                          </tr>
+                        
+<tr>
+<td class="centrato">1,2</td>
+<td class="grassetto">
+
+</td>
+<td>
+<span class="polinota">
+
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.offerta_formativa_2019.vis?p_coorte=2023&amp;p_sdu=32&amp;p_cds=34#2077-245516" class="policorpolink">Building Engineering Courses</a>
+ </td>
+<td class="centrato">
+</td>
+
+<td class="centrato">24</td>
+<td>
+<div id="187237_preview" class="docPreview">
+
+</div>
+  <div id="187237_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-danger" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda non presente" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">1,2</td>
+<td class="grassetto">
+
+</td>
+<td>
+<span class="polinota">
+
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.offerta_formativa_2019.vis?p_coorte=2023&amp;p_sdu=32&amp;p_cds=34#2077-245530" class="policorpolink">Elective courses</a>
+ </td>
+<td class="centrato">
+</td>
+
+<td class="centrato">18</td>
+<td>
+<div id="187250_preview" class="docPreview">
+
+</div>
+  <div id="187250_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-danger" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda non presente" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">1,2</td>
+<td class="grassetto">
+05MBRNB
+</td>
+<td>
+<span class="polinota">
+
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=05MBRNB&amp;p_a_acc=2024&amp;p_lang=" class="policorpolink">Thesis</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/en.png" "="" width="15" border="0"></td>
+
+<td class="centrato">18</td>
+<td>
+<div id="187252_preview" class="docPreview">
+
+</div>
+  <div id="187252_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-danger" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda non presente" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/StampaOrario.aspx" target="_blank"><span class="  glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+</tbody></table>
+      </div>
+    
+<a name="2077-245516"></a>
+ <hr class="hr-compact">
+         <span class="glyphicon glyphicon-menu-down collapseInternofiglio12077245516187248" aria-hidden="true"></span>  
+         <span style="font-weight: bold;" data-toggle="collapse" data-target="#collapseInternofiglio12077245516187248">Building Engineering Courses</span>
+         <hr class="hr-compact">
+<div style="margin-bottom:5px;margin-top:5px;margin-left:20px;clear:both;text-align:left;" class="polinota">
+           <br><br>
+          </div>
+
+               
+                 <div class="table-responsive collapse in" id="collapseInternofiglio12077245516187248">
+                    <table class="table table-bordered table-striped table-condensed ">
+                          <tbody><tr>
+                             <th style="width: 5%" class="centrato">Periodo</th>
+                             <th style="width: 5%" class="centrato">Codice</th>
+                             <th style="width: 9%" class="centrato">SSD</th>                             
+                             <th class="centrato">Insegnamento</th>
+                             <th style="width: 5%" class="centrato">Lingua</th>
+                                                                        
+                                                                       
+                             <th style="width: 5%" class="centrato">Crediti</th> 
+                             <th style="width: 15%" class="centrato">Docente</th>    
+                             <th style="width: 10%" class="centrato">Note</th>  
+                             <th style="width: 5%" class="centrato">Orario</th>                                        
+                          </tr>
+                        
+<tr>
+<td class="centrato">1</td>
+<td class="grassetto">
+01UVKNB
+</td>
+<td>
+<span class="polinota">
+ICAR/07 (6)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=01UVKNB&amp;p_a_acc=2024&amp;p_lang=" class="policorpolink">Geotechnical Engineering for the Sustainability of Buildings</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/en.png" "="" width="15" border="0"></td>
+
+<td class="centrato">6</td>
+<td>
+<div id="187248_preview" class="docPreview">
+
+</div>
+  <div id="187248_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2022/23)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/StampaOrario.aspx" target="_blank"><span class="  glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">1</td>
+<td class="grassetto">
+01UVHNB
+</td>
+<td>
+<span class="polinota">
+ICAR/22 (6)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=01UVHNB&amp;p_a_acc=2024&amp;p_lang=" class="policorpolink">Investments analysis</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/en.png" "="" width="15" border="0"></td>
+
+<td class="centrato">6</td>
+<td>
+<div id="187245_preview" class="docPreview">
+
+</div>
+  <div id="187245_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2022/23)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/StampaOrario.aspx" target="_blank"><span class="  glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">1</td>
+<td class="grassetto">
+01DTWNB
+</td>
+<td>
+<span class="polinota">
+ICAR/17 (6)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=01DTWNB&amp;p_a_acc=2024&amp;p_lang=" class="policorpolink">Survey and drawing design for urban refurbishment at sustainable transition</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/en.png" "="" width="15" border="0"></td>
+
+<td class="centrato">6</td>
+<td>
+<div id="189597_preview" class="docPreview">
+
+</div>
+  <div id="189597_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2022/23)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/StampaOrario.aspx" target="_blank"><span class="  glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">1</td>
+<td class="grassetto">
+01UVJNB
+</td>
+<td>
+<span class="polinota">
+ICAR/10 (6)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=01UVJNB&amp;p_a_acc=2024&amp;p_lang=" class="policorpolink">Sustainable Design for Building Refurbishment</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/en.png" "="" width="15" border="0"></td>
+
+<td class="centrato">6</td>
+<td>
+<div id="187247_preview" class="docPreview">
+
+</div>
+  <div id="187247_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2022/23)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/StampaOrario.aspx" target="_blank"><span class="  glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">2</td>
+<td class="grassetto">
+01DTXNB
+</td>
+<td>
+<span class="polinota">
+ICAR/09 (6)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=01DTXNB&amp;p_a_acc=2024&amp;p_lang=" class="policorpolink">Earthquake engineering and Seismic Retrofit</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/en.png" "="" width="15" border="0"></td>
+
+<td class="centrato">6</td>
+<td>
+<div id="189598_preview" class="docPreview">
+
+</div>
+  <div id="189598_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2022/23)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/StampaOrario.aspx" target="_blank"><span class="  glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">2</td>
+<td class="grassetto">
+01UVDNB
+</td>
+<td>
+<span class="polinota">
+ING-IND/33 (6)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=01UVDNB&amp;p_a_acc=2024&amp;p_lang=" class="policorpolink">Electrical Systems for Buildings</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/en.png" "="" width="15" border="0"></td>
+
+<td class="centrato">6</td>
+<td>
+<div id="187241_preview" class="docPreview">
+
+</div>
+  <div id="187241_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2022/23)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/StampaOrario.aspx" target="_blank"><span class="  glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">2</td>
+<td class="grassetto">
+01UVCNB
+</td>
+<td>
+<span class="polinota">
+ICAR/06 (6)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=01UVCNB&amp;p_a_acc=2024&amp;p_lang=" class="policorpolink">GIS modeling for City and Land</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/en.png" "="" width="15" border="0"></td>
+
+<td class="centrato">6</td>
+<td>
+<div id="187240_preview" class="docPreview">
+
+</div>
+  <div id="187240_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2022/23)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/StampaOrario.aspx" target="_blank"><span class="  glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">2</td>
+<td class="grassetto">
+01FXENB
+</td>
+<td>
+<span class="polinota">
+ICAR/08 (6)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=01FXENB&amp;p_a_acc=2024&amp;p_lang=" class="policorpolink">Mechanics of innovative materials</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/en.png" "="" width="15" border="0"></td>
+
+<td class="centrato">6</td>
+<td>
+<div id="191044_preview" class="docPreview">
+
+</div>
+  <div id="191044_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2022/23)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/StampaOrario.aspx" target="_blank"><span class="  glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+</tbody></table></div>
+<a name="2077-245530"></a>
+ <hr class="hr-compact">
+         <span class="glyphicon glyphicon-menu-down collapseInternofiglio12077245530187243" aria-hidden="true"></span>  
+         <span style="font-weight: bold;" data-toggle="collapse" data-target="#collapseInternofiglio12077245530187243">Elective courses</span>
+         <hr class="hr-compact">
+<div style="margin-bottom:5px;margin-top:5px;margin-left:20px;clear:both;text-align:left;" class="polinota">
+           <br><br>
+          </div>
+
+               
+                 <div class="table-responsive collapse in" id="collapseInternofiglio12077245530187243">
+                    <table class="table table-bordered table-striped table-condensed ">
+                          <tbody><tr>
+                             <th style="width: 5%" class="centrato">Periodo</th>
+                             <th style="width: 5%" class="centrato">Codice</th>
+                             <th style="width: 9%" class="centrato">SSD</th>                             
+                             <th class="centrato">Insegnamento</th>
+                             <th style="width: 5%" class="centrato">Lingua</th>
+                                                                        
+                                                                       
+                             <th style="width: 5%" class="centrato">Crediti</th> 
+                             <th style="width: 15%" class="centrato">Docente</th>    
+                             <th style="width: 10%" class="centrato">Note</th>  
+                             <th style="width: 5%" class="centrato">Orario</th>                                        
+                          </tr>
+                        
+<tr>
+<td class="centrato">1</td>
+<td class="grassetto">
+01UVFNB
+</td>
+<td>
+<span class="polinota">
+ICAR/17 (6)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=01UVFNB&amp;p_a_acc=2024&amp;p_lang=" class="policorpolink">Il disegno per il rilievo e progettazione della resilienza urbana</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/it.png" "="" width="15" border="0"></td>
+
+<td class="centrato">6</td>
+<td>
+<div id="187243_preview" class="docPreview">
+
+</div>
+  <div id="187243_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2021/22)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/StampaOrario.aspx" target="_blank"><span class="  glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">1</td>
+<td class="grassetto">
+01VKQNB
+</td>
+<td>
+<span class="polinota">
+ICAR/17 (4);<br> ICAR/09 (1);<br> ICAR/07 (1)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=01VKQNB&amp;p_a_acc=2024&amp;p_lang=" class="policorpolink">InfraBIM, Design, Construction and Management</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/en.png" "="" width="15" border="0"></td>
+
+<td class="centrato">6</td>
+<td>
+<div id="187586_preview" class="docPreview">
+
+</div>
+  <div id="187586_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2022/23)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/StampaOrario.aspx" target="_blank"><span class="  glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">1</td>
+<td class="grassetto">
+01UVGNB
+</td>
+<td>
+<span class="polinota">
+ICAR/01 (6)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=01UVGNB&amp;p_a_acc=2024&amp;p_lang=" class="policorpolink">L'acqua nei sistemi edilizi e urbani</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/it.png" "="" width="15" border="0"></td>
+
+<td class="centrato">6</td>
+<td>
+<div id="187244_preview" class="docPreview">
+
+</div>
+  <div id="187244_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2022/23)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/StampaOrario.aspx" target="_blank"><span class="  glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">1</td>
+<td class="grassetto">
+01UZFNB
+</td>
+<td>
+<span class="polinota">
+ICAR/10 (6)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=01UZFNB&amp;p_a_acc=2024&amp;p_lang=" class="policorpolink">Prevenzione per la sicurezza antincendio</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/it.png" "="" width="15" border="0"></td>
+
+<td class="centrato">6</td>
+<td>
+<div id="187287_preview" class="docPreview">
+
+</div>
+  <div id="187287_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2022/23)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/StampaOrario.aspx" target="_blank"><span class="  glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">1</td>
+<td class="grassetto">
+01UVBNB
+</td>
+<td>
+<span class="polinota">
+ING-IND/11 (6)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=01UVBNB&amp;p_a_acc=2024&amp;p_lang=" class="policorpolink">Progettazione dell'ambiente costruito resiliente ai cambiamenti climatici</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/it.png" "="" width="15" border="0"></td>
+
+<td class="centrato">6</td>
+<td>
+<div id="187238_preview" class="docPreview">
+
+</div>
+  <div id="187238_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2022/23)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/StampaOrario.aspx" target="_blank"><span class="  glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">1</td>
+<td class="grassetto">
+01DTVNB
+</td>
+<td>
+<span class="polinota">
+ICAR/10 (8)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=01DTVNB&amp;p_a_acc=2024&amp;p_lang=" class="policorpolink">Progettazione tecnologica di nuovi sistemi costruttivi industrializzati</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/it.png" "="" width="15" border="0"></td>
+
+<td class="centrato">8</td>
+<td>
+<div id="189596_preview" class="docPreview">
+
+</div>
+  <div id="189596_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2022/23)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/StampaOrario.aspx" target="_blank"><span class="  glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">1</td>
+<td class="grassetto">
+04IXTNB
+</td>
+<td>
+<span class="polinota">
+ING-IND/17 (8)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=04IXTNB&amp;p_a_acc=2024&amp;p_lang=" class="policorpolink">Project management</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/en.png" "="" width="15" border="0"></td>
+
+<td class="centrato">8</td>
+<td>
+<div id="186279_preview" class="docPreview">
+
+</div>
+  <div id="186279_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2021/22)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/StampaOrario.aspx" target="_blank"><span class="  glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">1,2</td>
+<td class="grassetto">
+02UEWNB
+</td>
+<td>
+<span class="polinota">
+
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=02UEWNB&amp;p_a_acc=2024&amp;p_lang=" class="policorpolink">Challenge</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/it.png" "="" width="15" border="0"></td>
+
+<td class="centrato">8</td>
+<td>
+<div id="187254_preview" class="docPreview">
+
+</div>
+  <div id="187254_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-danger" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda non presente" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/StampaOrario.aspx" target="_blank"><span class="  glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">1,2</td>
+<td class="grassetto">
+11MSYNB
+</td>
+<td>
+<span class="polinota">
+
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=11MSYNB&amp;p_a_acc=2024&amp;p_lang=" class="policorpolink">Professional Training</a>
+ </td>
+<td class="centrato">
+</td>
+
+<td class="centrato">12</td>
+<td>
+<div id="187253_preview" class="docPreview">
+
+</div>
+  <div id="187253_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2020/21)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/StampaOrario.aspx" target="_blank"><span class="  glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">1,2</td>
+<td class="grassetto">
+23CWHNB
+</td>
+<td>
+<span class="polinota">
+
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=23CWHNB&amp;p_a_acc=2024&amp;p_lang=" class="policorpolink">Tirocinio</a>
+ </td>
+<td class="centrato">
+</td>
+
+<td class="centrato">6</td>
+<td>
+<div id="186779_preview" class="docPreview">
+
+</div>
+  <div id="186779_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2020/21)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/StampaOrario.aspx" target="_blank"><span class="  glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">2</td>
+<td class="grassetto">
+01UWDNB
+</td>
+<td>
+<span class="polinota">
+ICAR/08 (3);<br> ICAR/09 (3)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=01UWDNB&amp;p_a_acc=2024&amp;p_lang=" class="policorpolink">Design of wood and glass structures</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/en.png" "="" width="15" border="0"></td>
+
+<td class="centrato">6</td>
+<td>
+<div id="187259_preview" class="docPreview">
+
+</div>
+  <div id="187259_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2021/22)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/StampaOrario.aspx" target="_blank"><span class="  glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">2</td>
+<td class="grassetto">
+01RXGNB
+</td>
+<td>
+<span class="polinota">
+ING-IND/11 (6)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=01RXGNB&amp;p_a_acc=2024&amp;p_lang=" class="policorpolink">Energy Audit and certification of buildings</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/en.png" "="" width="15" border="0"></td>
+
+<td class="centrato">6</td>
+<td>
+<div id="186466_preview" class="docPreview">
+
+</div>
+  <div id="186466_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2022/23)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/StampaOrario.aspx" target="_blank"><span class="  glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">2</td>
+<td class="grassetto">
+02NUKNB
+</td>
+<td>
+<span class="polinota">
+ICAR/10 (6)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=02NUKNB&amp;p_a_acc=2024&amp;p_lang=" class="policorpolink">Fire safety engineering (FSE)</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/it.png" "="" width="15" border="0"></td>
+
+<td class="centrato">6</td>
+<td>
+<div id="187257_preview" class="docPreview">
+
+</div>
+  <div id="187257_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2022/23)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/StampaOrario.aspx" target="_blank"><span class="  glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+<tr>
+<td class="centrato">2</td>
+<td class="grassetto">
+07INBNB
+</td>
+<td>
+<span class="polinota">
+ING-IND/28 (1);<br> ICAR/11 (7);<br> ICAR/04 (4)
+</span>
+ </td>
+ <td>
+<a href="https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=07INBNB&amp;p_a_acc=2024&amp;p_lang=" class="policorpolink">Sicurezza nei cantieri</a>
+ </td>
+<td class="centrato">
+<img src="Ingegneria%20Edile%20-%20lm_files/it.png" "="" width="15" border="0"></td>
+
+<td class="centrato">12</td>
+<td>
+<div id="186777_preview" class="docPreview">
+
+</div>
+  <div id="186777_full" class="docFull" style="display: none">
+
+</div>
+     </td>
+<td class="centrato">
+
+<span class="glyphicon glyphicon glyphicon-book text-success" data-toggle="popover" data-html="true" data-trigger="hover click" data-placement="left" data-content=" Scheda presente (valida dal 2021/22)" data-original-title="" title=""></span>
+</td>
+<td class="centrato">
+<a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/StampaOrario.aspx" target="_blank"><span class="  glyphicon glyphicon-time"></span></a>
+</td>
+                                                                        
+                                                                        
+                                                          
+             </tr>
+</tbody></table></div>
+
+                   </div> <!--body-->
+                 </div> <!--group-->
+
+            </div> <!-- fine accordion class-->
+            </div>
+            
+
+       </div>
+     </div> 
+   </div></div></main>
+  </div><!-- /#wrapper -->
+  <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button" title="Click to return on the top page" data-toggle="tooltip" data-placement="left"><span class="glyphicon glyphicon-chevron-up"></span></a>   
+
+
+<!--footer-->
+
+    <div style="height: 30px;"> </div>
+    <div style="height: 2px; position: relative; width: 100%; background-color: #003576;">
+         <hr style="display:none;">
+    </div>
+    <div style="height: 5px; height: 5px;"><!--12345678901234567890-->
+
+      <hr style="display:none;">
+    </div>
+
+    <div style=" position: relative; margin-left: 10px; margin-right: 10px;">
+      <div style=" position: relative;  height: 40px;  text-align: right;  font-size: 11px;  color: #003576;  line-height: 16px;">
+        <span style="font-size:12px;">© Politecnico di Torino</span> <br><span style="font-size:11px;">Corso Duca degli Abruzzi, 24 - 10129 Torino, ITALY </span>
+      </div>
+<div style=" border:0px solid grey; position: absolute; top: 0px; left: 0px; height: 20px; ">
+       <a style="font-size:13px;color: #003576;" href="https://didattica.polito.it/segreteria/contatta/it/">Contatti</a>
+</div>
+    </div>
+    <!-- fine footer -->
+    <div style="position: relative; height: 10px;"></div>
+
+
+                  <script type="text/javascript">
+                    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+                    ga('create', 'UA-416861-1', 'auto');  ga('set', 'anonymizeIp', true);  ga('create', 'UA-34281885-1', 'polito.it', 'LocalTracker');  ga('LocalTracker.set', 'anonymizeIp', true);
+                    ga('set', 'dimension1', '');
+                    ga('set', 'dimension2', 'PUBLIC');
+                    ga('send', 'pageview');
+                    ga('LocalTracker.send', 'pageview');
+                  </script>
+                
+
+
+<script>
+
+var hideFilter = 1;
+var orientamento = -9999;
+
+
+function showNoData()
+  {
+    $("#noData").modal({
+      backdrop: "static", //remove ability to close modal with click
+      keyboard: false, //remove option to close with keyboard
+      show: true //Display loader!
+    });
+  }
+  
+  
+$( document ).ready(function() {
+
+
+
+
+
+   init();
+   hideSidebar();
+   $('[data-toggle="popover"]').popover(); 
+//   $('[data-toggle="tooltip"]').tooltip({html:true});   
+   $(window).scroll(function () {
+        if ($(this).scrollTop() > 50) {
+            $("#back-to-top").fadeIn();
+        } else {
+            $("#back-to-top").fadeOut();
+        }
+    });
+    // scroll body to 0px on click
+    $("#back-to-top").click(function () {
+
+        $("body,html").animate({
+            scrollTop: 0
+        }, 800);
+        return false;
+    }); 
+    
+
+    $("#menu-toggle").click(function(e) {
+    e.preventDefault();
+      var icon = $(this).parent().find(".glyphicon")
+    if (icon.hasClass('glyphicon-chevron-right'))
+    { 
+        //$(".legendaCaption").html("Nascondi Legenda");
+        icon.removeClass('glyphicon-chevron-right').addClass("glyphicon-chevron-down");
+    }
+    else
+    {
+        //$(".legendaCaption").html("Mostra Legenda");
+        icon.removeClass('glyphicon-chevron-down').addClass("glyphicon-chevron-right");   
+    }
+    
+    });
+    
+    $("#filtri-toggle").click(function(e) {
+    e.preventDefault();
+      var icon = $(this).parent().find(".glyphicon")
+    if (icon.hasClass('glyphicon-chevron-right'))
+    { 
+        //$(".legendaCaption").html("Nascondi Legenda");
+        $("#filterPanel").show();
+        icon.removeClass('glyphicon-chevron-right').addClass("glyphicon-chevron-down");
+    }
+    else
+    {
+        $("#filterPanel").hide();
+        //$(".legendaCaption").html("Mostra Legenda");
+        icon.removeClass('glyphicon-chevron-down').addClass("glyphicon-chevron-right");   
+    }
+    
+    });
+    
+    
+    
+    
+    
+    /***CARICAMENTO FILTRI**/
+     $("#p_tipo").change(function(){
+     loadComboCds();
+    });
+    
+     $("#p_corso_studi").change(function(){
+       console.log("cambio cds: ricarico orient");
+       loadComboOrientamento($(this).val());   
+     });
+     
+     $("#p_a_acc").change(function(){
+        loadComboTipo();
+     });
+     
+     $("#p_tipo").change(function(){
+       console.log("cambio Tipo: ricarico cds");
+     });
+     
+    
+    /**********************/
+    
+
+     $("#refreshBtn").click(function(){
+        //event.preventdefault();
+        var paramArray = $("#p_corso_studi").val().split("_");
+        var sdu = paramArray[0];
+        var cds = paramArray[1];
+        url = "https://didattica.polito.it/pls/portal30/sviluppo.offerta_formativa_2019.vis?";
+url += "p_coorte="+$("#p_a_acc").val()+"&p_sdu="+sdu+"&p_cds="+cds+"&p_ori="+$("#p_orientamento").val();
+
+        location.href = url;         
+    });
+    
+    $("#expandAllId").click(function(){
+
+       var isExpanded = $('.collapseOrienta').collapse("show").attr("aria-expanded");
+       $(".apriTutto").hide();
+       $(".chiudiTutto").show();
+      
+    });
+    
+     $("#closeAllId").click(function(){
+
+      var isExpanded = $('.collapseOrienta').collapse("hide").attr("aria-expanded");
+       $(".apriTutto").show();
+       $(".chiudiTutto").hide();
+    });
+    
+   $(document).on("show.bs.collapse", ".accordion-body", function(event){
+//     var cl = "."+$(this).attr('id');
+     var cl =  "."+$(event.target).attr("id");     
+     $(cl).removeClass("glyphicon-menu-right").addClass("glyphicon-menu-down");
+    });   
+    
+    $(document).on("hide.bs.collapse", ".accordion-body", function(event){
+//     var cl = "."+$(this).attr('id');
+     var cl =  "."+$(event.target).attr("id");          
+     $(cl).removeClass("glyphicon-menu-down").addClass("glyphicon-menu-right");
+    });      
+});
+
+function loadComboOrientamento(val)
+{
+  var paramArray = val.split("_");
+  var sdu = paramArray[0];
+  var cds = paramArray[1];
+  
+  var options = $("#p_orientamento");
+  options.children().remove();
+  var a_acc = $("#p_a_acc").val();
+  
+  var baseUrl = "sviluppo.offerta_formativa_2019.loadComboOrienta?p_a_acc="+a_acc+"&p_sdu="+sdu+"&p_cds="+cds+"&p_tipo_vis=C";     
+  $.get(baseUrl,        function(res) {
+   var info = JSON.parse(res);
+   
+     if (info.data.length > 0)
+     {
+      $.each(info.data,function( index,value ) {
+      options.append($('<option>', {
+            value: this.value,
+            text: this.descr
+         }));  
+       });
+     $("#refreshBtn").attr("disabled", false);       
+     }
+     else
+     {
+       showNoData();
+     $("#refreshBtn").attr("disabled", true);
+     }
+
+    });
+}
+ 
+
+function loadComboCds()
+   {
+      
+     var options = $("#p_corso_studi");
+     var prevValue = options.val();
+       options.children().remove();
+
+          var baseUrl = "sviluppo.offerta_formativa_2019.loadComboCds?p_a_acc="+$("#p_a_acc").val()+"&p_tipo="+$("#p_tipo").val()+"&p_tipo_vis=C";     
+       
+       $.get(baseUrl,        function(res) {
+         var info = JSON.parse(res);
+           var tempGroup = null;
+           $.each(info.data,function( index,value ) {
+            
+           
+           if (this.group  != null  )
+           {
+                if (tempGroup == null)
+                {
+                   options.append($('<optgroup>', {
+                       label: this.groupName
+                    }));    
+                   tempGroup = this.group;                
+                }
+           }
+          if (tempGroup != null && tempGroup !=  this.group)
+          {
+             options.append($('</optgroup>'));    
+             options.append($('<optgroup>', {
+                label: this.groupName
+              }));    
+             tempGroup = this.group;
+          }           
+          
+                          
+            options.append($('<option>', {
+                  value: this.value,
+                  text: this.descr
+              }));
+                 
+          });
+          if ($("#p_corso_studi option[value='"+prevValue+"']").length > 0 )
+             options.val(prevValue);
+          loadComboOrientamento($("#p_corso_studi").val());
+       });
+   }     
+     
+
+ function loadComboTipo()
+{
+   
+  var options = $("#p_tipo");
+  var prevValue = options.val();  
+  options.children().remove();
+  var a_acc = $("#p_a_acc").val();
+
+  
+  var baseUrl = "sviluppo.offerta_formativa_2019.loadComboTipo?p_a_acc="+a_acc+"&p_tipo_vis=C";     
+  $.get(baseUrl,        function(res) {
+   var info = JSON.parse(res);
+   
+      $.each(info.data,function( index,value ) {
+      options.append($('<option>', {
+            value: this.value,
+            text: this.descr
+         }));  
+       });
+       
+       options.val(prevValue);
+       loadComboCds();
+
+   });
+
+}  
+
+
+function toggleDivDocente(id)
+{
+  $("#"+id+"_preview").toggle();
+  $("#"+id+"_full").toggle();
+}      
+
+
+
+$("#menu-toggle").click(function(e){
+
+   e.preventDefault();
+   hideSidebar()
+   
+
+});
+
+function hideSidebar()
+{
+ // console.log("XXX");
+  $("#wrapper").toggleClass("toggled");  
+  $("#filter").slideToggle();
+  $("#slidebar-white").show();  
+}  
+
+function init()
+{
+/*  if (hideFilter > 0) 
+  {
+    console.log("YYY");
+    $("#wrapper").addClass("toggled");
+    $("#filter").toggle();
+  }*/
+  
+  
+  $("#wrapper").removeClass("toggled");
+  
+  if (orientamento != -9999)
+  {
+    $("#collapse"+orientamento).collapse();
+    $(".collapse"+orientamento).removeClass("glyphicon-menu-right").addClass("glyphicon-menu-down");
+  } 
+
+    
+
+}  
+
+
+
+</script> 
+</body></html>

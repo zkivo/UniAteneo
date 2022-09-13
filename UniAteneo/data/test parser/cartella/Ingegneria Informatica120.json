@@ -1,0 +1,96 @@
+[
+    {
+        "id": 15995,
+        "ssd": "ING-INF/05",
+        "nome": "Architetture dei sistemi di elaborazione",
+        "cfu": 9
+    },
+    {
+        "id": 16020,
+        "ssd": "ING-INF/05",
+        "nome": "Computer architectures",
+        "cfu": 12
+    },
+    {
+        "id": 16045,
+        "ssd": "ING-INF/05",
+        "nome": "Data Science and Database Technology",
+        "cfu": 3
+    },
+    {
+        "id": 16070,
+        "ssd": "ING-INF/05",
+        "nome": "Data Science e Tecnologie per le Basi di Dati",
+        "cfu": 12
+    },
+    {
+        "id": 16095,
+        "ssd": "ING-INF/05",
+        "nome": "Computer network technologies and services",
+        "cfu": 3
+    },
+    {
+        "id": 16120,
+        "ssd": "ING-INF/05",
+        "nome": "Tecnologie e servizi di rete",
+        "cfu": 12
+    },
+    {
+        "id": 16145,
+        "ssd": "ING-INF/05",
+        "nome": "Ingegneria del software",
+        "cfu": 12
+    },
+    {
+        "id": 16170,
+        "ssd": "ING-INF/05",
+        "nome": "Software engineering",
+        "cfu": 9
+    },
+    {
+        "id": 16195,
+        "ssd": "ING-INF/05",
+        "nome": "Applicazioni Web I",
+        "cfu": 3
+    },
+    {
+        "id": 16220,
+        "ssd": "ING-INF/05",
+        "nome": "Web Applications I",
+        "cfu": 12
+    },
+    {
+        "id": 22395,
+        "ssd": "ING-INF/05",
+        "nome": "Visualizzazione dell'informazione quantitativa",
+        "cfu": 3
+    },
+    {
+        "id": 20545,
+        "ssd": "ING-INF/05",
+        "nome": "Benessere digitale (Grandi Sfide - Tecnologie e Umanit�)",
+        "cfu": 3
+    },
+    {
+        "id": 25570,
+        "ssd": "ICAR/07",
+        "nome": "Modellazione digitale di impianti",
+        "cfu": 3
+    },
+    {
+        "id": 15895,
+        "ssd": "ING-INF/05",
+        "nome": "Tecnologie per IoT",
+        "cfu": 3
+    },
+    {
+        "id": 30970,
+        "nome": "Tirocinio",
+        "cfu": 3
+    },
+    {
+        "id": 30995,
+        "nome": "Tesi",
+        "cfu": 12
+    }
+]

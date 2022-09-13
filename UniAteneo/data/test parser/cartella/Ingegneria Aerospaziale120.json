@@ -1,0 +1,114 @@
+[
+    {
+        "id": 8095,
+        "ssd": "ING-IND/06",
+        "nome": "Gasdinamica",
+        "cfu": 6
+    },
+    {
+        "id": 8120,
+        "ssd": "ING-IND/03",
+        "nome": "Meccanica del volo",
+        "cfu": 3
+    },
+    {
+        "id": 8145,
+        "ssd": "MAT/08",
+        "nome": "Metodi numerici e calcolo scientifico",
+        "cfu": 6
+    },
+    {
+        "id": 8170,
+        "ssd": "ING-IND/07",
+        "nome": "Motori per aeromobili",
+        "cfu": 12
+    },
+    {
+        "id": 8195,
+        "ssd": "ING-IND/05",
+        "nome": "Sistemi aerospaziali",
+        "cfu": 3
+    },
+    {
+        "id": 8220,
+        "ssd": "ING-IND/04",
+        "nome": "Strutture aeronautiche",
+        "cfu": 9
+    },
+    {
+        "id": 8245,
+        "ssd": "ING-IND/04",
+        "nome": "Dinamica delle strutture aerospaziali/Modellazione numerica e tecniche di simulazione di strutture aerospaziali",
+        "cfu": 9
+    },
+    {
+        "id": 8270,
+        "ssd": "ING-IND/04",
+        "nome": "Progettazione di veicoli aerospaziali",
+        "cfu": 3
+    },
+    {
+        "id": 8295,
+        "ssd": "ING-IND/04",
+        "nome": "Sperimentazione su strutture aerospaziali/Tecnologie aerospaziali",
+        "cfu": 9
+    },
+    {
+        "id": 8320,
+        "ssd": "ING-IND/06",
+        "nome": "Gasdinamica",
+        "cfu": 3
+    },
+    {
+        "id": 8370,
+        "ssd": "MAT/08",
+        "nome": "Metodi numerici e calcolo scientifico",
+        "cfu": 9
+    },
+    {
+        "id": 8395,
+        "ssd": "ING-IND/07",
+        "nome": "Motori per aeromobili",
+        "cfu": 12
+    },
+    {
+        "id": 8420,
+        "ssd": "ING-IND/05",
+        "nome": "Sistemi aerospaziali",
+        "cfu": 3
+    },
+    {
+        "id": 8445,
+        "ssd": "ING-IND/04",
+        "nome": "Strutture aeronautiche",
+        "cfu": 3
+    },
+    {
+        "id": 9545,
+        "ssd": "ICAR/08",
+        "nome": "Mechanics of innovative materials",
+        "cfu": 3
+    },
+    {
+        "id": 15945,
+        "ssd": "ING-INF/05",
+        "nome": "Visualizzazione dell'informazione quantitativa",
+        "cfu": 3
+    },
+    {
+        "id": 14820,
+        "ssd": "ING-INF/05",
+        "nome": "Introduzione alle Applicazioni Web",
+        "cfu": 3
+    },
+    {
+        "id": 30770,
+        "nome": "Tirocinio",
+        "cfu": 3
+    },
+    {
+        "id": 30795,
+        "nome": "Tesi",
+        "cfu": 12
+    }
+]

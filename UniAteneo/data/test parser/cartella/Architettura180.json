@@ -1,0 +1,150 @@
+[
+    {
+        "id": 2045,
+        "ssd": "MAT/05",
+        "nome": "Istituzioni di matematiche",
+        "cfu": 12
+    },
+    {
+        "id": 2070,
+        "ssd": "ICAR/18",
+        "nome": "Storia dell'architettura contemporanea",
+        "cfu": 9
+    },
+    {
+        "id": 2095,
+        "ssd": "ICAR/17",
+        "nome": "Laboratorio di disegno e rilievo dell'architettura",
+        "cfu": 12
+    },
+    {
+        "id": 2120,
+        "ssd": "ICAR/09",
+        "nome": "Morfologia e concezione delle strutture",
+        "cfu": 3
+    },
+    {
+        "id": 2145,
+        "ssd": "L-LIN/12",
+        "nome": "Lingua inglese I livello",
+        "cfu": 3
+    },
+    {
+        "id": 2170,
+        "ssd": "ICAR/14",
+        "nome": "Atelier Fondamenti di Progettazione da Tabella 1",
+        "cfu": 3
+    },
+    {
+        "id": 2195,
+        "ssd": "ICAR/12",
+        "nome": "Cultura e fondamenti di Tecnologia dell'architettura",
+        "cfu": 9
+    },
+    {
+        "id": 2220,
+        "ssd": "ICAR/21",
+        "nome": "Urbanistica",
+        "cfu": 6
+    },
+    {
+        "id": 2245,
+        "ssd": "ICAR/21",
+        "nome": "Atelier Citt� e Territorio a scelta da Tabella 2",
+        "cfu": 3
+    },
+    {
+        "id": 2270,
+        "ssd": "ICAR/06",
+        "nome": "Laboratorio di geomatica per la modellazione dell'architettura",
+        "cfu": 9
+    },
+    {
+        "id": 2295,
+        "ssd": "ICAR/18",
+        "nome": "Storia dell'architettura moderna",
+        "cfu": 6
+    },
+    {
+        "id": 2320,
+        "ssd": "ING-IND/11",
+        "nome": "Fisica tecnica ambientale",
+        "cfu": 3
+    },
+    {
+        "id": 2345,
+        "ssd": "ICAR/08",
+        "nome": "Atelier Costruzione a scelta da Tabella 3",
+        "cfu": 12
+    },
+    {
+        "id": 2370,
+        "ssd": "ING-IND/22",
+        "nome": "Scienza e tecnologia dei materiali",
+        "cfu": 3
+    },
+    {
+        "id": 2395,
+        "ssd": "ICAR/18",
+        "nome": "Laboratorio di Storia dell'architettura e della citt�",
+        "cfu": 6
+    },
+    {
+        "id": 2420,
+        "ssd": "ICAR/14",
+        "nome": "Laboratorio di Teoria del progetto",
+        "cfu": 6
+    },
+    {
+        "id": 2445,
+        "ssd": "ICAR/19",
+        "nome": "Teorie e storia del restauro",
+        "cfu": 12
+    },
+    {
+        "id": 2470,
+        "ssd": "ICAR/22",
+        "nome": "Teorie e strumenti per le valutazioni immobiliari",
+        "cfu": 12
+    },
+    {
+        "id": 2495,
+        "ssd": "ICAR/14",
+        "nome": "Atelier Fondamenti di Progettazione A",
+        "cfu": 9
+    },
+    {
+        "id": 2520,
+        "ssd": "ICAR/14",
+        "nome": "Atelier Fondamenti di Progettazione B",
+        "cfu": 6
+    },
+    {
+        "id": 2545,
+        "ssd": "ICAR/14",
+        "nome": "Atelier Fondamenti di Progettazione C",
+        "cfu": 9
+    },
+    {
+        "id": 9770,
+        "ssd": "ICAR/08",
+        "nome": "Design of wood and glass structures",
+        "cfu": 3
+    },
+    {
+        "id": 30695,
+        "ssd": "ING-INF/05",
+        "nome": "Visualizzazione dell'informazione quantitativa",
+        "cfu": 3
+    },
+    {
+        "id": 30720,
+        "nome": "Tirocinio",
+        "cfu": 6
+    },
+    {
+        "id": 30745,
+        "nome": "Prova finale",
+        "cfu": 9
+    }
+]

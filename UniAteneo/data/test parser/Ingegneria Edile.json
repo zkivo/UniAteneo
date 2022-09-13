@@ -1,0 +1,158 @@
+[
+    {
+        "nome": "Analisi matematica I",
+        "ssd": "MAT/05",
+        "id": 6000,
+        "cfu": 9
+    },
+    {
+        "nome": "Chimica",
+        "ssd": "CHIM/07",
+        "id": 6015,
+        "cfu": 9
+    },
+    {
+        "nome": "Informatica",
+        "ssd": "ING-INF/05",
+        "id": 6030,
+        "cfu": 9
+    },
+    {
+        "nome": "Lingua inglese I livello",
+        "ssd": "L-LIN/12",
+        "id": 6045,
+        "cfu": 9
+    },
+    {
+        "nome": "Algebra lineare e geometria",
+        "ssd": "MAT/08",
+        "id": 6060,
+        "cfu": 3
+    },
+    {
+        "nome": "Disegno edile",
+        "ssd": "ICAR/17",
+        "id": 6075,
+        "cfu": 3
+    },
+    {
+        "nome": "Fisica I",
+        "ssd": "FIS/01",
+        "id": 6090,
+        "cfu": 12
+    },
+    {
+        "nome": "Analisi matematica II",
+        "ssd": "MAT/05",
+        "id": 6105,
+        "cfu": 12
+    },
+    {
+        "nome": "Fisica II",
+        "ssd": "FIS/01",
+        "id": 6120,
+        "cfu": 6
+    },
+    {
+        "nome": "Fisica tecnica per le costruzioni edili",
+        "ssd": "ING-IND/11",
+        "id": 6135,
+        "cfu": 3
+    },
+    {
+        "nome": "Storia/Architettura tecnica",
+        "ssd": "ICAR/10",
+        "id": 6150,
+        "cfu": 9
+    },
+    {
+        "nome": "Scienza delle costruzioni",
+        "ssd": "ICAR/08",
+        "id": 6165,
+        "cfu": 9
+    },
+    {
+        "nome": "Scienza e tecnologia dei materiali per l'edilizia",
+        "ssd": "ING-IND/22",
+        "id": 6180,
+        "cfu": 12
+    },
+    {
+        "nome": "Topografia",
+        "ssd": "ICAR/06",
+        "id": 6195,
+        "cfu": 6
+    },
+    {
+        "nome": "Idraulica tecnica per l'ingegneria edile",
+        "ssd": "ICAR/01",
+        "id": 6210,
+        "cfu": 3
+    },
+    {
+        "nome": "Meccanica delle terre e principi di opere geotecniche",
+        "ssd": "ICAR/07",
+        "id": 6225,
+        "cfu": 3
+    },
+    {
+        "nome": "Progettazione edile",
+        "ssd": "ICAR/10",
+        "id": 6240,
+        "cfu": 3
+    },
+    {
+        "nome": "BIM e Construction Management",
+        "ssd": "ICAR/11",
+        "id": 6255,
+        "cfu": 6
+    },
+    {
+        "nome": "Estimo ed esercizio professionale",
+        "ssd": "ICAR/22",
+        "id": 6270,
+        "cfu": 12
+    },
+    {
+        "nome": "Tecnica delle costruzioni",
+        "ssd": "ICAR/09",
+        "id": 6285,
+        "cfu": 12
+    },
+    {
+        "nome": "Algoritmi e democrazia (Grandi Sfide - Digitale)",
+        "ssd": "ING-INF/05",
+        "id": 6300,
+        "cfu": 3
+    },
+    {
+        "nome": "Assistenza sanitaria e intelligenza artificiale (Grandi Sfide - Salute)",
+        "ssd": "ING-INF/06",
+        "id": 6315,
+        "cfu": 6
+    },
+    {
+        "nome": "Benessere digitale (Grandi Sfide - Tecnologie e Umanit�)",
+        "ssd": "ING-INF/05",
+        "id": 6330,
+        "cfu": 6
+    },
+    {
+        "nome": "Bio e nano tecnologie in medicina (Grandi Sfide - Salute)",
+        "ssd": "ING-IND/34",
+        "id": 6345,
+        "cfu": 3
+    },
+    {
+        "nome": "Citt�, infrastrutture e cambiamento climatico (Grandi Sfide - Clima)",
+        "ssd": "ICAR/07",
+        "id": 6360,
+        "cfu": 6
+    },
+    {
+        "nome": "Crisi climatica e bias cognitivi (Grandi Sfide - Clima)",
+        "ssd": "ICAR/02",
+        "id": 6375,
+        "cfu": 6
+    }
+]

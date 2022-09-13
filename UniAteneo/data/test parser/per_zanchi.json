@@ -1,0 +1,1234 @@
+[
+    {
+        "ssd": "MAT/05",
+        "nome": "Istituzioni di matematiche"
+    },
+    {
+        "ssd": "ICAR/18",
+        "nome": "Storia dell'architettura contemporanea"
+    },
+    {
+        "ssd": "ICAR/17",
+        "nome": "Laboratorio di disegno e rilievo dell'architettura"
+    },
+    {
+        "ssd": "ICAR/09",
+        "nome": "Morfologia e concezione delle strutture"
+    },
+    {
+        "ssd": "L-LIN/12",
+        "nome": "Lingua inglese I livello"
+    },
+    {
+        "ssd": "ICAR/14",
+        "nome": "Atelier Fondamenti di Progettazione da Tabella 1"
+    },
+    {
+        "ssd": "ICAR/12",
+        "nome": "Cultura e fondamenti di Tecnologia dell'architettura"
+    },
+    {
+        "ssd": "ICAR/21",
+        "nome": "Urbanistica"
+    },
+    {
+        "ssd": "ICAR/21",
+        "nome": "Atelier Città e Territorio a scelta da Tabella 2"
+    },
+    {
+        "ssd": "ICAR/06",
+        "nome": "Laboratorio di geomatica per la modellazione dell'architettura"
+    },
+    {
+        "ssd": "ICAR/18",
+        "nome": "Storia dell'architettura moderna"
+    },
+    {
+        "ssd": "ING-IND/11",
+        "nome": "Fisica tecnica ambientale"
+    },
+    {
+        "ssd": "ICAR/08",
+        "nome": "Atelier Costruzione a scelta da Tabella 3"
+    },
+    {
+        "ssd": "ING-IND/22",
+        "nome": "Scienza e tecnologia dei materiali"
+    },
+    {
+        "ssd": "ICAR/18",
+        "nome": "Laboratorio di Storia dell'architettura e della città"
+    },
+    {
+        "ssd": "ICAR/14",
+        "nome": "Laboratorio di Teoria del progetto"
+    },
+    {
+        "ssd": "ICAR/19",
+        "nome": "Teorie e storia del restauro"
+    },
+    {
+        "ssd": "ICAR/22",
+        "nome": "Teorie e strumenti per le valutazioni immobiliari"
+    },
+    {
+        "ssd": "ICAR/14",
+        "nome": "Atelier Fondamenti di Progettazione A"
+    },
+    {
+        "ssd": "ICAR/14",
+        "nome": "Atelier Fondamenti di Progettazione B"
+    },
+    {
+        "ssd": "ICAR/14",
+        "nome": "Atelier Fondamenti di Progettazione C"
+    },
+    {
+        "ssd": "ICAR/14",
+        "nome": "Atelier Fondamenti di Progettazione D"
+    },
+    {
+        "ssd": "ICAR/14",
+        "nome": "Atelier Fondamenti di Progettazione E"
+    },
+    {
+        "ssd": "ICAR/14",
+        "nome": "Atelier Fondamenti di Progettazione F"
+    },
+    {
+        "ssd": "ICAR/14",
+        "nome": "Atelier Città e Territorio A"
+    },
+    {
+        "ssd": "ICAR/21",
+        "nome": "Atelier Città e Territorio B"
+    },
+    {
+        "ssd": "ICAR/14",
+        "nome": "Atelier Città e Territorio C"
+    },
+    {
+        "ssd": "MAT/07",
+        "nome": "Atelier Città e Territorio D"
+    },
+    {
+        "ssd": "ICAR/14",
+        "nome": "Atelier Città e Territorio E"
+    },
+    {
+        "ssd": "ICAR/14",
+        "nome": "Atelier Città e Territorio F"
+    },
+    {
+        "ssd": "ICAR/14",
+        "nome": "Atelier Costruzione A"
+    },
+    {
+        "ssd": "ICAR/12",
+        "nome": "Atelier Costruzione B"
+    },
+    {
+        "ssd": "ICAR/14",
+        "nome": "Atelier Costruzione C"
+    },
+    {
+        "ssd": "ICAR/14",
+        "nome": "Atelier Costruzione D"
+    },
+    {
+        "ssd": "ICAR/14",
+        "nome": "Atelier Costruzione E"
+    },
+    {
+        "ssd": "ICAR/12",
+        "nome": "Atelier Costruzione F"
+    },
+    {
+        "ssd": "ICAR/18",
+        "nome": "Laboratorio di Storia dell'architettura e della città A"
+    },
+    {
+        "ssd": "ICAR/18",
+        "nome": "Laboratorio di Storia dell'architettura e della città B"
+    },
+    {
+        "ssd": "ICAR/18",
+        "nome": "Laboratorio di Storia dell'architettura e della città C"
+    },
+    {
+        "ssd": "ICAR/18",
+        "nome": "Laboratorio di Storia dell'architettura e della città D"
+    },
+    {
+        "ssd": "ICAR/18",
+        "nome": "Laboratorio di Storia dell'architettura e della città E"
+    },
+    {
+        "ssd": "ICAR/14",
+        "nome": "Laboratorio di Teoria del progetto A"
+    },
+    {
+        "ssd": "ICAR/14",
+        "nome": "Laboratorio di Teoria del progetto B"
+    },
+    {
+        "ssd": "ICAR/14",
+        "nome": "Laboratorio di Teoria del progetto C"
+    },
+    {
+        "ssd": "ICAR/14",
+        "nome": "Laboratorio di Teoria del progetto D"
+    },
+    {
+        "ssd": "ICAR/14",
+        "nome": "Laboratorio di Teoria del progetto E"
+    },
+    {
+        "ssd": "ING-IND/11",
+        "nome": "Atelier Architettura degli interni"
+    },
+    {
+        "ssd": "ICAR/14",
+        "nome": "Atelier Design-build"
+    },
+    {
+        "ssd": "ICAR/14",
+        "nome": "Atelier Progettazione urbana"
+    },
+    {
+        "ssd": "ICAR/14",
+        "nome": "Atelier Progetto e Modellazione"
+    },
+    {
+        "ssd": "ICAR/09",
+        "nome": "Atelier: restauro e strutture"
+    },
+    {
+        "ssd": "ICAR/12",
+        "nome": "Gestione del processo edilizio"
+    },
+    {
+        "ssd": "ICAR/17",
+        "nome": "Modellazione geometrica in architettura"
+    },
+    {
+        "ssd": "ICAR/12",
+        "nome": "Principi di progettazione ambientale"
+    },
+    {
+        "ssd": "ICAR/21",
+        "nome": "Progetti urbanistici"
+    },
+    {
+        "ssd": "ICAR/18",
+        "nome": "Storia dell'architettura antica e medievale"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Introduzione alle Applicazioni Web"
+    },
+    {
+        "ssd": "ICAR/17",
+        "nome": "Modellazione digitale di impianti"
+    },
+    {
+        "ssd": "ICAR/05",
+        "nome": "Progettare e gestire la mobilità nelle citt� del futuro"
+    },
+    {
+        "ssd": "SPS/08",
+        "nome": "Science and technology studies"
+    },
+    {
+        "ssd": "ING-IND/16",
+        "nome": "Strumenti dell'Ingegneria per l'industria 4.0"
+    },
+    {
+        "ssd": "ICAR/10",
+        "nome": "Strumenti e metodi per la sostenibilità dei sistemi edilizi e territoriali"
+    },
+    {
+        "ssd": "ICAR/04",
+        "nome": "Sicurezza nei cantieri"
+    },
+    {
+        "ssd": "ING-IND/26",
+        "nome": "Advanced technologies for risk-based decision making"
+    },
+    {
+        "ssd": "FIS/03",
+        "nome": "Agri-Tech: Technologies for a sustainable agriculture"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Algoritmi e democrazia (Grandi Sfide - Digitale)"
+    },
+    {
+        "ssd": "ICAR/10",
+        "nome": "Architettura tecnica e cultura del costruito"
+    },
+    {
+        "ssd": "ING-INF/06",
+        "nome": "Assistenza sanitaria e intelligenza artificiale (Grandi Sfide - Salute)"
+    },
+    {
+        "ssd": "ING-IND/14",
+        "nome": "Automotive evolution"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Benessere digitale (Grandi Sfide - Tecnologie e Umanità)"
+    },
+    {
+        "ssd": "ING-IND/34",
+        "nome": "Bio e nano tecnologie in medicina (Grandi Sfide - Salute)"
+    },
+    {
+        "ssd": "ICAR/03",
+        "nome": "Cambiamenti climatici e socio economici"
+    },
+    {
+        "ssd": "ICAR/07",
+        "nome": "Città, infrastrutture e cambiamento climatico (Grandi Sfide - Clima)"
+    },
+    {
+        "ssd": "ICAR/02",
+        "nome": "Crisi climatica e bias cognitivi (Grandi Sfide - Clima)"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Cybersecurity and National Defence (Grandi Sfide - Digitale)"
+    },
+    {
+        "ssd": "ICAR/06",
+        "nome": "Droni per il rilievo territoriale e architettonico"
+    },
+    {
+        "ssd": "ING-IND/35",
+        "nome": "Economia urbana"
+    },
+    {
+        "ssd": "ING-IND/10",
+        "nome": "Energy transition and society (Grandi Sfide - Energia)"
+    },
+    {
+        "ssd": "ICAR/02",
+        "nome": "Evidenze, modelli e percezione del cambiamento climatico (Grandi Sfide - Clima)"
+    },
+    {
+        "ssd": "ING-IND/05",
+        "nome": "Evoluzione dei veicoli aerospaziali"
+    },
+    {
+        "ssd": "ING-IND/35",
+        "nome": "Future of Work (Grandi Sfide - Tecnologie e Umanità)"
+    },
+    {
+        "ssd": "ING-IND/35",
+        "nome": "Genere e tecnica (Grandi Sfide - Tecnologie e Umanità)"
+    },
+    {
+        "ssd": "ING-IND/13",
+        "nome": "Il mare e la transizione verde (Grandi Sfide - Energia)"
+    },
+    {
+        "ssd": "ING-IND/35",
+        "nome": "Imprenditorialità e innovazione"
+    },
+    {
+        "ssd": "ICAR/12",
+        "nome": "Inclusive design nelle scienze dell'architettura e dell'ingegneria"
+    },
+    {
+        "ssd": "ICAR/04",
+        "nome": "Infrastrutture intelligenti (Grandi Sfide - Mobilità)"
+    },
+    {
+        "ssd": "ICAR/16",
+        "nome": "Interior Design: history and theory"
+    },
+    {
+        "ssd": "ING-INF/03",
+        "nome": "Internet e social media: tecnologie e derive della comunicazione in rete (Grandi Sfide - Digitale)"
+    },
+    {
+        "ssd": "ING-IND/27",
+        "nome": "La società della sostenibilit� (Grandi Sfide - Clima)"
+    },
+    {
+        "ssd": "ICAR/12",
+        "nome": "Migrations and settlements (Grandi Sfide - Mobilità)"
+    },
+    {
+        "ssd": "ICAR/05",
+        "nome": "Mobilità urbana sostenibile (Grandi Sfide - Mobilit�)"
+    },
+    {
+        "ssd": "ING-INF/06",
+        "nome": "Neuroengineering and active aging (Grandi Sfide - Salute)"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Politica e tecnica (Grandi Sfide - Digitale)"
+    },
+    {
+        "ssd": "ICAR/17",
+        "nome": "Realtà virtuale e fragilit� (Grandi Sfide - Salute)"
+    },
+    {
+        "ssd": "ING-IND/28",
+        "nome": "Sicurezza e legislazione dell'ambiente e del territorio"
+    },
+    {
+        "ssd": "ING-INF/03",
+        "nome": "Smart city e inclusione (Grandi Sfide - Tecnologie e Umanità)"
+    },
+    {
+        "ssd": "ING-IND/25",
+        "nome": "Sostenibilità e responsabilit� (Grandi Sfide - Energia)"
+    },
+    {
+        "ssd": "ING-IND/19",
+        "nome": "Storia futura dell'energia (Grandi Sfide - Energia)"
+    },
+    {
+        "ssd": "ICAR/17",
+        "nome": "Tecniche della rappresentazione digitale"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Tecnologie per IoT"
+    },
+    {
+        "ssd": "ING-IND/13",
+        "nome": "The future E-mobility (Grandi Sfide - Mobilità)"
+    },
+    {
+        "ssd": "ICAR/22",
+        "nome": "Valutazioni di impatto ambientale"
+    },
+    {
+        "ssd": "ICAR/07",
+        "nome": "Modellazione digitale di impianti"
+    },
+    {
+        "ssd": "ICAR/07",
+        "nome": "Rischio sismico"
+    },
+    {
+        "ssd": "ING-IND/06",
+        "nome": "Gasdinamica"
+    },
+    {
+        "ssd": "ING-IND/03",
+        "nome": "Meccanica del volo"
+    },
+    {
+        "ssd": "MAT/08",
+        "nome": "Metodi numerici e calcolo scientifico"
+    },
+    {
+        "ssd": "ING-IND/07",
+        "nome": "Motori per aeromobili"
+    },
+    {
+        "ssd": "ING-IND/05",
+        "nome": "Sistemi aerospaziali"
+    },
+    {
+        "ssd": "ING-IND/04",
+        "nome": "Strutture aeronautiche"
+    },
+    {
+        "ssd": "ING-IND/04",
+        "nome": "Dinamica delle strutture aerospaziali/Modellazione numerica e tecniche di simulazione di strutture aerospaziali"
+    },
+    {
+        "ssd": "ING-IND/04",
+        "nome": "Progettazione di veicoli aerospaziali"
+    },
+    {
+        "ssd": "ING-IND/04",
+        "nome": "Sperimentazione su strutture aerospaziali/Tecnologie aerospaziali"
+    },
+    {
+        "ssd": "ING-IND/14",
+        "nome": "Progetto di motori per aeromobili/Costruzione di motori per aeromobili"
+    },
+    {
+        "ssd": "ING-IND/07",
+        "nome": "Fluidodinamica computazionale dei sistemi propulsivi/Fluidodinamica delle turbomacchine"
+    },
+    {
+        "ssd": "ING-IND/03",
+        "nome": "Guida e controllo del velivolo/Progetto dei sistemi aerospaziali integrati"
+    },
+    {
+        "ssd": "ING-IND/05",
+        "nome": "Modellazione, simulazione e sperimentazione dei sistemi aerospaziali/Simulazione del volo"
+    },
+    {
+        "ssd": "ING-IND/06",
+        "nome": "Fluidodinamica computazionale/Flussi turbolenti"
+    },
+    {
+        "ssd": "ING-IND/06",
+        "nome": "Aeroacustica/Aerodinamica sperimentale"
+    },
+    {
+        "ssd": "ING-IND/04",
+        "nome": "Meccanica del volo spaziale/Strutture per veicoli spaziali"
+    },
+    {
+        "ssd": "ING-IND/05",
+        "nome": "Progetto di missioni e sistemi spaziali/Propulsione spaziale"
+    },
+    {
+        "ssd": "ICAR/06",
+        "nome": "Conoscenza del patrimonio costruito nell'epoca dei cambiamenti climatici"
+    },
+    {
+        "ssd": "ICAR/08",
+        "nome": "Teoria delle strutture"
+    },
+    {
+        "ssd": "ICAR/09",
+        "nome": "Ingegneria sismica e resilienza dei sistemi urbani"
+    },
+    {
+        "ssd": "ICAR/10",
+        "nome": "Progettazione integrale nella resilienza del costruito"
+    },
+    {
+        "ssd": "ICAR/11",
+        "nome": "Gestione del cantiere e del progetto"
+    },
+    {
+        "ssd": "ICAR/07",
+        "nome": "Progettazione geotecnica per la resilienza del costruito"
+    },
+    {
+        "ssd": "ICAR/22",
+        "nome": "Valutazione degli investimenti per le trasformazioni urbane"
+    },
+    {
+        "ssd": "ICAR/17",
+        "nome": "Il disegno per il rilievo e progettazione della resilienza urbana"
+    },
+    {
+        "ssd": "ICAR/01",
+        "nome": "L'acqua nei sistemi edilizi e urbani"
+    },
+    {
+        "ssd": "ICAR/10",
+        "nome": "Prevenzione per la sicurezza antincendio"
+    },
+    {
+        "ssd": "ING-IND/11",
+        "nome": "Progettazione dell'ambiente costruito resiliente ai cambiamenti climatici"
+    },
+    {
+        "ssd": "ING-IND/33",
+        "nome": "Electrical Systems for Buildings"
+    },
+    {
+        "ssd": "ICAR/06",
+        "nome": "GIS modeling for City and Land"
+    },
+    {
+        "ssd": "ICAR/08",
+        "nome": "Mechanics of innovative materials"
+    },
+    {
+        "ssd": "ICAR/09",
+        "nome": "Structural Design"
+    },
+    {
+        "ssd": "ICAR/07",
+        "nome": "Geotechnical Engineering for the Sustainability of Buildings"
+    },
+    {
+        "ssd": "ICAR/17",
+        "nome": "InfraBIM, Design, Construction and Management"
+    },
+    {
+        "ssd": "ICAR/22",
+        "nome": "Investments analysis"
+    },
+    {
+        "ssd": "ICAR/10",
+        "nome": "Progettazione tecnologica di nuovi sistemi costruttivi industrializzati"
+    },
+    {
+        "ssd": "ING-IND/17",
+        "nome": "Project management"
+    },
+    {
+        "ssd": "ICAR/17",
+        "nome": "Survey and drawing design for urban refurbishment at sustainable transition"
+    },
+    {
+        "ssd": "ICAR/10",
+        "nome": "Sustainable Design for Building Refurbishment"
+    },
+    {
+        "ssd": "ICAR/08",
+        "nome": "Design of wood and glass structures"
+    },
+    {
+        "ssd": "ICAR/09",
+        "nome": "Earthquake engineering and Seismic Retrofit"
+    },
+    {
+        "ssd": "ING-IND/11",
+        "nome": "Energy Audit and certification of buildings"
+    },
+    {
+        "ssd": "ICAR/10",
+        "nome": "Fire safety engineering (FSE)"
+    },
+    {
+        "ssd": "ING-IND/28",
+        "nome": "Sicurezza nei cantieri"
+    },
+    {
+        "ssd": "MAT/05",
+        "nome": "Analisi matematica I"
+    },
+    {
+        "ssd": "CHIM/07",
+        "nome": "Chimica"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Informatica"
+    },
+    {
+        "ssd": "MAT/08",
+        "nome": "Algebra lineare e geometria"
+    },
+    {
+        "ssd": "ICAR/17",
+        "nome": "Disegno edile"
+    },
+    {
+        "ssd": "FIS/01",
+        "nome": "Fisica I"
+    },
+    {
+        "ssd": "MAT/05",
+        "nome": "Analisi matematica II"
+    },
+    {
+        "ssd": "FIS/01",
+        "nome": "Fisica II"
+    },
+    {
+        "ssd": "ING-IND/11",
+        "nome": "Fisica tecnica per le costruzioni edili"
+    },
+    {
+        "ssd": "ICAR/10",
+        "nome": "Storia/Architettura tecnica"
+    },
+    {
+        "ssd": "ICAR/08",
+        "nome": "Scienza delle costruzioni"
+    },
+    {
+        "ssd": "ING-IND/22",
+        "nome": "Scienza e tecnologia dei materiali per l'edilizia"
+    },
+    {
+        "ssd": "ICAR/06",
+        "nome": "Topografia"
+    },
+    {
+        "ssd": "ICAR/01",
+        "nome": "Idraulica tecnica per l'ingegneria edile"
+    },
+    {
+        "ssd": "ICAR/07",
+        "nome": "Meccanica delle terre e principi di opere geotecniche"
+    },
+    {
+        "ssd": "ICAR/10",
+        "nome": "Progettazione edile"
+    },
+    {
+        "ssd": "ICAR/11",
+        "nome": "BIM e Construction Management"
+    },
+    {
+        "ssd": "ICAR/22",
+        "nome": "Estimo ed esercizio professionale"
+    },
+    {
+        "ssd": "ICAR/09",
+        "nome": "Tecnica delle costruzioni"
+    },
+    {
+        "ssd": "MAT/08",
+        "nome": "Calcolo numerico: metodi e software"
+    },
+    {
+        "ssd": "ING-IND/10",
+        "nome": "Energia, progresso e sostenibilità"
+    },
+    {
+        "ssd": "ING-IND/16",
+        "nome": "Gestione industriale della qualità"
+    },
+    {
+        "ssd": "ING-IND/34",
+        "nome": "Ingegneria delle cellule e dei tessuti"
+    },
+    {
+        "ssd": "ING-IND/25",
+        "nome": "Processi di re-impiego e valorizzazione energetica"
+    },
+    {
+        "ssd": "M-STO/05",
+        "nome": "Storia delle Scienze e delle Tecniche"
+    },
+    {
+        "ssd": "ICAR/03",
+        "nome": "Tecnologie ambientali dei siti produttivi"
+    },
+    {
+        "ssd": "ING-IND/14",
+        "nome": "Affidabilità, sicurezza e manutenzione per l'azienda"
+    },
+    {
+        "ssd": "ICAR/02",
+        "nome": "Cambiamenti climatici e socio economici"
+    },
+    {
+        "ssd": "ING-IND/35",
+        "nome": "Company economics"
+    },
+    {
+        "ssd": "ING-IND/31",
+        "nome": "Compatibilità elettromagnetica nell'integrazione dei sistemi"
+    },
+    {
+        "ssd": "ING-IND/13",
+        "nome": "Controllo dei sistemi meccanici"
+    },
+    {
+        "ssd": "FIS/04",
+        "nome": "Elementi di fisica nucleare"
+    },
+    {
+        "ssd": "CHIM/07",
+        "nome": "Fibre: preparazione, proprietà e tecnologie di trasformazione"
+    },
+    {
+        "ssd": "ING-IND/33",
+        "nome": "Generazione fotovoltaica ed eolica di energia elettrica"
+    },
+    {
+        "ssd": "ING-IND/14",
+        "nome": "Impostazione progettuale dell'autoveicolo"
+    },
+    {
+        "ssd": "ING-IND/34",
+        "nome": "Ingegneria nelle terapie medico-chirurgiche"
+    },
+    {
+        "ssd": "FIS/03",
+        "nome": "Introduzione alle nanotecnologie"
+    },
+    {
+        "ssd": "ING-INF/03",
+        "nome": "Laboratorio di internet"
+    },
+    {
+        "ssd": "MAT/07",
+        "nome": "Matematica applicata"
+    },
+    {
+        "ssd": "MAT/07",
+        "nome": "Meccanica Lagrangiana"
+    },
+    {
+        "ssd": "MAT/09",
+        "nome": "Ottimizzazione per il problem solving"
+    },
+    {
+        "ssd": "ING-IND/27",
+        "nome": "Processi dell'industria alimentare"
+    },
+    {
+        "ssd": "ING-IND/31",
+        "nome": "Reti e sistemi complessi: fenomeni fisici e interazioni sociali"
+    },
+    {
+        "ssd": "ING-IND/21",
+        "nome": "Selezione e progettazione dei materiali per applicazioni ingegneristiche (SPMAI)"
+    },
+    {
+        "ssd": "ING-IND/32",
+        "nome": "Sistemi di propulsione elettrica per i trasporti"
+    },
+    {
+        "ssd": "ING-IND/10",
+        "nome": "Sperimentazione e progettazione di tecnologie energetiche"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Visualizzazione dell'informazione quantitativa"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Algoritmi e programmazione"
+    },
+    {
+        "ssd": "ING-IND/31",
+        "nome": "Elettrotecnica"
+    },
+    {
+        "ssd": "FIS/03",
+        "nome": "Fisica II"
+    },
+    {
+        "ssd": "ING-INF/01",
+        "nome": "Dispositivi elettronici"
+    },
+    {
+        "ssd": "ING-INF/01",
+        "nome": "Electronic devices"
+    },
+    {
+        "ssd": "ING-INF/07",
+        "nome": "Circuiti elettronici"
+    },
+    {
+        "ssd": "ING-INF/01",
+        "nome": "Electronic Circuits"
+    },
+    {
+        "ssd": "ING-INF/03",
+        "nome": "Metodi matematici per l'ingegneria"
+    },
+    {
+        "ssd": "ING-INF/01",
+        "nome": "Applied electronics"
+    },
+    {
+        "ssd": "ING-INF/01",
+        "nome": "Elettronica applicata"
+    },
+    {
+        "ssd": "ING-INF/02",
+        "nome": "Campi elettromagnetici"
+    },
+    {
+        "ssd": "ING-INF/02",
+        "nome": "Electromagnetic fields"
+    },
+    {
+        "ssd": "ING-INF/03",
+        "nome": "Teoria dei segnali e delle comunicazioni"
+    },
+    {
+        "ssd": "ING-INF/04",
+        "nome": "Controlli automatici"
+    },
+    {
+        "ssd": "ING-INF/07",
+        "nome": "Electronic measurements"
+    },
+    {
+        "ssd": "ING-INF/07",
+        "nome": "Misure"
+    },
+    {
+        "ssd": "ING-INF/01",
+        "nome": "Digital systems electronics"
+    },
+    {
+        "ssd": "ING-INF/01",
+        "nome": "Elettronica dei sistemi digitali"
+    },
+    {
+        "ssd": "ING-INF/03",
+        "nome": "Applied signal processing laboratory"
+    },
+    {
+        "ssd": "ING-IND/27",
+        "nome": "Fibre: preparazione, proprietà e tecnologie di trasformazione"
+    },
+    {
+        "ssd": "ING-IND/09",
+        "nome": "Impianti di cogenerazione"
+    },
+    {
+        "ssd": "ING-IND/13",
+        "nome": "Impostazione progettuale dell'autoveicolo"
+    },
+    {
+        "ssd": "FIS/03",
+        "nome": "Introduzione all'informazione e calcolo quantistico"
+    },
+    {
+        "ssd": "FIS/03",
+        "nome": "Onde coerenti: laser, olografia, teletrasporto"
+    },
+    {
+        "ssd": "ING-INF/03",
+        "nome": "Open and virtualized networks"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Big data processing and analytics"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Architetture dei sistemi di elaborazione"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Computer architectures"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Data Science and Database Technology"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Data Science e Tecnologie per le Basi di Dati"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Computer network technologies and services"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Tecnologie e servizi di rete"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Ingegneria del software"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Software engineering"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Applicazioni Web I"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Web Applications I"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Programmazione di sistema"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "System and device programming"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Machine learning and pattern recognition"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Advanced Machine Learning"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Information systems security"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Sicurezza dei sistemi informativi"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Cloud Computing"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Computational intelligence"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Distributed systems programming"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Human Computer Interaction"
+    },
+    {
+        "ssd": "MAT/09",
+        "nome": "Optimization methods and algorithms"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Software Engineering II"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Bioinformatics"
+    },
+    {
+        "ssd": "ING-INF/04",
+        "nome": "Convex optimization and engineering applications"
+    },
+    {
+        "ssd": "ING-INF/04",
+        "nome": "Digital control technologies and architectures"
+    },
+    {
+        "ssd": "ING-INF/01",
+        "nome": "Edge Computing Systems for AI and ML"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Elaborazione dell'audio digitale"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Energy management for IoT"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "GPU programming"
+    },
+    {
+        "ssd": "ING-INF/04",
+        "nome": "Modern design of control systems"
+    },
+    {
+        "ssd": "ING-INF/03",
+        "nome": "Network measurement laboratory"
+    },
+    {
+        "ssd": "ING-INF/03",
+        "nome": "Open Optical Networks"
+    },
+    {
+        "ssd": "ING-INF/06",
+        "nome": "Progettazione di software medicali"
+    },
+    {
+        "ssd": "ING-INF/04",
+        "nome": "Robotica"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Security verification and testing"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Specification and simulation of digital systems"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "System-on-chip architecture"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Algoritmi e analisi dei dati in medicina e scienze della vita"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Cybersecurity for Embedded Systems"
+    },
+    {
+        "ssd": "ING-INF/01",
+        "nome": "Engineering Empathy"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Game design"
+    },
+    {
+        "ssd": "ING-INF/02",
+        "nome": "Innovative wireless platforms for the internet of things"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Internet video streaming"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Machine learning in applications"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Mobile application development"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Model-based software design"
+    },
+    {
+        "ssd": "ING-INF/04",
+        "nome": "Modelli e sistemi a eventi discreti"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Responsible Artificial Intelligence"
+    },
+    {
+        "ssd": "ING-IND/15",
+        "nome": "Soluzioni di grafica 3D in applicazioni biometriche"
+    },
+    {
+        "ssd": "ING-INF/04",
+        "nome": "Technologies for Autonomous Vehicles"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Web Applications II"
+    },
+    {
+        "ssd": "MAT/03",
+        "nome": "Algebra lineare e geometria"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Tecniche di programmazione"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Algoritmi e strutture dati"
+    },
+    {
+        "ssd": "ING-IND/31",
+        "nome": "Elettromagnetismo e Teoria dei circuiti"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Calcolatori elettronici"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Computer architecture"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Basi di dati"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Introduction to databases"
+    },
+    {
+        "ssd": "MAT/06",
+        "nome": "Metodi matematici per l'ingegneria"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Operating systems"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Sistemi operativi"
+    },
+    {
+        "ssd": "ING-INF/01",
+        "nome": "Electronic systems, technologies and measurements"
+    },
+    {
+        "ssd": "ING-INF/01",
+        "nome": "Sistemi elettronici, tecnologie e misure"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Computer networks"
+    },
+    {
+        "ssd": "ING-INF/03",
+        "nome": "Reti di calcolatori"
+    },
+    {
+        "ssd": "ING-INF/03",
+        "nome": "Signal analysis and processing"
+    },
+    {
+        "ssd": "ING-INF/03",
+        "nome": "Teoria ed elaborazione dei segnali"
+    },
+    {
+        "ssd": "ING-INF/04",
+        "nome": "Automatic control"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Object oriented programming"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Programmazione a oggetti"
+    },
+    {
+        "ssd": "ICAR/12",
+        "nome": "Cambiamenti climatici e socio economici"
+    },
+    {
+        "ssd": "ING-IND/13",
+        "nome": "Machine dynamics"
+    },
+    {
+        "ssd": "ING-IND/15",
+        "nome": "Disegno tecnico industriale"
+    },
+    {
+        "ssd": "ING-IND/14",
+        "nome": "Fondamenti di meccanica strutturale"
+    },
+    {
+        "ssd": "ING-IND/21",
+        "nome": "Scienza e tecnologia dei materiali/Tecnologia dei materiali metallici"
+    },
+    {
+        "ssd": "ING-IND/13",
+        "nome": "Meccanica applicata alle macchine"
+    },
+    {
+        "ssd": "ING-IND/16",
+        "nome": "Statistica sperimentale e misure meccaniche"
+    },
+    {
+        "ssd": "ING-IND/10",
+        "nome": "Termodinamica applicata e trasmissione del calore"
+    },
+    {
+        "ssd": "ING-IND/14",
+        "nome": "Elementi di costruzione di macchine"
+    },
+    {
+        "ssd": "ING-IND/32",
+        "nome": "Elettrotecnica/Macchine elettriche"
+    },
+    {
+        "ssd": "ICAR/01",
+        "nome": "Meccanica dei fluidi"
+    },
+    {
+        "ssd": "ING-IND/08",
+        "nome": "Fondamenti di macchine e di oleodinamica"
+    },
+    {
+        "ssd": "ING-IND/17",
+        "nome": "Impianti industriali e sicurezza sul lavoro"
+    },
+    {
+        "ssd": "ING-IND/16",
+        "nome": "Tecnologia meccanica"
+    },
+    {
+        "ssd": "ICAR/11",
+        "nome": "Sicurezza nei cantieri"
+    },
+    {
+        "ssd": "ING-INF/05",
+        "nome": "Inclusive design nelle scienze dell'architettura e dell'ingegneria"
+    }
+]

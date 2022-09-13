@@ -1,0 +1,156 @@
+[
+    {
+        "id": 13495,
+        "ssd": "MAT/05",
+        "nome": "Analisi matematica I",
+        "cfu": 12
+    },
+    {
+        "id": 13520,
+        "ssd": "CHIM/07",
+        "nome": "Chimica",
+        "cfu": 9
+    },
+    {
+        "id": 13545,
+        "ssd": "ING-INF/05",
+        "nome": "Informatica",
+        "cfu": 9
+    },
+    {
+        "id": 13570,
+        "ssd": "L-LIN/12",
+        "nome": "Lingua inglese I livello",
+        "cfu": 3
+    },
+    {
+        "id": 13595,
+        "ssd": "MAT/08",
+        "nome": "Algebra lineare e geometria",
+        "cfu": 12
+    },
+    {
+        "id": 13620,
+        "ssd": "ING-INF/05",
+        "nome": "Algoritmi e programmazione",
+        "cfu": 3
+    },
+    {
+        "id": 13645,
+        "ssd": "FIS/01",
+        "nome": "Fisica I",
+        "cfu": 9
+    },
+    {
+        "id": 13670,
+        "ssd": "MAT/05",
+        "nome": "Analisi matematica II",
+        "cfu": 12
+    },
+    {
+        "id": 13695,
+        "ssd": "ING-IND/31",
+        "nome": "Elettrotecnica",
+        "cfu": 12
+    },
+    {
+        "id": 13720,
+        "ssd": "FIS/03",
+        "nome": "Fisica II",
+        "cfu": 3
+    },
+    {
+        "id": 13745,
+        "ssd": "ING-INF/01",
+        "nome": "Dispositivi elettronici",
+        "cfu": 6
+    },
+    {
+        "id": 13770,
+        "ssd": "ING-INF/01",
+        "nome": "Electronic devices",
+        "cfu": 12
+    },
+    {
+        "id": 13795,
+        "ssd": "ING-INF/07",
+        "nome": "Circuiti elettronici",
+        "cfu": 9
+    },
+    {
+        "id": 13820,
+        "ssd": "ING-INF/01",
+        "nome": "Electronic Circuits",
+        "cfu": 9
+    },
+    {
+        "id": 13845,
+        "ssd": "ING-INF/03",
+        "nome": "Metodi matematici per l'ingegneria",
+        "cfu": 6
+    },
+    {
+        "id": 13870,
+        "ssd": "ING-INF/01",
+        "nome": "Applied electronics",
+        "cfu": 9
+    },
+    {
+        "id": 13895,
+        "ssd": "ING-INF/01",
+        "nome": "Elettronica applicata",
+        "cfu": 6
+    },
+    {
+        "id": 22345,
+        "ssd": "ING-INF/05",
+        "nome": "Tecnologie per IoT",
+        "cfu": 3
+    },
+    {
+        "id": 26470,
+        "ssd": "ICAR/07",
+        "nome": "Rischio sismico",
+        "cfu": 3
+    },
+    {
+        "id": 22795,
+        "ssd": "ICAR/07",
+        "nome": "Geotechnical Engineering for the Sustainability of Buildings",
+        "cfu": 3
+    },
+    {
+        "id": 7995,
+        "ssd": "ICAR/17",
+        "nome": "Tecniche della rappresentazione digitale",
+        "cfu": 3
+    },
+    {
+        "id": 13395,
+        "ssd": "ICAR/17",
+        "nome": "Tecniche della rappresentazione digitale",
+        "cfu": 3
+    },
+    {
+        "id": 12145,
+        "ssd": "ICAR/17",
+        "nome": "Tecniche della rappresentazione digitale",
+        "cfu": 3
+    },
+    {
+        "id": 10870,
+        "ssd": "ICAR/17",
+        "nome": "Realt� virtuale e fragilit� (Grandi Sfide - Salute)",
+        "cfu": 3
+    },
+    {
+        "id": 30920,
+        "nome": "Tirocinio",
+        "cfu": 3
+    },
+    {
+        "id": 30945,
+        "nome": "Prova finale",
+        "cfu": 9
+    }
+]

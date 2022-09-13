@@ -1,0 +1,15 @@
+INSERT INTO Insegnamenti (id, nome, cfu, ssd) VALUES (3000, "Biomeccanica dei solidi/Biomeccanica dei fluidi", 9, "ING-IND/34");
+INSERT INTO Insegnamenti (id, nome, cfu, ssd) VALUES (3015, "Biomeccanica multiscala", 9, "ING-IND/34");
+INSERT INTO Insegnamenti (id, nome, cfu, ssd) VALUES (3030, "Meccanica applicata ai sistemi biomedici", 9, "ING-IND/13");
+INSERT INTO Insegnamenti (id, nome, cfu, ssd) VALUES (3045, "Bionanotecnologie", 3, "ING-IND/34");
+INSERT INTO Insegnamenti (id, nome, cfu, ssd) VALUES (3060, "Elaborazione di segnali biomedici", 6, "ING-INF/06");
+INSERT INTO Insegnamenti (id, nome, cfu, ssd) VALUES (3075, "Intelligenza artificiale in medicina", 12, "ING-INF/06");
+INSERT INTO Insegnamenti (id, nome, cfu, ssd) VALUES (3090, "Progettazione di protesi e organi artificiali", 12, "ING-IND/34");
+INSERT INTO Insegnamenti (id, nome, cfu, ssd) VALUES (3105, "Biomeccanica e biodinamica sperimentale/Biomeccanica del sistema cardiovascolare", 12, "ING-IND/34");
+INSERT INTO Insegnamenti (id, nome, cfu, ssd) VALUES (3120, "Biomechanical design", 3, "ING-IND/34");
+INSERT INTO Insegnamenti (id, nome, cfu, ssd) VALUES (3135, "Materiali per la bioingegneria", 6, "ING-IND/22");
+INSERT INTO Insegnamenti (id, nome, cfu, ssd) VALUES (3150, "Bioreattori", 9, "ING-IND/34");
+INSERT INTO Insegnamenti (id, nome, cfu, ssd) VALUES (3165, "Fondamenti di Normativa per Dispositivi Medici", 6, "ING-IND/34");
+INSERT INTO Insegnamenti (id, nome, cfu, ssd) VALUES (3180, "Frontiers in Bioengineering enabling nanotechnologies", 3, "ING-IND/34");
+INSERT INTO Insegnamenti (id, nome, cfu, ssd) VALUES (3195, "Rational Drug Design: Principles and Applications", 9, "ING-IND/34");
+INSERT INTO Insegnamenti (id, nome, cfu, ssd) VALUES (3210, "Elaborazione di immagini mediche", 12, "ING-INF/06");

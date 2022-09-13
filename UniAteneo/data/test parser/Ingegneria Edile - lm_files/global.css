@@ -1,0 +1,243 @@
+@charset "UTF-8";
+/* ~~ Elementi principali ~~ */
+/*
+html
+{
+  font-size: 100%;
+  overflow-y: auto;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+body
+{
+  font-family: Open Sans, Arial, Helvetica, sans-serif;
+  font-size: 13px;
+	background-color: #FFF;
+  margin: 0;
+  padding: 0;
+  color: #000;
+}
+
+*:focus, a, button, div
+{
+  outline: none;
+}
+
+textarea
+{
+  resize: none;
+  font-family: Open Sans, Arial, Helvetica, sans-serif;
+  font-size: 13px;
+}
+
+button, input, select, textarea
+{
+  font-size: 100%;
+  margin: 0;
+  vertical-align: baseline;
+  *vertical-align: middle;
+}
+*/
+/* ~~ Classi contenitori ~~ */
+/*
+.container
+{
+  position: relative;
+  width: 980px;
+  margin: 0 auto; 
+}
+*/
+/*
+.header
+{
+  background-color: #ADB96E;
+}
+*/
+/*
+.content
+{
+  padding: 10px 0;
+}
+*/
+/*
+.footer
+{
+  padding: 10px 0;
+  background-color: #CCC49F;
+}
+*/
+/* ~~ Impostazioni scrollbar su browser basati su webkit (Chrome, Safari) ~~ */
+
+::-webkit-scrollbar
+{
+  width: 8px;
+  height: 8px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb
+{
+  background-color: #CCC;
+  -webkit-border-radius: 6px;
+}
+
+
+/* ~~ Altre classi ~~ */
+.test
+{
+  background-color: #A9D065;
+}
+
+.unselectable, .buttonMode
+{
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.buttonMode
+{
+  cursor: pointer;
+}
+
+.ellipsis
+{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.label
+{
+  color: #666;
+  font-weight: normal;
+}
+
+/* Nascondere sia negli screen reader che nei browser: h5bp.com/u */
+.hidden
+{
+  display: none !important;
+  visibility: hidden;
+}
+
+/* Nascondere visivamente e anche negli screen reader, mantenendo il layout */
+.invisible
+{
+  visibility: hidden;
+}
+
+.c_navigationBar
+{
+  width: 100%;
+  min-height: 28px;
+  background-color: #EEE;
+}
+
+.c_titleBar
+{
+  width: 100%;
+  height: 122px;
+  background-color: #003576;
+}
+
+.c_lineBar
+{
+  position: relative;
+  width: 100%;
+  height: 50px;
+  background:url("https://didattica.polito.it/didattica/assets/gif/footer-bkground.gif");
+}
+
+.c_treeBar
+{
+  position: relative;
+  width: 100%;
+  height: 30px;
+  background-color: #FFF;
+}
+
+.c_titleBarContainer
+{
+  position: relative;
+  width: 980px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.c_logoPoli
+{
+  position: absolute;
+  top: 8px;
+  left: 0;
+  width: 260px;
+  height: 107px;
+  background: url(https://didattica.polito.it/didattica/assets/png/poli_logo_poli.png) no-repeat;
+}
+
+.c_logoPoli2
+{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 122px;
+  /*background: url(https://didattica.polito.it/didattica/assets/jpg/poli_testata.jpg) no-repeat;*/
+}
+
+.c_titoliPagina
+{
+  position: absolute;
+  right: 0px;
+  bottom: 5px;
+  text-align: right;
+  color: white;
+}
+.c_titoloPagina { font-size: 26px; }
+.c_sottotitoloPagina { font-size: 12px; }
+
+.c_linkMenu { text-decoration: none; color: #003576; text-shadow: 0px 1px 1px white; }
+.c_linkMenu:hover { text-decoration: underline; }
+
+img, object, embed, video
+{
+  max-width: 100%;
+}
+/* IE 6 non supporta max-width, quindi viene usata per impostazione predefinita la larghezza 100% */
+.ie6 img
+{
+  width:100%;
+}
+
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
+
+.c_relative { position: relative; width: 100%; height: 100%; }
+.c_transparent { background-color: rgb(255, 255, 255); filter: alpha(opacity:0); -moz-opacity: 0; opacity: 0;}
+.c_strisciaArancione { position: relative; width: 100%; height: 6px; background-color: #FF7C11; }
+
+
+/*definizioni per il men� di sinistra Maria 19/06/2013 */
+#d_albero { clear: both; float: left; width: 200px; margin-top: 7px; }
+#d_html { clear: none; float: right; width: 760px; margin-left: 5px; }
+
+.c_voceMenu { position: relative; font-size: 12px; width: 100%; min-height: 24px; }
+.c_voceMenu_titolo { position: relative; line-height: 18px; font-weight: bold; border-bottom: solid 2px #003576; background-color: #FFF; color: #003576; font-size: 15px; }
+.c_voceMenu_sottotitolo { position: relative; padding-top: 5px; padding-bottom: 5px; padding-left: 10px; padding-right: 5px; line-height: 15px; font-weight: bold; }
+.c_voceMenu_link { position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px; }
+.c_voceMenu_up { background-color: #EEE; color: #888; }
+.c_voceMenu_over { background-color: #4A6D97; color: #FFF; }
+.c_voceMenu_selected { background-color: #003576; color: #FFF; }
+
+a.c_login
+{
+	text-decoration: none;
+	color: #003576;
+}
+
+a.c_login:hover
+{
+	text-decoration: underline;
+}
