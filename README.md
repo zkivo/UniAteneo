@@ -2,6 +2,8 @@
 
 This is a university project my colleague and i did for the web programming class we took in the last year of the bachelor. The repository is intended as an archive purpose, however you can do whatever you want with the code reason it is released with MIT license.
 
+https://user-images.githubusercontent.com/58048638/198825976-4109cb69-24a7-4d5b-bb81-567d7f5d4983.mp4
+
 To run the application use the command:
 
 `node server.js`
@@ -9,11 +11,6 @@ To run the application use the command:
 Note: please be sure you have Node.js installed and all modules. For the latter you can use `npn install` once Node.js is on your machine.
 
 All the documentation is in Italian since it was the language of the class. In fact, this is the only part i am writing in english for curious visitors, the rest is left as it was. Thank you.
-
-
-
-
-https://user-images.githubusercontent.com/58048638/198825976-4109cb69-24a7-4d5b-bb81-567d7f5d4983.mp4
 
 
 ## Come far partire il web server
