@@ -1,6 +1,6 @@
 # UniAteneo
 
-This is a university project my colleague and i did for the web programming class we took in the last year of the bachelor. The repository is intended as an archive purpose, however you can do whatever you want with the code reason it is released with MIT license.
+University project developed in collaboration with my colleague @zankro. This repository demostrates the project as it was originally created, and therefore no translation from Italian has been provided.
 
 https://user-images.githubusercontent.com/58048638/198825976-4109cb69-24a7-4d5b-bb81-567d7f5d4983.mp4
 
